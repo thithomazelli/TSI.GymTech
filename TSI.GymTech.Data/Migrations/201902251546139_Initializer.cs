@@ -62,15 +62,12 @@ namespace TSI.GymTech.Data.Migrations
                         Phone = c.String(maxLength: 32, storeType: "nvarchar"),
                         MobilePhone = c.String(maxLength: 32, storeType: "nvarchar"),
                         Email = c.String(maxLength: 64, storeType: "nvarchar"),
-                        AddressId = c.Int(nullable: false),
                         CreateDate = c.DateTime(precision: 0),
                         CreateUserId = c.Int(nullable: false),
                         ModifyDate = c.DateTime(precision: 0),
                         ModifyUserId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.PersonId)
-                .ForeignKey("dbo.Address", t => t.AddressId, cascadeDelete: true)
-                .Index(t => t.AddressId);
+                .PrimaryKey(t => t.PersonId);
             
             CreateTable(
                 "dbo.Address",
@@ -86,12 +83,15 @@ namespace TSI.GymTech.Data.Migrations
                         State = c.String(maxLength: 32, storeType: "nvarchar"),
                         City = c.String(maxLength: 64, storeType: "nvarchar"),
                         Country = c.String(maxLength: 32, storeType: "nvarchar"),
+                        PersonId = c.Int(nullable: false),
                         CreateDate = c.DateTime(precision: 0),
                         CreateUserId = c.Int(nullable: false),
                         ModifyDate = c.DateTime(precision: 0),
                         ModifyUserId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.AddressId);
+                .PrimaryKey(t => t.AddressId)
+                .ForeignKey("dbo.Person", t => t.PersonId, cascadeDelete: true)
+                .Index(t => t.PersonId);
             
             CreateTable(
                 "dbo.AnamnesisSheet",
@@ -305,8 +305,8 @@ namespace TSI.GymTech.Data.Migrations
             DropForeignKey("dbo.EvaluationSheet", "StudentId", "dbo.Person");
             DropForeignKey("dbo.AnamnesisSheet", "TrainerId", "dbo.Person");
             DropForeignKey("dbo.AnamnesisSheet", "StudentId", "dbo.Person");
+            DropForeignKey("dbo.Address", "PersonId", "dbo.Person");
             DropForeignKey("dbo.AccessLog", "PersonId", "dbo.Person");
-            DropForeignKey("dbo.Person", "AddressId", "dbo.Address");
             DropForeignKey("dbo.AccessLog", "AccessControlId", "dbo.AccessControl");
             DropIndex("dbo.TrainingSheetExercise", new[] { "ExerciseId" });
             DropIndex("dbo.TrainingSheetExercise", new[] { "TrainingSheetId" });
@@ -321,7 +321,7 @@ namespace TSI.GymTech.Data.Migrations
             DropIndex("dbo.EvaluationSheet", new[] { "StudentId" });
             DropIndex("dbo.AnamnesisSheet", new[] { "TrainerId" });
             DropIndex("dbo.AnamnesisSheet", new[] { "StudentId" });
-            DropIndex("dbo.Person", new[] { "AddressId" });
+            DropIndex("dbo.Address", new[] { "PersonId" });
             DropIndex("dbo.AccessLog", new[] { "AccessControlId" });
             DropIndex("dbo.AccessLog", new[] { "PersonId" });
             DropTable("dbo.TrainingSheetExercise");

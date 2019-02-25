@@ -4,6 +4,7 @@ namespace TSI.GymTech.Data.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TSI.GymTech.Entity.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TSI.GymTech.Data.Context>
     {
@@ -19,6 +20,18 @@ namespace TSI.GymTech.Data.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            // Insert administrator user on the database
+            context.Person.AddOrUpdate(p => p.Name,
+              new Person
+              {
+                  Name = "Administrator",
+                  Email = "admin@tsi.com.br",
+                  Password = "admin",
+                  SocialSecurityCard = "admin",
+                  ProfileType = Entity.Enumerates.PersonType.Administrator
+              }
+            );
         }
     }
 }

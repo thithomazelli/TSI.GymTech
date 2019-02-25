@@ -13,7 +13,7 @@ namespace TSI.GymTech.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201902241821491_Initializer"; }
+            get { return "201902251546139_Initializer"; }
         }
         
         string IMigrationMetadata.Source
