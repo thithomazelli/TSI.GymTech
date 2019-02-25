@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TSI.GymTech.Entity.Models
 {
-    public class AnamnesisSheet
+    public class AnamnesisSheet : BaseSheet
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,7 +14,6 @@ namespace TSI.GymTech.Entity.Models
         [Display(Description = "AnamnesisSheetId", ResourceType = typeof(App_LocalResources.AnamnesisSheet))]
         public int AnamnesisSheetId { get; set; }
 
-        [ForeignKey("SheetId")]
-        public IEnumerable<SheetAnswer> AnamnesisSheetAnswers { get; set; }
+        public virtual IEnumerable<SheetAnswer> AnamnesisSheetAnswers { get; set; }
     }
 }

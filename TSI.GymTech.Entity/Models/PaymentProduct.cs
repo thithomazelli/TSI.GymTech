@@ -17,12 +17,12 @@ namespace TSI.GymTech.Entity.Models
         [ForeignKey("Payment")]
         [Required(ErrorMessageResourceName = "PaymentRequired", ErrorMessageResourceType = typeof(App_LocalResources.PaymentProduct), AllowEmptyStrings = false)]
         public int PaymentId { get; set; }
-        public Payment Payment { get; set; }
+        public virtual Payment Payment { get; set; }
 
         [ForeignKey("Product")]
         [Required(ErrorMessageResourceName = "ProductRequired", ErrorMessageResourceType = typeof(App_LocalResources.PaymentProduct), AllowEmptyStrings = false)]
         public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         [Display(Description = "Quantity", ResourceType = typeof(App_LocalResources.PaymentProduct))]
         public int? Quantity { get; set; }

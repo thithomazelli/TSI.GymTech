@@ -59,5 +59,41 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed Both Sides.
+        /// </summary>
+        internal static string AllowedBothSides {
+            get {
+                return ResourceManager.GetString("AllowedBothSides", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed Entry.
+        /// </summary>
+        internal static string AllowedEntry {
+            get {
+                return ResourceManager.GetString("AllowedEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed Exit.
+        /// </summary>
+        internal static string AllowedExit {
+            get {
+                return ResourceManager.GetString("AllowedExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Denied.
+        /// </summary>
+        internal static string Denied {
+            get {
+                return ResourceManager.GetString("Denied", resourceCulture);
+            }
+        }
     }
 }

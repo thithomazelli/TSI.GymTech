@@ -59,5 +59,59 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        internal static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Biceps.
+        /// </summary>
+        internal static string Biceps {
+            get {
+                return ResourceManager.GetString("Biceps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breastplate.
+        /// </summary>
+        internal static string Breastplate {
+            get {
+                return ResourceManager.GetString("Breastplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legs.
+        /// </summary>
+        internal static string Legs {
+            get {
+                return ResourceManager.GetString("Legs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shoulders.
+        /// </summary>
+        internal static string Shoulders {
+            get {
+                return ResourceManager.GetString("Shoulders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triceps.
+        /// </summary>
+        internal static string Triceps {
+            get {
+                return ResourceManager.GetString("Triceps", resourceCulture);
+            }
+        }
     }
 }

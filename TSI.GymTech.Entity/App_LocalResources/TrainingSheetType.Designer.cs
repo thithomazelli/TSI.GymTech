@@ -59,5 +59,32 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AfterTraining.
+        /// </summary>
+        internal static string AfterTraining {
+            get {
+                return ResourceManager.GetString("AfterTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pre Training.
+        /// </summary>
+        internal static string PreTraining {
+            get {
+                return ResourceManager.GetString("PreTraining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Training.
+        /// </summary>
+        internal static string Training {
+            get {
+                return ResourceManager.GetString("Training", resourceCulture);
+            }
+        }
     }
 }

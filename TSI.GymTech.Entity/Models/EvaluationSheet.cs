@@ -14,7 +14,6 @@ namespace TSI.GymTech.Entity.Models
         [Display(Description = "EvaluationSheetId", ResourceType = typeof(App_LocalResources.EvaluationSheet))]
         public int EvaluationSheetId { get; set; }
 
-        [ForeignKey("SheetId")]
-        public IEnumerable<SheetAnswer> EvaluationSheetAnswers { get; set; }
+        public virtual IEnumerable<SheetAnswer> EvaluationSheetAnswers { get; set; }
     }
 }

@@ -59,5 +59,23 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation Sheet ID.
+        /// </summary>
+        internal static string EvaluationSheetId {
+            get {
+                return ResourceManager.GetString("EvaluationSheetId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evaluation Sheet ID is required..
+        /// </summary>
+        internal static string EvaluationSheetIdRequired {
+            get {
+                return ResourceManager.GetString("EvaluationSheetIdRequired", resourceCulture);
+            }
+        }
     }
 }

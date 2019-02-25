@@ -59,5 +59,59 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Answer.
+        /// </summary>
+        internal static string Answer {
+            get {
+                return ResourceManager.GetString("Answer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheet Answer ID.
+        /// </summary>
+        internal static string SheetAnswerId {
+            get {
+                return ResourceManager.GetString("SheetAnswerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheet Answer ID is required..
+        /// </summary>
+        internal static string SheetAnswerIdRequired {
+            get {
+                return ResourceManager.GetString("SheetAnswerIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheet ID.
+        /// </summary>
+        internal static string SheetId {
+            get {
+                return ResourceManager.GetString("SheetId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheet ID is required..
+        /// </summary>
+        internal static string SheetIdRequired {
+            get {
+                return ResourceManager.GetString("SheetIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheet Question is required..
+        /// </summary>
+        internal static string SheetQuestionRequired {
+            get {
+                return ResourceManager.GetString("SheetQuestionRequired", resourceCulture);
+            }
+        }
     }
 }

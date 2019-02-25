@@ -59,5 +59,59 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        internal static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revaluation.
+        /// </summary>
+        internal static string Revaluation {
+            get {
+                return ResourceManager.GetString("Revaluation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student ID.
+        /// </summary>
+        internal static string StudentId {
+            get {
+                return ResourceManager.GetString("StudentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student is required..
+        /// </summary>
+        internal static string StudentRequired {
+            get {
+                return ResourceManager.GetString("StudentRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trainer ID.
+        /// </summary>
+        internal static string TrainerId {
+            get {
+                return ResourceManager.GetString("TrainerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trainer is required..
+        /// </summary>
+        internal static string TrainerRequired {
+            get {
+                return ResourceManager.GetString("TrainerRequired", resourceCulture);
+            }
+        }
     }
 }

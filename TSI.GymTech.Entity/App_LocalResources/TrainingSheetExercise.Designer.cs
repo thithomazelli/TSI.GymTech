@@ -59,5 +59,86 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge.
+        /// </summary>
+        internal static string Charge {
+            get {
+                return ResourceManager.GetString("Charge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exercise is required..
+        /// </summary>
+        internal static string ExerciseRequired {
+            get {
+                return ResourceManager.GetString("ExerciseRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Repetitions.
+        /// </summary>
+        internal static string NumberOfRepetitions {
+            get {
+                return ResourceManager.GetString("NumberOfRepetitions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Repetitions is required..
+        /// </summary>
+        internal static string NumberOfRepetitionsRequired {
+            get {
+                return ResourceManager.GetString("NumberOfRepetitionsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serie.
+        /// </summary>
+        internal static string Serie {
+            get {
+                return ResourceManager.GetString("Serie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serie is required..
+        /// </summary>
+        internal static string SerieRequired {
+            get {
+                return ResourceManager.GetString("SerieRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Training Sheet Exercise ID.
+        /// </summary>
+        internal static string TrainingSheetExerciseId {
+            get {
+                return ResourceManager.GetString("TrainingSheetExerciseId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Training Sheet Exercise ID is required..
+        /// </summary>
+        internal static string TrainingSheetExerciseIdRequired {
+            get {
+                return ResourceManager.GetString("TrainingSheetExerciseIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Training Sheet is required..
+        /// </summary>
+        internal static string TrainingSheetRequired {
+            get {
+                return ResourceManager.GetString("TrainingSheetRequired", resourceCulture);
+            }
+        }
     }
 }
