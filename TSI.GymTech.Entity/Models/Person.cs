@@ -85,22 +85,6 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(64)]
         public string Email { get; set; }
 
-        [ForeignKey("Address")]
-        public int AddressId { get; set; }
-        public virtual Address Address { get; set; }
-
-        [NotMapped]
-        public virtual int StudentId
-        {
-            get { return PersonId; }
-            set { StudentId = PersonId; }
-        }
-
-        [NotMapped]
-        public virtual int TrainerId
-        {
-            get { return PersonId; }
-            set { TrainerId = PersonId; }
-        }
+        public virtual IEnumerable<Address> Addresses { get; set; }
     }
 }    
