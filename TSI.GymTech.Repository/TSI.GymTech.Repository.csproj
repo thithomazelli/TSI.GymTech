@@ -58,6 +58,10 @@
       <Project>{1E43B7A6-9EDF-4C4D-85DD-9D45F27752E8}</Project>
       <Name>TSI.GymTech.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TSI.GymTech.Entity\TSI.GymTech.Entity.csproj">
+      <Project>{62cef67c-b32d-4560-b67c-a176c17b5ea4}</Project>
+      <Name>TSI.GymTech.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
