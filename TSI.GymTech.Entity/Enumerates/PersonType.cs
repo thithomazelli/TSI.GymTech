@@ -7,21 +7,23 @@ namespace TSI.GymTech.Entity.Enumerates
 {
     public enum PersonType
     {
+        [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Administrator")]
+        Administrator = 0,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Visitor")]
-        Visitor = 0,
+        Visitor = 1,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Student")]
-        Student = 1,
+        Student = 2,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Employee")]
-        Employee = 2,
+        Employee = 3,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Personal")]
-        Personal = 3,
+        Personal = 4,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Owner")]
-        Owner = 4,
+        Owner = 5,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Teacher")]
-        Teacher = 5,
+        Teacher = 6,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Instructor")]
-        Instructor = 6,
+        Instructor = 7,
         [Display(ResourceType = typeof(App_LocalResources.PersonType), Name = "Cleaner")]
-        Cleaner = 7
+        Cleaner = 8
     }
 }

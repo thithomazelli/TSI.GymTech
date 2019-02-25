@@ -48,5 +48,9 @@ namespace TSI.GymTech.Entity.Models
         [Display(Description = "Country", ResourceType = typeof(App_LocalResources.Address))]
         [StringLength(32)]
         public string Country { get; set; }
+        
+        [ForeignKey("Person")]
+        public int PersonId { get; set; }
+        public Person Person { get; set; }
     }
 }
