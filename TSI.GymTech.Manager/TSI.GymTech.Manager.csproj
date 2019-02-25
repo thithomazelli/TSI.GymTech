@@ -45,8 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="EntityManagers\ExerciseManager.cs" />
+    <Compile Include="EntityManagers\PersonManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\Result.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TSI.GymTech.Entity\TSI.GymTech.Entity.csproj">
+      <Project>{62cef67c-b32d-4560-b67c-a176c17b5ea4}</Project>
+      <Name>TSI.GymTech.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSI.GymTech.Repository\TSI.GymTech.Repository.csproj">
+      <Project>{c0fe355d-0600-45f1-8870-ec47a4884171}</Project>
+      <Name>TSI.GymTech.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utitlities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
