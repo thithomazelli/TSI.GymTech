@@ -299,6 +299,16 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TSI.GymTech.Entity\TSI.GymTech.Entity.csproj">
+      <Project>{62cef67c-b32d-4560-b67c-a176c17b5ea4}</Project>
+      <Name>TSI.GymTech.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TSI.GymTech.Manager\TSI.GymTech.Manager.csproj">
+      <Project>{c98aa07f-14e2-49e8-8c5d-63672c9c3222}</Project>
+      <Name>TSI.GymTech.Manager</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
