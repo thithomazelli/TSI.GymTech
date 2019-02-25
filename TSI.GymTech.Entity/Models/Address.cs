@@ -14,7 +14,7 @@ namespace TSI.GymTech.Entity.Models
         [Required(ErrorMessageResourceName = "AddressIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.Address), AllowEmptyStrings = false)]
         [Display(Description = "AddressId", ResourceType = typeof(App_LocalResources.Address))]
         public int AddressId { get; set; }
-
+        
         [Display(Description = "AddressType", ResourceType = typeof(App_LocalResources.Address))]
         public AddressType? AddressType { get; set; }
 
@@ -48,6 +48,5 @@ namespace TSI.GymTech.Entity.Models
         [Display(Description = "Country", ResourceType = typeof(App_LocalResources.Address))]
         [StringLength(32)]
         public string Country { get; set; }
-
     }
 }

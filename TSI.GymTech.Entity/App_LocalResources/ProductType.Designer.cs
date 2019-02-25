@@ -59,5 +59,113 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clothing.
+        /// </summary>
+        internal static string Clothing {
+            get {
+                return ResourceManager.GetString("Clothing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dance - Once a week.
+        /// </summary>
+        internal static string DanceOnceWeek {
+            get {
+                return ResourceManager.GetString("DanceOnceWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drinks.
+        /// </summary>
+        internal static string Drinks {
+            get {
+                return ResourceManager.GetString("Drinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly.
+        /// </summary>
+        internal static string Monthly {
+            get {
+                return ResourceManager.GetString("Monthly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Once.
+        /// </summary>
+        internal static string Once {
+            get {
+                return ResourceManager.GetString("Once", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quarterly.
+        /// </summary>
+        internal static string Quarterly {
+            get {
+                return ResourceManager.GetString("Quarterly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Registration {
+            get {
+                return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Semester.
+        /// </summary>
+        internal static string Semester {
+            get {
+                return ResourceManager.GetString("Semester", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplementation.
+        /// </summary>
+        internal static string String7 {
+            get {
+                return ResourceManager.GetString("String7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Three times a week.
+        /// </summary>
+        internal static string ThreeTimesWeek {
+            get {
+                return ResourceManager.GetString("ThreeTimesWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly.
+        /// </summary>
+        internal static string Weekly {
+            get {
+                return ResourceManager.GetString("Weekly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yearly.
+        /// </summary>
+        internal static string Yearly {
+            get {
+                return ResourceManager.GetString("Yearly", resourceCulture);
+            }
+        }
     }
 }

@@ -59,5 +59,23 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anamnesis Sheet ID.
+        /// </summary>
+        internal static string AnamnesisSheetId {
+            get {
+                return ResourceManager.GetString("AnamnesisSheetId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AnamnesisSheet ID is required..
+        /// </summary>
+        internal static string AnamnesisSheetIdRequired {
+            get {
+                return ResourceManager.GetString("AnamnesisSheetIdRequired", resourceCulture);
+            }
+        }
     }
 }

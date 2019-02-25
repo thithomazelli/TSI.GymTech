@@ -59,5 +59,50 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access Log ID.
+        /// </summary>
+        internal static string AccessLogId {
+            get {
+                return ResourceManager.GetString("AccessLogId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access Log ID is required..
+        /// </summary>
+        internal static string AccessLogIdRequired {
+            get {
+                return ResourceManager.GetString("AccessLogIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access Type.
+        /// </summary>
+        internal static string AccessType {
+            get {
+                return ResourceManager.GetString("AccessType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message Displayed.
+        /// </summary>
+        internal static string MessageDisplayed {
+            get {
+                return ResourceManager.GetString("MessageDisplayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person is required..
+        /// </summary>
+        internal static string PersonRequired {
+            get {
+                return ResourceManager.GetString("PersonRequired", resourceCulture);
+            }
+        }
     }
 }

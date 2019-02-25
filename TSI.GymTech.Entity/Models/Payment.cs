@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.Models
         [ForeignKey("Person")]
         [Required(ErrorMessageResourceName = "PersonRequired", ErrorMessageResourceType = typeof(App_LocalResources.Payment), AllowEmptyStrings = false)]
         public int PersonId { get; set; }
-        public Person Person { get; set; }
+        public virtual Person Person { get; set; }
 
         [Display(Description = "Discount", ResourceType = typeof(App_LocalResources.Payment))]
         public decimal? Discount { get; set; }
@@ -50,6 +50,6 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(1024)]
         public string Comments { get; set; }
 
-        public IEnumerable<PaymentProduct> PaymentProducts { get; set; }
+        public virtual IEnumerable<PaymentProduct> PaymentProducts { get; set; }
     }
 }

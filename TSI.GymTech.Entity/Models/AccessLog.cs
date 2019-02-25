@@ -24,6 +24,10 @@ namespace TSI.GymTech.Entity.Models
         [ForeignKey("Person")]
         [Required(ErrorMessageResourceName = "PersonRequired", ErrorMessageResourceType = typeof(App_LocalResources.Payment), AllowEmptyStrings = false)]
         public int PersonId { get; set; }
-        public Person Person { get; set; }
+        public virtual Person Person { get; set; }
+
+        [ForeignKey("AccessControl")]
+        public int AccessControlId { get; set; }
+        public virtual AccessControl AccessControl { get; set; }
     }
 }

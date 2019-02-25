@@ -17,7 +17,6 @@ namespace TSI.GymTech.Entity.Models
 
         [Required(ErrorMessageResourceName = "TypeQuestionRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetQuestion), AllowEmptyStrings = false)]
         [Display(Description = "TypeQuestion", ResourceType = typeof(App_LocalResources.SheetQuestion))]
-        [StringLength(128)]
         public SheetQuestionType TypeQuestion { get; set; }
 
         [Display(Description = "Order", ResourceType = typeof(App_LocalResources.SheetQuestion))]

@@ -59,5 +59,68 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order.
+        /// </summary>
+        internal static string Order {
+            get {
+                return ResourceManager.GetString("Order", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question.
+        /// </summary>
+        internal static string Question {
+            get {
+                return ResourceManager.GetString("Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question is required..
+        /// </summary>
+        internal static string QuestionRequired {
+            get {
+                return ResourceManager.GetString("QuestionRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheet Question ID.
+        /// </summary>
+        internal static string SheetQuestionId {
+            get {
+                return ResourceManager.GetString("SheetQuestionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheet Question ID is required..
+        /// </summary>
+        internal static string SheetQuestionIdRequired {
+            get {
+                return ResourceManager.GetString("SheetQuestionIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type Question.
+        /// </summary>
+        internal static string TypeQuestion {
+            get {
+                return ResourceManager.GetString("TypeQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type Question is required..
+        /// </summary>
+        internal static string TypeQuestionRequired {
+            get {
+                return ResourceManager.GetString("TypeQuestionRequired", resourceCulture);
+            }
+        }
     }
 }

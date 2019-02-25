@@ -42,7 +42,7 @@ namespace TSI.GymTech.Entity.Models
         [Display(Description = "SocialSecurityCard", ResourceType = typeof(App_LocalResources.Person))]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:###.###.###-##}")]
         [StringLength(16)]
-        public long SocialSecurityCard { get; set; }
+        public string SocialSecurityCard { get; set; }
 
         [Display(Description = "BirthDate", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.DateTime)]
@@ -87,6 +87,20 @@ namespace TSI.GymTech.Entity.Models
 
         [ForeignKey("Address")]
         public int AddressId { get; set; }
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
+
+        [NotMapped]
+        public virtual int StudentId
+        {
+            get { return PersonId; }
+            set { StudentId = PersonId; }
+        }
+
+        [NotMapped]
+        public virtual int TrainerId
+        {
+            get { return PersonId; }
+            set { TrainerId = PersonId; }
+        }
     }
-}
+}    

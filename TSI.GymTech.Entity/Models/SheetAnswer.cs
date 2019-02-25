@@ -18,13 +18,20 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(128)]
         public string Answer { get; set; }
 
+
         [Required(ErrorMessageResourceName = "SheetIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetAnswer), AllowEmptyStrings = false)]
         [Display(Description = "SheetId", ResourceType = typeof(App_LocalResources.SheetAnswer))]
         public int SheetId { get; set; }
 
+        [ForeignKey("SheetId")]
+        public virtual EvaluationSheet EvaluationSheet { get; set; }
+        
+        [ForeignKey("SheetId")]
+        public virtual AnamnesisSheet AnamnesisSheet { get; set; }
+
         [ForeignKey("SheetQuestion")]
         [Required(ErrorMessageResourceName = "SheetQuestionRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetAnswer), AllowEmptyStrings = false)]
         public int SheetQuestionId { get; set; }
-        public SheetQuestion SheetQuestion { get; set; }
+        public virtual SheetQuestion SheetQuestion { get; set; }
     }
 }

@@ -17,12 +17,12 @@ namespace TSI.GymTech.Entity.Models
         [ForeignKey("TrainingSheet")]
         [Required(ErrorMessageResourceName = "TrainingSheetRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
         public int TrainingSheetId { get; set; }
-        public TrainingSheet TrainingSheet { get; set; }
+        public virtual TrainingSheet TrainingSheet { get; set; }
 
         [ForeignKey("Exercise")]
         [Required(ErrorMessageResourceName = "ExerciseRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
         public int ExerciseId { get; set; }
-        public Exercise Exercise { get; set; }
+        public virtual Exercise Exercise { get; set; }
 
         [Required(ErrorMessageResourceName = "SerieRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
         [Display(Description = "Serie", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
