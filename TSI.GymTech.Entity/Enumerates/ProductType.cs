@@ -30,6 +30,8 @@ namespace TSI.GymTech.Entity.Enumerates
         [Display(ResourceType = typeof(App_LocalResources.ProductType), Name = "DanceOnceWeek")]
         DanceOnceWeek = 10,
         [Display(ResourceType = typeof(App_LocalResources.ProductType), Name = "ThreeTimesWeek")]
-        ThreeTimesWeek = 11
+        ThreeTimesWeek = 11,
+        [Display(ResourceType = typeof(App_LocalResources.ProductType), Name = "Equipment")]
+        Equipment = 12
     }
 }

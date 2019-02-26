@@ -143,6 +143,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Product.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\ProductStatus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductStatus.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\ProductType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -191,6 +196,7 @@
     <Compile Include="Enumerates\PaymentType.cs" />
     <Compile Include="Enumerates\PersonStatus.cs" />
     <Compile Include="Enumerates\PersonType.cs" />
+    <Compile Include="Enumerates\ProductStatus.cs" />
     <Compile Include="Enumerates\ProductType.cs" />
     <Compile Include="Enumerates\SheetQuestionType.cs" />
     <Compile Include="Enumerates\TrainingSheetStatus.cs" />
@@ -314,6 +320,11 @@
     <EmbeddedResource Include="App_LocalResources\Product.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Product.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\ProductStatus.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductStatus.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductStatus.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ProductType.pt.resx" />
     <EmbeddedResource Include="App_LocalResources\ProductType.resx">

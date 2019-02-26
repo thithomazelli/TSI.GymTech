@@ -27,6 +27,9 @@ namespace TSI.GymTech.Entity.Models
         [Display(Description = "ProductType", ResourceType = typeof(App_LocalResources.Product))]
         public ProductType? ProductType { get; set; }
 
+        [Display(Description = "ProductStatus", ResourceType = typeof(App_LocalResources.Product))]
+        public ProductStatus? ProductStatus { get; set; }
+
         [Required(ErrorMessageResourceName = "SuggestedPriceRequired", ErrorMessageResourceType = typeof(App_LocalResources.Product), AllowEmptyStrings = false)]
         [Display(Description = "SuggestedPrice", ResourceType = typeof(App_LocalResources.Product))]
         public decimal SuggestedPrice { get; set; }

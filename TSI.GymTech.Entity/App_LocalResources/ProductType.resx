@@ -126,6 +126,9 @@
   <data name="Drinks" xml:space="preserve">
     <value>Drinks</value>
   </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>Equipment</value>
+  </data>
   <data name="Monthly" xml:space="preserve">
     <value>Monthly</value>
   </data>

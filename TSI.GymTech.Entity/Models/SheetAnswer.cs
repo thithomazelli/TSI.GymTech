@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TSI.GymTech.Entity.Models
 {
-    public class SheetAnswer
+    public class SheetAnswer : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
