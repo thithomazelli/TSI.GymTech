@@ -141,6 +141,9 @@
   <data name="ProductNameRequired" xml:space="preserve">
     <value>Nome do Produto é obrigatório.</value>
   </data>
+  <data name="ProductStatus" xml:space="preserve">
+    <value>Status do Produto</value>
+  </data>
   <data name="ProductType" xml:space="preserve">
     <value>Tipo de Produto</value>
   </data>
