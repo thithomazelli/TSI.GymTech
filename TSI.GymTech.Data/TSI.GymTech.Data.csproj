@@ -71,6 +71,18 @@
     <Compile Include="Migrations\201902251546139_Initializer.Designer.cs">
       <DependentUpon>201902251546139_Initializer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902261738539_Update_SheetQuestion_And_SheetAwser.cs" />
+    <Compile Include="Migrations\201902261738539_Update_SheetQuestion_And_SheetAwser.Designer.cs">
+      <DependentUpon>201902261738539_Update_SheetQuestion_And_SheetAwser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902261904341_Update_Product.cs" />
+    <Compile Include="Migrations\201902261904341_Update_Product.Designer.cs">
+      <DependentUpon>201902261904341_Update_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902261913543_Reinitialize_Product.cs" />
+    <Compile Include="Migrations\201902261913543_Reinitialize_Product.Designer.cs">
+      <DependentUpon>201902261913543_Reinitialize_Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +101,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902251546139_Initializer.resx">
       <DependentUpon>201902251546139_Initializer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902261738539_Update_SheetQuestion_And_SheetAwser.resx">
+      <DependentUpon>201902261738539_Update_SheetQuestion_And_SheetAwser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902261904341_Update_Product.resx">
+      <DependentUpon>201902261904341_Update_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902261913543_Reinitialize_Product.resx">
+      <DependentUpon>201902261913543_Reinitialize_Product.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
