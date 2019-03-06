@@ -11,7 +11,7 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "PaymentProductIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.PaymentProduct), AllowEmptyStrings = false)]
-        [Display(Description = "PaymentProductId", ResourceType = typeof(App_LocalResources.PaymentProduct))]
+        [Display(Name = "PaymentProductId", ResourceType = typeof(App_LocalResources.PaymentProduct))]
         public int PaymentProductId { get; set; }
 
         [ForeignKey("Payment")]
@@ -24,16 +24,16 @@ namespace TSI.GymTech.Entity.Models
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
-        [Display(Description = "Quantity", ResourceType = typeof(App_LocalResources.PaymentProduct))]
+        [Display(Name = "Quantity", ResourceType = typeof(App_LocalResources.PaymentProduct))]
         public int? Quantity { get; set; }
 
-        [Display(Description = "Discount", ResourceType = typeof(App_LocalResources.PaymentProduct))]
+        [Display(Name = "Discount", ResourceType = typeof(App_LocalResources.PaymentProduct))]
         public decimal? Discount { get; set; }
 
-        [Display(Description = "UnitPrice", ResourceType = typeof(App_LocalResources.PaymentProduct))]
+        [Display(Name = "UnitPrice", ResourceType = typeof(App_LocalResources.PaymentProduct))]
         public decimal? UnitPrice { get; set; }
 
-        [Display(Description = "TotalPrice", ResourceType = typeof(App_LocalResources.PaymentProduct))]
+        [Display(Name = "TotalPrice", ResourceType = typeof(App_LocalResources.PaymentProduct))]
         public decimal? TotalPrice { get; set; }
     }
 }

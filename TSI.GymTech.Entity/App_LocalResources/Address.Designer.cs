@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Address {
+    public class Address {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.Address", typeof(Address).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Address ID.
         /// </summary>
-        internal static string AddressId {
+        public static string AddressId {
             get {
                 return ResourceManager.GetString("AddressId", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Address ID is required..
         /// </summary>
-        internal static string AddressIdRequired {
+        public static string AddressIdRequired {
             get {
                 return ResourceManager.GetString("AddressIdRequired", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Address Type.
         /// </summary>
-        internal static string AddressType {
+        public static string AddressType {
             get {
                 return ResourceManager.GetString("AddressType", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
-        internal static string City {
+        public static string City {
             get {
                 return ResourceManager.GetString("City", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Comments.
         /// </summary>
-        internal static string Comments {
+        public static string Comments {
             get {
                 return ResourceManager.GetString("Comments", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
-        internal static string Country {
+        public static string Country {
             get {
                 return ResourceManager.GetString("Country", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to District.
         /// </summary>
-        internal static string District {
+        public static string District {
             get {
                 return ResourceManager.GetString("District", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Number.
         /// </summary>
-        internal static string Number {
+        public static string Number {
             get {
                 return ResourceManager.GetString("Number", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Postal Code.
         /// </summary>
-        internal static string PostalCode {
+        public static string PostalCode {
             get {
                 return ResourceManager.GetString("PostalCode", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to State.
         /// </summary>
-        internal static string State {
+        public static string State {
             get {
                 return ResourceManager.GetString("State", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Street.
         /// </summary>
-        internal static string Street {
+        public static string Street {
             get {
                 return ResourceManager.GetString("Street", resourceCulture);
             }

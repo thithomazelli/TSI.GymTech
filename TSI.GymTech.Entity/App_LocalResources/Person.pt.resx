@@ -136,7 +136,7 @@
     <value>Sexo</value>
   </data>
   <data name="MobilePhone" xml:space="preserve">
-    <value>Mobile Phone</value>
+    <value>Celular</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nome</value>
@@ -159,7 +159,7 @@
   <data name="PersonId" xml:space="preserve">
     <value>Matrícula</value>
   </data>
-  <data name="PersonIDRequired" xml:space="preserve">
+  <data name="PersonIdRequired" xml:space="preserve">
     <value>Matrícula é obrigatória.</value>
   </data>
   <data name="Phone" xml:space="preserve">

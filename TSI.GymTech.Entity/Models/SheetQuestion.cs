@@ -12,18 +12,18 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "SheetQuestionRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetQuestion), AllowEmptyStrings = false)]
-        [Display(Description = "SheetQuestionId", ResourceType = typeof(App_LocalResources.SheetQuestion))]
+        [Display(Name = "SheetQuestionId", ResourceType = typeof(App_LocalResources.SheetQuestion))]
         public int SheetQuestionId { get; set; }
 
         [Required(ErrorMessageResourceName = "TypeQuestionRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetQuestion), AllowEmptyStrings = false)]
-        [Display(Description = "TypeQuestion", ResourceType = typeof(App_LocalResources.SheetQuestion))]
+        [Display(Name = "TypeQuestion", ResourceType = typeof(App_LocalResources.SheetQuestion))]
         public SheetQuestionType TypeQuestion { get; set; }
 
-        [Display(Description = "Order", ResourceType = typeof(App_LocalResources.SheetQuestion))]
+        [Display(Name = "Order", ResourceType = typeof(App_LocalResources.SheetQuestion))]
         public int? Order { get; set; }
 
         [Required(ErrorMessageResourceName = "QuestionRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetQuestion), AllowEmptyStrings = false)]
-        [Display(Description = "Question", ResourceType = typeof(App_LocalResources.SheetQuestion))]
+        [Display(Name = "Question", ResourceType = typeof(App_LocalResources.SheetQuestion))]
         [StringLength(128)]
         public string Question { get; set; }
     }

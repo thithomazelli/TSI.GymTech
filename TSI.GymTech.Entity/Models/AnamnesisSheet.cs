@@ -11,7 +11,7 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "AnamnesisSheetIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.AnamnesisSheet), AllowEmptyStrings = false)]
-        [Display(Description = "AnamnesisSheetId", ResourceType = typeof(App_LocalResources.AnamnesisSheet))]
+        [Display(Name = "AnamnesisSheetId", ResourceType = typeof(App_LocalResources.AnamnesisSheet))]
         public int AnamnesisSheetId { get; set; }
 
         public virtual IEnumerable<SheetAnswer> AnamnesisSheetAnswers { get; set; }

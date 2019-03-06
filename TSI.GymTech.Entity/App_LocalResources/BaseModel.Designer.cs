@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class BaseModel {
+    public class BaseModel {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.BaseModel", typeof(BaseModel).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Create Date:.
         /// </summary>
-        internal static string CreateDate {
+        public static string CreateDate {
             get {
                 return ResourceManager.GetString("CreateDate", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Create User:.
         /// </summary>
-        internal static string CreateUser {
+        public static string CreateUser {
             get {
                 return ResourceManager.GetString("CreateUser", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Modify Date:.
         /// </summary>
-        internal static string ModifyDate {
+        public static string ModifyDate {
             get {
                 return ResourceManager.GetString("ModifyDate", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Modify User:.
         /// </summary>
-        internal static string ModifyUser {
+        public static string ModifyUser {
             get {
                 return ResourceManager.GetString("ModifyUser", resourceCulture);
             }

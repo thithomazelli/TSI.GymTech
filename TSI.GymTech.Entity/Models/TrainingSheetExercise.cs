@@ -11,7 +11,7 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "TrainingSheetExerciseIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
-        [Display(Description = "TrainingSheetExerciseId", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
+        [Display(Name = "TrainingSheetExerciseId", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
         public int TrainingSheetExerciseId { get; set; }
 
         [ForeignKey("TrainingSheet")]
@@ -25,14 +25,14 @@ namespace TSI.GymTech.Entity.Models
         public virtual Exercise Exercise { get; set; }
 
         [Required(ErrorMessageResourceName = "SerieRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
-        [Display(Description = "Serie", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
+        [Display(Name = "Serie", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
         public int Serie { get; set; }
 
         [Required(ErrorMessageResourceName = "NumberOfRepetitionsRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
-        [Display(Description = "NumberOfRepetitions", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
+        [Display(Name = "NumberOfRepetitions", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
         public int NumberOfRepetitions { get; set; }
 
-        [Display(Description = "Charge", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
+        [Display(Name = "Charge", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
         public decimal? Charge { get; set; }
     }
 }

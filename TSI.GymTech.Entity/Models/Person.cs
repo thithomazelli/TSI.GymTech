@@ -12,79 +12,92 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "PersonIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
-        [Display(Description = "PersonId", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "PersonId", ResourceType = typeof(App_LocalResources.Person))]
         public int PersonId { get; set; }
 
         [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
         [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessageResourceName = "NameValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
-        [Display(Description = "Name", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Name", ResourceType = typeof(App_LocalResources.Person))]
         [StringLength(128)]
         public string Name { get; set; }
 
         [Required(ErrorMessageResourceName = "ProfileTypeRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
-        [Display(Description = "ProfileType", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "ProfileType", ResourceType = typeof(App_LocalResources.Person))]
         public PersonType ProfileType { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Description = "Password", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Password", ResourceType = typeof(App_LocalResources.Person))]
         [StringLength(16, MinimumLength = 4, ErrorMessageResourceName = "PasswordValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
         public string Password { get; set; }
 
-        [Display(Description = "Gender", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Gender", ResourceType = typeof(App_LocalResources.Person))]
         public GenderType? Gender { get; set; }
 
-        [Display(Description = "NationalIDCard", ResourceType = typeof(App_LocalResources.Person))]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:##.###.###-#}")]
+        [Display(Name = "NationalIDCard", ResourceType = typeof(App_LocalResources.Person))]
+        [DisplayFormat(DataFormatString = "{0:##.###.###-#}")]
         [StringLength(16)]
         public string NationalIDCard { get; set; }
 
         [Required(ErrorMessageResourceName = "SocialSecurityCardRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
-        [Display(Description = "SocialSecurityCard", ResourceType = typeof(App_LocalResources.Person))]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:###.###.###-##}")]
+        [Display(Name = "SocialSecurityCard", ResourceType = typeof(App_LocalResources.Person))]
+        [DisplayFormat(DataFormatString = "{0:###.###.###-##}")]
         [StringLength(16)]
         public string SocialSecurityCard { get; set; }
 
-        [Display(Description = "BirthDate", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "BirthDate", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? BirthDate { get; set; }
 
-        [Display(Description = "RegistrationDate", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "RegistrationDate", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? RegistrationDate { get; set; }
 
-        [Display(Description = "DueDate", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "DueDate", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? DueDate { get; set; }
 
         [Required(ErrorMessageResourceName = "StatusRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
-        [Display(Description = "Status", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Status", ResourceType = typeof(App_LocalResources.Person))]
         public PersonStatus Status { get; set; }
 
-        [Display(Description = "Photo", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Photo", ResourceType = typeof(App_LocalResources.Person))]
         [StringLength(64)]
         public string Photo { get; set; }
 
-        [Display(Description = "Comments", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Comments", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.MultilineText)]
         [StringLength(1024)]
         public string Comments { get; set; }
 
-        [Display(Description = "Phone", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Phone", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.PhoneNumber)]
         [StringLength(32)]
+        [DisplayFormat(DataFormatString = "{0:(##) ####-####}")]
         public string Phone { get; set; }
 
-        [Display(Description = "MobilePhone", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "MobilePhone", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.PhoneNumber)]
+        [DisplayFormat(DataFormatString = "{0:(##) #####-####}")]
         [StringLength(32)]
         public string MobilePhone { get; set; }
 
         [RegularExpression(".+\\@.+\\..+", ErrorMessageResourceName = "EmailValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
-        [Display(Description = "Email", ResourceType = typeof(App_LocalResources.Person))]
+        [Display(Name = "Email", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.EmailAddress)]
         [StringLength(64)]
         public string Email { get; set; }
 
         public virtual IEnumerable<Address> Addresses { get; set; }
+
+        public virtual IEnumerable<AnamnesisSheet> AnamnesisSheets { get; set; }
+
+        public virtual IEnumerable<EvaluationSheet> EvaluationSheets { get; set; }
+
+        public virtual IEnumerable<Payment> Payments { get; set; }
+
+        public virtual IEnumerable<TrainingSheet> TrainingSheets { get; set; }
     }
 }    

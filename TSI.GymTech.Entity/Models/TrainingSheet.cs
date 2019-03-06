@@ -12,20 +12,20 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "TrainingSheetIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheet), AllowEmptyStrings = false)]
-        [Display(Description = "TrainingSheetId", ResourceType = typeof(App_LocalResources.TrainingSheet))]
+        [Display(Name = "TrainingSheetId", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         public int TrainingSheetId { get; set; }
         
-        [Display(Description = "Cycle", ResourceType = typeof(App_LocalResources.TrainingSheet))]
+        [Display(Name = "Cycle", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         [StringLength(64)]
         public string Cycle { get; set; }
 
-        [Display(Description = "Status", ResourceType = typeof(App_LocalResources.TrainingSheet))]
+        [Display(Name = "Status", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         public TrainingSheetStatus? Status { get; set; }
 
         [Required(ErrorMessageResourceName = "TypeRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheet), AllowEmptyStrings = false)]
-        [Display(Description = "Type", ResourceType = typeof(App_LocalResources.TrainingSheet))]
+        [Display(Name = "Type", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         public TrainingSheetType Type { get; set; }
 
-        public IEnumerable<TrainingSheetExercise> TrainingSheetExercises { get; set; }
+        public virtual IEnumerable<TrainingSheetExercise> TrainingSheetExercises { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "EvaluationSheetIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.EvaluationSheet), AllowEmptyStrings = false)]
-        [Display(Description = "EvaluationSheetId", ResourceType = typeof(App_LocalResources.EvaluationSheet))]
+        [Display(Name = "EvaluationSheetId", ResourceType = typeof(App_LocalResources.EvaluationSheet))]
         public int EvaluationSheetId { get; set; }
 
         public virtual IEnumerable<SheetAnswer> EvaluationSheetAnswers { get; set; }

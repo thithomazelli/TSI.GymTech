@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class TrainingSheet {
+    public class TrainingSheet {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.TrainingSheet", typeof(TrainingSheet).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Cycle.
         /// </summary>
-        internal static string Cycle {
+        public static string Cycle {
             get {
                 return ResourceManager.GetString("Cycle", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
-        internal static string Status {
+        public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Training Sheet ID.
         /// </summary>
-        internal static string TrainingSheetId {
+        public static string TrainingSheetId {
             get {
                 return ResourceManager.GetString("TrainingSheetId", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Training Sheet ID is required..
         /// </summary>
-        internal static string TrainingSheetIdRequired {
+        public static string TrainingSheetIdRequired {
             get {
                 return ResourceManager.GetString("TrainingSheetIdRequired", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
-        internal static string Type {
+        public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Type is required..
         /// </summary>
-        internal static string TypeRequired {
+        public static string TypeRequired {
             get {
                 return ResourceManager.GetString("TypeRequired", resourceCulture);
             }

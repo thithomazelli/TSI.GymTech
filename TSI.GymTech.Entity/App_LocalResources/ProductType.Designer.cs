@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ProductType {
+    public class ProductType {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.ProductType", typeof(ProductType).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Clothing.
         /// </summary>
-        internal static string Clothing {
+        public static string Clothing {
             get {
                 return ResourceManager.GetString("Clothing", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Dance - Once a week.
         /// </summary>
-        internal static string DanceOnceWeek {
+        public static string DanceOnceWeek {
             get {
                 return ResourceManager.GetString("DanceOnceWeek", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Drinks.
         /// </summary>
-        internal static string Drinks {
+        public static string Drinks {
             get {
                 return ResourceManager.GetString("Drinks", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Equipment.
         /// </summary>
-        internal static string Equipment {
+        public static string Equipment {
             get {
                 return ResourceManager.GetString("Equipment", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Monthly.
         /// </summary>
-        internal static string Monthly {
+        public static string Monthly {
             get {
                 return ResourceManager.GetString("Monthly", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Once.
         /// </summary>
-        internal static string Once {
+        public static string Once {
             get {
                 return ResourceManager.GetString("Once", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Quarterly.
         /// </summary>
-        internal static string Quarterly {
+        public static string Quarterly {
             get {
                 return ResourceManager.GetString("Quarterly", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Registration.
         /// </summary>
-        internal static string Registration {
+        public static string Registration {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Semester.
         /// </summary>
-        internal static string Semester {
+        public static string Semester {
             get {
                 return ResourceManager.GetString("Semester", resourceCulture);
             }
@@ -144,16 +144,16 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Supplementation.
         /// </summary>
-        internal static string String7 {
+        public static string Supplementation {
             get {
-                return ResourceManager.GetString("String7", resourceCulture);
+                return ResourceManager.GetString("Supplementation", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Three times a week.
         /// </summary>
-        internal static string ThreeTimesWeek {
+        public static string ThreeTimesWeek {
             get {
                 return ResourceManager.GetString("ThreeTimesWeek", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Weekly.
         /// </summary>
-        internal static string Weekly {
+        public static string Weekly {
             get {
                 return ResourceManager.GetString("Weekly", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Yearly.
         /// </summary>
-        internal static string Yearly {
+        public static string Yearly {
             get {
                 return ResourceManager.GetString("Yearly", resourceCulture);
             }

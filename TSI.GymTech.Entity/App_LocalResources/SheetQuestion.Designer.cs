@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SheetQuestion {
+    public class SheetQuestion {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.SheetQuestion", typeof(SheetQuestion).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Order.
         /// </summary>
-        internal static string Order {
+        public static string Order {
             get {
                 return ResourceManager.GetString("Order", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Question.
         /// </summary>
-        internal static string Question {
+        public static string Question {
             get {
                 return ResourceManager.GetString("Question", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Question is required..
         /// </summary>
-        internal static string QuestionRequired {
+        public static string QuestionRequired {
             get {
                 return ResourceManager.GetString("QuestionRequired", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sheet Question ID.
         /// </summary>
-        internal static string SheetQuestionId {
+        public static string SheetQuestionId {
             get {
                 return ResourceManager.GetString("SheetQuestionId", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sheet Question ID is required..
         /// </summary>
-        internal static string SheetQuestionIdRequired {
+        public static string SheetQuestionIdRequired {
             get {
                 return ResourceManager.GetString("SheetQuestionIdRequired", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Type Question.
         /// </summary>
-        internal static string TypeQuestion {
+        public static string TypeQuestion {
             get {
                 return ResourceManager.GetString("TypeQuestion", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Type Question is required..
         /// </summary>
-        internal static string TypeQuestionRequired {
+        public static string TypeQuestionRequired {
             get {
                 return ResourceManager.GetString("TypeQuestionRequired", resourceCulture);
             }

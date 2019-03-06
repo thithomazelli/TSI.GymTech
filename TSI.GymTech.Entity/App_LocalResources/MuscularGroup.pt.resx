@@ -135,4 +135,7 @@
   <data name="Triceps" xml:space="preserve">
     <value>Tríceps</value>
   </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Não definido</value>
+  </data>
 </root>
