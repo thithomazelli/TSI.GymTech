@@ -83,6 +83,14 @@
     <Compile Include="Migrations\201902261913543_Reinitialize_Product.Designer.cs">
       <DependentUpon>201902261913543_Reinitialize_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903060033230_Change_Some_ProductColumn_Names.cs" />
+    <Compile Include="Migrations\201903060033230_Change_Some_ProductColumn_Names.Designer.cs">
+      <DependentUpon>201903060033230_Change_Some_ProductColumn_Names.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903060043288_Reinitialize_Products.cs" />
+    <Compile Include="Migrations\201903060043288_Reinitialize_Products.Designer.cs">
+      <DependentUpon>201903060043288_Reinitialize_Products.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902261913543_Reinitialize_Product.resx">
       <DependentUpon>201902261913543_Reinitialize_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903060033230_Change_Some_ProductColumn_Names.resx">
+      <DependentUpon>201903060033230_Change_Some_ProductColumn_Names.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903060043288_Reinitialize_Products.resx">
+      <DependentUpon>201903060043288_Reinitialize_Products.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
