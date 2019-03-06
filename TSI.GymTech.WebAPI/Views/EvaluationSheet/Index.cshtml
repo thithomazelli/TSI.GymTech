@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TSI.GymTech.Entity.Models.EvaluationSheet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Evaluation Sheets</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Student.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Trainer.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Revaluation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Comments)
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Student.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Trainer.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Revaluation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Comments)
+                            </td>
+                            <td>
+                                <a href=@Url.Action("Edit", "EvaluationSheet", new { id = item.EvaluationSheetId })>
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href=@Url.Action("Delete", "EvaluationSheet", new { id = item.EvaluationSheetId })>
+                                    <i style="color: red;" class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+            </table>
+        </div>
+    </div>
+</div>
