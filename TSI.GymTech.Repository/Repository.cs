@@ -20,7 +20,7 @@ namespace TSI.GymTech.Repository
             context = new Context();
         }
 
-        public T GetById(int id)
+        public T GetById(int? id)
         {
             return context.Set<T>().Find(id);
         }

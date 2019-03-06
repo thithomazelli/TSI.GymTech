@@ -14,7 +14,7 @@ namespace TSI.GymTech.Repository.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Returns the object found</returns>
-        T GetById(int id);
+        T GetById(int? id);
 
         /// <summary>
         /// This function will be receive the "Name" as parameter and should be returns the object found.
