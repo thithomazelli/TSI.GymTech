@@ -45,8 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityManagers\AccessControlManager.cs" />
+    <Compile Include="EntityManagers\AccessLogManager.cs" />
+    <Compile Include="EntityManagers\AnamnesisSheetManager.cs" />
+    <Compile Include="EntityManagers\EvaluationSheetManager.cs" />
     <Compile Include="EntityManagers\ExerciseManager.cs" />
+    <Compile Include="EntityManagers\PaymentManager.cs" />
     <Compile Include="EntityManagers\PersonManager.cs" />
+    <Compile Include="EntityManagers\ProductManager.cs" />
+    <Compile Include="EntityManagers\SheetQuestionManager.cs" />
+    <Compile Include="EntityManagers\TrainingSheetManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\Result.cs" />
   </ItemGroup>

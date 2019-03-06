@@ -9,24 +9,24 @@ using TSI.GymTech.Repository;
 
 namespace TSI.GymTech.Manager.EntityManagers
 {
-    public sealed class ExerciseManager
+    public sealed class EvaluationSheetManager
     {
-        private readonly Repository<Exercise> repository;
+        private readonly Repository<EvaluationSheet> repository;
 
-        public ExerciseManager()
+        public EvaluationSheetManager()
         {
-            repository = new Repository<Exercise>();
+            repository = new Repository<EvaluationSheet>();
         }
 
         /// <summary>
-        /// Creates an Exercise object
+        /// Creates an EvaluationSheet object
         /// </summary>
-        public ResultEnum Create(Exercise exercise)
+        public ResultEnum Create(EvaluationSheet evaluationSheet)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Add(exercise);
+                repository.Add(evaluationSheet);
                 repository.Save();
             }
             catch (Exception ex)
@@ -38,15 +38,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a Exercise list 
+        /// Get a EvaluationSheet list 
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindAll()
+        public Result<IEnumerable<EvaluationSheet>> FindAll()
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<EvaluationSheet>> result = new Result<IEnumerable<EvaluationSheet>>();
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<Exercise>();
+                result.Data = repository.GetAll().AsEnumerable<EvaluationSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
@@ -58,11 +58,11 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercise object by ID
+        /// Gets an EvaluationSheet object by ID
         /// </summary>
-        public Result<Exercise> FindById(int? id)
+        public Result<EvaluationSheet> FindById(int? id)
         {
-            Result<Exercise> result = new Result<Exercise>();
+            Result<EvaluationSheet> result = new Result<EvaluationSheet>();
 
             try
             {
@@ -78,15 +78,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercises list by muscle worked
+        /// Gets an EvaluationSheet list by Student ID
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindByMuscleWorked(string muscleWorked)
+        public Result<IEnumerable<EvaluationSheet>> FindByStudentId(int? studentId)
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<EvaluationSheet>> result = new Result<IEnumerable<EvaluationSheet>>();
 
             try
             {
-                result.Data = repository.query(exercise => exercise.MuscleWorked.Equals(muscleWorked)).AsEnumerable<Exercise>();
+                result.Data = repository.query(evaluationSheet => evaluationSheet.StudentId.Equals(studentId)).AsEnumerable<EvaluationSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -98,15 +98,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercises list by muscular group
+        /// Gets an EvaluationSheet list by Trainer ID
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindByMuscularGroup(string muscularGroup)
+        public Result<IEnumerable<EvaluationSheet>> FindByTrainerId(int? trainerId)
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<EvaluationSheet>> result = new Result<IEnumerable<EvaluationSheet>>();
 
             try
             {
-                result.Data = repository.query(exercise => exercise.MuscularGroup.Equals(muscularGroup)).AsEnumerable<Exercise>();
+                result.Data = repository.query(evaluationSheet => evaluationSheet.TrainerId.Equals(trainerId)).AsEnumerable<EvaluationSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -118,14 +118,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Updates an Exercise object
+        /// Updates an EvaluationSheet object
         /// </summary>
-        public ResultEnum Update(Exercise exercise)
+        public ResultEnum Update(EvaluationSheet evaluationSheet)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Update(exercise);
+                repository.Update(evaluationSheet);
                 repository.Save();
             }
             catch (Exception ex)
@@ -137,14 +137,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Removes a Exercise object
+        /// Removes a EvaluationSheet object
         /// </summary>
-        public ResultEnum Remove(Exercise exercise)
+        public ResultEnum Remove(EvaluationSheet evaluationSheet)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Remove(exercise);
+                repository.Remove(evaluationSheet);
                 repository.Save();
             }
             catch (Exception ex)

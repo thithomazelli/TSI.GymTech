@@ -10,24 +10,24 @@ using TSI.GymTech.Repository;
 
 namespace TSI.GymTech.Manager.EntityManagers
 {
-    public sealed class PersonManager
+    public sealed class TrainingSheetManager
     {
-        private readonly Repository<Person> repository;
+        private readonly Repository<TrainingSheet> repository;
 
-        public PersonManager()
+        public TrainingSheetManager()
         {
-            repository = new Repository<Person>();
+            repository = new Repository<TrainingSheet>();
         }
 
         /// <summary>
-        /// Creates a Person object
+        /// Creates an TrainingSheet object
         /// </summary>
-        public ResultEnum Create(Person person)
+        public ResultEnum Create(TrainingSheet trainingSheet)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Add(person);
+                repository.Add(trainingSheet);
                 repository.Save();
             }
             catch (Exception ex)
@@ -39,15 +39,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a Person list 
+        /// Get a TrainingSheet list 
         /// </summary>
-        public Result<IEnumerable<Person>> FindAll()
+        public Result<IEnumerable<TrainingSheet>> FindAll()
         {
-            Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
+            Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<Person>();
+                result.Data = repository.GetAll().AsEnumerable<TrainingSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
@@ -59,11 +59,11 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a Person object by ID
+        /// Gets an TrainingSheet object by ID
         /// </summary>
-        public Result<Person> FindById(int? id)
+        public Result<TrainingSheet> FindById(int? id)
         {
-            Result<Person> result = new Result<Person>();
+            Result<TrainingSheet> result = new Result<TrainingSheet>();
 
             try
             {
@@ -79,15 +79,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets a Person list by SocialSecurityCard
+        /// Gets an TrainingSheet list by Student ID
         /// </summary>
-        public Result<IEnumerable<Person>> FindBySocialSecurityCard(string socialSecurityCard)
+        public Result<IEnumerable<TrainingSheet>> FindByStudentId(int? studentId)
         {
-            Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
+            Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
 
             try
             {
-                result.Data = repository.query(person => person.SocialSecurityCard.Equals(socialSecurityCard)).AsEnumerable<Person>();
+                result.Data = repository.query(trainingSheet => trainingSheet.StudentId.Equals(studentId)).AsEnumerable<TrainingSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -99,15 +99,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets a Person list by first name
+        /// Gets an TrainingSheet list by Trainer ID
         /// </summary>
-        public Result<IEnumerable<Person>> FindByFirstName(string firstName)
+        public Result<IEnumerable<TrainingSheet>> FindByTrainerId(int? trainerId)
         {
-            Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
+            Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
 
             try
             {
-                result.Data = repository.query(person => person.SocialSecurityCard.Contains(firstName)).AsEnumerable<Person>();
+                result.Data = repository.query(trainingSheet => trainingSheet.TrainerId.Equals(trainerId)).AsEnumerable<TrainingSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -119,15 +119,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets a Person list by last name
+        /// Gets an TrainingSheet list by Status
         /// </summary>
-        public Result<IEnumerable<Person>> FindByLastName(string lastName)
+        public Result<IEnumerable<TrainingSheet>> FindByStatus(TrainingSheetStatus? status)
         {
-            Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
+            Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
 
             try
             {
-                result.Data = repository.query(person => person.SocialSecurityCard.Contains(lastName)).AsEnumerable<Person>();
+                result.Data = repository.query(trainingSheet => trainingSheet.Status == status).AsEnumerable<TrainingSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -139,15 +139,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets a Person list by email
+        /// Gets an TrainingSheet list by Type
         /// </summary>
-        public Result<IEnumerable<Person>> FindByEmail(string email)
+        public Result<IEnumerable<TrainingSheet>> FindByType(TrainingSheetType? type)
         {
-            Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
+            Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
 
             try
             {
-                result.Data = repository.query(person => person.Email.Contains(email)).AsEnumerable<Person>();
+                result.Data = repository.query(trainingSheet => trainingSheet.Type == type).AsEnumerable<TrainingSheet>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -159,35 +159,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets a Person list by ProfileType
+        /// Updates an TrainingSheet object
         /// </summary>
-        public Result<IEnumerable<Person>> FindByProfileType(PersonType profileType, bool searchingEqual)
-        {
-            Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
-
-            try
-            {
-                result.Data = searchingEqual == true ? repository.query(person => person.ProfileType == profileType).AsEnumerable<Person>() :
-                                                       repository.query(person => person.ProfileType != profileType).AsEnumerable<Person>(); ;
-                result.Status = ResultEnum.Success;
-            }
-            catch (Exception)
-            {
-                result.Status = ResultEnum.Error;
-                //Pending: error to the log file
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Updates a Person object
-        /// </summary>
-        public ResultEnum Update(Person person)
+        public ResultEnum Update(TrainingSheet trainingSheet)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Update(person);
+                repository.Update(trainingSheet);
                 repository.Save();
             }
             catch (Exception ex)
@@ -199,14 +178,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Removes a Person object
+        /// Removes a TrainingSheet object
         /// </summary>
-        public ResultEnum Remove(Person person)
+        public ResultEnum Remove(TrainingSheet trainingSheet)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Remove(person);
+                repository.Remove(trainingSheet);
                 repository.Save();
             }
             catch (Exception ex)

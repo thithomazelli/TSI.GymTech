@@ -9,24 +9,24 @@ using TSI.GymTech.Repository;
 
 namespace TSI.GymTech.Manager.EntityManagers
 {
-    public sealed class ExerciseManager
+    public sealed class AccessControlManager
     {
-        private readonly Repository<Exercise> repository;
+        private readonly Repository<AccessControl> repository;
 
-        public ExerciseManager()
+        public AccessControlManager()
         {
-            repository = new Repository<Exercise>();
+            repository = new Repository<AccessControl>();
         }
 
         /// <summary>
-        /// Creates an Exercise object
+        /// Creates an AccessControl object
         /// </summary>
-        public ResultEnum Create(Exercise exercise)
+        public ResultEnum Create(AccessControl accessControl)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Add(exercise);
+                repository.Add(accessControl);
                 repository.Save();
             }
             catch (Exception ex)
@@ -38,15 +38,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a Exercise list 
+        /// Get a AccessControl list 
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindAll()
+        public Result<IEnumerable<AccessControl>> FindAll()
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<AccessControl>> result = new Result<IEnumerable<AccessControl>>();
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<Exercise>();
+                result.Data = repository.GetAll().AsEnumerable<AccessControl>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
@@ -58,11 +58,11 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercise object by ID
+        /// Gets an AccessControl object by ID
         /// </summary>
-        public Result<Exercise> FindById(int? id)
+        public Result<AccessControl> FindById(int? id)
         {
-            Result<Exercise> result = new Result<Exercise>();
+            Result<AccessControl> result = new Result<AccessControl>();
 
             try
             {
@@ -78,15 +78,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercises list by muscle worked
+        /// Gets an AccessControl list by IP Address
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindByMuscleWorked(string muscleWorked)
+        public Result<IEnumerable<AccessControl>> FindByIpAddress(string ipAddress)
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<AccessControl>> result = new Result<IEnumerable<AccessControl>>();
 
             try
             {
-                result.Data = repository.query(exercise => exercise.MuscleWorked.Equals(muscleWorked)).AsEnumerable<Exercise>();
+                result.Data = repository.query(accessControl => accessControl.IpAddress.Equals(ipAddress)).AsEnumerable<AccessControl>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -98,15 +98,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercises list by muscular group
+        /// Gets an AccessControl list by Name
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindByMuscularGroup(string muscularGroup)
+        public Result<IEnumerable<AccessControl>> FindByName(string name)
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<AccessControl>> result = new Result<IEnumerable<AccessControl>>();
 
             try
             {
-                result.Data = repository.query(exercise => exercise.MuscularGroup.Equals(muscularGroup)).AsEnumerable<Exercise>();
+                result.Data = repository.query(accessControl => accessControl.Name.Equals(name)).AsEnumerable<AccessControl>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -118,14 +118,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Updates an Exercise object
+        /// Updates an AccessControl object
         /// </summary>
-        public ResultEnum Update(Exercise exercise)
+        public ResultEnum Update(AccessControl accessControl)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Update(exercise);
+                repository.Update(accessControl);
                 repository.Save();
             }
             catch (Exception ex)
@@ -137,14 +137,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Removes a Exercise object
+        /// Removes a AccessControl object
         /// </summary>
-        public ResultEnum Remove(Exercise exercise)
+        public ResultEnum Remove(AccessControl accessControl)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Remove(exercise);
+                repository.Remove(accessControl);
                 repository.Save();
             }
             catch (Exception ex)

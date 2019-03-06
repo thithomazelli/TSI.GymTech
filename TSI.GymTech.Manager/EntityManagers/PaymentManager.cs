@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.Result;
 using TSI.GymTech.Repository;
 
 namespace TSI.GymTech.Manager.EntityManagers
 {
-    public sealed class ExerciseManager
+    public sealed class PaymentManager
     {
-        private readonly Repository<Exercise> repository;
+        private readonly Repository<Payment> repository;
 
-        public ExerciseManager()
+        public PaymentManager()
         {
-            repository = new Repository<Exercise>();
+            repository = new Repository<Payment>();
         }
 
         /// <summary>
-        /// Creates an Exercise object
+        /// Creates an Payment object
         /// </summary>
-        public ResultEnum Create(Exercise exercise)
+        public ResultEnum Create(Payment payment)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Add(exercise);
+                repository.Add(payment);
                 repository.Save();
             }
             catch (Exception ex)
@@ -38,15 +39,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a Exercise list 
+        /// Get a Payment list 
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindAll()
+        public Result<IEnumerable<Payment>> FindAll()
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<Payment>> result = new Result<IEnumerable<Payment>>();
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<Exercise>();
+                result.Data = repository.GetAll().AsEnumerable<Payment>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
@@ -58,11 +59,11 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercise object by ID
+        /// Gets an Payment object by ID
         /// </summary>
-        public Result<Exercise> FindById(int? id)
+        public Result<Payment> FindById(int? id)
         {
-            Result<Exercise> result = new Result<Exercise>();
+            Result<Payment> result = new Result<Payment>();
 
             try
             {
@@ -78,15 +79,35 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercises list by muscle worked
+        /// Gets an Payment list by Person ID
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindByMuscleWorked(string muscleWorked)
+        public Result<IEnumerable<Payment>> FindByPersonId(int? personId)
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<Payment>> result = new Result<IEnumerable<Payment>>();
 
             try
             {
-                result.Data = repository.query(exercise => exercise.MuscleWorked.Equals(muscleWorked)).AsEnumerable<Exercise>();
+                result.Data = repository.query(payment => payment.PersonId.Equals(personId)).AsEnumerable<Payment>();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+            return result;
+        }
+        
+        /// <summary>
+        /// Gets an Payment list by Status
+        /// </summary>
+        public Result<IEnumerable<Payment>> FindByStatus(PaymentStatus? status)
+        {
+            Result<IEnumerable<Payment>> result = new Result<IEnumerable<Payment>>();
+
+            try
+            {
+                result.Data = repository.query(payment => payment.Status == status).AsEnumerable<Payment>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -98,15 +119,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an Exercises list by muscular group
+        /// Gets an Payment list by Type
         /// </summary>
-        public Result<IEnumerable<Exercise>> FindByMuscularGroup(string muscularGroup)
+        public Result<IEnumerable<Payment>> FindByType(PaymentType? type)
         {
-            Result<IEnumerable<Exercise>> result = new Result<IEnumerable<Exercise>>();
+            Result<IEnumerable<Payment>> result = new Result<IEnumerable<Payment>>();
 
             try
             {
-                result.Data = repository.query(exercise => exercise.MuscularGroup.Equals(muscularGroup)).AsEnumerable<Exercise>();
+                result.Data = repository.query(payment => payment.PaymentType == type).AsEnumerable<Payment>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -118,14 +139,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Updates an Exercise object
+        /// Updates an Payment object
         /// </summary>
-        public ResultEnum Update(Exercise exercise)
+        public ResultEnum Update(Payment payment)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Update(exercise);
+                repository.Update(payment);
                 repository.Save();
             }
             catch (Exception ex)
@@ -137,14 +158,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Removes a Exercise object
+        /// Removes a Payment object
         /// </summary>
-        public ResultEnum Remove(Exercise exercise)
+        public ResultEnum Remove(Payment payment)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Remove(exercise);
+                repository.Remove(payment);
                 repository.Save();
             }
             catch (Exception ex)
