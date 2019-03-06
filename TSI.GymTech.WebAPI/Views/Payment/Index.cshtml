@@ -1,0 +1,94 @@
+﻿@model IEnumerable<TSI.GymTech.Entity.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Payments</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Person.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Discount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PaymentType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DatePaymentEstimated)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DatePaymentCompleted)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Comments)
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Person.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Discount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPrice)
+                            </td>
+                            <td>
+                                @typeof(TSI.GymTech.Entity.App_LocalResources.PaymentType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PaymentType), item.PaymentType)).GetValue(null)
+                            </td>
+                            <td>
+                                @typeof(TSI.GymTech.Entity.App_LocalResources.PaymentStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PaymentStatus), item.Status)).GetValue(null)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DatePaymentEstimated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DatePaymentCompleted)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Comments)
+                            </td>
+                            <td>
+                                <a href=@Url.Action("Edit", "Payment", new { id = item.PaymentId })>
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href=@Url.Action("Delete", "Payment", new { id = item.PaymentId })>
+                                    <i style="color: red;" class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

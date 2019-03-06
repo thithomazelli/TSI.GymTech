@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TSI.GymTech.Entity.Models.SheetQuestion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Sheet Questions</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TypeQuestion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Order)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Question)
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @typeof(TSI.GymTech.Entity.App_LocalResources.SheetQuestionType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.SheetQuestionType), item.TypeQuestion)).GetValue(null)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Order)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Question)
+                            </td>
+                            <td>
+                                <a href=@Url.Action("Edit", "SheetQuestion", new { id = item.SheetQuestionId })>
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href=@Url.Action("Delete", "SheetQuestion", new { id = item.SheetQuestionId })>
+                                    <i style="color: red;" class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
