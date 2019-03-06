@@ -7,17 +7,19 @@ namespace TSI.GymTech.Entity.Enumerates
 {
     public enum MuscularGroup
     {
+        [Display(ResourceType = typeof(App_LocalResources.MuscularGroup), Name = "Undefined")]
+        Undefined = 0,
         [Display(ResourceType = typeof(App_LocalResources.MuscularGroup), Name = "Biceps")]
-        Biceps = 0,
+        Biceps = 1,
         [Display(ResourceType = typeof(App_LocalResources.MuscularGroup), Name = "Back")]
-        Back = 1,
+        Back = 2,
         [Display(ResourceType = typeof(App_LocalResources.MuscularGroup), Name = "Shoulders")]
-        Shoulders = 2,
+        Shoulders = 3,
         [Display(ResourceType = typeof(App_LocalResources.MuscularGroup), Name = "Breastplate")]
-        Breastplate = 3,
+        Breastplate = 4,
         [Display(ResourceType = typeof(App_LocalResources.MuscularGroup), Name = "Legs")]
-        Legs = 4,
+        Legs = 5,
         [Display(ResourceType = typeof(App_LocalResources.MuscularGroup), Name = "Triceps")]
-        Triceps = 5
+        Triceps = 6
     }
 }

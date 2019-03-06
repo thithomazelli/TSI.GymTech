@@ -12,13 +12,13 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "AccessLogIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.AccessLog), AllowEmptyStrings = false)]
-        [Display(Description = "AccessLogId", ResourceType = typeof(App_LocalResources.AccessLog))]
+        [Display(Name = "AccessLogId", ResourceType = typeof(App_LocalResources.AccessLog))]
         public int AccessLogId { get; set; }
 
-        [Display(Description = "AccessType", ResourceType = typeof(App_LocalResources.AccessLog))]
+        [Display(Name = "AccessType", ResourceType = typeof(App_LocalResources.AccessLog))]
         public GateStatusType AccessType { get; set; }
 
-        [Display(Description = "MessageDisplayed", ResourceType = typeof(App_LocalResources.AccessLog))]
+        [Display(Name = "MessageDisplayed", ResourceType = typeof(App_LocalResources.AccessLog))]
         public string MessageDisplayed { get; set; }
 
         [ForeignKey("Person")]

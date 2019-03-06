@@ -159,7 +159,7 @@
   <data name="PersonId" xml:space="preserve">
     <value>Person ID</value>
   </data>
-  <data name="PersonIDRequired" xml:space="preserve">
+  <data name="PersonIdRequired" xml:space="preserve">
     <value>The Person ID is required.</value>
   </data>
   <data name="Phone" xml:space="preserve">

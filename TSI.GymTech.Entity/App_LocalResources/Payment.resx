@@ -135,6 +135,9 @@
   <data name="PaymentIdRequired" xml:space="preserve">
     <value>Payment ID is required.</value>
   </data>
+  <data name="PaymentType" xml:space="preserve">
+    <value>Payment Type</value>
+  </data>
   <data name="PersonRequired" xml:space="preserve">
     <value>Person is required.</value>
   </data>

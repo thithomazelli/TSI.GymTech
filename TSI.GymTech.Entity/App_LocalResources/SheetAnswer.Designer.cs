@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class SheetAnswer {
+    public class SheetAnswer {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.SheetAnswer", typeof(SheetAnswer).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Answer.
         /// </summary>
-        internal static string Answer {
+        public static string Answer {
             get {
                 return ResourceManager.GetString("Answer", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sheet Answer ID.
         /// </summary>
-        internal static string SheetAnswerId {
+        public static string SheetAnswerId {
             get {
                 return ResourceManager.GetString("SheetAnswerId", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sheet Answer ID is required..
         /// </summary>
-        internal static string SheetAnswerIdRequired {
+        public static string SheetAnswerIdRequired {
             get {
                 return ResourceManager.GetString("SheetAnswerIdRequired", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sheet ID.
         /// </summary>
-        internal static string SheetId {
+        public static string SheetId {
             get {
                 return ResourceManager.GetString("SheetId", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sheet ID is required..
         /// </summary>
-        internal static string SheetIdRequired {
+        public static string SheetIdRequired {
             get {
                 return ResourceManager.GetString("SheetIdRequired", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Sheet Question is required..
         /// </summary>
-        internal static string SheetQuestionRequired {
+        public static string SheetQuestionRequired {
             get {
                 return ResourceManager.GetString("SheetQuestionRequired", resourceCulture);
             }

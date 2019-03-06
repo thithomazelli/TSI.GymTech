@@ -11,16 +11,16 @@ namespace TSI.GymTech.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required(ErrorMessageResourceName = "SheetAnswerIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetAnswer), AllowEmptyStrings = false)]
-        [Display(Description = "SheetAnswerId", ResourceType = typeof(App_LocalResources.SheetAnswer))]
+        [Display(Name = "SheetAnswerId", ResourceType = typeof(App_LocalResources.SheetAnswer))]
         public int SheetAnswerId { get; set; }
 
-        [Display(Description = "Answer", ResourceType = typeof(App_LocalResources.SheetAnswer))]
+        [Display(Name = "Answer", ResourceType = typeof(App_LocalResources.SheetAnswer))]
         [StringLength(128)]
         public string Answer { get; set; }
 
 
         [Required(ErrorMessageResourceName = "SheetIdRequired", ErrorMessageResourceType = typeof(App_LocalResources.SheetAnswer), AllowEmptyStrings = false)]
-        [Display(Description = "SheetId", ResourceType = typeof(App_LocalResources.SheetAnswer))]
+        [Display(Name = "SheetId", ResourceType = typeof(App_LocalResources.SheetAnswer))]
         public int SheetId { get; set; }
 
         [ForeignKey("SheetId")]

@@ -48,145 +48,290 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccessControl.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\AccessControl.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccessControl.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\AccessLog.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AccessLog.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\AccessLog.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccessLog.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\Address.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Address.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\Address.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Address.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\AddressType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AddressType.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\AddressType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddressType.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\AnamnesisSheet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AnamnesisSheet.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\AnamnesisSheet.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnamnesisSheet.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\BaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseModel.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\BaseModel.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseModel.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\BaseSheet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseSheet.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\BaseSheet.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseSheet.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\EvaluationSheet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EvaluationSheet.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\EvaluationSheet.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluationSheet.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\Exercise.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Exercise.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\Exercise.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Exercise.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\GateStatusType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GateStatusType.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\GateStatusType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GateStatusType.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\GenderType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GenderType.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\GenderType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenderType.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\MuscularGroup.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MuscularGroup.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\MuscularGroup.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MuscularGroup.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\Payment.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Payment.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\Payment.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Payment.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\PaymentProduct.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PaymentProduct.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\PaymentProduct.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentProduct.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\PaymentStatus.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PaymentStatus.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\PaymentStatus.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentStatus.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\PaymentType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PaymentType.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\PaymentType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentType.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\Person.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Person.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\Person.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Person.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\PersonStatus.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PersonStatus.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\PersonStatus.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonStatus.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\PersonType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PersonType.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\PersonType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersonType.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\Product.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Product.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Product.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\ProductStatus.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductStatus.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\ProductStatus.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductStatus.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\ProductType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProductType.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\ProductType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductType.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\SheetAnswer.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SheetAnswer.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\SheetAnswer.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SheetAnswer.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\SheetQuestion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SheetQuestion.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\SheetQuestion.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SheetQuestion.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\SheetQuestionType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SheetQuestionType.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\SheetQuestionType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SheetQuestionType.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\TrainingSheet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TrainingSheet.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\TrainingSheet.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingSheet.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\TrainingSheetExercise.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TrainingSheetExercise.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\TrainingSheetExercise.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingSheetExercise.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\TrainingSheetStatus.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TrainingSheetStatus.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\TrainingSheetStatus.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingSheetStatus.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\TrainingSheetType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TrainingSheetType.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\TrainingSheetType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingSheetType.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="Enumerates\AddressType.cs" />
     <Compile Include="Enumerates\GateStatusType.cs" />
@@ -221,149 +366,236 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="App_LocalResources\AccessControl.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\AccessControl.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccessControl.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\AccessControl.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccessControl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\AccessLog.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\AccessLog.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccessLog.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\AccessLog.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccessLog.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\Address.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\Address.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Address.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Address.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Address.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\AddressType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\AddressType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddressType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\AddressType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AddressType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\AnamnesisSheet.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\AnamnesisSheet.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnamnesisSheet.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\AnamnesisSheet.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AnamnesisSheet.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\BaseModel.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\BaseModel.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BaseModel.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\BaseModel.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BaseModel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\BaseSheet.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\BaseSheet.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BaseSheet.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\BaseSheet.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BaseSheet.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\EvaluationSheet.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\EvaluationSheet.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EvaluationSheet.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\EvaluationSheet.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EvaluationSheet.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\Exercise.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\Exercise.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Exercise.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Exercise.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Exercise.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\GateStatusType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\GateStatusType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GateStatusType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\GateStatusType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GateStatusType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\GenderType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\GenderType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GenderType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\GenderType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GenderType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\MuscularGroup.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\MuscularGroup.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MuscularGroup.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\MuscularGroup.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MuscularGroup.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\Payment.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\Payment.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Payment.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Payment.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Payment.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\PaymentProduct.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\PaymentProduct.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentProduct.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\PaymentProduct.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PaymentProduct.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\PaymentStatus.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\PaymentStatus.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentStatus.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\PaymentStatus.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PaymentStatus.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\PaymentType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\PaymentType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PaymentType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\PaymentType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PaymentType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\Person.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\Person.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Person.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Person.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Person.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\PersonStatus.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\PersonStatus.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PersonStatus.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\PersonStatus.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PersonStatus.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\PersonType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\PersonType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PersonType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\PersonType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PersonType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\Product.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\Product.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Product.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Product.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Product.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\ProductStatus.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductStatus.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductStatus.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ProductStatus.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ProductStatus.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\ProductType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProductType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ProductType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ProductType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\SheetAnswer.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\SheetAnswer.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SheetAnswer.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\SheetAnswer.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SheetAnswer.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\SheetQuestion.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\SheetQuestion.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SheetQuestion.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\SheetQuestion.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SheetQuestion.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\SheetQuestionType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\SheetQuestionType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SheetQuestionType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\SheetQuestionType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SheetQuestionType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\TrainingSheet.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\TrainingSheet.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TrainingSheet.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\TrainingSheet.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TrainingSheet.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\TrainingSheetExercise.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\TrainingSheetExercise.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TrainingSheetExercise.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\TrainingSheetExercise.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TrainingSheetExercise.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\TrainingSheetStatus.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\TrainingSheetStatus.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TrainingSheetStatus.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\TrainingSheetStatus.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TrainingSheetStatus.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_LocalResources\TrainingSheetType.pt.resx" />
+    <EmbeddedResource Include="App_LocalResources\TrainingSheetType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TrainingSheetType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\TrainingSheetType.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TrainingSheetType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

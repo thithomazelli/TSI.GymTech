@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class PaymentProduct {
+    public class PaymentProduct {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.PaymentProduct", typeof(PaymentProduct).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Discount.
         /// </summary>
-        internal static string Discount {
+        public static string Discount {
             get {
                 return ResourceManager.GetString("Discount", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Payment Product ID.
         /// </summary>
-        internal static string PaymentProductId {
+        public static string PaymentProductId {
             get {
                 return ResourceManager.GetString("PaymentProductId", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Payment Product ID is required..
         /// </summary>
-        internal static string PaymentProductIdRequired {
+        public static string PaymentProductIdRequired {
             get {
                 return ResourceManager.GetString("PaymentProductIdRequired", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Payment is required..
         /// </summary>
-        internal static string PaymentRequired {
+        public static string PaymentRequired {
             get {
                 return ResourceManager.GetString("PaymentRequired", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product is required..
         /// </summary>
-        internal static string ProductRequired {
+        public static string ProductRequired {
             get {
                 return ResourceManager.GetString("ProductRequired", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Quantity.
         /// </summary>
-        internal static string Quantity {
+        public static string Quantity {
             get {
                 return ResourceManager.GetString("Quantity", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Total Price.
         /// </summary>
-        internal static string TotalPrice {
+        public static string TotalPrice {
             get {
                 return ResourceManager.GetString("TotalPrice", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Unit Price.
         /// </summary>
-        internal static string UnitPrice {
+        public static string UnitPrice {
             get {
                 return ResourceManager.GetString("UnitPrice", resourceCulture);
             }

@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Product {
+    public class Product {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.Product", typeof(Product).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Comments.
         /// </summary>
-        internal static string Comments {
+        public static string Comments {
             get {
                 return ResourceManager.GetString("Comments", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
-        internal static string Description {
+        public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Duplication.
         /// </summary>
-        internal static string Duplication {
+        public static string Duplication {
             get {
                 return ResourceManager.GetString("Duplication", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Photo.
         /// </summary>
-        internal static string Photo {
+        public static string Photo {
             get {
                 return ResourceManager.GetString("Photo", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product ID.
         /// </summary>
-        internal static string ProductId {
+        public static string ProductId {
             get {
                 return ResourceManager.GetString("ProductId", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product ID is required..
         /// </summary>
-        internal static string ProductIdRequired {
+        public static string ProductIdRequired {
             get {
                 return ResourceManager.GetString("ProductIdRequired", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product Name.
         /// </summary>
-        internal static string ProductName {
+        public static string ProductName {
             get {
                 return ResourceManager.GetString("ProductName", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product Name is required..
         /// </summary>
-        internal static string ProductNameRequired {
+        public static string ProductNameRequired {
             get {
                 return ResourceManager.GetString("ProductNameRequired", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product Status.
         /// </summary>
-        internal static string ProductStatus {
+        public static string ProductStatus {
             get {
                 return ResourceManager.GetString("ProductStatus", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product Type.
         /// </summary>
-        internal static string ProductType {
+        public static string ProductType {
             get {
                 return ResourceManager.GetString("ProductType", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Product Type is required..
         /// </summary>
-        internal static string ProductTypeRequired {
+        public static string ProductTypeRequired {
             get {
                 return ResourceManager.GetString("ProductTypeRequired", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Quantity in stock.
         /// </summary>
-        internal static string QuantityStock {
+        public static string QuantityStock {
             get {
                 return ResourceManager.GetString("QuantityStock", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Suggested Price.
         /// </summary>
-        internal static string SuggestedPrice {
+        public static string SuggestedPrice {
             get {
                 return ResourceManager.GetString("SuggestedPrice", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Suggested Price is required..
         /// </summary>
-        internal static string SuggestedPriceRequired {
+        public static string SuggestedPriceRequired {
             get {
                 return ResourceManager.GetString("SuggestedPriceRequired", resourceCulture);
             }

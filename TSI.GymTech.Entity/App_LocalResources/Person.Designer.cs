@@ -22,7 +22,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Person {
+    public class Person {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.Person", typeof(Person).Assembly);
@@ -51,7 +51,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Birth Date.
         /// </summary>
-        internal static string BirthDate {
+        public static string BirthDate {
             get {
                 return ResourceManager.GetString("BirthDate", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Comments.
         /// </summary>
-        internal static string Comments {
+        public static string Comments {
             get {
                 return ResourceManager.GetString("Comments", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Due Date.
         /// </summary>
-        internal static string DueDate {
+        public static string DueDate {
             get {
                 return ResourceManager.GetString("DueDate", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
-        internal static string Email {
+        public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid email address..
         /// </summary>
-        internal static string EmailValidate {
+        public static string EmailValidate {
             get {
                 return ResourceManager.GetString("EmailValidate", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Gender.
         /// </summary>
-        internal static string Gender {
+        public static string Gender {
             get {
                 return ResourceManager.GetString("Gender", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Mobile Phone.
         /// </summary>
-        internal static string MobilePhone {
+        public static string MobilePhone {
             get {
                 return ResourceManager.GetString("MobilePhone", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string Name {
+        public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to The Name is required..
         /// </summary>
-        internal static string NameRequired {
+        public static string NameRequired {
             get {
                 return ResourceManager.GetString("NameRequired", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Numbers and special characters are not allowed in Name..
         /// </summary>
-        internal static string NameValidate {
+        public static string NameValidate {
             get {
                 return ResourceManager.GetString("NameValidate", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to National ID Card.
         /// </summary>
-        internal static string NationalIDCard {
+        public static string NationalIDCard {
             get {
                 return ResourceManager.GetString("NationalIDCard", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
-        internal static string Password {
+        public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to The password must be greater than 4 characters..
         /// </summary>
-        internal static string PasswordValidate {
+        public static string PasswordValidate {
             get {
                 return ResourceManager.GetString("PasswordValidate", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Person ID.
         /// </summary>
-        internal static string PersonId {
+        public static string PersonId {
             get {
                 return ResourceManager.GetString("PersonId", resourceCulture);
             }
@@ -189,16 +189,16 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to The Person ID is required..
         /// </summary>
-        internal static string PersonIDRequired {
+        public static string PersonIdRequired {
             get {
-                return ResourceManager.GetString("PersonIDRequired", resourceCulture);
+                return ResourceManager.GetString("PersonIdRequired", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Phone.
         /// </summary>
-        internal static string Phone {
+        public static string Phone {
             get {
                 return ResourceManager.GetString("Phone", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Photo.
         /// </summary>
-        internal static string Photo {
+        public static string Photo {
             get {
                 return ResourceManager.GetString("Photo", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Profile Type.
         /// </summary>
-        internal static string ProfileType {
+        public static string ProfileType {
             get {
                 return ResourceManager.GetString("ProfileType", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to The Profile Type is required..
         /// </summary>
-        internal static string ProfileTypeRequired {
+        public static string ProfileTypeRequired {
             get {
                 return ResourceManager.GetString("ProfileTypeRequired", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Registration Date.
         /// </summary>
-        internal static string RegistrationDate {
+        public static string RegistrationDate {
             get {
                 return ResourceManager.GetString("RegistrationDate", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Social Security Card.
         /// </summary>
-        internal static string SocialSecurityCard {
+        public static string SocialSecurityCard {
             get {
                 return ResourceManager.GetString("SocialSecurityCard", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to The Social Security Card Required is required..
         /// </summary>
-        internal static string SocialSecurityCardRequired {
+        public static string SocialSecurityCardRequired {
             get {
                 return ResourceManager.GetString("SocialSecurityCardRequired", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
-        internal static string Status {
+        public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to The Status is required..
         /// </summary>
-        internal static string StatusRequired {
+        public static string StatusRequired {
             get {
                 return ResourceManager.GetString("StatusRequired", resourceCulture);
             }

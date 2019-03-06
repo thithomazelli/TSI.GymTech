@@ -6,16 +6,18 @@ namespace TSI.GymTech.Entity.Models
 {
     public class BaseModel
     {
-        [Display(Description = "CreateDate", ResourceType = typeof(App_LocalResources.BaseModel))]
+        [Display(Name = "CreateDate", ResourceType = typeof(App_LocalResources.BaseModel))]
+        [DataType(DataType.DateTime)]
         public DateTime? CreateDate { get; set; }
 
-        [Display(Description = "CreateUser", ResourceType = typeof(App_LocalResources.BaseModel))]
+        [Display(Name = "CreateUser", ResourceType = typeof(App_LocalResources.BaseModel))]
         public int CreateUserId { get; set; }
         
-        [Display(Description = "ModifyDate", ResourceType = typeof(App_LocalResources.BaseModel))]
+        [Display(Name = "ModifyDate", ResourceType = typeof(App_LocalResources.BaseModel))]
+        [DataType(DataType.DateTime)]
         public DateTime? ModifyDate { get; set; }
         
-        [Display(Description = "ModifyUser", ResourceType = typeof(App_LocalResources.BaseModel))]
+        [Display(Name = "ModifyUser", ResourceType = typeof(App_LocalResources.BaseModel))]
         public int ModifyUserId { get; set; }
     }
 }
