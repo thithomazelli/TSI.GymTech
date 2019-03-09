@@ -6,65 +6,77 @@
 }
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Access Logs</h1>
+<head>
+    <title>GymTech - Access Logs</title>
+</head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<!-- Enabled filters and buttons to datatable -->
+<script>
+    $(document).ready(function () {
+        LoadDataTableButtonsAndFilter(tblAccessLogs);
+    });
+</script>
+
+<!-- Begin Page Content -->
+<div class="d-sm-flex align-items-center justify-content-between mb-1">
+    <h1 class="h3 mb-2 text-gray-800">Access Logs</h1>
+    <a href=@Url.Action("Create", "AccessLog") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
+        <i class="fas fa-user-plus text-white-30"></i>
+        <span class="btn-label">Create</span>
+    </a>
+</div>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+        <table class="stripe row-border" id="tblAccessLogs" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccessControl.IpAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Person.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccessType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MessageDisplayed)
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AccessControl.IpAddress)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Person.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AccessType)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.MessageDisplayed)
-                        </th>
-                        <th></th>
-                        <th></th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccessControl.IpAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Person.Name)
+                        </td>
+                        <td>
+                            @typeof(TSI.GymTech.Entity.App_LocalResources.GateStatusType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.GateStatusType), item.AccessType)).GetValue(null)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MessageDisplayed)
+                        </td>
+                        <td>
+                            <a href=@Url.Action("Edit", "AccessLog", new { id = item.AccessLogId })>
+                                <i class="fas fa-user-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href=@Url.Action("Delete", "AccessLog", new { id = item.AccessLogId })>
+                                <i style="color: red;" class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AccessControl.IpAddress)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Person.Name)
-                            </td>
-                            <td>
-                                @typeof(TSI.GymTech.Entity.App_LocalResources.GateStatusType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.GateStatusType), item.AccessType)).GetValue(null)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MessageDisplayed)
-                            </td>
-                            <td>
-                                <a href=@Url.Action("Edit", "AccessLog", new { id = item.AccessLogId })>
-                                    <i class="fas fa-user-edit"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href=@Url.Action("Delete", "AccessLog", new { id = item.AccessLogId })>
-                                    <i style="color: red;" class="fas fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
