@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201903060043288_Reinitialize_Products.Designer.cs">
       <DependentUpon>201903060043288_Reinitialize_Products.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903090417331_Product_Name_Required.cs" />
+    <Compile Include="Migrations\201903090417331_Product_Name_Required.Designer.cs">
+      <DependentUpon>201903090417331_Product_Name_Required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903060043288_Reinitialize_Products.resx">
       <DependentUpon>201903060043288_Reinitialize_Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903090417331_Product_Name_Required.resx">
+      <DependentUpon>201903090417331_Product_Name_Required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
