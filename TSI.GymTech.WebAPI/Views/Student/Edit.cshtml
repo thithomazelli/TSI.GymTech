@@ -7,6 +7,14 @@
 
 <h2>Edit</h2>
 
+<script>
+    $(document).ready(function () {
+        $('#BirthDate').datepicker();
+        $('#RegistrationDate').datepicker();
+    });
+
+</script>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -76,7 +84,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RegistrationDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RegistrationDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.RegistrationDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "text-danger" })
             </div>
         </div>
