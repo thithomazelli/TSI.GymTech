@@ -126,6 +126,12 @@
   <data name="Duplication" xml:space="preserve">
     <value>Duplication</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Name is required.</value>
+  </data>
   <data name="Photo" xml:space="preserve">
     <value>Photo</value>
   </data>
@@ -135,28 +141,22 @@
   <data name="ProductIdRequired" xml:space="preserve">
     <value>Product ID is required.</value>
   </data>
-  <data name="ProductName" xml:space="preserve">
-    <value>Product Name</value>
-  </data>
-  <data name="ProductNameRequired" xml:space="preserve">
-    <value>Product Name is required.</value>
-  </data>
-  <data name="ProductStatus" xml:space="preserve">
-    <value>Product Status</value>
-  </data>
-  <data name="ProductType" xml:space="preserve">
-    <value>Product Type</value>
-  </data>
   <data name="ProductTypeRequired" xml:space="preserve">
-    <value>Product Type is required.</value>
+    <value>Type is required.</value>
   </data>
   <data name="QuantityStock" xml:space="preserve">
     <value>Quantity in stock</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="SuggestedPrice" xml:space="preserve">
     <value>Suggested Price</value>
   </data>
   <data name="SuggestedPriceRequired" xml:space="preserve">
     <value>Suggested Price is required.</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
 </root>

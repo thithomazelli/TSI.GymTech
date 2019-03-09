@@ -88,6 +88,24 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name is required..
+        /// </summary>
+        public static string NameRequired {
+            get {
+                return ResourceManager.GetString("NameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Photo.
         /// </summary>
         public static string Photo {
@@ -115,43 +133,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product Name.
-        /// </summary>
-        public static string ProductName {
-            get {
-                return ResourceManager.GetString("ProductName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Product Name is required..
-        /// </summary>
-        public static string ProductNameRequired {
-            get {
-                return ResourceManager.GetString("ProductNameRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Product Status.
-        /// </summary>
-        public static string ProductStatus {
-            get {
-                return ResourceManager.GetString("ProductStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Product Type.
-        /// </summary>
-        public static string ProductType {
-            get {
-                return ResourceManager.GetString("ProductType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Product Type is required..
+        ///   Looks up a localized string similar to Type is required..
         /// </summary>
         public static string ProductTypeRequired {
             get {
@@ -165,6 +147,15 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         public static string QuantityStock {
             get {
                 return ResourceManager.GetString("QuantityStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
             }
         }
         
@@ -183,6 +174,15 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         public static string SuggestedPriceRequired {
             get {
                 return ResourceManager.GetString("SuggestedPriceRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
     }

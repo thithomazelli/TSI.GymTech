@@ -45,18 +45,18 @@ namespace TSI.GymTech.Entity.Models
         public string SocialSecurityCard { get; set; }
 
         [Display(Name = "BirthDate", ResourceType = typeof(App_LocalResources.Person))]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "RegistrationDate", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? RegistrationDate { get; set; }
 
         [Display(Name = "DueDate", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DueDate { get; set; }
 
         [Required(ErrorMessageResourceName = "StatusRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
@@ -80,7 +80,7 @@ namespace TSI.GymTech.Entity.Models
 
         [Display(Name = "MobilePhone", ResourceType = typeof(App_LocalResources.Person))]
         [DataType(DataType.PhoneNumber)]
-        [DisplayFormat(DataFormatString = "{0:(##) #####-####}")]
+        [DisplayFormat(DataFormatString = "{0:(##) #####-####}", ApplyFormatInEditMode = true)]
         [StringLength(32)]
         public string MobilePhone { get; set; }
 

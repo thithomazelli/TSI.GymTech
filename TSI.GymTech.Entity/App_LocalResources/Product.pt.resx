@@ -126,6 +126,12 @@
   <data name="Duplication" xml:space="preserve">
     <value>Repetições</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Nome é obrigatório.</value>
+  </data>
   <data name="Photo" xml:space="preserve">
     <value>Foto</value>
   </data>
@@ -135,28 +141,22 @@
   <data name="ProductIdRequired" xml:space="preserve">
     <value>ID do Produto é obrigatório.</value>
   </data>
-  <data name="ProductName" xml:space="preserve">
-    <value>Nome do Produto</value>
-  </data>
-  <data name="ProductNameRequired" xml:space="preserve">
-    <value>Nome do Produto é obrigatório.</value>
-  </data>
-  <data name="ProductStatus" xml:space="preserve">
-    <value>Status do Produto</value>
-  </data>
-  <data name="ProductType" xml:space="preserve">
-    <value>Tipo de Produto</value>
-  </data>
-  <data name="ProductTypeRequired" xml:space="preserve">
-    <value>Tipo de Produto é obrigatório.</value>
-  </data>
   <data name="QuantityStock" xml:space="preserve">
     <value>Quantidade em Estoque</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="SuggestedPrice" xml:space="preserve">
     <value>Preço Sugerido</value>
   </data>
   <data name="SuggestedPriceRequired" xml:space="preserve">
     <value>Preço Sugerido é obrigatório.</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="TypeRequired" xml:space="preserve">
+    <value>Tipo é obrigatório.</value>
   </data>
 </root>
