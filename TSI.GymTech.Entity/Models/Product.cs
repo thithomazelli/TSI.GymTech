@@ -15,7 +15,8 @@ namespace TSI.GymTech.Entity.Models
         [Display(Name = "ProductId", ResourceType = typeof(App_LocalResources.Product))]
         public int ProductId { get; set; }
 
-        [Display(Name = "ProductName", ResourceType = typeof(App_LocalResources.Product))]
+        [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.Product), AllowEmptyStrings = false)]
+        [Display(Name = "Name", ResourceType = typeof(App_LocalResources.Product))]
         [StringLength(128)]
         public string Name { get; set; }
 
@@ -23,11 +24,11 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(128)]
         public string Description { get; set; }
 
-        [Required(ErrorMessageResourceName = "ProductTypeRequired", ErrorMessageResourceType = typeof(App_LocalResources.Product), AllowEmptyStrings = false)]
-        [Display(Name = "ProductType", ResourceType = typeof(App_LocalResources.Product))]
+        [Required(ErrorMessageResourceName = "TypeRequired", ErrorMessageResourceType = typeof(App_LocalResources.Product), AllowEmptyStrings = false)]
+        [Display(Name = "Type", ResourceType = typeof(App_LocalResources.Product))]
         public ProductType? Type { get; set; }
 
-        [Display(Name = "ProductStatus", ResourceType = typeof(App_LocalResources.Product))]
+        [Display(Name = "Status", ResourceType = typeof(App_LocalResources.Product))]
         public ProductStatus? Status { get; set; }
 
         [Required(ErrorMessageResourceName = "SuggestedPriceRequired", ErrorMessageResourceType = typeof(App_LocalResources.Product), AllowEmptyStrings = false)]
