@@ -18,7 +18,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -2109,6 +2110,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.webcam.js" />
+    <Content Include="Scripts\jquery.webcam.min.js" />
+    <Content Include="Scripts\jscam.swf" />
+    <Content Include="Scripts\jscam_canvas_only.swf" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Utility\DataTablesUtility.js" />
     <Content Include="Scripts\Utility\demo\chart-area-demo.js" />
@@ -2117,6 +2122,12 @@
     <Content Include="Scripts\Utility\demo\datatables-demo.js" />
     <Content Include="Scripts\Utility\sb-admin-2.js" />
     <Content Include="Scripts\Utility\sb-admin-2.min.js" />
+    <Content Include="Scripts\Utility\UserUtility.js" />
+    <Content Include="Scripts\Utility\WebCamUtility.js" />
+    <Content Include="Scripts\WebCam\flash\README.txt" />
+    <Content Include="Scripts\WebCam\webcam.js" />
+    <Content Include="Scripts\WebCam\webcam.min.js" />
+    <Content Include="Scripts\WebCam\webcam.swf" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2175,9 +2186,19 @@
     <Content Include="Views\EvaluationSheet\Delete.cshtml" />
     <Content Include="Views\EvaluationSheet\Edit.cshtml" />
     <Content Include="Views\EvaluationSheet\Index.cshtml" />
+    <Content Include="Scripts\WebCam\bower.json" />
+    <Content Include="Scripts\WebCam\build.sh" />
+    <Content Include="Scripts\WebCam\DOCS.md" />
+    <Content Include="Scripts\WebCam\LICENSE" />
+    <Content Include="Scripts\WebCam\package.json" />
+    <Content Include="Scripts\WebCam\README.md" />
+    <Content Include="Scripts\WebCam\flash\Webcam.as" />
+    <Content Include="Scripts\WebCam\flash\Webcam.fla" />
+    <Content Include="Scripts\webcam.jquery.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Persons\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

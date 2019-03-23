@@ -12,7 +12,7 @@ function LoadDataTableButtonsAndFilter(element) {
                     '</div> ',
             searchPlaceholder: "Search for..."
         },
-        lengthChange: false,
+        lengthChange: true,
         buttons: [
             {
                 extend: 'copyHtml5',
@@ -46,9 +46,6 @@ function LoadDataTableButtonsAndFilter(element) {
             }
         ]
     });
-
-    console.log(element.id);
-    console.log();
     table.buttons().container()
         .appendTo('#' + element.id + '_wrapper .col-md-6:eq(0)');
 }
