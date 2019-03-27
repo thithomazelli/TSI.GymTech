@@ -42,7 +42,15 @@ namespace TSI.GymTech.WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _personManager.Create(person);
+                if (person != null)
+                {
+                    //Change to current user id later
+                    person.CreateUserId = 0;
+                    person.CreateDate = DateTime.Now;
+                    person.ModifyUserId = 0;
+                    person.ModifyDate = DateTime.Now;
+                    _personManager.Create(person);
+                }
                 return RedirectToAction("Index");
             }
 
@@ -73,7 +81,13 @@ namespace TSI.GymTech.WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                _personManager.Update(person);
+                if (person != null)
+                {
+                    //Change to current user id later
+                    person.ModifyUserId = 0;
+                    person.ModifyDate = DateTime.Now;
+                    _personManager.Update(person);
+                }                
                 return RedirectToAction("Index");
             }
             return View(person);

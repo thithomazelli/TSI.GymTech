@@ -29,7 +29,20 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: TrainingSheet/Create
         public ActionResult Create()
         {
-            return View();
+            TrainingSheet trainingSheet = new TrainingSheet();
+            PersonManager personManager = new PersonManager();
+
+            //Gets all active students
+            List<Person> students = new List<Person>();
+            students = personManager.FindByProfileType(Entity.Enumerates.PersonType.Student).Data.ToList();
+            ViewBag.Students =  new SelectList(students, "PersonId", "Name", trainingSheet.StudentId);
+
+            //Gets all active trainers
+            List<Person> trainers = new List<Person>();
+            trainers = personManager.FindByProfileType(Entity.Enumerates.PersonType.Teacher).Data.ToList();
+            ViewBag.Trainers = new SelectList(trainers, "PersonId", "Name", trainingSheet.TrainerId);
+
+            return View(trainingSheet);
         }
 
         // POST: TrainingSheet/Create
@@ -39,9 +52,29 @@ namespace TSI.GymTech.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "TrainingSheetId,Cycle,Status,Type,Revaluation,Comments,StudentId,TrainerId,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] TrainingSheet trainingSheet)
         {
+            PersonManager personManager = new PersonManager();
+
+            //Gets all active students
+            List<Person> students = new List<Person>();
+            students = personManager.FindByProfileType(Entity.Enumerates.PersonType.Student).Data.ToList();
+            ViewBag.Students = new SelectList(students, "PersonId", "Name", trainingSheet.StudentId);
+
+            //Gets all active trainers
+            List<Person> trainers = new List<Person>();
+            trainers = personManager.FindByProfileType(Entity.Enumerates.PersonType.Teacher).Data.ToList();
+            ViewBag.Trainers = new SelectList(trainers, "PersonId", "Name", trainingSheet.TrainerId);
+
             if (ModelState.IsValid)
             {
-                _trainingSheetManager.Create(trainingSheet);
+                if (trainingSheet != null)
+                {
+                    //Change to current user id later
+                    trainingSheet.CreateUserId = 0;
+                    trainingSheet.CreateDate = DateTime.Now;
+                    trainingSheet.ModifyUserId = 0;
+                    trainingSheet.ModifyDate = DateTime.Now;
+                    _trainingSheetManager.Create(trainingSheet);
+                }
                 return RedirectToAction("Index");
             }
 
@@ -51,11 +84,26 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: TrainingSheet/Edit/5
         public ActionResult Edit(int? id)
         {
+            TrainingSheet trainingSheet = new TrainingSheet();
+            PersonManager personManager = new PersonManager();
+
+            //Gets all active students
+            List<Person> students = new List<Person>();
+            students = personManager.FindByProfileType(Entity.Enumerates.PersonType.Student).Data.ToList();
+            ViewBag.Students = new SelectList(students, "PersonId", "Name", trainingSheet.StudentId);
+
+            //Gets all active trainers
+            List<Person> trainers = new List<Person>();
+            trainers = personManager.FindByProfileType(Entity.Enumerates.PersonType.Teacher).Data.ToList();
+            ViewBag.Trainers = new SelectList(trainers, "PersonId", "Name", trainingSheet.TrainerId);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TrainingSheet trainingSheet = _trainingSheetManager.FindById(id).Data;
+
+            trainingSheet = _trainingSheetManager.FindById(id).Data;
+
             if (trainingSheet == null)
             {
                 return HttpNotFound();
@@ -70,9 +118,27 @@ namespace TSI.GymTech.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "TrainingSheetId,Cycle,Status,Type,Revaluation,Comments,StudentId,TrainerId,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] TrainingSheet trainingSheet)
         {
+            PersonManager personManager = new PersonManager();
+
+            //Gets all active students
+            List<Person> students = new List<Person>();
+            students = personManager.FindByProfileType(Entity.Enumerates.PersonType.Student).Data.ToList();
+            ViewBag.Students = new SelectList(students, "PersonId", "Name", trainingSheet.StudentId);
+
+            //Gets all active trainers
+            List<Person> trainers = new List<Person>();
+            trainers = personManager.FindByProfileType(Entity.Enumerates.PersonType.Teacher).Data.ToList();
+            ViewBag.Trainers = new SelectList(trainers, "PersonId", "Name", trainingSheet.TrainerId);
+
             if (ModelState.IsValid)
             {
-                _trainingSheetManager.Update(trainingSheet);
+                if (trainingSheet != null)
+                {
+                    //Change to current user id later
+                    trainingSheet.ModifyUserId = 0;
+                    trainingSheet.ModifyDate = DateTime.Now;
+                    _trainingSheetManager.Update(trainingSheet);
+                }
                 return RedirectToAction("Index");
             }
             return View(trainingSheet);
