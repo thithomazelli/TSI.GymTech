@@ -161,14 +161,37 @@ namespace TSI.GymTech.Manager.EntityManagers
         /// <summary>
         /// Gets a Person list by ProfileType
         /// </summary>
-        public Result<IEnumerable<Person>> FindByProfileType(PersonType profileType, bool searchingEqual)
+        public Result<IEnumerable<Person>> FindByProfileType(PersonType profileType, bool onlyActive = true, bool searchingEqual = true)
         {
             Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
 
             try
             {
-                result.Data = searchingEqual == true ? repository.query(person => person.ProfileType == profileType).AsEnumerable<Person>() :
-                                                       repository.query(person => person.ProfileType != profileType).AsEnumerable<Person>(); ;
+                if (onlyActive && searchingEqual)
+                {
+                    result.Data = repository.query(person => person.ProfileType == profileType && person.Status == PersonStatus.Active)
+                                            .OrderBy(person => person.Name)
+                                            .AsEnumerable<Person>();
+                }
+                else if (onlyActive && !searchingEqual)
+                {
+                    result.Data = repository.query(person => person.ProfileType != profileType && person.Status == PersonStatus.Active)
+                                            .OrderBy(person => person.Name)
+                                            .AsEnumerable<Person>();
+                }
+                else if (!onlyActive && searchingEqual)
+                {
+                    result.Data = repository.query(person => person.ProfileType == profileType)
+                                            .OrderBy(person => person.Name)
+                                            .AsEnumerable<Person>();
+                }
+                else if (!onlyActive && !searchingEqual)
+                {
+                    result.Data = repository.query(person => person.ProfileType != profileType)
+                                            .OrderBy(person => person.Name)
+                                            .AsEnumerable<Person>();
+                }
+                                                       
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
