@@ -49,7 +49,7 @@ namespace TSI.GymTech.WebAPI.Controllers
             if (ModelState.IsValid)
             {
                 _personManager.Create(person);
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit/" + person.PersonId);
             }
 
             return View(person);
@@ -106,8 +106,18 @@ namespace TSI.GymTech.WebAPI.Controllers
         public ActionResult DeleteConfirmed(int? id)
         {
             Person person = _personManager.FindById(id).Data;
-            _personManager.Remove(person);
-            return RedirectToAction("Index");
+
+            try
+            {
+                _personManager.Remove(person);
+                
+                //return RedirectToAction("Index");
+                return Json(new { Type = "Success", Message = "O Usuário " + person.Name + " foi removido com sucesso." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Type = "Error", Message = "Não foi possível remover o Usuário " + person.Name + "." });
+            }
         }
 
         //protected override void Dispose(bool disposing)
@@ -163,8 +173,6 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return Json(new { Type = "Error", Message = "Não foi possível remover a imagem do Usuário." });
             }
-            
         }
-
     }
 }

@@ -9,7 +9,7 @@
 
 <!-- Page Heading -->
 <head>
-    <title>GymTech - Students</title>
+    <title>GymTech - Alunos</title>
 </head>
 
 <!-- Enabled filters and buttons to datatable -->
@@ -19,14 +19,18 @@
     });
 </script>
 
+<script src="@Url.Content("~/Scripts/Utility/StudentUtility.js")" type="text/javascript"></script>
+
 <!-- Begin Page Content -->
 <div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h3 mb-2 text-gray-800">Students</h1>
+    <h1 class="h3 mb-2 text-gray-800">Alunos</h1>
     <a href=@Url.Action("Create", "Student") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-user-plus text-white-30"></i>
-        <span class="btn-label">Create</span>
+        <span class="btn-label">Novo Aluno</span>
     </a>
 </div>
+
+@Html.AntiForgeryToken()
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -59,7 +63,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr id="@item.PersonId">
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
@@ -84,7 +88,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href=@Url.Action("Delete", "Student", new { id = item.PersonId })>
+                            <a href="#" onClick="DeleteStudent('@item.PersonId', '@item.Name', 'tblStudents');">
                                 <i style="color: red;" class="fas fa-trash-alt"></i>
                             </a>
                         </td>

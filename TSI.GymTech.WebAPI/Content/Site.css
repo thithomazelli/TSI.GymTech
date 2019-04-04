@@ -177,3 +177,12 @@ body {
     cursor: inherit;
     display: block;
 }
+
+.container-login {
+    min-height: 550px;
+}
+
+.validation-message {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+}

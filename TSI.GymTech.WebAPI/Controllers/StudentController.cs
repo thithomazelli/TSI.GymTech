@@ -9,12 +9,15 @@ using System.Web.Mvc;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Manager.EntityManagers;
+using TSI.GymTech.Manager.Utitlities;
+using TSI.GymTech.Manager.Result;
 
 namespace TSI.GymTech.WebAPI.Controllers
 {
     public class StudentController : Controller
     {
         private readonly PersonManager _personManager;
+        private PhotoManager _photoManager;
 
         public StudentController()
         {
@@ -30,7 +33,8 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Student/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new Person { ProfileType = PersonType.Student }; 
+            return View(model);
         }
 
         // POST: Student/Create
@@ -40,6 +44,8 @@ namespace TSI.GymTech.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Person person)
         {
+            person.ProfileType = PersonType.Student;
+
             if (ModelState.IsValid)
             {
                 if (person != null)
@@ -51,7 +57,8 @@ namespace TSI.GymTech.WebAPI.Controllers
                     person.ModifyDate = DateTime.Now;
                     _personManager.Create(person);
                 }
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Edit/" + person.PersonId);
             }
 
             return View(person);
@@ -114,8 +121,16 @@ namespace TSI.GymTech.WebAPI.Controllers
         public ActionResult DeleteConfirmed(int? id)
         {
             Person person = _personManager.FindById(id).Data;
-            _personManager.Remove(person);
-            return RedirectToAction("Index");
+            
+            try
+            {
+                _personManager.Remove(person);
+                return Json(new { Type = "Success", Message = "O Aluno " + person.Name + " foi removido com sucesso." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Type = "Error", Message = "Não foi possível remover o Aluno " + person.Name + "." });
+            }
         }
 
         //protected override void Dispose(bool disposing)
@@ -126,5 +141,51 @@ namespace TSI.GymTech.WebAPI.Controllers
         //    }
         //    base.Dispose(disposing);
         //}
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CapturePhoto(int? id, string base64image, string fileExtension)
+        {
+            try
+            {
+                Person person = _personManager.FindById(id).Data;
+                person.Photo = person.Photo ?? person.PersonId + "_" + person.Name + "." + fileExtension;
+                _photoManager = new PhotoManager(Server.MapPath("~/Images/Persons/"));
+
+                if (_photoManager.CapturePhoto(base64image, person.Photo) == ResultEnum.Success)
+                {
+                    _personManager.Update(person);
+                    return Json(new { Type = "Success", Message = "A nova imagem foi capturada com sucesso.", ImageName = person.Photo });
+                }
+                else
+                {
+                    return Json(new { Type = "Error", Message = "Não foi possível capturar a nova imagem.", ImageName = person.Photo });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Type = "Error", Message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemovePhoto(int? id)
+        {
+            Person person = _personManager.FindById(id).Data;
+            _photoManager = new PhotoManager(Server.MapPath("~/Images/Persons/"));
+
+            if (_photoManager.RemovePhoto(person.Photo) == ResultEnum.Success)
+            {
+                person.Photo = null;
+                _personManager.Update(person);
+                return Json(new { Type = "Success", Message = "A imagem foi removida com sucesso." });
+            }
+            else
+            {
+                return Json(new { Type = "Error", Message = "Não foi possível remover a imagem do Usuário." });
+            }
+        }
     }
 }
