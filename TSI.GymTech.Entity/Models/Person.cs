@@ -16,7 +16,7 @@ namespace TSI.GymTech.Entity.Models
         public int PersonId { get; set; }
 
         [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessageResourceName = "NameValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
+        //[RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessageResourceName = "NameValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
         [Display(Name = "Name", ResourceType = typeof(App_LocalResources.Person))]
         [StringLength(128)]
         public string Name { get; set; }
@@ -25,10 +25,10 @@ namespace TSI.GymTech.Entity.Models
         [Display(Name = "ProfileType", ResourceType = typeof(App_LocalResources.Person))]
         public PersonType ProfileType { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Password", ResourceType = typeof(App_LocalResources.Person))]
-        [StringLength(16, MinimumLength = 4, ErrorMessageResourceName = "PasswordValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
-        public string Password { get; set; }
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Password", ResourceType = typeof(App_LocalResources.Person))]
+        //[StringLength(16, MinimumLength = 4, ErrorMessageResourceName = "PasswordValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
+        //public string Password { get; set; }
 
         [Display(Name = "Gender", ResourceType = typeof(App_LocalResources.Person))]
         public GenderType? Gender { get; set; }
