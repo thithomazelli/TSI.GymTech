@@ -1,0 +1,45 @@
+﻿@model TSI.GymTech.WebAPI.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Novo Cadastro";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="text-center">
+    <h2 class="h4 text-gray-900 mb-4">@ViewBag.Title</h2>
+</div>
+
+<section id="loginForm" class="user">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-login-group  input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            @Html.TextBoxFor(m => m.Email, new { placeholder = "Digite seu E-mail", @class = "form-control form-control-user" })
+        </div>
+        <div class="form-login-group  input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+            </div>
+            @Html.PasswordFor(m => m.Password, new { placeholder = "Digite sua Senha", @class = "form-control  form-control-user" })
+        </div>
+        <div class="form-login-group  input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+            </div>
+            @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirme sua Senha", @class = "form-control  form-control-user" })
+        </div>
+        <div class="form-login-group ">
+            <input type="submit" value="Efetuar Cadastro" class="btn btn-dark btn-user btn-block" />
+        </div>
+        <div class="text-center">
+            @Html.ActionLink("Voltar para Login", "Login", null, new { @class = "small" })
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

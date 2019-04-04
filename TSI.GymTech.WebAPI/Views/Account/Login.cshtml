@@ -1,0 +1,63 @@
+﻿@using TSI.GymTech.WebAPI.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<section id="loginForm" class="user">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-login-group  input-group ">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            </div>
+            @Html.TextBoxFor(m => m.Email, new { placeholder = "Digite seu E-mail", @class = "form-control form-control-user" })
+            @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
+        </div>
+        <div class="form-login-group  input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+            </div>
+            @Html.PasswordFor(m => m.Password, new { placeholder = "Digite sua Senha", @class = "form-control  form-control-user" })
+            @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+        </div>
+        <div class="form-login-group ">
+            <div class="custom-control custom-checkbox small">
+                @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input" })
+                @Html.LabelFor(m => m.RememberMe, new { @class = "custom-control-label" })
+            </div>
+        </div>
+
+        <div class="form-login-group ">
+            <input type="submit" value="Login" class="btn btn-dark btn-user btn-block" />
+            <hr>
+            @*<a href="index.html" class="btn btn-google btn-user btn-block">
+            <i class="fab fa-google fa-fw"></i> Login with Google
+        </a>
+        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+        </a>*@
+        </div>
+
+        <div class="text-center">
+            @*@Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "small" })*@
+            @Html.ActionLink("Esqueceu sua senha?", "ForgotPassword", null, new { @class = "small" })
+        </div>
+        <div class="text-center">
+            @Html.ActionLink("É Aluno? Cadastre-se!", "Register", null, new { @class = "small" })
+        </div>
+    }
+
+    @*<div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>*@
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
