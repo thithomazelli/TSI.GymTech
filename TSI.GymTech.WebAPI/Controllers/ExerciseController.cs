@@ -41,6 +41,11 @@ namespace TSI.GymTech.WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                exercise.CreateUserId = 0;
+                exercise.CreateDate = DateTime.Now;
+                exercise.ModifyUserId = 0;
+                exercise.ModifyDate = DateTime.Now;
                 _exerciseManager.Create(exercise);
                 return RedirectToAction("Index");
             }
@@ -72,6 +77,9 @@ namespace TSI.GymTech.WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                exercise.ModifyUserId = 0;
+                exercise.ModifyDate = DateTime.Now;
                 _exerciseManager.Update(exercise);
                 return RedirectToAction("Index");
             }
