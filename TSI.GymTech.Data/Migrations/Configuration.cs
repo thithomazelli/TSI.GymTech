@@ -27,7 +27,7 @@ namespace TSI.GymTech.Data.Migrations
               {
                   Name = "Administrator",
                   Email = "admin@tsi.com.br",
-                  Password = "admin",
+                  //Password = "admin",
                   SocialSecurityCard = "admin",
                   ProfileType = Entity.Enumerates.PersonType.Administrator
               }

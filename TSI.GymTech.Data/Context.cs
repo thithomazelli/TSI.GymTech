@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations.History;
@@ -10,7 +11,7 @@ using TSI.GymTech.Entity.Models;
 
 namespace TSI.GymTech.Data
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<ApplicationUser>
     {
         public Context() : base("GymTechConnection") { }
         
@@ -28,7 +29,12 @@ namespace TSI.GymTech.Data
         public DbSet<SheetQuestion> SheetQuestion { get; set; }
         public DbSet<TrainingSheet> TrainingSheet { get; set; }
         public DbSet<TrainingSheetExercise> TrainingSheetExercise { get; set; }
-        
+
+        public static Context Create()
+        {
+            return new Context();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
