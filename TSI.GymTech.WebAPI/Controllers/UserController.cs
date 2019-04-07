@@ -30,7 +30,7 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View(_personManager.FindByProfileType(PersonType.Student, false).Data);
+            return View(_personManager.FindByProfileType(PersonType.Student, false, false).Data);
         }
 
         // GET: Student/Create
@@ -110,8 +110,6 @@ namespace TSI.GymTech.WebAPI.Controllers
             try
             {
                 _personManager.Remove(person);
-                
-                //return RedirectToAction("Index");
                 return Json(new { Type = "Success", Message = "O Usuário " + person.Name + " foi removido com sucesso." });
             }
             catch (Exception ex)

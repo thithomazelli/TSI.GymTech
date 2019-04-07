@@ -38,16 +38,6 @@ function DeleteUser(personId, personName, tableName) {
     }                                          
 }      
 
-function ValidateImage(extension) {
-    if (['bmp', 'gif', 'png', 'jpg', 'jpeg'].indexOf(extension) < 0) {
-        toastr.error('Arquivo inválido. Por favor, selecione apenas arquivo com as extensões: .jpeg, .jpg, .png, .gif. e .bmp');
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-
 // Code to upload, taking snapshot and remove image photo 
 $(function () {
     $('#btnUpload').on('change', function () {
@@ -85,8 +75,8 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").show();
-                            ReloadPersonPhoto(data.ImageName);
-                        }
+                            ReloadPhoto(data.ImageName, 'personPhoto', '/Images/Persons/');
+                        }                              
                         else if (data.Type == 'Error') {
                             toastr.error(data.Message);
                         }
@@ -126,7 +116,7 @@ $(function () {
                 if (data.Type == 'Success') {
                     toastr.success(data.Message);
                     $("#btnRemovePhoto").show();
-                    ReloadPersonPhoto(data.ImageName);
+                    ReloadPhoto(data.ImageName, 'personPhoto', '/Images/Persons/');
                 }
                 else {
                     toastr.error(data.Message);
@@ -164,7 +154,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").hide();
-                            ReloadPersonPhoto('default-user-profile.svg');
+                            ReloadPhoto('default-user-profile.svg', 'personPhoto', '/Images/Persons/');
                         }
                         else {
                             toastr.error(data.Message);
