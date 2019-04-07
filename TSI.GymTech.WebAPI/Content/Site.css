@@ -56,6 +56,12 @@ body {
     border-radius: 50% !important;
 }
 
+.profile-pic img {
+    float: none;
+    margin: 0 auto;
+    width: 70%;
+    height: 70%;
+}
 .profile-usertitle {
     text-align: center;
     margin-top: 20px;

@@ -349,12 +349,14 @@
                                         @{
                                             var fileName = string.Empty;
                                             var userName = string.Empty;
+                                            var userId = string.Empty;
 
                                             if (!string.IsNullOrEmpty(User.Identity.Name))
                                             {
                                                 ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-                                                fileName = user.Person.Photo;
-                                                userName = user.Person.Name;
+                                                fileName = user.Person?.Photo;
+                                                userName = user.Person?.Name;
+                                                userId = user.Person?.PersonId.ToString();
                                             }
 
                                             var sourceImage = "/Images/Persons/";
@@ -377,7 +379,7 @@
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="@Url.Action("Edit", "User", new { id = 0 })">
+                                        <a class="dropdown-item" href="@Url.Action("Edit", "User", new { id = userId })">
                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Perfil
                                         </a>

@@ -2161,6 +2161,8 @@
     <Content Include="Scripts\Utility\demo\chart-bar-demo.js" />
     <Content Include="Scripts\Utility\demo\chart-pie-demo.js" />
     <Content Include="Scripts\Utility\demo\datatables-demo.js" />
+    <Content Include="Scripts\Utility\ExerciseUtility.js" />
+    <Content Include="Scripts\Utility\ProductUtility.js" />
     <Content Include="Scripts\Utility\sb-admin-2.js" />
     <Content Include="Scripts\Utility\sb-admin-2.min.js" />
     <Content Include="Scripts\Utility\StudentUtility.js" />

@@ -8,12 +8,15 @@ using System.Web;
 using System.Web.Mvc;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.EntityManagers;
+using TSI.GymTech.Manager.Result;
+using TSI.GymTech.Manager.Utitlities;
 
 namespace TSI.GymTech.WebAPI.Controllers
 {
     public class ExerciseController : Controller
     {
         private readonly ExerciseManager _exerciseManager;
+        private PhotoManager _photoManager;
 
         public ExerciseController()
         {
@@ -47,7 +50,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 exercise.ModifyUserId = 0;
                 exercise.ModifyDate = DateTime.Now;
                 _exerciseManager.Create(exercise);
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit/" + exercise.ExerciseId);
             }
 
             return View(exercise);
@@ -107,8 +110,18 @@ namespace TSI.GymTech.WebAPI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Exercise exercise = _exerciseManager.FindById(id).Data;
-            _exerciseManager.Remove(exercise);
-            return RedirectToAction("Index");
+
+            try
+            {
+                _exerciseManager.Remove(exercise);
+
+                //return RedirectToAction("Index");
+                return Json(new { Type = "Success", Message = "O Exercício " + exercise.Name + " foi removido com sucesso." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Type = "Error", Message = "Não foi possível remover o Exercício " + exercise.Name + "." });
+            }
         }
 
         //protected override void Dispose(bool disposing)
@@ -119,5 +132,51 @@ namespace TSI.GymTech.WebAPI.Controllers
         //    }
         //    base.Dispose(disposing);
         //}
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CapturePhoto(int? id, string base64image, string fileExtension)
+        {
+            try
+            {
+                Exercise exercise = _exerciseManager.FindById(id).Data;
+                exercise.Photo = exercise.Photo ?? exercise.ExerciseId + "_" + exercise.Name + "." + fileExtension;
+                _photoManager = new PhotoManager(Server.MapPath("~/Images/Exercises/"));
+
+                if (_photoManager.CapturePhoto(base64image, exercise.Photo) == ResultEnum.Success)
+                {
+                    _exerciseManager.Update(exercise);
+                    return Json(new { Type = "Success", Message = "A nova imagem foi capturada com sucesso.", ImageName = exercise.Photo });
+                }
+                else
+                {
+                    return Json(new { Type = "Error", Message = "Não foi possível capturar a nova imagem.", ImageName = exercise.Photo });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Type = "Error", Message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemovePhoto(int? id)
+        {
+            Exercise exercise = _exerciseManager.FindById(id).Data;
+            _photoManager = new PhotoManager(Server.MapPath("~/Images/Exercises/"));
+
+            if (_photoManager.RemovePhoto(exercise.Photo) == ResultEnum.Success)
+            {
+                exercise.Photo = null;
+                _exerciseManager.Update(exercise);
+                return Json(new { Type = "Success", Message = "A imagem foi removida com sucesso." });
+            }
+            else
+            {
+                return Json(new { Type = "Error", Message = "Não foi possível remover a imagem do Exercício." });
+            }
+        }
     }
 }

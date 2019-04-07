@@ -1,31 +1,31 @@
 ﻿// Showing toastr success alert
-$("#btnSaveStudent").click(function () {
-    toastr.success("Aluno salvo com sucesso.");
+$("#btnSaveExercise").click(function () {
+    toastr.success("Exercício salvo com sucesso.");
 });
 
-// Delete User and showing toastr remove alert
-function DeleteStudent(personId, personName, tableName) {
+// Delete Exercise and showing toastr remove alert
+function DeleteExercise(exerciseId, exerciseName, tableName) {
     var token = $('input[name=__RequestVerificationToken]').val();
-    var tokenadr = $('form[action="/User"] input[name=__RequestVerificationToken]').val();
+    var tokenadr = $('form[action="/Exercise"] input[name=__RequestVerificationToken]').val();
     var headers = {};
     var headersadr = {};
     headers['__RequestVerificationToken'] = token;
     headersadr['__RequestVerificationToken'] = tokenadr;
 
-    if (confirm('Tem certeza que deseja o Aluno ' + personName + '?')) {
+    if (confirm('Tem certeza que deseja o Exercício ' + exerciseName + '?')) {
         $.ajax({
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/Student/Delete',
+            url: '/Exercise/Delete',
             data: {
                 __RequestVerificationToken: token,
-                id: personId
+                id: exerciseId
             },
             success: function (data) {
                 if (data.Type == 'Success') {
                     toastr.success(data.Message);
-                    RemoveDataTableRow(tableName, personId);
+                    RemoveDataTableRow(tableName, exerciseId);
                 }
                 else {
                     toastr.error(data.Message);
@@ -49,12 +49,11 @@ $(function () {
         reader.onload = function () {
             var file = reader.result;
             var extension = $('#btnUpload').val().split('.').pop();
-            $('#base64image').attr('src', reader.result);
 
             if (extension != null && ValidateImage(extension)) {
-                var id = $('#PersonId').val();
+                var id = $('#ExerciseId').val();
                 var token = $('input[name=__RequestVerificationToken]').val();
-                var tokenadr = $('form[action="/Student/Edit/' + id + '] input[name=__RequestVerificationToken]').val();
+                var tokenadr = $('form[action="/Exercise/Edit/' + id + '] input[name=__RequestVerificationToken]').val();
                 var headers = {};
                 var headersadr = {};
                 headers['__RequestVerificationToken'] = token;
@@ -64,7 +63,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/Student/CapturePhoto',
+                    url: '/Exercise/CapturePhoto',
                     data: {
                         __RequestVerificationToken: token,
                         id: id,
@@ -75,7 +74,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").show();
-                            ReloadPhoto(data.ImageName, 'personPhoto', '/Images/Persons/');
+                            ReloadPhoto(data.ImageName, 'exercisePhoto', '/Images/Exercises/');
                         }
                         else if (data.Type == 'Error') {
                             toastr.error(data.Message);
@@ -92,10 +91,10 @@ $(function () {
     });
     $('#btnSavePhoto').on('click', function () {
         var file = $("#base64image").attr('src');
-        var id = $("#PersonId").val();
+        var id = $("#ExerciseId").val();
 
         var token = $('input[name=__RequestVerificationToken]').val();
-        var tokenadr = $('form[action="/Student/Edit/' + id + '] input[name=__RequestVerificationToken]').val();
+        var tokenadr = $('form[action="/Exercise/Edit/' + id + '] input[name=__RequestVerificationToken]').val();
         var headers = {};
         var headersadr = {};
         headers['__RequestVerificationToken'] = token;
@@ -105,7 +104,7 @@ $(function () {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/Student/CapturePhoto',
+            url: '/Exercise/CapturePhoto',
             data: {
                 __RequestVerificationToken: token,
                 id: id,
@@ -116,7 +115,7 @@ $(function () {
                 if (data.Type == 'Success') {
                     toastr.success(data.Message);
                     $("#btnRemovePhoto").show();
-                    ReloadPhoto(data.ImageName, 'personPhoto', '/Images/Persons/');
+                    ReloadPhoto(data.ImageName, 'exercisePhoto', '/Images/Exercises/');
                 }
                 else {
                     toastr.error(data.Message);
@@ -129,12 +128,12 @@ $(function () {
     });
     $('#btnRemovePhoto').on('click', function () {
 
-        var file = $('#personPhoto').attr('src');
+        var file = $('#exercisePhoto').attr('src');
 
-        if (file != null && file.toString().indexOf("default-user-profile.svg") <= 0) {
-            var id = $("#PersonId").val();
+        if (file != null && file.toString().indexOf("default-profile.png") <= 0) {
+            var id = $("#ExerciseId").val();
             var token = $('input[name=__RequestVerificationToken]').val();
-            var tokenadr = $('form[action="/Student/Edit/' + id + '] input[name=__RequestVerificationToken]').val();
+            var tokenadr = $('form[action="/Exercise/Edit/' + id + '] input[name=__RequestVerificationToken]').val();
             var headers = {};
             var headersadr = {};
             headers['__RequestVerificationToken'] = token;
@@ -145,7 +144,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/Student/RemovePhoto',
+                    url: '/Exercise/RemovePhoto',
                     data: {
                         __RequestVerificationToken: token,
                         id: id
@@ -154,7 +153,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").hide();
-                            ReloadPhoto('default-user-profile.svg', 'personPhoto', '/Images/Persons/');
+                            ReloadPhoto('default-profile.png', 'exercisePhoto', '/Images/Exercises/');
                         }
                         else {
                             toastr.error(data.Message);
@@ -169,5 +168,6 @@ $(function () {
         else {
             toastr.error('O Usuário não possui foto para ser removida.');
         }
+
     });
 });

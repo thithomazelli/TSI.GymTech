@@ -18,7 +18,6 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-
         @Html.ValidationSummary(true, "", new { @class = "validation-message text-danger" })
         @Html.HiddenFor(model => model.PersonId)
         @Html.HiddenFor(model => model.Photo)
@@ -118,7 +117,7 @@
                                 <a class="nav-link" href="#">
                                     <i class="fas fa-file-invoice"></i>
                                     @*<span>Anamnesis Sheet</span>*@
-                                    Fichas de Anaminese
+                                    Fichas de Anamnese
                                 </a>
                             </li>
                             <li class="nav-item">

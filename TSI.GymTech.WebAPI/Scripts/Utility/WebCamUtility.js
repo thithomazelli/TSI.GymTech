@@ -44,6 +44,16 @@ function reset_webcam(sourceImage) {
     Webcam.reset();
 }
 
+function ValidateImage(extension) {
+    if (['bmp', 'gif', 'png', 'jpg', 'jpeg'].indexOf(extension) < 0) {
+        toastr.error('Arquivo inválido. Por favor, selecione apenas arquivo com as extensões: .jpeg, .jpg, .png, .gif. e .bmp');
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 function preview_snapshot() {
     // freeze camera so user can preview pic
     Webcam.freeze();
@@ -77,7 +87,7 @@ function save_photo() {
     reset_webcam();
 }
 
-function ReloadPersonPhoto(fileName) {
-    $('#personPhoto').attr('src', '/Images/Persons/' + fileName + '?t=' + new Date().getTime());
+function ReloadPhoto(fileName, element, sourcePath) {
+    $('#' + element).attr('src', sourcePath + fileName + '?t=' + new Date().getTime());
     return false;
 }

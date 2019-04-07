@@ -17,6 +17,8 @@
     });
 </script>
 
+<script src="@Url.Content("~/Scripts/Utility/ExerciseUtility.js")" type="text/javascript"></script>
+
 <!-- Begin Page Content -->
 <div class="d-sm-flex align-items-center justify-content-between mb-1">
     <h1 class="h3 mb-2 text-gray-800">Exercícios</h1>
@@ -54,7 +56,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr id="@item.ExerciseId">
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
@@ -68,7 +70,11 @@
                             @Html.DisplayFor(modelItem => item.MuscleWorked)
                         </td>
                         <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.MuscularGroup).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.MuscularGroup), item.MuscularGroup)).GetValue(null)
+                            @{ 
+                                if (item.MuscularGroup != null) {
+                                    typeof(TSI.GymTech.Entity.App_LocalResources.MuscularGroup).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.MuscularGroup), item.MuscularGroup)).GetValue(null);
+                                }
+                            }
                         </td>
                         <td>
                             <a href=@Url.Action("Edit", "Exercise", new { id = item.ExerciseId })>
@@ -76,7 +82,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href=@Url.Action("Delete", "Exercise", new { id = item.ExerciseId })>
+                            <a href="#" onClick="DeleteExercise('@item.ExerciseId', '@item.Name', 'tblExercises');">
                                 <i style="color: red;" class="fas fa-trash-alt"></i>
                             </a>
                         </td>
