@@ -141,9 +141,6 @@
   <data name="ProductIdRequired" xml:space="preserve">
     <value>Product ID is required.</value>
   </data>
-  <data name="ProductTypeRequired" xml:space="preserve">
-    <value>Type is required.</value>
-  </data>
   <data name="QuantityStock" xml:space="preserve">
     <value>Quantity in stock</value>
   </data>
@@ -158,5 +155,8 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="TypeRequired" xml:space="preserve">
+    <value>Type is required.</value>
   </data>
 </root>
