@@ -7,6 +7,7 @@ using TSI.GymTech.Entity.Enumerates;
 
 namespace TSI.GymTech.Entity.Models
 {
+    [Table("payment")]
     public class Payment : BaseModel
     {
         [Key]

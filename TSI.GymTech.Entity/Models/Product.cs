@@ -7,6 +7,7 @@ using TSI.GymTech.Entity.Enumerates;
 
 namespace TSI.GymTech.Entity.Models
 {
+    [Table("product")]
     public class Product : BaseModel
     {
         [Key]
