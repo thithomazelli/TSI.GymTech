@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using MySql.Data.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,6 +12,7 @@ using TSI.GymTech.Entity.Models;
 
 namespace TSI.GymTech.Data
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class Context : IdentityDbContext<ApplicationUser>
     {
         public Context() : base("GymTechConnection") { }
@@ -39,6 +41,11 @@ namespace TSI.GymTech.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<ApplicationUser>().ToTable("aspnetusers");
+            modelBuilder.Entity<IdentityRole>().ToTable("aspnetroles");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("aspnetuserclaims");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("aspnetuserroles");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("aspnetuserlogins");
         }
     }
 }
