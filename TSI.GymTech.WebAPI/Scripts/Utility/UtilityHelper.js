@@ -1,25 +1,14 @@
-﻿// Change nav-item active 
-//$(document).ready(function () {
-//    var pageName = window.location.pathname;
-//    var newPageName = pageName;
-//    if (pageName.indexOf('/') == 0) {
-//        newPageName = pageName.substring(1, pageName.length);
-//        $.each($('#accordionSidebar').find('li'), function () {
-//            var hrefVal = $(this).find('a').attr('href');
+﻿// Scripts to be executed on the onload page
+$(document).ready(function () {
+    // Disable sidebar when size is Extra Small (xs)
+    //if ($(window).width() < 450) {
+    //    $('#accordionSidebar').addClass('toggled');
+    //} 
 
-//            if (hrefVal.indexOf(newPageName) >= 0) {
-//                $(this).addClass('active').siblings().removeClass('active');
-//            }
-//        });
-//    }
-//});
-
-function ChangeNavItemActive(linkVal) {
-    var pageName = linkVal;
-    var newPageName = pageName.split('/');
-    console.log(newPageName);
-    if (newPageName) {
-        console.log('log here');
+    // Changing active option from sibe bar menu
+    var pageName = window.location.pathname;
+    var newPageName = pageName[1];                  
+    if (newPageName) {                
         $.each($('#accordionSidebar').find('li'), function () {
             var hrefVal = $(this).find('a').attr('href');
             if (hrefVal.indexOf(newPageName) >= 0) {
@@ -27,4 +16,4 @@ function ChangeNavItemActive(linkVal) {
             }
         });
     }
-}
+})

@@ -41,7 +41,7 @@
                     <div id="myPhoto" class="profile-userpic">
                         @{
                             var fileName = Model.Photo;
-                            var sourceImage = "/Images/Persons/";
+                            var sourceImage = "~/Images/Persons/";
                             var absolutePath = System.Web.HttpContext.Current.Server.MapPath("~/Images/Persons/" + fileName);
 
                             if (!System.IO.File.Exists(absolutePath) || string.IsNullOrEmpty(fileName))
@@ -53,7 +53,7 @@
 
                             var resetWebcamFunc = "reset_webcam('" + fileName + "')";
                         }
-                        <img id="personPhoto" src="@sourceImage" class="img-responsive">
+                        <img id="personPhoto" src="@Href(sourceImage)" class="img-responsive">
                     </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->

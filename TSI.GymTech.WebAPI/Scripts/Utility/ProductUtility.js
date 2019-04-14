@@ -17,7 +17,7 @@ function DeleteProduct(productId, productName, tableName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/Product/Delete',
+            url: '/gymtech/Product/Delete',
             data: {
                 __RequestVerificationToken: token,
                 id: productId
@@ -63,7 +63,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/Product/CapturePhoto',
+                    url: '/gymtech/Product/CapturePhoto',
                     data: {
                         __RequestVerificationToken: token,
                         id: id,
@@ -74,14 +74,14 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").show();
-                            ReloadPhoto(data.ImageName, 'productPhoto', '/Images/Products/');
+                            ReloadPhoto(data.ImageName, 'productPhoto', '/gymtech/Images/Products/');
                         }
                         else if (data.Type == 'Error') {
                             toastr.error(data.Message);
                         }
                     },
-                    error: function () {
-                        toastr.error('Não foi possível remover a imagem.');
+                    error: function (data) {
+                        toastr.error(data.Message);
                     }
                 });
             }
@@ -104,7 +104,7 @@ $(function () {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/Product/CapturePhoto',
+            url: '/gymtech/Product/CapturePhoto',
             data: {
                 __RequestVerificationToken: token,
                 id: id,
@@ -115,7 +115,7 @@ $(function () {
                 if (data.Type == 'Success') {
                     toastr.success(data.Message);
                     $("#btnRemovePhoto").show();
-                    ReloadPhoto(data.ImageName, 'productPhoto', '/Images/Products/');
+                    ReloadPhoto(data.ImageName, 'productPhoto', '/gymtech/Images/Products/');
                 }
                 else {
                     toastr.error(data.Message);
@@ -144,7 +144,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/Product/RemovePhoto',
+                    url: '/gymtech/Product/RemovePhoto',
                     data: {
                         __RequestVerificationToken: token,
                         id: id
@@ -153,7 +153,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").hide();
-                            ReloadPhoto('default-profile.png', 'productPhoto', '/Images/Products/');
+                            ReloadPhoto('default-profile.png', 'productPhoto', '/gymtech/Images/Products/');
                         }
                         else {
                             toastr.error(data.Message);

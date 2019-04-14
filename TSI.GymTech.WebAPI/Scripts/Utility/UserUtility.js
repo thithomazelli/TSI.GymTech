@@ -17,7 +17,7 @@ function DeleteUser(personId, personName, tableName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/User/Delete',
+            url: '/gymtech/User/Delete',
             data: {
                 __RequestVerificationToken: token,
                 id: personId
@@ -64,7 +64,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/User/CapturePhoto',
+                    url: '/gymtech/User/CapturePhoto',
                     data: {
                         __RequestVerificationToken: token,
                         id: id,
@@ -75,7 +75,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").show();
-                            ReloadPhoto(data.ImageName, 'personPhoto', '/Images/Persons/');
+                            ReloadPhoto(data.ImageName, 'personPhoto', '/gymtech/Images/Persons/');
                         }                              
                         else if (data.Type == 'Error') {
                             toastr.error(data.Message);
@@ -105,7 +105,7 @@ $(function () {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/User/CapturePhoto',
+            url: '/gymtech/User/CapturePhoto',
             data: {
                 __RequestVerificationToken: token,
                 id: id,
@@ -116,7 +116,7 @@ $(function () {
                 if (data.Type == 'Success') {
                     toastr.success(data.Message);
                     $("#btnRemovePhoto").show();
-                    ReloadPhoto(data.ImageName, 'personPhoto', '/Images/Persons/');
+                    ReloadPhoto(data.ImageName, 'personPhoto', '/gymtech/Images/Persons/');
                 }
                 else {
                     toastr.error(data.Message);
@@ -145,7 +145,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/User/RemovePhoto',
+                    url: '/gymtech/User/RemovePhoto',
                     data: {
                         __RequestVerificationToken: token,
                         id: id
@@ -154,7 +154,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").hide();
-                            ReloadPhoto('default-user-profile.svg', 'personPhoto', '/Images/Persons/');
+                            ReloadPhoto('default-user-profile.svg', 'personPhoto', '/gymtech/Images/Persons/');
                         }
                         else {
                             toastr.error(data.Message);

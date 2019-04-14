@@ -5,14 +5,14 @@
   "sInfoFiltered": "(Filtrados de _MAX_ registros)",
   "sInfoPostFix": "",
   "sInfoThousands": ".",
-  "sLengthMenu": "Exibir _MENU_ resultados por página",
+  "sLengthMenu": "Exibir _MENU_",
   "sLoadingRecords": "Carregando...",
   "sProcessing": "Processando...",
   "sZeroRecords": "Nenhum registro encontrado",
 
   "oPaginate": {
-    "sNext": "Próximo",
-    "sPrevious": "Anterior",
+    "sNext": "<i class='fas fa-arrow-right'></i>",
+    "sPrevious": "<i class='fas fa-arrow-left'></i>",
     "sFirst": "Primeiro",
     "sLast": "Último"
   },

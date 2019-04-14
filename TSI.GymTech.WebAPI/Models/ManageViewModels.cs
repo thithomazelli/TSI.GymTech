@@ -28,14 +28,14 @@ namespace TSI.GymTech.WebAPI.Models
     public class SetPasswordViewModel
     {
         [Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [StringLength(100, ErrorMessage = "{0} deve ser ter mais que {2} caracteres.", MinimumLength = 6)]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "{0} deve ter mais que {2} caracteres.", MinimumLength = 5)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nova senha")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
+        [Display(Name = "Confirme Nova senha")]
         //[Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         [Compare("Password", ErrorMessage = "As senhas informadas não conferem.")]
         public string ConfirmPassword { get; set; }
@@ -45,20 +45,20 @@ namespace TSI.GymTech.WebAPI.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Senha Atual")]
         public string OldPassword { get; set; }
 
         [Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [StringLength(100, ErrorMessage = "{0} deve ser ter mais que {2} caracteres.", MinimumLength = 6)]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "{0} deve ser ter mais que {2} caracteres.", MinimumLength = 5)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nova Senha")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
+        [Display(Name = "Confirmar Nova Senha")]
         //[Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
-        [Compare("Password", ErrorMessage = "As senhas informadas não conferem.")]
+        [Compare("NewPassword", ErrorMessage = "As senhas não conferem.")]
         public string ConfirmPassword { get; set; }
     }
 

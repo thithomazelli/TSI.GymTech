@@ -11062,8 +11062,8 @@ a:focus {
 }
 
 .sidebar {
-  width: 6.5rem;
-  min-height: 100vh;
+    width: 7.3rem;
+    min-height: 100vh;
 }
 
 .sidebar .nav-item {
@@ -11284,7 +11284,7 @@ a:focus {
   }
   .sidebar.toggled {
     overflow: visible;
-    width: 6.5rem !important;
+    width: 7.3rem !important;
   }
   .sidebar.toggled .nav-item .collapse {
     position: absolute;
@@ -11589,7 +11589,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("../../Images/GymTech/Login2.jpg");
+  background: url("../../Images/GymTech/Login.jpg");
   background-position: center;
   background-size: cover;
 }
