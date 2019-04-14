@@ -1,7 +1,9 @@
 ﻿// Create structure to DataTable show entries, search and export buttons
 function LoadDataTableButtonsAndFilter(element) {
+    $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
+            url: 'Scripts/Utility/i18n/Portuguese-Brasil.json',
             search: '<div class="input-group col-md-12">' +
                         ' _INPUT_ ' +
                         '<span class= "input-group-append">' + 
@@ -10,10 +12,11 @@ function LoadDataTableButtonsAndFilter(element) {
                             '</button>' + 
                         '</span>' + 
                     '</div> ',
-            searchPlaceholder: "Pesquisar por...",
-            url: 'Scripts/Utility/i18n/Portuguese-Brasil.json'
+            searchPlaceholder: 'Pesquisar por...'
         },
-        lengthChange: true //,
+        pagingType: 'simple_numbers',
+        lengthChange: true,
+        responsive: true //,
         //buttons: [
         //    {
         //        extend: 'copyHtml5',

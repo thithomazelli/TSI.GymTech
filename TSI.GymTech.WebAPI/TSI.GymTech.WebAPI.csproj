@@ -266,6 +266,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\toastr.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
@@ -314,6 +315,7 @@
     <Content Include="Content\vendor\datatables\dataTables.bootstrap4.js" />
     <Content Include="Content\vendor\datatables\dataTables.bootstrap4.min.css" />
     <Content Include="Content\vendor\datatables\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\vendor\datatables\dataTables.responsive.min.css" />
     <Content Include="Content\vendor\datatables\jquery.dataTables.js" />
     <Content Include="Content\vendor\datatables\jquery.dataTables.min.js" />
     <Content Include="Content\vendor\fontawesome-free\css\all.css" />
@@ -1888,6 +1890,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Exercises\default-profile.png" />
     <Content Include="Images\Exercises\exercicio_0001.jpg" />
     <Content Include="Images\Exercises\exercicio_0002.jpg" />
     <Content Include="Images\Exercises\exercicio_0003.jpg" />
@@ -1938,6 +1941,10 @@
     <Content Include="Images\Exercises\exercicio_0049.jpg" />
     <Content Include="Images\Exercises\exercicio_0050.jpg" />
     <Content Include="Images\Exercises\exercicio_0051.jpg" />
+    <Content Include="Images\GymTech\Login.jpg" />
+    <Content Include="Images\GymTech\Login_Old.jpg" />
+    <Content Include="Images\Persons\default-user-profile.svg" />
+    <Content Include="Images\Products\default-profile.png" />
     <Content Include="Images\Products\Produto1.jpg" />
     <Content Include="Images\Products\Produto2.jpg" />
     <Content Include="Images\Products\Produto3.jpg" />
@@ -2156,6 +2163,8 @@
     <Content Include="Scripts\jscam.swf" />
     <Content Include="Scripts\jscam_canvas_only.swf" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Content\vendor\datatables\dataTables.responsive.min.js" />
     <Content Include="Scripts\Utility\DataTablesUtility.js" />
     <Content Include="Scripts\Utility\demo\chart-area-demo.js" />
     <Content Include="Scripts\Utility\demo\chart-bar-demo.js" />
@@ -2167,12 +2176,15 @@
     <Content Include="Scripts\Utility\sb-admin-2.min.js" />
     <Content Include="Scripts\Utility\StudentUtility.js" />
     <Content Include="Scripts\Utility\UserUtility.js" />
+    <Content Include="Scripts\Utility\UtilityHelper.js" />
     <Content Include="Scripts\Utility\WebCamUtility.js" />
     <Content Include="Scripts\WebCam\flash\README.txt" />
     <Content Include="Scripts\WebCam\webcam.js" />
     <Content Include="Scripts\WebCam\webcam.min.js" />
     <Content Include="Scripts\WebCam\webcam.swf" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -2265,7 +2277,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Persons\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

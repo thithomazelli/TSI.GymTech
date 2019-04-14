@@ -74,8 +74,8 @@ namespace TSI.GymTech.WebAPI.Models
         public string Email { get; set; }
 
         [Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [StringLength(100, ErrorMessage = "{0} deve ser ter mais que {2} caracteres.", MinimumLength = 6)]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "{0} deve ter mais que {2} caracteres.", MinimumLength = 5)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
@@ -99,8 +99,8 @@ namespace TSI.GymTech.WebAPI.Models
         public string Email { get; set; }
 
         [Required]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [StringLength(100, ErrorMessage = "{0} deve ser ter mais que {2} caracteres.", MinimumLength = 6)]
+        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "{0} deve ter mais que {2} caracteres.", MinimumLength = 5)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
