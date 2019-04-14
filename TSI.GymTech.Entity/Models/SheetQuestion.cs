@@ -7,6 +7,7 @@ using TSI.GymTech.Entity.Enumerates;
 
 namespace TSI.GymTech.Entity.Models
 {
+    [Table("sheetquestion")]
     public class SheetQuestion : BaseModel
     {
         [Key]

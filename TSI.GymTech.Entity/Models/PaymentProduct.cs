@@ -6,6 +6,7 @@ using System.Text;
 
 namespace TSI.GymTech.Entity.Models
 {
+    [Table("paymentproduct")]
     public class PaymentProduct : BaseModel
     {
         [Key]

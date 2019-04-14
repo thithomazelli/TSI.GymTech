@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TSI.GymTech.Entity.Models
 {
+    [Table("person")]
     public class Person : BaseModel
     {
         [Key]

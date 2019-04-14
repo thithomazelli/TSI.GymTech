@@ -6,6 +6,7 @@ using System.Text;
 
 namespace TSI.GymTech.Entity.Models
 {
+    [Table("accesscontrol")]
     public class AccessControl : BaseModel
     {
         [Key]
