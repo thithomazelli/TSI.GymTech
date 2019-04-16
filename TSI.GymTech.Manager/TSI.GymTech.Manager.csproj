@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="EntityManagers\AccessControlManager.cs" />
     <Compile Include="EntityManagers\AccessLogManager.cs" />
+    <Compile Include="EntityManagers\AddressManager.cs" />
     <Compile Include="EntityManagers\AnamnesisSheetManager.cs" />
     <Compile Include="EntityManagers\EvaluationSheetManager.cs" />
     <Compile Include="EntityManagers\ExerciseManager.cs" />

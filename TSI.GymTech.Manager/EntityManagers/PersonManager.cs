@@ -39,7 +39,7 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a Person list 
+        /// Gets a Person list 
         /// </summary>
         public Result<IEnumerable<Person>> FindAll()
         {
@@ -59,7 +59,7 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a Person object by ID
+        /// Gets a Person object by ID
         /// </summary>
         public Result<Person> FindById(int? id)
         {
