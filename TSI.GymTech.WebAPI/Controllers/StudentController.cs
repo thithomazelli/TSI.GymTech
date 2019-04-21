@@ -72,6 +72,10 @@ namespace TSI.GymTech.WebAPI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Person person = _personManager.FindById(id).Data;
+
+            AddressManager addressManager = new AddressManager();
+            ViewBag.Addresses = addressManager.FindByPersonId(id).Data.ToList<Address>();
+            
             if (person == null)
             {
                 return HttpNotFound();
@@ -94,8 +98,8 @@ namespace TSI.GymTech.WebAPI.Controllers
                     person.ModifyUserId = 0;
                     person.ModifyDate = DateTime.Now;
                     _personManager.Update(person);
-                }                
-                return RedirectToAction("Index");
+                }
+                //return RedirectToAction("Index");
             }
             return View(person);
         }

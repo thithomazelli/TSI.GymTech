@@ -84,7 +84,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 exercise.ModifyUserId = 0;
                 exercise.ModifyDate = DateTime.Now;
                 _exerciseManager.Update(exercise);
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
             return View(exercise);
         }

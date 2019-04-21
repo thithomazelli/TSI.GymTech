@@ -7,8 +7,8 @@ $(document).ready(function () {
 
     // Changing active option from sibe bar menu
     var pageName = window.location.pathname;
-    var newPageName = pageName[1];                  
-    if (newPageName) {                
+    var newPageName = pageName[1];
+    if (newPageName) {
         $.each($('#accordionSidebar').find('li'), function () {
             var hrefVal = $(this).find('a').attr('href');
             if (hrefVal.indexOf(newPageName) >= 0) {
@@ -16,4 +16,4 @@ $(document).ready(function () {
             }
         });
     }
-})
+});

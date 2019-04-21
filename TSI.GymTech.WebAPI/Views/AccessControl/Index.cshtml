@@ -7,7 +7,7 @@
 
 <!-- Page Heading -->
 <head>
-    <title>GymTech - Access Controls</title>
+    <title>GymTech - Controle de Acesso</title>
 </head>
 
 <!-- Enabled filters and buttons to datatable -->
@@ -17,12 +17,14 @@
     });
 </script>
 
+<script src="@Url.Content("~/Scripts/Utility/AccessControlUtility.js")" type="text/javascript"></script>
+
 <!-- Begin Page Content -->
 <div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h3 mb-2 text-gray-800">Access Controls</h1>
-    <a href=@Url.Action("Create", "AccessControl") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
+    <h1 class="h3 mb-2 text-gray-800">Controle de Acesso</h1>
+    <a href=@Url.Action("Create", "AccessControl") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-fw fa-cog text-white-35"></i>
-        <span class="btn-label">Create</span>
+        <span class="btn-label">Nova Catraca</span>
     </a>
 </div>
 
@@ -33,10 +35,10 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.IpAddress)
+                        @Html.DisplayNameFor(model => model.Name)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Name)
+                        @Html.DisplayNameFor(model => model.IpAddress)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.IsStandard)
@@ -48,12 +50,12 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IpAddress)
-                        </td>
+                    <tr id="@item.AccessControlId">
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IpAddress)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.IsStandard)
@@ -64,7 +66,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href=@Url.Action("Delete", "AccessControl", new { id = item.AccessControlId })>
+                            <a href="#" onClick="DeleteAccessControl('@item.AccessControlId', '@item.Name', 'tblAccessControls');">
                                 <i style="color: red;" class="fas fa-trash-alt"></i>
                             </a>
                         </td>

@@ -1,4 +1,23 @@
-﻿// Create structure to DataTable show entries, search and export buttons
+﻿// Create structure to simple DataTable 
+function LoadSimpleDataTable(element) {
+    $.fn.DataTable.ext.pager.numbers_length = 3;
+    var table = $(element).DataTable({
+        language: {
+            url: '/Scripts/Utility/i18n/Portuguese-Brasil.json',
+        },
+        searching: false,   // Search Box will Be Disabled
+        lengthChange: false, // Will Disabled Record number per page
+        ordering: true,    // Ordering (Sorting on Each Column)will Be Disabled
+        info: true,          // Will show "1 to n of n entries" Text at bottom
+        paging: false,        // Will enable paging
+        //pagingType: 'simple_numbers',   // Will configure paging type
+        responsive: true
+    });
+    table.buttons().container()
+        .appendTo('#' + element.id + '_wrapper .col-md-6:eq(0)');
+}
+
+// Create structure to DataTable show entries, search and export buttons
 function LoadDataTableButtonsAndFilter(element) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
