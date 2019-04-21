@@ -4,6 +4,8 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using TSI.GymTech.Entity.Enumerates;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using TSI.GymTech.Entity.Configurations;
 
 namespace TSI.GymTech.Entity.Models
 {
@@ -100,5 +102,12 @@ namespace TSI.GymTech.Entity.Models
         public virtual IEnumerable<Payment> Payments { get; set; }
 
         public virtual IEnumerable<TrainingSheet> TrainingSheets { get; set; }
+
+        public virtual IEnumerable<AccessLog> AccessLogs { get; set; }
+        
+        public GateConfiguration GetGateConfig()
+        {
+            return new GateConfiguration(this).GetGateConfiguration();
+        }
     }
 }    
