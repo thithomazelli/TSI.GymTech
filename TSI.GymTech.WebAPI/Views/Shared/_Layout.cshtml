@@ -29,7 +29,6 @@
     }
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @RenderSection("AddToHeadAnotherWay", required: false)
 
@@ -129,12 +128,12 @@
                 Administração
             </div>
             <!-- Nav Item - Access Control -->
-            @*<li class="nav-item">
-                    <a class="nav-link" href=@Url.Action("Index", "AccessControl")>
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Access Control</span>
-                    </a>
-                </li>*@
+            <li class="nav-item">
+                <a class="nav-link" href=@Url.Action("Index", "AccessControl")>
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Controle de Acesso</span>
+                </a>
+            </li>
             <!-- Nav Item - Access Log -->
             @*<li class="nav-item">
                     <a class="nav-link" href=@Url.Action("Index", "AccessLog")>

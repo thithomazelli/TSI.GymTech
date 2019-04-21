@@ -40,7 +40,7 @@ namespace TSI.GymTech.WebAPI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Description,Type,Status,SuggestedPrice,QuantityStock,Duplication,Photo,Comments,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,Name,Description,Type,Status,SuggestedPrice,QuantityStock,Duplication,Photo,Comments")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -71,12 +71,12 @@ namespace TSI.GymTech.WebAPI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Type,Status,SuggestedPrice,QuantityStock,Duplication,Photo,Comments,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Type,Status,SuggestedPrice,QuantityStock,Duplication,Photo,Comments")] Product product)
         {
             if (ModelState.IsValid)
             {
                 _productManager.Update(product);
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
             return View(product);
         }

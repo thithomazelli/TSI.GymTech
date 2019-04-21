@@ -12,7 +12,7 @@ function DeleteStudent(personId, personName, tableName) {
     headers['__RequestVerificationToken'] = token;
     headersadr['__RequestVerificationToken'] = tokenadr;
 
-    if (confirm('Tem certeza que deseja o Aluno ' + personName + '?')) {
+    if (confirm('Tem certeza que deseja remover o Aluno ' + personName + '?')) {
         $.ajax({
             type: "POST",
             dataType: "json",
