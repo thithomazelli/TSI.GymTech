@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -11,18 +12,23 @@ using Kernel7x;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.EntityManagers;
 
+using System.Linq;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using TSI.GymTech.Entity.Configurations;
+
 namespace TSI.GymTech.OnOff
 {
 
     public partial class Form1 : Form
     {
+        private Person _currPerson;
+        private GateConfiguration _gateConfig;
 
         private Alternativo kernel7x; //Declarando Kernel
         private int indexCombo;
         int collectIndex;
-
-
-
+        
         int eventIndex;
 
 
@@ -97,6 +103,7 @@ namespace TSI.GymTech.OnOff
         private void Form1_Load(object sender, EventArgs e)
         {
             cbxAcesso.SelectedIndex = 1;
+            rbOnline.Checked = true;
         }
 
 
@@ -104,28 +111,27 @@ namespace TSI.GymTech.OnOff
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             //Exemplo de adição de equipamento no Kernel 7x
-
             //Montagem da configuração de comunicaçao
+
             SComConfig _rConfig;
             _rConfig.IsCatraca = 0;
 
+            _rConfig.Tcp.Ip = eIp.Text;
             _rConfig.ModoComunicacao = SModoComunicacao.cmcOnOff;
             _rConfig.TipoComunicacao = STipoComunicacao.ctcTcpIp;
-            _rConfig.Tcp.Ip = eIp.Text;
             _rConfig.Tcp.MAC = "";
             _rConfig.Tcp.Porta = 3000;
             _rConfig.Serial.NumeroRelogio = 1;
 
             //Criando thread para o equipamento tcpip
-
             int indexAux = kernel7x.get_AdicionaCardTcpIp(_rConfig.Tcp.Ip,
                 _rConfig.Tcp.MAC, _rConfig.Tcp.Porta, false, _rConfig.ModoComunicacao);
+
             if (indexAux >= 0)
             {
                 cbxEquipments.Items.Add(indexAux.ToString());
                 kernel7x.SetSincronizar(indexAux, false);
-
-                addViewLine("Relógio TcpIp adicionado: " + indexAux);
+                addViewLine("Relógio TcpIp adicionado: " + eIp.Text);
             }
             else
             {
@@ -139,7 +145,7 @@ namespace TSI.GymTech.OnOff
             int index = cbxEquipments.SelectedIndex;
             if (index > -1)
             {
-                btnQuantidade.Enabled = false;
+                //btnQuantidade.Enabled = false;
                 int qtty = getRegistryQtty(index);
                 if (qtty > -1)
                 {
@@ -151,7 +157,7 @@ namespace TSI.GymTech.OnOff
                         kernel7x.ErrorDescription(kernel7x.KernelLastError));
 
                 }
-                btnQuantidade.Enabled = true;
+                //btnQuantidade.Enabled = true;
             }
             else
             {
@@ -164,9 +170,9 @@ namespace TSI.GymTech.OnOff
             int index = cbxEquipments.SelectedIndex;
             if (index > -1)
             {
-                btnColetar.Enabled = false;
+                //btnColetar.Enabled = false;
                 this.collectRegistry(index);
-                btnColetar.Enabled = true;
+                //btnColetar.Enabled = true;
             }
             else
             {
@@ -354,7 +360,8 @@ namespace TSI.GymTech.OnOff
                 //Esta rotina é um evento do próprio kernel = Evento (OnRegistro)
                 //====================================================================================
 
-
+                // Reset currPerson object
+                _currPerson = null;
 
                 //Recebe solicitação do kernel
                 SRegistro registro;
@@ -365,7 +372,6 @@ namespace TSI.GymTech.OnOff
                 bool MasterLiberou = false;
                 bool FuncaoLiberou = false;
                 bool AcessoNegado = false;
-
 
                 txtMemo.Invoke(viewL, txtMemo, "Evento online recebido : " + pThreadIndex);
 
@@ -392,6 +398,9 @@ namespace TSI.GymTech.OnOff
 
                 resposta.Mensagem = emensagem.Text;
                 resposta.Tempo = Convert.ToByte(numTempo.Value);
+
+                GetPersonById(registro.Matricula);
+
                 if (txtMemo.InvokeRequired)
                 {
                     if (registro.Flag == SFlagRegistro.sfrGirou)
@@ -416,11 +425,11 @@ namespace TSI.GymTech.OnOff
                         txtMemo.Invoke(viewL, txtMemo, "Matrícula: " + registro.Matricula);
                     }
                 }
-                if (cbxAcesso.InvokeRequired)
-                {
-                    IndexCombo combo = new IndexCombo(this.indexComboBox);
-                    cbxAcesso.Invoke(combo, cbxAcesso);
-                }
+                //if (cbxAcesso.InvokeRequired)
+                //{
+                //    IndexCombo combo = new IndexCombo(this.indexComboBox);
+                //    cbxAcesso.Invoke(combo, cbxAcesso);
+                //}
                 //indexCombo = 1;
 
                 if (ckbRespostaAutomatica.Checked)
@@ -485,6 +494,118 @@ namespace TSI.GymTech.OnOff
             }
 
             eventIndex = -1;
+        }
+
+        private void rbOnline_CheckedChanged(object sender, EventArgs e)
+        {
+            // Update combobox with equipaments inserted in database
+            if (rbOnline.Checked)
+            {
+                GetAllAccessControl();
+                EnableDisableFields(false);
+            }
+        }
+
+        private void rbOffline_CheckedChanged(object sender, EventArgs e)
+        {
+            // Clear combobox equipaments 
+            if (rbOffline.Checked)
+            {
+                cbxEquipments.Items.Clear();
+                EnableDisableFields(true);
+            }
+        }
+
+        private void EnableDisableFields(bool status)
+        {
+            cbxAcesso.Enabled = status;
+            numTempo.Enabled = status;
+            emensagem.Enabled = status;
+            eIp.Enabled = status;
+            btnAdicionar.Enabled = status;
+        }
+
+        private async void GetAllAccessControl()
+        {
+            string URI = "http://localhost/webapi/accesscontrol/getall";
+            IEnumerable<AccessControl> accessControlList = null;
+
+            using (var client = new HttpClient())
+            {
+                using (var response = await client.GetAsync(URI))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        accessControlList = JsonConvert.DeserializeObject<AccessControl[]>(jsonString).ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foi possível obter acesso aos equipamentos cadastrados: " + response.StatusCode);
+                    }
+                }
+            }
+
+            //Exemplo de adição de equipamento no Kernel 7x
+            //Montagem da configuração de comunicaçao
+            foreach(var accessControl in accessControlList)
+            { 
+                SComConfig _rConfig;
+                _rConfig.IsCatraca = 0;
+
+                _rConfig.Tcp.Ip = accessControl.IpAddress;
+                _rConfig.ModoComunicacao = SModoComunicacao.cmcOnOff;
+                _rConfig.TipoComunicacao = STipoComunicacao.ctcTcpIp;
+                _rConfig.Tcp.MAC = "";
+                _rConfig.Tcp.Porta = 3000;
+                _rConfig.Serial.NumeroRelogio = 1;
+
+                //Criando thread para o equipamento tcpip
+                int indexAux = kernel7x.get_AdicionaCardTcpIp(_rConfig.Tcp.Ip,
+                    _rConfig.Tcp.MAC, _rConfig.Tcp.Porta, false, _rConfig.ModoComunicacao);
+
+                if (indexAux >= 0)
+                {
+                    cbxEquipments.Items.Add(accessControl.Name);
+                    kernel7x.SetSincronizar(indexAux, false);
+                    addViewLine("Relógio TcpIp adicionado: " + accessControl.Name);
+                }
+                else
+                {
+                    addViewLine("Falha: " +
+                        kernel7x.ErrorDescription(kernel7x.KernelLastError));
+                }
+            }
+        }
+
+        private async void GetPersonById(string matricula)
+        {
+            int id;
+            
+            if (Int32.TryParse(matricula, out id))
+            {
+                string URI = "http://localhost/webapi/person/getbyid/?id=" + id;
+                using (var client = new HttpClient())
+                {
+                    using (var response = await client.GetAsync(URI))
+                    {
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var jsonString = await response.Content.ReadAsStringAsync();
+                            _currPerson = JsonConvert.DeserializeObject<Person>(jsonString);
+                            _gateConfig = _currPerson.GetGateConfig();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GetPersonById("870");
+
+            //MessageBox.Show("GateMessage : " + _gateConfig.GateMessage);
+            //MessageBox.Show("GateStatus : " + _gateConfig.GateStatus);
         }
     }
 }
