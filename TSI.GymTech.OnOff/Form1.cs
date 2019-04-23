@@ -395,10 +395,9 @@ namespace TSI.GymTech.OnOff
                 registro.Tipo.MasterLiberou = booltoshort(MasterLiberou);
                 registro.Tipo.FuncaoLiberou = booltoshort(FuncaoLiberou);
                 registro.Tipo.AcessoNegado = booltoshort(AcessoNegado);
-
-                resposta.Mensagem = emensagem.Text;
                 resposta.Tempo = Convert.ToByte(numTempo.Value);
 
+                // 
                 GetPersonById(registro.Matricula);
 
                 if (txtMemo.InvokeRequired)
@@ -437,9 +436,9 @@ namespace TSI.GymTech.OnOff
                     if (!string.IsNullOrEmpty(registro.Matricula))
                     {
                         int matricula = int.Parse(registro.Matricula);
-                        PersonManager personManager = new PersonManager();
                         Person person = new Person();
 
+                        PersonManager personManager = new PersonManager();
                         person = personManager.FindById(matricula).Data;
 
                         if (person != null)
@@ -603,6 +602,12 @@ namespace TSI.GymTech.OnOff
         private void button1_Click(object sender, EventArgs e)
         {
             GetPersonById("870");
+
+            int matricula = int.Parse("870");
+            Person person = new Person();
+
+            PersonManager personManager = new PersonManager();
+            person = personManager.FindById(matricula).Data;
 
             //MessageBox.Show("GateMessage : " + _gateConfig.GateMessage);
             //MessageBox.Show("GateStatus : " + _gateConfig.GateStatus);
