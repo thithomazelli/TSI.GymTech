@@ -30,13 +30,18 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Student
         public ActionResult Index()
         {
+
             return View(_personManager.FindByProfileType(PersonType.Student, false, false).Data);
         }
 
         // GET: Student/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new Person
+            {
+                Status = PersonStatus.Active
+            };
+            return View(model);
         }
 
         // POST: Student/Create
@@ -63,6 +68,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Person person = _personManager.FindById(id).Data;
+
             if (person == null)
             {
                 return HttpNotFound();
@@ -79,9 +85,17 @@ namespace TSI.GymTech.WebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                person.CreateUserId = 0;
+                person.CreateDate = DateTime.Now;
+                person.ModifyUserId = 0;
+                person.ModifyDate = DateTime.Now;
                 _personManager.Update(person);
                 //return RedirectToAction("Index");
             }
+            
+            AddressManager addressManager = new AddressManager();
+            person.Addresses = addressManager.FindByPersonId(person.PersonId).Data.ToList<Address>();
             return View(person);
         }
 

@@ -21,8 +21,8 @@
 
 <!-- Begin Page Content -->
 <div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h3 mb-2 text-gray-800">Exercícios</h1>
-    <a href=@Url.Action("Create", "Exercise") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
+    <h1 class="h4 mb-2 text-gray-800">Exercícios</h1>
+    <a href=@Url.Action("Create", "Exercise") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-dumbbell text-white-35"></i>
         <span class="btn-label">Novo Exercício</span>
     </a>
@@ -70,10 +70,9 @@
                             @Html.DisplayFor(modelItem => item.MuscleWorked)
                         </td>
                         <td>
-                            @{ 
-                                if (item.MuscularGroup != null) {
-                                    typeof(TSI.GymTech.Entity.App_LocalResources.MuscularGroup).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.MuscularGroup), item.MuscularGroup)).GetValue(null);
-                                }
+                            @if (item.MuscularGroup != null)
+                            { 
+                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.MuscularGroup).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.MuscularGroup), item.MuscularGroup)).GetValue(null)</span>
                             }
                         </td>
                         <td>

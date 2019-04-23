@@ -21,8 +21,8 @@
 
 <!-- Begin Page Content -->
 <div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h3 mb-2 text-gray-800">Usuários</h1>
-    <a href=@Url.Action("Create", "User") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
+    <h1 class="h4 mb-2 text-gray-800">Usuários</h1>
+    <a href=@Url.Action("Create", "User") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-user-plus text-white-30"></i>
         <span class="btn-label">Novo Usuário</span>
     </a>
@@ -52,9 +52,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Status)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.MobilePhone)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.Email)
                     </th>
@@ -81,9 +81,9 @@
                         <td>
                             @typeof(TSI.GymTech.Entity.App_LocalResources.PersonStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PersonStatus), item.Status)).GetValue(null)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.MobilePhone)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>

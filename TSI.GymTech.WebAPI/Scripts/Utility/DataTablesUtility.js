@@ -3,7 +3,7 @@ function LoadSimpleDataTable(element) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/Scripts/Utility/i18n/Portuguese-Brasil.json',
+            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json'
         },
         searching: false,   // Search Box will Be Disabled
         lengthChange: false, // Will Disabled Record number per page
@@ -25,10 +25,10 @@ function LoadDataTableButtonsAndFilter(element) {
             url: 'Scripts/Utility/i18n/Portuguese-Brasil.json',
             search: '<div class="input-group col-md-12">' +
                         ' _INPUT_ ' +
-                        '<span class= "input-group-append">' + 
-                            '<button class="btn btn-primary" type="button">' +
-                                '<i class="fa fa-search"></i>' + 
-                            '</button>' + 
+                        '<span class= "input-group-append">' +
+                            '<button class="input-group-text btn btn-primary btn-dataTable-fixMargin" type="button">' +
+                                '<i class="fa fa-search"></i>' +
+                            '</button>' +
                         '</span>' + 
                     '</div> ',
             searchPlaceholder: 'Pesquisar por...'

@@ -6,7 +6,7 @@
 }
 
 <head>
-    <title>Aluno - Detalhes</title>
+    <title>GymTech - @Model.Name</title>
 </head>
 
 <script>
@@ -26,6 +26,7 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PersonId)
+        @Html.HiddenFor(model => model.Photo)
 
         <div class="edit-container">
             @*Photo and Nav buttons*@
@@ -59,6 +60,7 @@
                             @Model.Name
                         </div>
                         <div class="profile-usertitle-job">
+                            @Html.LabelFor(model => model.PersonId): @Model.PersonId <br />
                             @typeof(TSI.GymTech.Entity.App_LocalResources.PersonType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PersonType), Model.ProfileType)).GetValue(null)
                         </div>
                     </div>
@@ -329,12 +331,12 @@
                 </section>
 
                 @*Address List*@
-                <section id="addressList" style="height: 9000px;">
+                <section id="addressList" >
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="col-12 text-right">
-                                <h5 style="float:left">Enderecos</h5>
-                                @Html.ActionLink("Adicionar Endereco", "Create", "Address", new { personId = Model.PersonId }, new { @class = "btn btn-success align-content-end" })
+                                <h5 style="float:left">Endereços</h5>
+                                @Html.ActionLink("Adicionar Endereço", "Create", "Address", new { personId = Model.PersonId }, new { @class = "btn btn-success align-content-end" })
                             </div>
                             <hr />
                             <table class="stripe row-border" style="width:100%" id="tblAddresses" cellspacing="0">
@@ -369,15 +371,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in ViewBag.Addresses as IList<TSI.GymTech.Entity.Models.Address>)
+                                    @foreach (var item in Model.Addresses)
                                     {
                                         <tr id="@item.AddressId">
                                             <td>
-                                                @typeof(TSI.GymTech.Entity.App_LocalResources.AddressType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.AddressType), item.AddressType)).GetValue(null)
+                                                @if (item.AddressType != null)
+                                                {
+                                                    <span>@typeof(TSI.GymTech.Entity.App_LocalResources.AddressType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.AddressType), item.AddressType)).GetValue(null)</span>
+                                                }
                                             </td>
                                             @*<td>
-                                                    @Html.DisplayFor(modelItem => item.AddressId)
-                                                </td>*@
+                                                @Html.DisplayFor(modelItem => item.AddressId)
+                                            </td>*@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Street)
                                             </td>
