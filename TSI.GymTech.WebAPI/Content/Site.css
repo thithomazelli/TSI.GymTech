@@ -193,3 +193,7 @@ body {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
 }
+
+.btn-dataTable-fixMargin {
+    margin-left: -5px;
+}
