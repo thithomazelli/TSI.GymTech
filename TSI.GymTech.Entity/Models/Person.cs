@@ -93,17 +93,17 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(64)]
         public string Email { get; set; }
 
-        public virtual IEnumerable<Address> Addresses { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
 
-        public virtual IEnumerable<AnamnesisSheet> AnamnesisSheets { get; set; }
+        public virtual ICollection<AnamnesisSheet> AnamnesisSheets { get; set; }
 
-        public virtual IEnumerable<EvaluationSheet> EvaluationSheets { get; set; }
+        public virtual ICollection<EvaluationSheet> EvaluationSheets { get; set; }
 
-        public virtual IEnumerable<Payment> Payments { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
 
-        public virtual IEnumerable<TrainingSheet> TrainingSheets { get; set; }
+        public virtual ICollection<TrainingSheet> TrainingSheets { get; set; }
 
-        public virtual IEnumerable<AccessLog> AccessLogs { get; set; }
+        public virtual ICollection<AccessLog> AccessLogs { get; set; }
         
         public GateConfiguration GetGateConfig()
         {
