@@ -61,7 +61,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bem vindo. Tenha um bom treino.
+        ///   Looks up a localized string similar to Welcome. Have a nice training.
         /// </summary>
         public static string AllowedEntry {
             get {
@@ -70,7 +70,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Matricula irá expirar amanha.
+        ///   Looks up a localized string similar to Registration expires tomorrow.
         /// </summary>
         public static string AllowedEntryExpiresOneDay {
             get {
@@ -79,7 +79,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Matrícula incompleta..
+        ///   Looks up a localized string similar to Registration incomplete.
         /// </summary>
         public static string AllowedEntryIncomplete {
             get {
@@ -88,7 +88,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Matricula irá expirar em {0} dias.
+        ///   Looks up a localized string similar to Registration will be expired in {0} days.
         /// </summary>
         public static string AllowedEntryWillBeExpired {
             get {
@@ -97,7 +97,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Até o próximo   treino.
+        ///   Looks up a localized string similar to See you in the next training.
         /// </summary>
         public static string AllowedExit {
             get {
@@ -106,7 +106,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acesso bloqueado.
+        ///   Looks up a localized string similar to Your access was denied.
         /// </summary>
         public static string Denied {
             get {
