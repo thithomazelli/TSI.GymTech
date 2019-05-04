@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.Result;
 using TSI.GymTech.Repository;
 
 namespace TSI.GymTech.Manager.EntityManagers
 {
-    public sealed class AccessLogManager
+    public sealed class AddressManager
     {
-        private readonly Repository<AccessLog> repository;
+        private readonly Repository<Address> repository;
 
-        public AccessLogManager()
+        public AddressManager()
         {
-            repository = new Repository<AccessLog>();
+            repository = new Repository<Address>();
         }
 
         /// <summary>
-        /// Creates an AccessLog object
+        /// Creates an Address object
         /// </summary>
-        public ResultEnum Create(AccessLog accessLog)
+        public ResultEnum Create(Address address)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Add(accessLog);
+                repository.Add(address);
                 repository.Save();
             }
             catch (Exception ex)
@@ -38,31 +39,11 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Get a AccessLog list 
+        /// Gets an Address object by ID
         /// </summary>
-        public Result<IEnumerable<AccessLog>> FindAll()
+        public Result<Address> FindById(int? id)
         {
-            Result<IEnumerable<AccessLog>> result = new Result<IEnumerable<AccessLog>>();
-
-            try
-            {
-                result.Data = repository.GetAll().AsEnumerable<AccessLog>().OrderBy(_ => _.CreateDate).ToList();
-                result.Status = ResultEnum.Success;
-            }
-            catch (Exception ex)
-            {
-                result.Status = ResultEnum.Error;
-                //Pending: error to the log file
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Gets an AccessLog object by ID
-        /// </summary>
-        public Result<AccessLog> FindById(int? id)
-        {
-            Result<AccessLog> result = new Result<AccessLog>();
+            Result<Address> result = new Result<Address>();
 
             try
             {
@@ -78,15 +59,15 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Gets an AccessLog list by Person ID
+        /// Gets an Address list by PersonId
         /// </summary>
-        public Result<IEnumerable<AccessLog>> FindByPersonId(int? personId)
+        public Result<IEnumerable<Address>> FindByPersonId(int? personId)
         {
-            Result<IEnumerable<AccessLog>> result = new Result<IEnumerable<AccessLog>>();
+            Result<IEnumerable<Address>> result = new Result<IEnumerable<Address>>();
 
             try
             {
-                result.Data = repository.query(accessLog => accessLog.PersonId == personId).AsEnumerable<AccessLog>();
+                result.Data = repository.query(address => address.PersonId == personId).AsEnumerable<Address>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -96,16 +77,16 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
-        
+
         /// <summary>
-        /// Updates an AccessLog object
+        /// Updates a Address object
         /// </summary>
-        public ResultEnum Update(AccessLog accessLog)
+        public ResultEnum Update(Address address)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Update(accessLog);
+                repository.Update(address);
                 repository.Save();
             }
             catch (Exception ex)
@@ -117,14 +98,14 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Removes a AccessLog object
+        /// Removes a Address object
         /// </summary>
-        public ResultEnum Remove(AccessLog accessLog)
+        public ResultEnum Remove(Address address)
         {
             ResultEnum result = ResultEnum.Success;
             try
             {
-                repository.Remove(accessLog);
+                repository.Remove(address);
                 repository.Save();
             }
             catch (Exception ex)
@@ -134,5 +115,6 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
+
     }
 }
