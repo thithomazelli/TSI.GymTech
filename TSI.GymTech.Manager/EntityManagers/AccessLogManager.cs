@@ -46,7 +46,7 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<AccessLog>();
+                result.Data = repository.GetAll().AsEnumerable<AccessLog>().OrderBy(_ => _.CreateDate).ToList();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
@@ -80,13 +80,13 @@ namespace TSI.GymTech.Manager.EntityManagers
         /// <summary>
         /// Gets an AccessLog list by Person ID
         /// </summary>
-        public Result<IEnumerable<AccessLog>> FindByPersonId(string personId)
+        public Result<IEnumerable<AccessLog>> FindByPersonId(int? personId)
         {
             Result<IEnumerable<AccessLog>> result = new Result<IEnumerable<AccessLog>>();
 
             try
             {
-                result.Data = repository.query(accessLog => accessLog.PersonId.Equals(personId)).AsEnumerable<AccessLog>();
+                result.Data = repository.query(accessLog => accessLog.PersonId == personId).AsEnumerable<AccessLog>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
