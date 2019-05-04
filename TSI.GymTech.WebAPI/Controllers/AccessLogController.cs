@@ -99,8 +99,16 @@ namespace TSI.GymTech.WebAPI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             AccessLog accessLog = _accessLogManager.FindById(id).Data;
-            _accessLogManager.Remove(accessLog);
-            return RedirectToAction("Index");
+
+            try
+            {
+                _accessLogManager.Remove(accessLog);
+                return Json(new { Type = "Success", Message = "O log de acesso foi removido com sucesso." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Type = "Error", Message = "Não foi possível remover o log de acesso." });
+            }
         }
 
         //protected override void Dispose(bool disposing)

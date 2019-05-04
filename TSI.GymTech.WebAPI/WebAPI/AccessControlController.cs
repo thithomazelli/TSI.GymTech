@@ -18,7 +18,6 @@ namespace TSI.GymTech.WebAPI.WebAPI
             _accessControleManager = new AccessControlManager();
         }
 
-        [Route("WebApi/AccessControl/GetAll")]
         public IEnumerable<AccessControl> GetAllAccessControl ()
         {
             return _accessControleManager.FindAll().Data;

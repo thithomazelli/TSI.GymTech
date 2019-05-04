@@ -20,7 +20,6 @@ namespace TSI.GymTech.WebAPI.WebAPI
             _personManager = new PersonManager();
         }
 
-        [Route("WebApi/Person/GetById")]
         public Person GetPersonById(int id)
         {
             return _personManager.FindById(id).Data;
