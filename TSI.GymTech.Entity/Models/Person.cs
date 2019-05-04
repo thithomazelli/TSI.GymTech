@@ -93,7 +93,7 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(64)]
         public string Email { get; set; }
 
-        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual List<Address> Addresses { get; set; }
 
         public virtual ICollection<AnamnesisSheet> AnamnesisSheets { get; set; }
 
@@ -103,7 +103,7 @@ namespace TSI.GymTech.Entity.Models
 
         public virtual ICollection<TrainingSheet> TrainingSheets { get; set; }
 
-        public virtual ICollection<AccessLog> AccessLogs { get; set; }
+        public virtual List<AccessLog> AccessLogs { get; set; }
         
         public GateConfiguration GetGateConfig()
         {

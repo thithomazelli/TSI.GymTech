@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AllowedEntry" xml:space="preserve">
-    <value>Welcome. Have a nice training.</value>
+    <value>Bem vindo. Tenha um bom treino</value>
   </data>
   <data name="AllowedEntryExpiresOneDay" xml:space="preserve">
-    <value>Registration expires tomorrow.</value>
+    <value>Matricula irá expirar amanha</value>
   </data>
   <data name="AllowedEntryIncomplete" xml:space="preserve">
-    <value>Registration incomplete.</value>
+    <value>Matrícula incompleta.</value>
   </data>
   <data name="AllowedEntryWillBeExpired" xml:space="preserve">
-    <value>Registration will be expired in</value>
+    <value>Matricula irá expirar em {0} dias</value>
   </data>
   <data name="AllowedExit" xml:space="preserve">
-    <value>See you in the next training.</value>
+    <value>Até o próximo   treino</value>
   </data>
   <data name="Denied" xml:space="preserve">
-    <value>Your access was denied.</value>
+    <value>Acesso bloqueado</value>
   </data>
 </root>
