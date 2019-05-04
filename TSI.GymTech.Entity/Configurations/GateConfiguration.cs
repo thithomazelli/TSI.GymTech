@@ -27,42 +27,37 @@ namespace TSI.GymTech.Entity.Configurations
 
         public GateConfiguration GetGateConfiguration()
         {
+            if (_person.ProfileType != PersonType.Student)
+            {
+                if (_person.Status != PersonStatus.Active)
+                {
+                    GateMessage = string.Format(_resourceManager.GetString("Denied", _cultureInfo), _person.PersonId, _person.Name);
+                    GateStatus = GateStatusType.Denied;
+                }
+                else
+                {
+                    GateMessage = string.Format(_resourceManager.GetString("AllowedEntry", _cultureInfo), _person.PersonId, _person.Name);
+                    GateStatus = GateStatusType.AllowedEntry;
+                }
+                    return this;
+            }
+            
             if (_person.Status != PersonStatus.Active)
             {
-                GateMessage = _resourceManager.GetString("Denied", _cultureInfo);
+                GateMessage = string.Format(_resourceManager.GetString("Denied", _cultureInfo), _person.PersonId, _person.Name);
                 GateStatus = GateStatusType.Denied;
             }
             else
             {
-                var lastGateStatus = _person.AccessLogs != null && _person.AccessLogs.Count() > 0 ?
-                        _person.AccessLogs.LastOrDefault().AccessType : GateStatusType.AllowedBothSides;
+                GateStatus = GateStatusType.AllowedEntry;
 
-                switch (lastGateStatus)
-                {
-                    case GateStatusType.AllowedEntry:
-                        GateStatus = GateStatusType.AllowedExit;
-                        GateMessage = _resourceManager.GetString("AllowedExit", _cultureInfo);
-                        break;
-
-                    case GateStatusType.AllowedExit:
-                        GateStatus = GateStatusType.AllowedEntry;
-                        break;
-
-                    default:
-                        GateStatus = GateStatusType.AllowedEntry;
-                        break;
-                }
-            }
-            
-            if (GateStatus == GateStatusType.AllowedEntry)
-            {
                 if (_person.DueDate != null)
-                { 
+                {
                     TimeSpan timeSpanToExpired = Convert.ToDateTime(_person.DueDate) - Convert.ToDateTime(DateTime.Now.Date);
 
                     if (timeSpanToExpired.Days <= 0)
                     {
-                        GateMessage = _resourceManager.GetString("Denied", _cultureInfo);
+                        GateMessage = string.Format(_resourceManager.GetString("Denied", _cultureInfo), _person.PersonId, _person.Name);
                         GateStatus = GateStatusType.Denied;
                         _person.Status = PersonStatus.Blocked;
                     }
@@ -76,15 +71,15 @@ namespace TSI.GymTech.Entity.Configurations
                     }
                     else
                     {
-                        GateMessage = _resourceManager.GetString("AllowedEntry", _cultureInfo);
+                        GateMessage = string.Format(_resourceManager.GetString("AllowedEntry", _cultureInfo), _person.PersonId, _person.Name);
                     }
                 }
                 else
                 {
-                    GateMessage = _resourceManager.GetString("AllowedEntryIncomplete", _cultureInfo);
+                    GateMessage = string.Format(_resourceManager.GetString("AllowedEntryIncomplete", _cultureInfo), _person.PersonId, _person.Name);
                 }
             }
-
+            
             return this;
         }
     }
