@@ -743,7 +743,7 @@ namespace TSI.GymTech.OnOff
                         txtLogAdmin.Text += "Matrícula: " + person.PersonId + "\r\n";
                         txtLogAdmin.Text += "Mensagem: " + gateConfig.GateMessage.Replace("   ", " ") + "\r\n";
                         txtLogAdmin.Text += "Status: " + _resourceManager.GetString(gateConfig.GateStatus.ToString(), _cultureInfo) + "\r\n";
-                        txtLogAdmin.Text += "######################################################";
+                        txtLogAdmin.Text += "###################################################### \r\n";
                     });
 
                     PrepareLogInfo(viewL, person.PersonId, gateConfig.GateMessage.Replace("   ", " "));
