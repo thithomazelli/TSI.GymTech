@@ -21,6 +21,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Globalization;
 using System.Resources;
+using System.IO;
 
 namespace TSI.GymTech.OnOff
 {
@@ -367,16 +368,16 @@ namespace TSI.GymTech.OnOff
                 Person person = null;
                 GateConfiguration gateConfig = null;
                 bool personFound = false;
-                string accessType = string.Empty;
-
+                
                 if (rbOnline.Checked)
                 {
                     if (!IsConnected())
                     {
                         resposta.Acesso = SAcessoOnline.canNegado;
-                        resposta.Mensagem = "Não foi possível localizar a matrícula: " + registro.Matricula;
-                        txtMemo.Invoke(viewL, txtMemo, "Matrícula: " + registro.Matricula);
-                        txtMemo.Invoke(viewL, txtMemo, "Mensagem: " + resposta.Mensagem);
+                        resposta.Mensagem = "Por problemas de conexão com a internet, não foi possével localizar a matrícula: " + registro.Matricula;
+
+                        int.TryParse(registro.Matricula, out int matricula);
+                        PrepareLogInfo(viewL, matricula, resposta.Mensagem);
                     }
                     else if (!string.IsNullOrEmpty(registro.Matricula) && int.TryParse(registro.Matricula, out int matricula))
                     {
@@ -391,19 +392,16 @@ namespace TSI.GymTech.OnOff
                             switch (gateConfig.GateStatus)
                             {
                                 case GateStatusType.Denied:
-                                    accessType = "Negado";
                                     resposta.Acesso = SAcessoOnline.canNegado;
                                     resposta.Mensagem = gateConfig.GateMessage;
                                     CreateAccessLog(person, gateConfig);
-                                    txtMemo.Invoke(viewL, txtMemo, "Matrícula: " + person.PersonId);
-                                    txtMemo.Invoke(viewL, txtMemo, "Mensagem: " + resposta.Mensagem);
+                                    PrepareLogInfo(viewL, person.PersonId, resposta.Mensagem);
 
                                     var newGridViewRowBlocked = new string[]
                                     {
                                         person.Name,
                                         person.PersonId.ToString(),
-                                        //_resourceManager.GetString(gateConfig.GateStatus.ToString(), _cultureInfo),
-                                        accessType,
+                                        _resourceManager.GetString(gateConfig.GateStatus.ToString(), _cultureInfo),
                                         gateConfig.GateMessage
                                     };
 
@@ -415,19 +413,16 @@ namespace TSI.GymTech.OnOff
                                     break;
 
                                 case GateStatusType.AllowedEntry:
-                                    accessType = "Libera Entrada";
                                     resposta.Acesso = SAcessoOnline.canLibEntrada;
                                     resposta.Mensagem = gateConfig.GateMessage;
                                     break;
 
                                 case GateStatusType.AllowedExit:
-                                    accessType = "Libera Saída";
                                     resposta.Acesso = SAcessoOnline.canLibSaida;
-                                    resposta.Mensagem = gateConfig.GateMessage;
+                                    resposta.Mensagem = gateConfig.GateMessage?.Replace("   ", " ");
                                     break;
 
                                 case GateStatusType.AllowedBothSides:
-                                    accessType = "Libera Ambos Lados";
                                     resposta.Acesso = SAcessoOnline.canAmbosLados;
                                     resposta.Mensagem = gateConfig.GateMessage;
                                     break;
@@ -439,8 +434,9 @@ namespace TSI.GymTech.OnOff
                     {
                         resposta.Acesso = SAcessoOnline.canNegado;
                         resposta.Mensagem = "Não foi possível localizar a matrícula: " + registro.Matricula;
-                        txtMemo.Invoke(viewL, txtMemo, "Matrícula: " + registro.Matricula);
-                        txtMemo.Invoke(viewL, txtMemo, "Mensagem: " + resposta.Mensagem);
+
+                        int.TryParse(registro.Matricula, out int matricula);
+                        PrepareLogInfo(viewL, matricula, resposta.Mensagem);
                     }
                 }
                 else
@@ -493,15 +489,13 @@ namespace TSI.GymTech.OnOff
                         */
 
                     CreateAccessLog(person, gateConfig);
-                    txtMemo.Invoke(viewL, txtMemo, "Matrícula: " + person.PersonId);
-                    txtMemo.Invoke(viewL, txtMemo, "Mensagem: " + resposta.Mensagem);
+                    PrepareLogInfo(viewL, person.PersonId, resposta.Mensagem);
 
                     var newGridViewRow = new string[]
                     {
                         person.Name,
                         person.PersonId.ToString(),
-                        //_resourceManager.GetString(gateConfig.GateStatus.ToString(), _cultureInfo),
-                        accessType,
+                        _resourceManager.GetString(gateConfig.GateStatus.ToString(), _cultureInfo),
                         gateConfig.GateMessage
                     };
 
@@ -539,13 +533,14 @@ namespace TSI.GymTech.OnOff
                 {
                     if (!IsConnected())
                     {
-                        MessageBox.Show("Não exite conexão ativa com a internet.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Não existe conexão ativa com a internet.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         rbOffline.Checked = true;
                     }
                     else
                     {
                         cbxEquipments.Items.Clear();
                         GetAllAccessControl();
+                        cbxEquipments.SelectedIndex = 0;
                         EnableDisableFields(false);
                     }
                 }
@@ -564,7 +559,7 @@ namespace TSI.GymTech.OnOff
                 if (rbOffline.Checked)
                 {
                     cbxEquipments.Items.Clear();
-                    GetAllAccessControl();
+                    cbxEquipments.Text = string.Empty;
                     EnableDisableFields(true);
                 }
             }
@@ -654,7 +649,8 @@ namespace TSI.GymTech.OnOff
                 newAccessLog.PersonId = person.PersonId;
                 newAccessLog.AccessControlId = accessControlManager.FindAll().Data.FirstOrDefault().AccessControlId;
                 newAccessLog.AccessType = gateConfig.GateStatus;
-                newAccessLog.MessageDisplayed = gateConfig.GateMessage;
+                newAccessLog.MessageDisplayed = gateConfig.GateStatus != GateStatusType.Denied ?
+                    gateConfig.GateMessage : gateConfig.GateMessage?.Replace("   ", " ");
 
                 newAccessLog.CreateUserId = person.PersonId;
                 newAccessLog.CreateDate = DateTime.Now;
@@ -666,6 +662,47 @@ namespace TSI.GymTech.OnOff
             catch (Exception ex)
             {
                 //Pending: error to the log file
+            }
+        }
+
+        public static bool CreateLogInfo(string[] messages)
+        {
+            var filePath = @"C:\GymTech\logs";
+            var fileName = DateTime.Now.ToString("yyyy") + DateTime.Now.ToString("MM") + DateTime.Now.ToString("dd") + ".txt";
+            bool exists = Directory.Exists(filePath);
+            
+            try
+            {
+                if (!exists)
+                    Directory.CreateDirectory(filePath);
+
+                if (!File.Exists(filePath))
+                {
+                    using (StreamWriter sw = File.CreateText(filePath + @"\" + fileName))
+                    {
+                        foreach (var message in messages)
+                        {
+                            sw.WriteLine(message);
+                        }
+                    }
+                    return true;
+                }
+                else
+                {
+                    using (StreamWriter sw = File.AppendText(filePath + @"\" + fileName))
+                    {
+                        foreach (var message in messages)
+                        {
+                            sw.WriteLine(message);
+                        }
+                    }
+                    return true;
+                }
+
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
 
@@ -703,16 +740,33 @@ namespace TSI.GymTech.OnOff
 
                     txtLogAdmin.Invoke((MethodInvoker)delegate
                     {
-                        txtLogAdmin.Text = "Matrícula: " + person.PersonId;
-                        txtLogAdmin.Text = "Mensagem: " + gateConfig.GateMessage;
+                        txtLogAdmin.Text += "Matrícula: " + person.PersonId + "\r\n";
+                        txtLogAdmin.Text += "Mensagem: " + gateConfig.GateMessage.Replace("   ", " ") + "\r\n";
+                        txtLogAdmin.Text += "Status: " + _resourceManager.GetString(gateConfig.GateStatus.ToString(), _cultureInfo) + "\r\n";
+                        txtLogAdmin.Text += "######################################################";
                     });
 
+                    PrepareLogInfo(viewL, person.PersonId, gateConfig.GateMessage.Replace("   ", " "));
                 }
                 else
                 {
-                    MessageBox.Show("Não foi encontrado nenhum aluno com a Matrícula: " + matricula, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Não foi encontrado nenhum aluno com a matrícula: " + matricula, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+        }
+
+        private void PrepareLogInfo(ViewLine viewL, int matricula, string resposta)
+        {
+            txtMemo.Invoke(viewL, txtMemo, "Matrícula: " + matricula);
+            txtMemo.Invoke(viewL, txtMemo, "Mensagem: " + resposta);
+            
+            var logInfo = new string[]
+            {
+                DateTime.Now.ToString() + " - Matrícula: " + matricula,
+                DateTime.Now.ToString() + " - Mensagem: " + resposta
+            };
+
+            CreateLogInfo(logInfo);
         }
 
         //private void btnQuantidade_Click(object sender, EventArgs e)
