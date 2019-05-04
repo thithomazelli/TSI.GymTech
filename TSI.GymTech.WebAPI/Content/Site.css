@@ -197,3 +197,7 @@ body {
 .btn-dataTable-fixMargin {
     margin-left: -5px;
 }
+
+.hr-fixMargin {
+    margin-top: 2.5rem;
+}

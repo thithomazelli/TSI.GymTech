@@ -124,15 +124,12 @@ namespace TSI.GymTech.WebAPI.Controllers
             try
             {
                 _addressManager.Remove(address);
-                return Json(new { Type = "Success", Message = "O endereco foi removido com sucesso." });
+                return Json(new { Type = "Success", Message = "O endereço foi removido com sucesso." });
             }
             catch (Exception ex)
             {
-                return Json(new { Type = "Error", Message = "Não foi possível remover o endereco." });
+                return Json(new { Type = "Error", Message = "Não foi possível remover o endereço." });
             }
-
-            //_addressManager.Remove(address);
-            //return RedirectToAction("Edit/" + address.PersonId, "Student");
         }
     }
 }

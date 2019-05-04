@@ -91,12 +91,16 @@ namespace TSI.GymTech.WebAPI.Controllers
                 person.ModifyUserId = 0;
                 person.ModifyDate = DateTime.Now;
                 _personManager.Update(person);
-                //return RedirectToAction("Index");
             }
             
-            AddressManager addressManager = new AddressManager();
-            person.Addresses = addressManager.FindByPersonId(person.PersonId).Data.ToList<Address>();
-            return View(person);
+            //AddressManager addressManager = new AddressManager();
+            //person.Addresses = addressManager.FindByPersonId(person.PersonId).Data.ToList<Address>();
+
+            //AccessLogManager accessLogManager = new AccessLogManager();
+            //person.AccessLogs = accessLogManager.FindByPersonId(person.PersonId).Data.ToList<AccessLog>();
+
+            //return View(person);
+            return RedirectToAction("Edit", person.PersonId);
         }
 
         // GET: Student/Delete/5
