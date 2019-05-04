@@ -1,10 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -14,11 +9,8 @@ using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Manager.EntityManagers;
 
 using System.Linq;
-using Newtonsoft.Json;
-using System.Net.Http.Headers;
 using TSI.GymTech.Entity.Configurations;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
 using System.Globalization;
 using System.Resources;
 using System.IO;
@@ -676,7 +668,7 @@ namespace TSI.GymTech.OnOff
                 if (!exists)
                     Directory.CreateDirectory(filePath);
 
-                if (!File.Exists(filePath))
+                if (!File.Exists(filePath + @"\" + fileName))
                 {
                     using (StreamWriter sw = File.CreateText(filePath + @"\" + fileName))
                     {
@@ -767,6 +759,12 @@ namespace TSI.GymTech.OnOff
             };
 
             CreateLogInfo(logInfo);
+        }
+
+        private void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            rbOnline.Checked = false;
+            rbOnline.Checked = true;
         }
 
         //private void btnQuantidade_Click(object sender, EventArgs e)

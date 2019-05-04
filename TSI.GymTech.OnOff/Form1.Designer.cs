@@ -61,6 +61,7 @@ namespace TSI.GymTech.OnOff
             this.btnProcurar = new System.Windows.Forms.Button();
             this.lblMatricula = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnReiniciar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -164,11 +165,12 @@ namespace TSI.GymTech.OnOff
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnReiniciar);
             this.groupBox2.Controls.Add(this.rbOffline);
             this.groupBox2.Controls.Add(this.rbOnline);
             this.groupBox2.Location = new System.Drawing.Point(10, 10);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(159, 64);
+            this.groupBox2.Size = new System.Drawing.Size(230, 64);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipo de Gerencimanto";
@@ -411,6 +413,16 @@ namespace TSI.GymTech.OnOff
             this.lblTitle.TabIndex = 14;
             this.lblTitle.Text = "GymTech - Controle de Acessos";
             // 
+            // btnReiniciar
+            // 
+            this.btnReiniciar.Location = new System.Drawing.Point(147, 10);
+            this.btnReiniciar.Name = "btnReiniciar";
+            this.btnReiniciar.Size = new System.Drawing.Size(75, 48);
+            this.btnReiniciar.TabIndex = 13;
+            this.btnReiniciar.Text = "Reiniciar";
+            this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -479,6 +491,7 @@ namespace TSI.GymTech.OnOff
         private System.Windows.Forms.TextBox txtMatricula;
         private System.Windows.Forms.Button btnProcurar;
         private System.Windows.Forms.Label lblMatricula;
+        private System.Windows.Forms.Button btnReiniciar;
     }
 }
 
