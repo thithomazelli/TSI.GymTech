@@ -12,7 +12,7 @@ namespace TSI.GymTech.Entity.Configurations
 {
     public class GateConfiguration
     {
-        private CultureInfo _cultureInfo = new CultureInfo("pt-BR");
+        private CultureInfo _cultureInfo = new CultureInfo("pt");
         private ResourceManager _resourceManager = new ResourceManager(typeof(App_LocalResources.GateStatusMessage));
         private Person _person;
         
@@ -41,10 +41,10 @@ namespace TSI.GymTech.Entity.Configurations
                 {
                     case GateStatusType.AllowedEntry:
                         GateStatus = GateStatusType.AllowedExit;
+                        GateMessage = _resourceManager.GetString("AllowedExit", _cultureInfo);
                         break;
 
                     case GateStatusType.AllowedExit:
-                        GateMessage = Enum.GetName(typeof(GateStatusMessage), GateStatusMessage.AllowedExit);
                         GateStatus = GateStatusType.AllowedEntry;
                         break;
 
