@@ -39,11 +39,9 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: Address/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AddressId,AddressType,PostalCode,Street,Number,Comments,District,State,City,Country,CreateDate,CreateUserId,ModifyDate,ModifyUserId,PersonId")] Address address)
+        public ActionResult Create(Address address)
         {
             if (ModelState.IsValid)
             {
@@ -79,8 +77,6 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: Address/Edit
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AddressId,AddressType,PostalCode,Street,Number,Comments,District,State,City,Country,CreateDate,CreateUserId,ModifyDate,ModifyUserId,PersonId")] Address address)

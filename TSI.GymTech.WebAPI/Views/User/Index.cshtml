@@ -67,7 +67,7 @@
                 {
                     <tr id="@item.PersonId">
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.ActionLink(item.Name, "Edit", "User", new { id = item.PersonId }, null)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.PersonId)

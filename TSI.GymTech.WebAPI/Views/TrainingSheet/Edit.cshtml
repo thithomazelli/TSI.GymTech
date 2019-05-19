@@ -5,86 +5,234 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!-- Page Heading -->
 <head>
-    <title>GymTech - Ficha de Treino</title>
+    <title>GymTech - @Model.Name</title>
 </head>
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "TrainingSheet", FormMethod.Post, new { id = "frmTrainingSheet", name = "frmTrainingSheet" }))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>TrainingSheet</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.TrainingSheetId)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cycle, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cycle, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Cycle, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "validation-message text-danger" })
+        @Html.HiddenFor(model => model.TrainingSheetId)
+        @Html.HiddenFor(model => model.StudentId)
+
+        <div class="edit-container">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-md-8">
+                @*Model Properties*@
+                <section id="trainingSheet">
+                    <div class="profile-content">
+                        <h5>Modelo de Treino</h5>
+                        <hr />
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validation-message text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Cycle, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Cycle, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Cycle, "", new { @class = "validation-message text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                    </div>
+                                    @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                    </div>
+                                    @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "validation-message text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                    </div>
+                                    @Html.EnumDropDownListFor(model => model.Model, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "validation-message text-danger" })
+                            </div>
+                        </div>
+
+                        <div id="personalContent" class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Student, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Student.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    <span class="input-group-append">
+                                        <button class="input-group-text btn btn-primary btn-dataTable-fixMargin select-student-trainingsheet" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Student, "", new { @class = "validation-message text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Revaluation, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Revaluation, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Revaluation, "", new { @class = "validation-message text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message text-danger" })
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-6 mt-2">
+                                @Html.ActionLink("Voltar para Lista de Modelo de Treinos", "Index")
+                            </div>
+                            <div class="col-6 text-right">
+                                <input id="btnSaveTrainingSheet" type="submit" value="Salvar" onclick="return false;" class="btn btn-success align-content-end" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                @*Exercise List*@
+                <section id="ExerciseList">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="col-12 text-right">
+                                <h5 style="float:left">Exercícios</h5>
+                                <button data-id="@Model.TrainingSheetId" type="submit" class="btn btn-success create-trainingsheet-exercise" >
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span>Novo Exercício</span>
+                                </button>
+                            </div>
+                            <hr />
+                            <table class="stripe row-border" id="tblTrainingSheetExercises" style="width:100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.LabelFor(model => model.TrainingSheetExercises.FirstOrDefault().Exercise.Name, htmlAttributes: new { @class = "control-label col-md-12" })
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.TrainingSheetExercises.FirstOrDefault().Charge, htmlAttributes: new { @class = "control-label col-md-12" })
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.TrainingSheetExercises.FirstOrDefault().Serie, htmlAttributes: new { @class = "control-label col-md-12" })
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.TrainingSheetExercises.FirstOrDefault().NumberOfRepetitions, htmlAttributes: new { @class = "control-label col-md-12" })
+                                        </th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.TrainingSheetExercises)
+                                    {
+                                        <tr id="@item.TrainingSheetExerciseId">
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Exercise.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Charge)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Serie)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NumberOfRepetitions)
+                                            </td>
+                                            <td>
+                                                <a href="#" onClick="EditTrainingsheetExercise(this);" data-id="@item.TrainingSheetExerciseId" >
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#" onClick="DeleteTrainingSheetExercise('@item.TrainingSheetExerciseId', 'tblTrainingSheetExercises', 'TrainingSheet');">
+                                                    <i style="color: red;" class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Revaluation, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Revaluation, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Revaluation, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Student.Name, "Student", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("StudentId", (SelectList)ViewBag.Students, "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Trainer.Name, "Trainer", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("TrainerId", (SelectList)ViewBag.Trainers, "", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.StudentId, " ", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
-    </div>
-</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+@*Modal popup*@
+<div class="modal" id="modal">
+    @Html.Hidden("modalIsLoad", false)
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            // Enabled filters and buttons to datatable
+            LoadDataTableButtonsAndFilter(tblTrainingSheetExercises);
+        });
+    </script>
+}
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/TrainingSheetUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/TrainingSheetExerciseUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>

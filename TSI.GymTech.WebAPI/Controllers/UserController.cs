@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Web;
-using System.Web.Hosting;
 using System.Web.Mvc;
 using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Entity.Models;
@@ -21,6 +13,7 @@ namespace TSI.GymTech.WebAPI.Controllers
     {
         private readonly PersonManager _personManager;
         private PhotoManager _photoManager;
+        private ValidationErrorManager _validationErrorManager;
 
         public UserController()
         {
@@ -45,19 +38,25 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: Student/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email")] Person person)
+        public ActionResult Create(Person person)
         {
+            ValidateDuplicated(person);
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                person.CreateUserId = 0;
+                person.CreateDate = DateTime.Now;
+                person.ModifyUserId = 0;
+                person.ModifyDate = DateTime.Now;
                 _personManager.Create(person);
-                return RedirectToAction("Edit/" + person.PersonId);
+
+                return Json(new { Success = true, Message = "Aluno foi atualizado com sucesso.", Id = person.PersonId });
             }
 
-            return View(person);
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Student/Edit/5
@@ -77,30 +76,23 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: Student/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email")] Person person)
+        public ActionResult Edit(Person person)
         {
+            ValidateDuplicated(person);
             if (ModelState.IsValid)
             {
                 //Change to current user id later
-                person.CreateUserId = 0;
-                person.CreateDate = DateTime.Now;
                 person.ModifyUserId = 0;
                 person.ModifyDate = DateTime.Now;
                 _personManager.Update(person);
+
+                return Json(new { Success = true, Message = "Aluno foi atualizado com sucesso." });
             }
-            
-            //AddressManager addressManager = new AddressManager();
-            //person.Addresses = addressManager.FindByPersonId(person.PersonId).Data.ToList<Address>();
 
-            //AccessLogManager accessLogManager = new AccessLogManager();
-            //person.AccessLogs = accessLogManager.FindByPersonId(person.PersonId).Data.ToList<AccessLog>();
-
-            //return View(person);
-            return RedirectToAction("Edit", person.PersonId);
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Student/Delete/5
@@ -188,6 +180,33 @@ namespace TSI.GymTech.WebAPI.Controllers
             else
             {
                 return Json(new { Type = "Error", Message = "Não foi possível remover a imagem do Usuário." });
+            }
+        }
+        
+        private void ValidateDuplicated(Person person)
+        {
+            // Validate if Name is duplicated
+            if (_personManager.IsNameDuplicated(person))
+            {
+                ModelState.AddModelError("Name", "Já existe um aluno ou usuário cadastrado com Nome informado.");
+            }
+
+            // Validate if Email is duplicated
+            if (_personManager.IsEmailDuplicated(person))
+            {
+                ModelState.AddModelError("Email", "Já existe um aluno ou usuário cadastrado com E-mail informado.");
+            }
+
+            // Validate if SocialSecurityCard is duplicated
+            if (_personManager.IsSocialSecurityCardDuplicated(person))
+            {
+                ModelState.AddModelError("SocialSecurityCard", "Já existe um aluno ou usuário cadastrado com o CPF informado.");
+            }
+
+            // Validate if NationalIDCard is duplicated
+            if (_personManager.IsNationalIDCardDuplicated(person))
+            {
+                ModelState.AddModelError("NationalIDCard", "Já existe um aluno ou usuário cadastrado com o RG informado.");
             }
         }
     }

@@ -10,15 +10,15 @@
     <title>GymTech - Novo Aluno</title>
 </head>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Student", FormMethod.Post, new { id = "frmStudent", name = "frmStudent" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "validation-message text-danger" })
 
         <div class="edit-container">
-            @*Fields and Grid views*@
+            @*Model Properties*@
             <div class="col-lg-9 col-md-9 col-sm-12 col-md-8">
                 <div class="profile-content">
                     <h5>Novo Aluno</h5>
@@ -176,7 +176,7 @@
                             @Html.ActionLink("Voltar para Lista de Alunos", "Index")
                         </div>
                         <div class="col-6 text-right">
-                            <input id="btnSaveStudent" type="submit" value="Salvar" class="btn btn-success align-content-end" />
+                            <input id="btnSaveStudent" type="submit" value="Salvar" onclick="return false;" class="btn btn-success align-content-end" />
                         </div>
                     </div>
 
@@ -185,3 +185,11 @@
         </div>
     </div>
 }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/StudentUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>

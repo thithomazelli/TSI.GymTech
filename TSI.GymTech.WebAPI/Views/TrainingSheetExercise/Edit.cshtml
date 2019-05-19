@@ -1,0 +1,78 @@
+﻿@model TSI.GymTech.Entity.Models.TrainingSheetExercise
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm())
+        {
+            <div class="modal-header">
+                <h4 class="modal-title">Editar Exercício</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            </div>
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.TrainingSheetId)
+            @Html.HiddenFor(model => model.TrainingSheetExerciseId)
+
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExerciseId, "Exercício", htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.DropDownList("ExerciseId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ExerciseId, "", new { @class = "validation-message text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Charge, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.Charge, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Charge, "", new { @class = "validation-message text-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Serie, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.Serie, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Serie, "", new { @class = "validation-message text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumberOfRepetitions, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="input-group col-md-12">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                        </div>
+                        @Html.EditorFor(model => model.NumberOfRepetitions, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.NumberOfRepetitions, "", new { @class = "validation-message text-danger" })
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <input type="button" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
+            </div>
+        }
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

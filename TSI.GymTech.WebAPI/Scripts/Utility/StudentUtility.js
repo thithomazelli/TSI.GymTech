@@ -1,12 +1,42 @@
 ﻿// Showing toastr success alert
 $("#btnSaveStudent").click(function () {
-    toastr.success("Aluno salvo com sucesso.");
+    var formData = $("#frmStudent").serialize();
+
+    event.preventDefault();      
+    $('#btnSaveStudent').attr('disabled', 'disabled');
+    var url = $("#frmStudent").attr("action");
+                            
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        dataType: "json",
+        success: function (data) {
+            if (data.Success) {
+                if (data.Id) {
+                    window.location.href = url.replace('/Create', '') + '/Edit/' + data.Id;
+                }
+                toastr.success(data.Message);
+            }
+            else {
+                DisplayValidationErrors(data.Errors)
+            }
+        },
+        error: function () {
+            toastr.error('Não foi possível atualizar o cadastro.');
+        },
+        complete: function () {
+            $('#btnSaveStudent').removeAttr('disabled');
+        }
+    })
+
+    return false;
 });
 
 // Delete User and showing toastr remove alert
 function DeleteStudent(personId, personName, tableName) {
     var token = $('input[name=__RequestVerificationToken]').val();
-    var tokenadr = $('form[action="/User"] input[name=__RequestVerificationToken]').val();
+    var tokenadr = $('form[action="/Student"] input[name=__RequestVerificationToken]').val();
     var headers = {};
     var headersadr = {};
     headers['__RequestVerificationToken'] = token;
@@ -171,3 +201,21 @@ $(function () {
         }
     });
 });
+
+// Create new Copy of Training Sheet
+$(function () {
+    $("#copy-trainingsheet").click(function (ev) {
+        if ($("#modalIsLoad").val() == 'False') {
+            var id = $(this).attr("data-id");
+            $("#modal").load("/TrainingSheet/Select?personId=" + id);
+            $("#modalIsLoad").val('True');
+        }
+        $("#modal").modal({
+            cache: false,
+            backdrop: 'static',
+            keyboard: false
+        }, "show");
+        ev.preventDefault();
+        return false;
+    });
+})
