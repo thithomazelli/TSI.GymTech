@@ -6,6 +6,7 @@ using TSI.GymTech.Entity.Enumerates;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using TSI.GymTech.Entity.Configurations;
+using System.Web.Script.Serialization;
 
 namespace TSI.GymTech.Entity.Models
 {
@@ -18,8 +19,8 @@ namespace TSI.GymTech.Entity.Models
         [Display(Name = "PersonId", ResourceType = typeof(App_LocalResources.Person))]
         public int PersonId { get; set; }
 
-        [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
         //[RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessageResourceName = "NameValidate", ErrorMessageResourceType = typeof(App_LocalResources.Person))]
+        [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.Person), AllowEmptyStrings = false)]
         [Display(Name = "Name", ResourceType = typeof(App_LocalResources.Person))]
         [StringLength(128)]
         public string Name { get; set; }
@@ -93,18 +94,18 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(64)]
         public string Email { get; set; }
 
-        public virtual List<Address> Addresses { get; set; }
+        public virtual ICollection<AccessLog> AccessLogs { get; set; }
+        
+        public virtual ICollection<Address> Addresses { get; set; }
 
         public virtual ICollection<AnamnesisSheet> AnamnesisSheets { get; set; }
 
         public virtual ICollection<EvaluationSheet> EvaluationSheets { get; set; }
 
-        public virtual ICollection<Payment> Payments { get; set; }
-
         public virtual ICollection<TrainingSheet> TrainingSheets { get; set; }
 
-        public virtual List<AccessLog> AccessLogs { get; set; }
-        
+        public virtual ICollection<Payment> Payments { get; set; }
+
         public GateConfiguration GetGateConfig()
         {
             return new GateConfiguration(this).GetGateConfiguration();

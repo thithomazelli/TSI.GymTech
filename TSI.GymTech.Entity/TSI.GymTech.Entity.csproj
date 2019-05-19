@@ -68,6 +68,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -356,6 +357,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TrainingSheetExercise.pt.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\TrainingSheetModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingSheetModel.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\TrainingSheetModel.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingSheetModel.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\TrainingSheetStatus.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -389,6 +400,7 @@
     <Compile Include="Enumerates\ProductStatus.cs" />
     <Compile Include="Enumerates\ProductType.cs" />
     <Compile Include="Enumerates\SheetQuestionType.cs" />
+    <Compile Include="Enumerates\TrainingSheetModel.cs" />
     <Compile Include="Enumerates\TrainingSheetStatus.cs" />
     <Compile Include="Enumerates\TrainingSheetType.cs" />
     <Compile Include="Models\AccessControl.cs" />
@@ -408,6 +420,7 @@
     <Compile Include="Models\SheetQuestion.cs" />
     <Compile Include="Models\TrainingSheet.cs" />
     <Compile Include="Models\TrainingSheetExercise.cs" />
+    <Compile Include="Models\ValidationError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -638,6 +651,14 @@
     <EmbeddedResource Include="App_LocalResources\TrainingSheetExercise.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TrainingSheetExercise.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\TrainingSheetModel.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TrainingSheetModel.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\TrainingSheetModel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TrainingSheetModel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\TrainingSheetStatus.pt.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

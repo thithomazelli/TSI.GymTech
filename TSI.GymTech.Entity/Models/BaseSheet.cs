@@ -3,11 +3,27 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using TSI.GymTech.Entity.Enumerates;
 
 namespace TSI.GymTech.Entity.Models
 {
     public class BaseSheet : BaseModel
     {
+        [Display(Name = "Name", ResourceType = typeof(App_LocalResources.BaseSheet))]
+        [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.BaseSheet), AllowEmptyStrings = false)]
+        public string Name { get; set; }
+
+        [Display(Name = "Description", ResourceType = typeof(App_LocalResources.BaseSheet))]
+        [Required(ErrorMessageResourceName = "DescriptionRequired", ErrorMessageResourceType = typeof(App_LocalResources.BaseSheet), AllowEmptyStrings = false)]
+        public string Description { get; set; }
+
+        [Display(Name = "Cycle", ResourceType = typeof(App_LocalResources.BaseSheet))]
+        [StringLength(64)]
+        public string Cycle { get; set; }
+
+        [Display(Name = "Status", ResourceType = typeof(App_LocalResources.BaseSheet))]
+        public TrainingSheetStatus? Status { get; set; }
+
         [Display(Name = "Revaluation", ResourceType = typeof(App_LocalResources.BaseSheet))]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d}")]
@@ -17,17 +33,5 @@ namespace TSI.GymTech.Entity.Models
         [DataType(DataType.MultilineText)]
         [StringLength(1024)]
         public string Comments { get; set; }
-
-        [ForeignKey("Student")]
-        [Required(ErrorMessageResourceName = "StudentRequired", ErrorMessageResourceType = typeof(App_LocalResources.BaseSheet), AllowEmptyStrings = false)]
-        [Display(Name = "StudentId", ResourceType = typeof(App_LocalResources.BaseSheet))]
-        public int StudentId { get; set; }
-        public virtual Person Student { get; set; }
-
-        [ForeignKey("Trainer")]
-        [Required(ErrorMessageResourceName = "TrainerRequired", ErrorMessageResourceType = typeof(App_LocalResources.BaseSheet), AllowEmptyStrings = false)]
-        [Display(Name = "TrainerId", ResourceType = typeof(App_LocalResources.BaseSheet))]
-        public int TrainerId { get; set; }
-        public virtual Person Trainer { get; set; }
     }
 }

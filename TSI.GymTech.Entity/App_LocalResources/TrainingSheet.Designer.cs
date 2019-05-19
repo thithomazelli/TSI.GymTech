@@ -61,20 +61,65 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cycle.
+        ///   Looks up a localized string similar to Model.
         /// </summary>
-        public static string Cycle {
+        public static string Model {
             get {
-                return ResourceManager.GetString("Cycle", resourceCulture);
+                return ResourceManager.GetString("Model", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status.
+        ///   Looks up a localized string similar to Model is required..
         /// </summary>
-        public static string Status {
+        public static string ModelRequired {
             get {
-                return ResourceManager.GetString("Status", resourceCulture);
+                return ResourceManager.GetString("ModelRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        public static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student ID.
+        /// </summary>
+        public static string StudentId {
+            get {
+                return ResourceManager.GetString("StudentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student is required..
+        /// </summary>
+        public static string StudentRequired {
+            get {
+                return ResourceManager.GetString("StudentRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trainer ID.
+        /// </summary>
+        public static string TrainerId {
+            get {
+                return ResourceManager.GetString("TrainerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trainer is required..
+        /// </summary>
+        public static string TrainerRequired {
+            get {
+                return ResourceManager.GetString("TrainerRequired", resourceCulture);
             }
         }
         
