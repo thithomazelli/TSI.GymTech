@@ -23,8 +23,8 @@
 
 <!-- Begin Page Content -->
 <div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h3 mb-2 text-gray-800">Alunos</h1>
-    <a href=@Url.Action("Create", "Student") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
+    <h1 class="h4 mb-2 text-gray-800">Alunos</h1>
+    <a href=@Url.Action("Create", "Student") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-user-plus text-white-30"></i>
         <span class="btn-label">Novo Aluno</span>
     </a>
@@ -50,9 +50,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Status)
                     </th>
-                    <th>
+                    @*<th>
                         @Html.DisplayNameFor(model => model.MobilePhone)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.Email)
                     </th>
@@ -63,36 +63,36 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr id="@item.PersonId">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PersonId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SocialSecurityCard)
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.PersonStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PersonStatus), item.Status)).GetValue(null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MobilePhone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Edit", "Student", new { id = item.PersonId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" onClick="DeleteStudent('@item.PersonId', '@item.Name', 'tblStudents');">
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
+                <tr id="@item.PersonId">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SocialSecurityCard)
+                    </td>
+                    <td>
+                        @typeof(TSI.GymTech.Entity.App_LocalResources.PersonStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PersonStatus), item.Status)).GetValue(null)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.MobilePhone)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a href=@Url.Action("Edit", "Student", new { id = item.PersonId })>
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" onClick="DeleteStudent('@item.PersonId', '@item.Name', 'tblStudents');">
+                            <i style="color: red;" class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

@@ -27,13 +27,17 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View(_personManager.FindByProfileType(PersonType.Student, true).Data);
+            return View(_personManager.FindByProfileType(PersonType.Student, false, true).Data);
         }
         
         // GET: Student/Create
         public ActionResult Create()
         {
-            var model = new Person { ProfileType = PersonType.Student }; 
+            var model = new Person
+            {
+                ProfileType = PersonType.Student,
+                Status = PersonStatus.Active
+            }; 
             return View(model);
         }
 
@@ -72,6 +76,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Person person = _personManager.FindById(id).Data;
+
             if (person == null)
             {
                 return HttpNotFound();
@@ -84,8 +89,10 @@ namespace TSI.GymTech.WebAPI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Person person)
+        //public ActionResult Edit([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Person person)
+        public ActionResult Edit([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email")] Person person)
         {
+
             if (ModelState.IsValid)
             {
                 if (person != null)
@@ -94,10 +101,17 @@ namespace TSI.GymTech.WebAPI.Controllers
                     person.ModifyUserId = 0;
                     person.ModifyDate = DateTime.Now;
                     _personManager.Update(person);
-                }                
-                return RedirectToAction("Index");
+                }
             }
-            return View(person);
+
+            //AddressManager addressManager = new AddressManager();
+            //person.Addresses = addressManager.FindByPersonId(person.PersonId).Data.ToList<Address>();
+
+            //AccessLogManager accessLogManager = new AccessLogManager();
+            //person.AccessLogs = accessLogManager.FindByPersonId(person.PersonId).Data.ToList<AccessLog>();
+
+            //return View(person);
+            return RedirectToAction("Edit", person.PersonId);
         }
 
         // GET: Student/Delete/5

@@ -21,8 +21,8 @@
 
 <!-- Begin Page Content -->
 <div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h3 mb-2 text-gray-800">Produtos</h1>
-    <a href=@Url.Action("Create", "Product") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
+    <h1 class="h4 mb-2 text-gray-800">Produtos</h1>
+    <a href=@Url.Action("Create", "Product") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fab fa-product-hunt text-white-35"></i>
         <span class="btn-label">Novo Produto</span>
     </a>
@@ -36,9 +36,6 @@
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Type)
@@ -55,9 +52,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Duplication)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Comments)
-                    </th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -70,22 +64,15 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @{
-                                if (item.Type != null)
-                                {
-                                    typeof(TSI.GymTech.Entity.App_LocalResources.ProductType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.ProductType), item.Type)).GetValue(null);
-                                }
+                            @if (item.Type != null)
+                            {
+                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.ProductType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.ProductType), item.Type)).GetValue(null)</span>
                             }
                         </td>
                         <td>
-                            @{
-                                if (item.Status != null)
-                                {
-                                    typeof(TSI.GymTech.Entity.App_LocalResources.ProductStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.ProductStatus), item.Status)).GetValue(null);
-                                }
+                            @if (item.Status != null)
+                            {
+                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.ProductStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.ProductStatus), item.Status)).GetValue(null)</span>
                             }
                         </td>
                         <td>
@@ -96,9 +83,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Duplication)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Comments)
                         </td>
                         <td>
                             <a href=@Url.Action("Edit", "Product", new { id = item.ProductId })>

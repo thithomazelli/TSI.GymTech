@@ -166,6 +166,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Exercise.pt.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\GateStatusMessage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GateStatusMessage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\GateStatusMessage.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GateStatusMessage.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\GateStatusType.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -366,7 +376,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TrainingSheetType.pt.resx</DependentUpon>
     </Compile>
+    <Compile Include="Configurations\GateConfiguration.cs" />
     <Compile Include="Enumerates\AddressType.cs" />
+    <Compile Include="Enumerates\GateStatusMessage.cs" />
     <Compile Include="Enumerates\GateStatusType.cs" />
     <Compile Include="Enumerates\GenderType.cs" />
     <Compile Include="Enumerates\MuscularGroup.cs" />
@@ -474,6 +486,14 @@
     <EmbeddedResource Include="App_LocalResources\Exercise.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Exercise.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\GateStatusMessage.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GateStatusMessage.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\GateStatusMessage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GateStatusMessage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\GateStatusType.pt.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -136,6 +136,7 @@ body {
     background-color: #f6f9fb;
     border-left: 2px solid #5b9bd1;
     margin-left: -2px;
+    font-weight: bold;
 }
 
 /* Profile Content */
@@ -191,4 +192,12 @@ body {
 .validation-message {
     padding-right: 0.75rem;
     padding-left: 0.75rem;
+}
+
+.btn-dataTable-fixMargin {
+    margin-left: -5px;
+}
+
+.hr-fixMargin {
+    margin-top: 2.5rem;
 }

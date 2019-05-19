@@ -4,6 +4,8 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using TSI.GymTech.Entity.Enumerates;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using TSI.GymTech.Entity.Configurations;
 
 namespace TSI.GymTech.Entity.Models
 {
@@ -91,14 +93,21 @@ namespace TSI.GymTech.Entity.Models
         [StringLength(64)]
         public string Email { get; set; }
 
-        public virtual IEnumerable<Address> Addresses { get; set; }
+        public virtual List<Address> Addresses { get; set; }
 
-        public virtual IEnumerable<AnamnesisSheet> AnamnesisSheets { get; set; }
+        public virtual ICollection<AnamnesisSheet> AnamnesisSheets { get; set; }
 
-        public virtual IEnumerable<EvaluationSheet> EvaluationSheets { get; set; }
+        public virtual ICollection<EvaluationSheet> EvaluationSheets { get; set; }
 
-        public virtual IEnumerable<Payment> Payments { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
 
-        public virtual IEnumerable<TrainingSheet> TrainingSheets { get; set; }
+        public virtual ICollection<TrainingSheet> TrainingSheets { get; set; }
+
+        public virtual List<AccessLog> AccessLogs { get; set; }
+        
+        public GateConfiguration GetGateConfig()
+        {
+            return new GateConfiguration(this).GetGateConfiguration();
+        }
     }
 }    

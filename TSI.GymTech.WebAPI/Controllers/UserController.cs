@@ -30,13 +30,18 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Student
         public ActionResult Index()
         {
+
             return View(_personManager.FindByProfileType(PersonType.Student, false, false).Data);
         }
 
         // GET: Student/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new Person
+            {
+                Status = PersonStatus.Active
+            };
+            return View(model);
         }
 
         // POST: Student/Create
@@ -44,7 +49,7 @@ namespace TSI.GymTech.WebAPI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Person person)
+        public ActionResult Create([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +68,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Person person = _personManager.FindById(id).Data;
+
             if (person == null)
             {
                 return HttpNotFound();
@@ -75,14 +81,26 @@ namespace TSI.GymTech.WebAPI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Person person)
+        public ActionResult Edit([Bind(Include = "PersonId,Name,ProfileType,Password,Gender,NationalIDCard,SocialSecurityCard,BirthDate,RegistrationDate,DueDate,Status,Photo,Comments,Phone,MobilePhone,Email")] Person person)
         {
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                person.CreateUserId = 0;
+                person.CreateDate = DateTime.Now;
+                person.ModifyUserId = 0;
+                person.ModifyDate = DateTime.Now;
                 _personManager.Update(person);
-                //return RedirectToAction("Index");
             }
-            return View(person);
+            
+            //AddressManager addressManager = new AddressManager();
+            //person.Addresses = addressManager.FindByPersonId(person.PersonId).Data.ToList<Address>();
+
+            //AccessLogManager accessLogManager = new AccessLogManager();
+            //person.AccessLogs = accessLogManager.FindByPersonId(person.PersonId).Data.ToList<AccessLog>();
+
+            //return View(person);
+            return RedirectToAction("Edit", person.PersonId);
         }
 
         // GET: Student/Delete/5

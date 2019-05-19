@@ -52,12 +52,19 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.Kernel7x">
-      <HintPath>..\..\..\Users\rogza\Desktop\Rogerio\Projects\Academia\OnOff_CSharp\bin\Debug\Interop.Kernel7x.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="Interop.Kernel7x, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>Packages\Interop.Kernel7x.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -90,6 +97,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -119,11 +127,16 @@
     <ProjectReference Include="..\TSI.GymTech.Entity\TSI.GymTech.Entity.csproj">
       <Project>{62cef67c-b32d-4560-b67c-a176c17b5ea4}</Project>
       <Name>TSI.GymTech.Entity</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\TSI.GymTech.Manager\TSI.GymTech.Manager.csproj">
       <Project>{c98aa07f-14e2-49e8-8c5d-63672c9c3222}</Project>
       <Name>TSI.GymTech.Manager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\GymTech\Login.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
