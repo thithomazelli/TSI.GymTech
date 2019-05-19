@@ -96,27 +96,7 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
-
-        /// <summary>
-        /// Gets an AnamnesisSheet list by Trainer ID
-        /// </summary>
-        public Result<IEnumerable<AnamnesisSheet>> FindByTrainerId(int? trainerId)
-        {
-            Result<IEnumerable<AnamnesisSheet>> result = new Result<IEnumerable<AnamnesisSheet>>();
-
-            try
-            {
-                result.Data = repository.query(anamnesisSheet => anamnesisSheet.TrainerId.Equals(trainerId)).AsEnumerable<AnamnesisSheet>();
-                result.Status = ResultEnum.Success;
-            }
-            catch (Exception)
-            {
-                result.Status = ResultEnum.Error;
-                //Pending: error to the log file
-            }
-            return result;
-        }
-
+        
         /// <summary>
         /// Updates an AnamnesisSheet object
         /// </summary>

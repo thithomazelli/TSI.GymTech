@@ -47,7 +47,7 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<TrainingSheet>();
+                result.Data = repository.GetAll().AsEnumerable();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
@@ -81,42 +81,42 @@ namespace TSI.GymTech.Manager.EntityManagers
         /// <summary>
         /// Gets an TrainingSheet list by Student ID
         /// </summary>
-        public Result<IEnumerable<TrainingSheet>> FindByStudentId(int? studentId)
-        {
-            Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
+        //public Result<IEnumerable<TrainingSheet>> FindByStudentId(int? studentId)
+        //{
+        //    Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
 
-            try
-            {
-                result.Data = repository.query(trainingSheet => trainingSheet.StudentId.Equals(studentId)).AsEnumerable<TrainingSheet>();
-                result.Status = ResultEnum.Success;
-            }
-            catch (Exception)
-            {
-                result.Status = ResultEnum.Error;
-                //Pending: error to the log file
-            }
-            return result;
-        }
+        //    try
+        //    {
+        //        result.Data = repository.query(trainingSheet => trainingSheet.StudentId.Equals(studentId)).AsEnumerable<TrainingSheet>();
+        //        result.Status = ResultEnum.Success;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        result.Status = ResultEnum.Error;
+        //        //Pending: error to the log file
+        //    }
+        //    return result;
+        //}
 
         /// <summary>
         /// Gets an TrainingSheet list by Trainer ID
         /// </summary>
-        public Result<IEnumerable<TrainingSheet>> FindByTrainerId(int? trainerId)
-        {
-            Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
+        //public Result<IEnumerable<TrainingSheet>> FindByTrainerId(int? trainerId)
+        //{
+        //    Result<IEnumerable<TrainingSheet>> result = new Result<IEnumerable<TrainingSheet>>();
 
-            try
-            {
-                result.Data = repository.query(trainingSheet => trainingSheet.TrainerId.Equals(trainerId)).AsEnumerable<TrainingSheet>();
-                result.Status = ResultEnum.Success;
-            }
-            catch (Exception)
-            {
-                result.Status = ResultEnum.Error;
-                //Pending: error to the log file
-            }
-            return result;
-        }
+        //    try
+        //    {
+        //        result.Data = repository.query(trainingSheet => trainingSheet.TrainerId.Equals(trainerId)).AsEnumerable<TrainingSheet>();
+        //        result.Status = ResultEnum.Success;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        result.Status = ResultEnum.Error;
+        //        //Pending: error to the log file
+        //    }
+        //    return result;
+        //}
 
         /// <summary>
         /// Gets an TrainingSheet list by Status

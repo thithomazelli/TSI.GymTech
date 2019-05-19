@@ -46,7 +46,7 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<Exercise>();
+                result.Data = repository.GetAll().AsEnumerable().OrderBy(_ => _.Name);
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
