@@ -1,6 +1,36 @@
 ﻿// Showing toastr success alert
 $("#btnSaveUser").click(function () {
-    toastr.success("Usuário salvo com sucesso.");
+    var formData = $("#frmUser").serialize();
+
+    event.preventDefault();
+    $('#btnSaveUser').attr('disabled', 'disabled');
+    var url = $("#frmUser").attr("action");
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        dataType: "json",
+        success: function (data) {
+            if (data.Success) {
+                if (data.Id) {
+                    window.location.href = url.replace('/Create', '') + '/Edit/' + data.Id;
+                }
+                toastr.success(data.Message);
+            }
+            else {
+                DisplayValidationErrors(data.Errors)
+            }
+        },
+        error: function () {
+            toastr.error('Não foi possível atualizar o cadastro.');
+        },
+        complete: function () {
+            $('#btnSaveUser').removeAttr('disabled');
+        }
+    })
+
+    return false;
 });
 
 // Delete User and showing toastr remove alert

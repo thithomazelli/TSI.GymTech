@@ -13,7 +13,7 @@
 <!-- Enabled filters and buttons to datatable -->
 <script>
     $(document).ready(function () {
-        LoadDataTableButtonsAndFilterAndOrdering(tblAccessLogs, 4);
+        LoadDataTableButtonsAndFilterAndOrdering(tblAccessLogs, 3);
     });
 </script>
 
@@ -35,9 +35,6 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.AccessControl.Name)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.Person.Name)
                     </th>
                     <th>
@@ -58,10 +55,8 @@
                 {
                     <tr id="@item.AccessLogId">
                         <td>
-                            @Html.DisplayFor(modelItem => item.AccessControl.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Person.Name)
+                            @{ var controllerName = item.Person.ProfileType == TSI.GymTech.Entity.Enumerates.PersonType.Student ? "Student" : "User"; }
+                            @Html.ActionLink(item.Person.Name, "Edit", controllerName, new { id = item.Person.PersonId }, null)
                         </td>
                         <td>
                             @typeof(TSI.GymTech.Entity.App_LocalResources.GateStatusType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.GateStatusType), item.AccessType)).GetValue(null)

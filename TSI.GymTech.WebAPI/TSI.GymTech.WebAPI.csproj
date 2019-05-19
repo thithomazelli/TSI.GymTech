@@ -249,6 +249,7 @@
     <Compile Include="Controllers\SheetQuestionController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TrainingSheetController.cs" />
+    <Compile Include="Controllers\TrainingSheetExerciseController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -256,6 +257,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TSIGymTechWebAPIContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="WebAPI\AccessControlController.cs" />
@@ -2183,6 +2185,8 @@
     <Content Include="Scripts\Utility\sb-admin-2.js" />
     <Content Include="Scripts\Utility\sb-admin-2.min.js" />
     <Content Include="Scripts\Utility\StudentUtility.js" />
+    <Content Include="Scripts\Utility\TrainingSheetExerciseUtility.js" />
+    <Content Include="Scripts\Utility\TrainingSheetUtility.js" />
     <Content Include="Scripts\Utility\UserUtility.js" />
     <Content Include="Scripts\Utility\UtilityHelper.js" />
     <Content Include="Scripts\Utility\WebCamUtility.js" />
@@ -2285,9 +2289,16 @@
     <Content Include="Views\Address\Create.cshtml" />
     <Content Include="Views\Address\Delete.cshtml" />
     <Content Include="Views\Address\Edit.cshtml" />
+    <Content Include="Views\TrainingSheetExercise\Create.cshtml" />
+    <Content Include="Views\TrainingSheetExercise\Delete.cshtml" />
+    <Content Include="Views\TrainingSheetExercise\Edit.cshtml" />
+    <Content Include="Views\TrainingSheetExercise\Index.cshtml" />
+    <Content Include="Views\Student\Select.cshtml" />
+    <Content Include="Views\TrainingSheet\Select.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\People\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

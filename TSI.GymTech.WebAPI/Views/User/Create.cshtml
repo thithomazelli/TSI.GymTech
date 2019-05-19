@@ -10,7 +10,7 @@
     <title>GymTech - Novo Usuário</title>
 </head>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { id = "frmUser", name = "frmUser" }))
 {
     @Html.AntiForgeryToken()
 
@@ -176,7 +176,7 @@
                             @Html.ActionLink("Voltar para Lista de Usuários", "Index")
                         </div>
                         <div class="col-6 text-right">
-                            <input id="btnSaveUser" type="submit" value="Salvar" class="btn btn-success align-content-end" />
+                            <input id="btnSaveUser" type="submit" value="Salvar" onclick="return false;" class="btn btn-success align-content-end" />
                         </div>
                     </div>
 
@@ -185,3 +185,11 @@
         </div>
     </div>
 }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/UserUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>

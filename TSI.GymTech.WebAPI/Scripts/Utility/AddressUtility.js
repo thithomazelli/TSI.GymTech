@@ -63,6 +63,7 @@ $("#searchPostalCode").click(function() {
                     $("#District").val(dados.bairro);
                     $("#City").val(dados.localidade);
                     $("#State").val(dados.uf);
+                    $("#Country").val('Brasil');
 
                     // Toastr success message
                     toastr.success("O CEP informado foi encontrado.");
