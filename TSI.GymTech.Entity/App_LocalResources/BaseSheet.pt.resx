@@ -120,8 +120,26 @@
   <data name="Comments" xml:space="preserve">
     <value>Observação</value>
   </data>
+  <data name="Cycle" xml:space="preserve">
+    <value>Ciclo</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>Descrição é obrigatório.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Nome é obrigatório.</value>
+  </data>
   <data name="Revaluation" xml:space="preserve">
     <value>Reavaliação</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
   <data name="StudentId" xml:space="preserve">
     <value>ID do Aluno</value>

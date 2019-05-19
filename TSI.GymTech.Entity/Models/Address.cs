@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Web.Script.Serialization;
 using TSI.GymTech.Entity.Enumerates;
 
 namespace TSI.GymTech.Entity.Models
@@ -49,9 +50,9 @@ namespace TSI.GymTech.Entity.Models
         [Display(Name = "Country", ResourceType = typeof(App_LocalResources.Address))]
         [StringLength(32)]
         public string Country { get; set; }
-        
+
         [ForeignKey("Person")]
         public int PersonId { get; set; }
-        public Person Person { get; set; }
+        public virtual Person Person { get; set; }
     }
 }

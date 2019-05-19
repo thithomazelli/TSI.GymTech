@@ -34,6 +34,6 @@ namespace TSI.GymTech.Entity.Models
         public int NumberOfRepetitions { get; set; }
 
         [Display(Name = "Charge", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
-        public decimal? Charge { get; set; }
+        public string Charge { get; set; }
     }
 }

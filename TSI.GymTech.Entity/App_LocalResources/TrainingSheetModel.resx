@@ -117,31 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Charge" xml:space="preserve">
-    <value>Carga</value>
+  <data name="Personal" xml:space="preserve">
+    <value>Personal</value>
   </data>
-  <data name="ExerciseRequired" xml:space="preserve">
-    <value>Exercício é obrigatório.</value>
-  </data>
-  <data name="NumberOfRepetitions" xml:space="preserve">
-    <value>Qtd. Repetições</value>
-  </data>
-  <data name="NumberOfRepetitionsRequired" xml:space="preserve">
-    <value>Qtd. Repetições é obrigatório.</value>
-  </data>
-  <data name="Serie" xml:space="preserve">
-    <value>Série</value>
-  </data>
-  <data name="SerieRequired" xml:space="preserve">
-    <value>Série é obrigatório.</value>
-  </data>
-  <data name="TrainingSheetExerciseId" xml:space="preserve">
-    <value>ID do Exercício da Ficha de Treino</value>
-  </data>
-  <data name="TrainingSheetExerciseIdRequired" xml:space="preserve">
-    <value>ID do Exercício da Ficha de Treino é obrigatório.</value>
-  </data>
-  <data name="TrainingSheetRequired" xml:space="preserve">
-    <value>Ficha de Treino é obrigatório.</value>
+  <data name="Standard" xml:space="preserve">
+    <value>Standard</value>
   </data>
 </root>
