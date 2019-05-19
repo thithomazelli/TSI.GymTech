@@ -165,6 +165,8 @@ namespace TSI.GymTech.Manager.EntityManagers
         {
             Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
 
+            result.Data = repository.GetAll().AsEnumerable();
+
             try
             {
                 if (onlyActive && searchingEqual)
@@ -238,6 +240,29 @@ namespace TSI.GymTech.Manager.EntityManagers
                 //Pending: error to the log file
             }
             return result;
+        }
+        
+        public bool IsNameDuplicated(Person person)
+        {
+            return repository.query(_ => _.PersonId != person.PersonId && _.Name == person.Name).Any();
+        }
+
+        public bool IsEmailDuplicated(Person person)
+        {
+            return repository.query(_ => _.PersonId != person.PersonId && !string.IsNullOrEmpty(_.Email) 
+            && _.Email == person.Email).Any();
+        }
+        
+        public bool IsSocialSecurityCardDuplicated(Person person)
+        {
+            return repository.query(_ => _.PersonId != person.PersonId && !string.IsNullOrEmpty(_.SocialSecurityCard)
+            && _.SocialSecurityCard == person.SocialSecurityCard).Any();
+        }
+
+        public bool IsNationalIDCardDuplicated(Person person)
+        {
+            return repository.query(_ => _.PersonId != person.PersonId && !string.IsNullOrEmpty(_.NationalIDCard) 
+            && _.NationalIDCard == person.NationalIDCard).Any();
         }
     }
 }

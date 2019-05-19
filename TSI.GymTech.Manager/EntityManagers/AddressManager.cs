@@ -79,7 +79,7 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Updates a Address object
+        /// Updates an Address object
         /// </summary>
         public ResultEnum Update(Address address)
         {
@@ -98,7 +98,7 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
-        /// Removes a Address object
+        /// Removes an Address object
         /// </summary>
         public ResultEnum Remove(Address address)
         {
@@ -115,6 +115,5 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
-
     }
 }
