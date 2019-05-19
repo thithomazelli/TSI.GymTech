@@ -109,6 +109,62 @@
     <Compile Include="Migrations\201904030149552_Removing_Password_To_Person.Designer.cs">
       <DependentUpon>201904030149552_Removing_Password_To_Person.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905090033077_Update_Database.cs" />
+    <Compile Include="Migrations\201905090033077_Update_Database.Designer.cs">
+      <DependentUpon>201905090033077_Update_Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905090111339_New-Training_Structure.cs" />
+    <Compile Include="Migrations\201905090111339_New-Training_Structure.Designer.cs">
+      <DependentUpon>201905090111339_New-Training_Structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905090202302_New-Update-Database.cs" />
+    <Compile Include="Migrations\201905090202302_New-Update-Database.Designer.cs">
+      <DependentUpon>201905090202302_New-Update-Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905090307070_New-Update-Database-2.cs" />
+    <Compile Include="Migrations\201905090307070_New-Update-Database-2.Designer.cs">
+      <DependentUpon>201905090307070_New-Update-Database-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905111313230_Update_TrainingSheet_Entity.cs" />
+    <Compile Include="Migrations\201905111313230_Update_TrainingSheet_Entity.Designer.cs">
+      <DependentUpon>201905111313230_Update_TrainingSheet_Entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905111616049_Update_TrainingSheetExercise_Entity.cs" />
+    <Compile Include="Migrations\201905111616049_Update_TrainingSheetExercise_Entity.Designer.cs">
+      <DependentUpon>201905111616049_Update_TrainingSheetExercise_Entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905111626025_Update_TrainingSheet_TrainingSheetExercise_Entity.cs" />
+    <Compile Include="Migrations\201905111626025_Update_TrainingSheet_TrainingSheetExercise_Entity.Designer.cs">
+      <DependentUpon>201905111626025_Update_TrainingSheet_TrainingSheetExercise_Entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905121741474_Update_TrainingSheetPerson_Entity.cs" />
+    <Compile Include="Migrations\201905121741474_Update_TrainingSheetPerson_Entity.Designer.cs">
+      <DependentUpon>201905121741474_Update_TrainingSheetPerson_Entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905132346128_Update_TrainingSheet_Person_Relashionship.cs" />
+    <Compile Include="Migrations\201905132346128_Update_TrainingSheet_Person_Relashionship.Designer.cs">
+      <DependentUpon>201905132346128_Update_TrainingSheet_Person_Relashionship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905132354103_Update_TrainingSheet_Person_Relashionship_Nullable.cs" />
+    <Compile Include="Migrations\201905132354103_Update_TrainingSheet_Person_Relashionship_Nullable.Designer.cs">
+      <DependentUpon>201905132354103_Update_TrainingSheet_Person_Relashionship_Nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905140028193_Update_TrainingSheet_Person_Relashionship_Nullable_NotRequired.cs" />
+    <Compile Include="Migrations\201905140028193_Update_TrainingSheet_Person_Relashionship_Nullable_NotRequired.Designer.cs">
+      <DependentUpon>201905140028193_Update_TrainingSheet_Person_Relashionship_Nullable_NotRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905140044508_Update_TrainingSheet_Person_Relashionships.cs" />
+    <Compile Include="Migrations\201905140044508_Update_TrainingSheet_Person_Relashionships.Designer.cs">
+      <DependentUpon>201905140044508_Update_TrainingSheet_Person_Relashionships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905172313321_Remove_TrainingSheetPerson.cs" />
+    <Compile Include="Migrations\201905172313321_Remove_TrainingSheetPerson.Designer.cs">
+      <DependentUpon>201905172313321_Remove_TrainingSheetPerson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905182310011_Update_TrainingSheetExercise_Charge.cs" />
+    <Compile Include="Migrations\201905182310011_Update_TrainingSheetExercise_Charge.Designer.cs">
+      <DependentUpon>201905182310011_Update_TrainingSheetExercise_Charge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -151,6 +207,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904030149552_Removing_Password_To_Person.resx">
       <DependentUpon>201904030149552_Removing_Password_To_Person.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905090033077_Update_Database.resx">
+      <DependentUpon>201905090033077_Update_Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905090111339_New-Training_Structure.resx">
+      <DependentUpon>201905090111339_New-Training_Structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905090202302_New-Update-Database.resx">
+      <DependentUpon>201905090202302_New-Update-Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905090307070_New-Update-Database-2.resx">
+      <DependentUpon>201905090307070_New-Update-Database-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905111313230_Update_TrainingSheet_Entity.resx">
+      <DependentUpon>201905111313230_Update_TrainingSheet_Entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905111616049_Update_TrainingSheetExercise_Entity.resx">
+      <DependentUpon>201905111616049_Update_TrainingSheetExercise_Entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905111626025_Update_TrainingSheet_TrainingSheetExercise_Entity.resx">
+      <DependentUpon>201905111626025_Update_TrainingSheet_TrainingSheetExercise_Entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905121741474_Update_TrainingSheetPerson_Entity.resx">
+      <DependentUpon>201905121741474_Update_TrainingSheetPerson_Entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905132346128_Update_TrainingSheet_Person_Relashionship.resx">
+      <DependentUpon>201905132346128_Update_TrainingSheet_Person_Relashionship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905132354103_Update_TrainingSheet_Person_Relashionship_Nullable.resx">
+      <DependentUpon>201905132354103_Update_TrainingSheet_Person_Relashionship_Nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905140028193_Update_TrainingSheet_Person_Relashionship_Nullable_NotRequired.resx">
+      <DependentUpon>201905140028193_Update_TrainingSheet_Person_Relashionship_Nullable_NotRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905140044508_Update_TrainingSheet_Person_Relashionships.resx">
+      <DependentUpon>201905140044508_Update_TrainingSheet_Person_Relashionships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905172313321_Remove_TrainingSheetPerson.resx">
+      <DependentUpon>201905172313321_Remove_TrainingSheetPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905182310011_Update_TrainingSheetExercise_Charge.resx">
+      <DependentUpon>201905182310011_Update_TrainingSheetExercise_Charge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
