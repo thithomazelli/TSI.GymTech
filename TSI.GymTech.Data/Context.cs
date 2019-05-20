@@ -41,11 +41,6 @@ namespace TSI.GymTech.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Entity<ApplicationUser>().ToTable("aspnetusers");
-            modelBuilder.Entity<IdentityRole>().ToTable("aspnetroles");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("aspnetuserclaims");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("aspnetuserroles");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("aspnetuserlogins");
         }
     }
 }

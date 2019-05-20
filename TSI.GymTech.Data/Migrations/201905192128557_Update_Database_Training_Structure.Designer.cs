@@ -7,13 +7,13 @@ namespace TSI.GymTech.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Update_TrainingSheetExercise_Entity : IMigrationMetadata
+    public sealed partial class Update_Database_Training_Structure : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_TrainingSheetExercise_Entity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Database_Training_Structure));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905111616049_Update_TrainingSheetExercise_Entity"; }
+            get { return "201905192128557_Update_Database_Training_Structure"; }
         }
         
         string IMigrationMetadata.Source
