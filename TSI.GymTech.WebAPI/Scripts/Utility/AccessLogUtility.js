@@ -1,5 +1,8 @@
 ﻿// Delete AccessLog and showing toastr remove alert
 function DeleteAccessLog(accessLogId, tableName, formName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf(formName)) + 'AccessLog/Delete';
+
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="/' + formName + '"] input[name=__RequestVerificationToken]').val();
     var headers = {};
@@ -12,7 +15,7 @@ function DeleteAccessLog(accessLogId, tableName, formName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/gymtech/AccessLog/Delete',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: accessLogId

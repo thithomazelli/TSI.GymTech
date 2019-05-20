@@ -52,7 +52,7 @@
                 {
                     <tr id="@item.AccessControlId">
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.ActionLink(item.Name, "Edit", "AccessControl", new { id = item.AccessControlId }, null)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.IpAddress)

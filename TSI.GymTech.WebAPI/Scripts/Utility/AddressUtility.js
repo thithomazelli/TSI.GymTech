@@ -1,7 +1,9 @@
 ﻿// Delete Address and showing toastr remove alert
 function DeleteAddress(addressId, tableName, formName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf(formName)) + 'Address/Delete';
     var token = $('input[name=__RequestVerificationToken]').val();
-    var tokenadr = $('form[action="/' + formName + '"] input[name=__RequestVerificationToken]').val();
+    var tokenadr = $('form[action="/' + formAction + '"] input[name=__RequestVerificationToken]').val();
     var headers = {};
     var headersadr = {};
     headers['__RequestVerificationToken'] = token;
@@ -12,7 +14,7 @@ function DeleteAddress(addressId, tableName, formName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/gymtech/Address/Delete',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: addressId
@@ -35,7 +37,6 @@ function DeleteAddress(addressId, tableName, formName) {
 
 // Search PostalCode
 $("#searchPostalCode").click(function() {
-
     // New variable "postalCode" with only numbers.
     var postalCode = $("#PostalCode").val().replace(/\D/g, '');
 
@@ -80,3 +81,31 @@ $("#searchPostalCode").click(function() {
         }
     } 
 });
+
+// Create new Address
+function AddNewAddress(element, formName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf(formName)) + 'Address/Create?personId=' + $(element).attr("data-id");
+
+    $("#modalAddress").load(url);
+    $("#modalAddress").modal({
+        cache: false,
+        backdrop: 'static',
+        keyboard: false
+    }, "show");
+    return false;
+}
+
+// Edit the selected Address
+function EditAddress(element, formName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf(formName)) + 'Address/Edit/' + $(element).attr("data-id");
+
+    $("#modalAddress").load(url);
+    $("#modalAddress").modal({
+        cache: false,
+        backdrop: 'static',
+        keyboard: false
+    }, "show");
+    return false;
+}

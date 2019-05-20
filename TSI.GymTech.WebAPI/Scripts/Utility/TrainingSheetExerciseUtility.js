@@ -1,8 +1,11 @@
 ﻿// Create new Training Sheet Exercise
 $(function () {
     $(".create-trainingsheet-exercise").click(function () {
-        var id = $(this).attr("data-id");
-        $("#modal").load("/TrainingSheetExercise/Create?trainingSheetId=" + id, function () {
+        var formAction = $("form").attr("action");
+        var baseUrl = formAction.substr(0, formAction.indexOf('TrainingSheet'));
+        var url = baseUrl + 'TrainingSheetExercise/Create' + '?trainingSheetId=' + $(this).attr("data-id");
+
+        $("#modal").load(url, function () {
             $("#modal").modal();
         });
 
@@ -12,11 +15,13 @@ $(function () {
 
 // Edit new Training Sheet Exercise
 function EditTrainingsheetExercise(element) {
-    var id = $(element).attr("data-id");
-    $("#modal").load("/TrainingSheetExercise/Edit/" + id, function () {
+    var formAction = $("form").attr("action");
+    var baseUrl = formAction.substr(0, formAction.indexOf('TrainingSheet'));
+    var url = baseUrl + 'TrainingSheetExercise/Edit/' + $(element).attr("data-id");
+
+    $("#modal").load(url, function () {
         $("#modal").modal();
     });
-
     return false;
 }
 
@@ -32,7 +37,11 @@ function EditTrainingsheetExercise(element) {
 //})
 
 // Delete TrainingSheetExercise and showing toastr remove alert
+
 function DeleteTrainingSheetExercise(id, tableName, formName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf(formName)) + 'TrainingSheetExercise/Delete';
+
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="/' + formName + '"] input[name=__RequestVerificationToken]').val();
     var headers = {};
@@ -45,7 +54,7 @@ function DeleteTrainingSheetExercise(id, tableName, formName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/TrainingSheetExercise/Delete',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: id

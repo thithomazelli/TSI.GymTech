@@ -35,6 +35,9 @@ $("#btnSaveUser").click(function () {
 
 // Delete User and showing toastr remove alert
 function DeleteUser(personId, personName, tableName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf('User')) + 'User/Delete';
+
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="/User"] input[name=__RequestVerificationToken]').val();
     var headers = {};
@@ -47,7 +50,7 @@ function DeleteUser(personId, personName, tableName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/gymtech/User/Delete',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: personId
@@ -77,6 +80,10 @@ $(function () {
         var reader = new FileReader();
 
         reader.onload = function () {
+            var formAction = $("form").attr("action");
+            var baseUrl = formAction.substr(0, formAction.indexOf('User'));
+            var url = baseUrl + 'User/CapturePhoto';
+
             var file = reader.result;
             var extension = $('#btnUpload').val().split('.').pop();
             $('#base64image').attr('src', reader.result);
@@ -94,7 +101,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/gymtech/User/CapturePhoto',
+                    url: url,
                     data: {
                         __RequestVerificationToken: token,
                         id: id,
@@ -105,7 +112,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").show();
-                            ReloadPhoto(data.ImageName, 'personPhoto', '/gymtech/Images/Persons/');
+                            ReloadPhoto(data.ImageName, 'personPhoto', baseUrl + 'Images/Persons/');
                         }                              
                         else if (data.Type == 'Error') {
                             toastr.error(data.Message);
@@ -121,6 +128,10 @@ $(function () {
         reader.readAsDataURL(selectedFile);
     });
     $('#btnSavePhoto').on('click', function () {
+        var formAction = $("form").attr("action");
+        var baseUrl = formAction.substr(0, formAction.indexOf('User'));
+        var url = baseUrl + 'User/CapturePhoto';
+
         var file = $("#base64image").attr('src');
         var id = $("#PersonId").val();
 
@@ -135,7 +146,7 @@ $(function () {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/gymtech/User/CapturePhoto',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: id,
@@ -146,7 +157,7 @@ $(function () {
                 if (data.Type == 'Success') {
                     toastr.success(data.Message);
                     $("#btnRemovePhoto").show();
-                    ReloadPhoto(data.ImageName, 'personPhoto', '/gymtech/Images/Persons/');
+                    ReloadPhoto(data.ImageName, 'personPhoto', baseUrl + 'Images/Persons/');
                 }
                 else {
                     toastr.error(data.Message);
@@ -158,6 +169,9 @@ $(function () {
         });
     });
     $('#btnRemovePhoto').on('click', function () {
+        var formAction = $("form").attr("action");
+        var baseUrl = formAction.substr(0, formAction.indexOf('User'));
+        var url = baseUrl + 'User/RemovePhoto';
 
         var file = $('#personPhoto').attr('src');
 
@@ -175,7 +189,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/gymtech/User/RemovePhoto',
+                    url: url,
                     data: {
                         __RequestVerificationToken: token,
                         id: id
@@ -184,7 +198,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").hide();
-                            ReloadPhoto('default-user-profile.svg', 'personPhoto', '/gymtech/Images/Persons/');
+                            ReloadPhoto('default-user-profile.svg', 'personPhoto', baseUrl + 'Images/Persons/');
                         }
                         else {
                             toastr.error(data.Message);

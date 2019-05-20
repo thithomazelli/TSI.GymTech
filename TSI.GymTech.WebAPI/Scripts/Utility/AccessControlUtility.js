@@ -5,6 +5,9 @@ $("#btnSaveAccessControl").click(function () {
 
 // Delete AccessControl and showing toastr remove alert
 function DeleteAccessControl(accessControlId, accessControlName, tableName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf('AccessControl')) + 'AccessControl/Delete';
+
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="/AccessControl"] input[name=__RequestVerificationToken]').val();
     var headers = {};
@@ -17,7 +20,7 @@ function DeleteAccessControl(accessControlId, accessControlName, tableName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/gymtech/AccessControl/Delete',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: accessControlId

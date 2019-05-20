@@ -55,7 +55,9 @@ namespace TSI.GymTech.WebAPI.Controllers
                     _addressManager.Create(address);
                 }
 
-                return RedirectToAction("Edit/" + address.PersonId, "Student");
+                var person = new PersonManager().FindById(address.PersonId).Data;
+                var redirectTo = person?.ProfileType == Entity.Enumerates.PersonType.Student ? "Student" : "User";
+                return RedirectToAction("Edit", redirectTo, new { id = address.PersonId });
             }
 
             return View(address);
@@ -90,7 +92,10 @@ namespace TSI.GymTech.WebAPI.Controllers
                     address.ModifyDate = DateTime.Now;
                     _addressManager.Update(address);
                 }
-                return RedirectToAction("Edit", "Student", new { id = address.PersonId });
+
+                var person = new PersonManager().FindById(address.PersonId).Data;
+                var redirectTo = person?.ProfileType == Entity.Enumerates.PersonType.Student ? "Student" : "User";
+                return RedirectToAction("Edit", redirectTo, new { id = address.PersonId });
             }
             return View(address);
         }
