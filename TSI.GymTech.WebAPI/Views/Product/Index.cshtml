@@ -61,7 +61,7 @@
                 {
                     <tr id="@item.ProductId">
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.ActionLink(item.Name, "Edit", "Product", new { id = item.ProductId }, null)
                         </td>
                         <td>
                             @if (item.Type != null)

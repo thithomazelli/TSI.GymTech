@@ -7,7 +7,7 @@
 
 <div class="modal-dialog">
     <div class="modal-content">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Create", "TrainingSheetExercise", FormMethod.Post, new { id = "frmTrainingSheetExercise", name = "frmTrainingSheetExercise" }))
         {
             <div class="modal-header">
                 <h4 class="modal-title">Novo Exercício</h4>

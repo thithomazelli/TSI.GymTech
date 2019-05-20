@@ -35,6 +35,9 @@ $("#btnSaveStudent").click(function () {
 
 // Delete User and showing toastr remove alert
 function DeleteStudent(personId, personName, tableName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf('Student')) + 'Student/Delete';
+
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="/Student"] input[name=__RequestVerificationToken]').val();
     var headers = {};
@@ -47,7 +50,7 @@ function DeleteStudent(personId, personName, tableName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/gymtech/Student/Delete',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: personId
@@ -77,6 +80,10 @@ $(function () {
         var reader = new FileReader();
 
         reader.onload = function () {
+            var formAction = $("form").attr("action");
+            var baseUrl = formAction.substr(0, formAction.indexOf('Student'));
+            var url = baseUrl + 'Student/CapturePhoto';
+
             var file = reader.result;
             var extension = $('#btnUpload').val().split('.').pop();
             $('#base64image').attr('src', reader.result);
@@ -94,7 +101,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/gymtech/Student/CapturePhoto',
+                    url: url,
                     data: {
                         __RequestVerificationToken: token,
                         id: id,
@@ -105,7 +112,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").show();
-                            ReloadPhoto(data.ImageName, 'personPhoto', '/gymtech/Images/Persons/');
+                            ReloadPhoto(data.ImageName, 'personPhoto', baseUrl + 'Images/Persons/');
                         }
                         else if (data.Type == 'Error') {
                             toastr.error(data.Message);
@@ -121,6 +128,10 @@ $(function () {
         reader.readAsDataURL(selectedFile);
     });
     $('#btnSavePhoto').on('click', function () {
+        var formAction = $("form").attr("action");
+        var baseUrl = formAction.substr(0, formAction.indexOf('Student'));
+        var url = baseUrl + 'Student/CapturePhoto';
+
         var file = $("#base64image").attr('src');
         var id = $("#PersonId").val();
 
@@ -135,7 +146,7 @@ $(function () {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/gymtech/Student/CapturePhoto',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: id,
@@ -146,7 +157,7 @@ $(function () {
                 if (data.Type == 'Success') {
                     toastr.success(data.Message);
                     $("#btnRemovePhoto").show();
-                    ReloadPhoto(data.ImageName, 'personPhoto', '/gymtech/Images/Persons/');
+                    ReloadPhoto(data.ImageName, 'personPhoto', baseUrl + 'Images/Persons/');
                 }
                 else {
                     toastr.error(data.Message);
@@ -158,6 +169,9 @@ $(function () {
         });
     });
     $('#btnRemovePhoto').on('click', function () {
+        var formAction = $("form").attr("action");
+        var baseUrl = formAction.substr(0, formAction.indexOf('Student'));
+        var url = baseUrl + 'Student/RemovePhoto';
 
         var file = $('#personPhoto').attr('src');
 
@@ -175,7 +189,7 @@ $(function () {
                     type: "POST",
                     dataType: "json",
                     headers: headersadr,
-                    url: '/gymtech/Student/RemovePhoto',
+                    url: url,
                     data: {
                         __RequestVerificationToken: token,
                         id: id
@@ -184,7 +198,7 @@ $(function () {
                         if (data.Type == 'Success') {
                             toastr.success(data.Message);
                             $("#btnRemovePhoto").hide();
-                            ReloadPhoto('default-user-profile.svg', 'personPhoto', '/gymtech/Images/Persons/');
+                            ReloadPhoto('default-user-profile.svg', 'personPhoto', baseUrl + 'Images/Persons/');
                         }
                         else {
                             toastr.error(data.Message);
@@ -205,12 +219,14 @@ $(function () {
 // Create new Copy of Training Sheet
 $(function () {
     $("#copy-trainingsheet").click(function (ev) {
-        if ($("#modalIsLoad").val() == 'False') {
-            var id = $(this).attr("data-id");
-            $("#modal").load("/TrainingSheet/Select?personId=" + id);
-            $("#modalIsLoad").val('True');
+        if ($("#modalTrainingIsLoad").val() == 'False') {
+            var formAction = $("form").attr("action");
+            var url = formAction.substr(0, formAction.indexOf('Student')) + 'TrainingSheet/Select/' + $(this).attr("data-id");
+
+            $("#modalTraining").load(url);
+            $("#modalTrainingIsLoad").val('True');
         }
-        $("#modal").modal({
+        $("#modalTraining").modal({
             cache: false,
             backdrop: 'static',
             keyboard: false

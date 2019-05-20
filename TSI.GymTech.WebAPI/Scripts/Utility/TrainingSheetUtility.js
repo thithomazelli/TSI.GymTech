@@ -20,8 +20,11 @@ function EnableOrDisablePersonalContent() {
 $(function () {
     $(".select-student-trainingsheet").click(function (ev) {
         if ($("#modalIsLoad").val() == 'False') {
+            var formAction = $("form").attr("action");
+            var url = formAction.substr(0, formAction.indexOf('TrainingSheet')) + 'Student/Select';
+            
             $("#modalIsLoad").val('True');
-            $("#modal").load("/Student/Select");
+            $("#modal").load(url);
         }
         $("#modal").modal({
             cache: false,
@@ -36,7 +39,7 @@ $(function () {
 
 // Select Person and close popup modal
 function SelectPerson(personId) {
-    var url = '/Student/Select/' + personId
+    var url = $("#frmSelectPerson").attr("action") + '/' + personId;    
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="' + url + '"] input[name=__RequestVerificationToken]').val();
     var headers = {};
@@ -112,7 +115,9 @@ $("#btnSaveTrainingSheet").click(function () {
 
 // Delete User and showing toastr remove alert
 function DeleteTrainingSheet(trainingSheetId, trainingSheetName, tableName) {
-    var url = $("#frmStudent").attr("action");
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf('Student')) + 'TrainingSheet/Delete/' + trainingSheetId;
+
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="/User"] input[name=__RequestVerificationToken]').val();
     var headers = {};
@@ -125,7 +130,7 @@ function DeleteTrainingSheet(trainingSheetId, trainingSheetName, tableName) {
             type: "POST",
             dataType: "json",
             headers: headersadr,
-            url: '/TrainingSheet/Delete',
+            url: url,
             data: {
                 __RequestVerificationToken: token,
                 id: trainingSheetId
@@ -147,7 +152,8 @@ function DeleteTrainingSheet(trainingSheetId, trainingSheetName, tableName) {
 }
 
 // Select Person and close popup modal
-function SelectTrainingSheetToCopy(trainingSheetId, personId) {
+function SelectTrainingSheetToCopy(trainingSheetId) {
+    var personId = $("#PersonId").val();
     var url = $("#frmTrainingSheet").attr("action");
     var token = $('input[name=__RequestVerificationToken]').val();
     var tokenadr = $('form[action="' + url + '"] input[name=__RequestVerificationToken]').val();
@@ -179,7 +185,7 @@ function SelectTrainingSheetToCopy(trainingSheetId, personId) {
             toastr.error(data.Message);
         },
         complete: function () {
-            $('#modal').modal('toggle');
+            $('#modalTraining').modal('toggle');
         }
     });
 }

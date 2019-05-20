@@ -310,31 +310,28 @@
                 </section>
 
                 @*Address List*@
-                <section id="addressList" class="profile-content" style="display: none;">
+                <section id="addressList" style="display: none;">
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="col-12 text-right">
                                 <h5 style="float:left">Endereços</h5>
-                                @*@Html.ActionLink("Novo Endereço", "Create", "Address", new { personId = Model.PersonId }, new { @class = "btn btn-success align-content-end" })*@
-                                <a href=@Url.Action("Create", "Address", new { personId = Model.PersonId }) class="d-sm-inline-block btn btn-success align-content-end btn-sm btn-labeled shadow-sm">
+                                <a href="" onclick="AddNewAddress(this, 'Student'); return false;" data-id="@Model.PersonId"
+                                   class="d-sm-inline-block btn btn-success align-content-end btn-sm btn-labeled shadow-sm mb-1">
                                     <span class="btn-label">Novo Endereço</span>
                                 </a>
                             </div>
                             <hr />
-                            <table class="stripe row-border" id="tblAddresses" style="width:100%" cellspacing="0">
+                            <table class="stripe row-border" style="width:100%" id="tblAddresses" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            @Html.LabelFor(model => model.Addresses.FirstOrDefault().AddressType, htmlAttributes: new { @class = "control-label col-md-12" })
-                                        </th>
-                                        @*<th>
-                                                @Html.LabelFor(model => model.Addresses.FirstOrDefault().AddressId, htmlAttributes: new { @class = "control-label col-md-12" })
-                                            </th>*@
                                         <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().Street, htmlAttributes: new { @class = "control-label col-md-12" })
                                         </th>
                                         <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().Number, htmlAttributes: new { @class = "control-label col-md-12" })
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.Addresses.FirstOrDefault().AddressType, htmlAttributes: new { @class = "control-label col-md-12" })
                                         </th>
                                         <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().District, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -345,9 +342,6 @@
                                         <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().State, htmlAttributes: new { @class = "control-label col-md-12" })
                                         </th>
-                                        @*<th>
-                                                @Html.LabelFor(model => model.Addresses.FirstOrDefault().PostalCode, htmlAttributes: new { @class = "control-label col-md-12" })
-                                            </th>*@
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -357,19 +351,21 @@
                                     {
                                         <tr id="@item.AddressId">
                                             <td>
+                                                @Html.ActionLink(item.Street, null, null,
+                                                    new
+                                                    {
+                                                        onclick = "EditAddress(this, 'Student'); return false;",
+                                                        data_id = item.AddressId
+                                                    })
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Number)
+                                            </td>
+                                            <td>
                                                 @if (item.AddressType != null)
                                                 {
                                                     <span>@typeof(TSI.GymTech.Entity.App_LocalResources.AddressType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.AddressType), item.AddressType)).GetValue(null)</span>
                                                 }
-                                            </td>
-                                            @*<td>
-                                                    @Html.DisplayFor(modelItem => item.AddressId)
-                                                </td>*@
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Street)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Number)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.District)
@@ -380,11 +376,8 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.State)
                                             </td>
-                                            @*<td>
-                                                    @Html.DisplayFor(modelItem => item.PostalCode)
-                                                </td>*@
                                             <td>
-                                                <a href=@Url.Action("Edit", "Address", new { id = item.AddressId })>
+                                                <a href="" onclick="EditAddress(this, 'Student'); return false;" data-id="@item.AddressId">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                             </td>
@@ -409,7 +402,7 @@
                                 <h5 style="float:left">Treinos</h5>
                                 @*@Html.ActionLink("Novo Treino", "Create", "TrainingSheet", new { personId = Model.PersonId }, new { @class = "btn btn-success align-content-end" })*@
 
-                                <a href="" id="copy-trainingsheet" data-id="@Model.PersonId" 
+                                <a href="" id="copy-trainingsheet" data-id="@Model.PersonId"
                                    class="d-sm-inline-block btn btn-primary align-content-end btn-sm btn-labeled shadow-sm mb-1">
                                     <i class="fas fa-copy"></i>
                                     <span class="btn-label">Copiar</span>
@@ -446,36 +439,36 @@
                                 <tbody>
                                     @foreach (var item in Model.TrainingSheets)
                                     {
-                                    <tr id="@item.TrainingSheetId">
-                                        <td>
-                                            @Html.ActionLink(item.Name, "Edit", "TrainingSheet", new { id = item.TrainingSheetId }, null)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Cycle)
-                                        </td>
-                                        <td>
-                                            @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetModel).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetModel), item.Model)).GetValue(null)
-                                        </td>
-                                        <td>
-                                            @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetStatus), item.Status)).GetValue(null)
-                                        </td>
-                                        <td>
-                                            @if (item.Status != null)
-                                            {
-                                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetType), item.Type)).GetValue(null)</span>
-                                            }
-                                        </td>
-                                        <td>
-                                            <a href=@Url.Action("Edit", "TrainingSheet", new { id = item.TrainingSheetId })>
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="#" onClick="DeleteTrainingSheet('@item.TrainingSheetId', '@item.Name', 'tblTrainingSheet');">
-                                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                        <tr id="@item.TrainingSheetId">
+                                            <td>
+                                                @Html.ActionLink(item.Name, "Edit", "TrainingSheet", new { id = item.TrainingSheetId }, null)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Cycle)
+                                            </td>
+                                            <td>
+                                                @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetModel).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetModel), item.Model)).GetValue(null)
+                                            </td>
+                                            <td>
+                                                @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetStatus), item.Status)).GetValue(null)
+                                            </td>
+                                            <td>
+                                                @if (item.Status != null)
+                                                {
+                                                    <span>@typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetType), item.Type)).GetValue(null)</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href=@Url.Action("Edit", "TrainingSheet", new { id = item.TrainingSheetId })>
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="#" onClick="DeleteTrainingSheet('@item.TrainingSheetId', '@item.Name', 'tblTrainingSheet');">
+                                                    <i style="color: red;" class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -533,7 +526,7 @@
                                                     </a>
                                                 </td>*@
                                             <td>
-                                                <a href="#" onClick="DeleteAccessLog('@item.AccessLogId', 'tblAccessLogs', 'AccessLog');">
+                                                <a href="#" onClick="DeleteAccessLog('@item.AccessLogId', 'tblAccessLogs', 'Student');">
                                                     <i style="color: red;" class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
@@ -561,17 +554,22 @@
     </div>
 }
 
-@*Modal popup*@
-<div class="modal" id="modal">
-    @Html.Hidden("modalIsLoad", false)
+@*Modal Training popup*@
+<div class="modal" id="modalTraining">
+    @Html.Hidden("modalTrainingIsLoad", false)
+</div>
+
+@*Modal Address popup*@
+<div class="modal" id="modalAddress">
+    
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        $(document).ready(function () {
-            // Enabled filters and buttons to datatable
+        // Enabled filters and buttons to datatable
+        $(document).ready(function () {            
             LoadSimpleDataTable(tblAddresses);
             LoadDataTableButtonsAndFilter(tblTrainingSheet);
             LoadDataTableWithPaging(tblAccessLogs);

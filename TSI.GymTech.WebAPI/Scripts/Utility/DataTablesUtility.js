@@ -1,9 +1,9 @@
-﻿// Create structure to simple DataTable 
+﻿// Create structure to simple DataTable
 function LoadSimpleDataTable(element) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/Scripts/Utility/i18n/Portuguese-Brasil.json'
+            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json'
         },
         searching: false,   // Search Box will Be Disabled
         lengthChange: false, // Will Disabled Record number per page
@@ -22,7 +22,7 @@ function LoadDataTableWithPaging(element) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/Scripts/Utility/i18n/Portuguese-Brasil.json'
+            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json'
         },
         searching: false,   // Search Box will Be Disabled
         lengthChange: true, // Will Disabled Record number per page
@@ -41,7 +41,7 @@ function LoadDataTableButtonsAndFilter(element) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/Scripts/Utility/i18n/Portuguese-Brasil.json',
+            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json',
             search: '<div class="input-group col-md-12">' +
                         ' _INPUT_ ' +
                         '<span class= "input-group-append">' +
@@ -98,7 +98,7 @@ function LoadDataTableToPopUp(element) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/Scripts/Utility/i18n/Portuguese-Brasil.json',
+            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json',
             search: '<div class="input-group col-md-12">' +
                 ' _INPUT_ ' +
                 '<span class= "input-group-append">' +
@@ -124,7 +124,7 @@ function LoadDataTableButtonsAndFilterAndOrdering(element, columnToOrder) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/Scripts/Utility/i18n/Portuguese-Brasil.json',
+            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json',
             search: '<div class="input-group col-md-12">' +
                 ' _INPUT_ ' +
                 '<span class= "input-group-append">' +
@@ -180,7 +180,7 @@ function LoadDataTableButtonsAndFilterAndOrdering(element, columnToOrder) {
 function AddDataTableRow(tableName, model) {
     var dataTable = $('#' + tableName).DataTable();
     dataTable.row.add([
-        '<a href="/TrainingSheet/Edit/' + parseInt(model.TrainingSheetId) + '">' +
+        '<a href="/gymtech/TrainingSheet/Edit/' + parseInt(model.TrainingSheetId) + '">' +
             model.Name +
         '</a>',
         model.Cycle,

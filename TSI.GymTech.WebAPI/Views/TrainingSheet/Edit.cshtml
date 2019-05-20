@@ -24,7 +24,7 @@
                 @*Model Properties*@
                 <section id="trainingSheet">
                     <div class="profile-content">
-                        <h5>Modelo de Treino</h5>
+                        <h5>Treino</h5>
                         <hr />
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-12">
@@ -182,7 +182,12 @@
                                     {
                                         <tr id="@item.TrainingSheetExerciseId">
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Exercise.Name)
+                                                @Html.ActionLink(item.Exercise.Name, null, null, 
+                                                    new
+                                                    {
+                                                        onclick = "EditTrainingsheetExercise(this); return false;",
+                                                        data_id = item.TrainingSheetExerciseId
+                                                    })
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Charge)

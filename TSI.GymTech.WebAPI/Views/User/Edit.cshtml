@@ -336,23 +336,23 @@
                         <div class="card-body">
                             <div class="col-12 text-right">
                                 <h5 style="float:left">Endereços</h5>
-                                @Html.ActionLink("Adicionar Endereço", "Create", "Address", new { personId = Model.PersonId }, new { @class = "btn btn-success align-content-end" })
+                                <a href="" onclick="AddNewAddress(this, 'User'); return false;" data-id="@Model.PersonId"
+                                   class="d-sm-inline-block btn btn-success align-content-end btn-sm btn-labeled shadow-sm mb-1">
+                                    <span class="btn-label">Novo Endereço</span>
+                                </a>
                             </div>
                             <hr />
                             <table class="stripe row-border" style="width:100%" id="tblAddresses" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>
-                                            @Html.LabelFor(model => model.Addresses.FirstOrDefault().AddressType, htmlAttributes: new { @class = "control-label col-md-12" })
-                                        </th>
-                                        @*<th>
-                                                @Html.LabelFor(model => model.Addresses.FirstOrDefault().AddressId, htmlAttributes: new { @class = "control-label col-md-12" })
-                                            </th>*@
-                                        <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().Street, htmlAttributes: new { @class = "control-label col-md-12" })
                                         </th>
                                         <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().Number, htmlAttributes: new { @class = "control-label col-md-12" })
+                                        </th>
+                                        <th>
+                                            @Html.LabelFor(model => model.Addresses.FirstOrDefault().AddressType, htmlAttributes: new { @class = "control-label col-md-12" })
                                         </th>
                                         <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().District, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -363,9 +363,6 @@
                                         <th>
                                             @Html.LabelFor(model => model.Addresses.FirstOrDefault().State, htmlAttributes: new { @class = "control-label col-md-12" })
                                         </th>
-                                        @*<th>
-                                                @Html.LabelFor(model => model.Addresses.FirstOrDefault().PostalCode, htmlAttributes: new { @class = "control-label col-md-12" })
-                                            </th>*@
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -375,19 +372,21 @@
                                     {
                                         <tr id="@item.AddressId">
                                             <td>
+                                                @Html.ActionLink(item.Street, null, null,
+                                                    new
+                                                    {
+                                                        onclick = "EditAddress(this, 'User'); return false;",
+                                                        data_id = item.AddressId
+                                                    })
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Number)
+                                            </td>
+                                            <td>
                                                 @if (item.AddressType != null)
                                                 {
                                                     <span>@typeof(TSI.GymTech.Entity.App_LocalResources.AddressType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.AddressType), item.AddressType)).GetValue(null)</span>
                                                 }
-                                            </td>
-                                            @*<td>
-                                                    @Html.DisplayFor(modelItem => item.AddressId)
-                                                </td>*@
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Street)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Number)
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.District)
@@ -398,11 +397,8 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.State)
                                             </td>
-                                            @*<td>
-                                                    @Html.DisplayFor(modelItem => item.PostalCode)
-                                                </td>*@
                                             <td>
-                                                <a href=@Url.Action("Edit", "Address", new { id = item.AddressId })>
+                                                <a href="" onclick="EditAddress(this, 'User'); return false;" data-id="@item.AddressId">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                             </td>
@@ -487,6 +483,11 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+@*Modal Address popup*@
+<div class="modal" id="modalAddress">
+
+</div>
 
 <!-- Utility library -->
 <script src="@Url.Content("~/Scripts/Utility/UserUtility.js")" type="text/javascript"></script>
