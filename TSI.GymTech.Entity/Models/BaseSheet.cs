@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 using TSI.GymTech.Entity.Enumerates;
 
 namespace TSI.GymTech.Entity.Models

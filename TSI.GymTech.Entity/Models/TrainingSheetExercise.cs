@@ -6,7 +6,6 @@ using System.Text;
 
 namespace TSI.GymTech.Entity.Models
 {
-    [Table("trainingsheetexercise")]
     public class TrainingSheetExercise : BaseModel
     {
         [Key]

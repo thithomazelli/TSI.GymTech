@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel.DataAnnotations;
 using TSI.GymTech.Entity.Enumerates;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using TSI.GymTech.Entity.Configurations;
-using System.Web.Script.Serialization;
 
 namespace TSI.GymTech.Entity.Models
 {
-    [Table("person")]
     public class Person : BaseModel
     {
         [Key]
