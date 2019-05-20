@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace TSI.GymTech.Entity.Models
 {
-    [Table("paymentproduct")]
     public class PaymentProduct : BaseModel
     {
         [Key]
