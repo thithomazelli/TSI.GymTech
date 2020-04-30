@@ -10,22 +10,31 @@
     <title>GymTech - Log de Acesso</title>
 </head>
 
-<!-- Enabled filters and buttons to datatable -->
-<script>
-    $(document).ready(function () {
-        LoadDataTableButtonsAndFilterAndOrdering(tblAccessLogs, 3);
-    });
-</script>
-
-<script src="@Url.Content("~/Scripts/Utility/AccessLogUtility.js")" type="text/javascript"></script>
-
 <!-- Begin Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-1">
+<div class="d-flex align-items-center justify-content-between mb-1">
     <h1 class="h4 mb-2 text-gray-800">Log de Acesso</h1>
-    @*<a href=@Url.Action("Create", "AccessLog") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
-        <i class="fas fa-history text-white-35"></i>
-        <span class="btn-label">Create</span>
-    </a>*@
+    <div class="d-grid float-right">
+        <a id="seven" href="" onclick="LoadAccessLogTableFilters('7', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Últimos 7 dias
+        </a>
+        <a id="fifteen" href="" onclick="LoadAccessLogTableFilters('15', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Últimos 15 dias
+        </a>
+        <a id="thirty" href="" onclick="LoadAccessLogTableFilters('30', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Últimos 30 dias
+        </a>
+        <a id="sixty" href="" onclick="LoadAccessLogTableFilters('60', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Últimos 60 dias
+        </a>
+        <a id="ninety" href="" onclick="LoadAccessLogTableFilters('90', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Últimos 90 dias
+        </a>
+    </div>
 </div>
 
 <!-- DataTales Example -->
@@ -50,36 +59,23 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr id="@item.AccessLogId">
-                        <td>
-                            @{ var controllerName = item.Person.ProfileType == TSI.GymTech.Entity.Enumerates.PersonType.Student ? "Student" : "User"; }
-                            @Html.ActionLink(item.Person.Name, "Edit", controllerName, new { id = item.Person.PersonId }, null)
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.GateStatusType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.GateStatusType), item.AccessType)).GetValue(null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.MessageDisplayed)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CreateDate)
-                        </td>
-                        @*<td>
-                            <a href=@Url.Action("Edit", "AccessLog", new { id = item.AccessLogId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>*@
-                        <td>
-                            <a href="#" onClick="DeleteAccessLog('@item.AccessLogId', 'tblAccessLogs', 'AccessLog');">
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
         </table>
     </div>
 </div>
+
+
+<!-- Enabled filters and buttons to datatable -->
+<script>
+    $(document).ready(function () {
+        LoadAccessLogTableFilters();
+        LoadAccessLogDataTable(null, 3);
+    });
+</script>
+
+
+@*DataTable DateTime library*@
+<script src="@Url.Content("~/Content/vendor/datatables/moment.min.js")"></script>
+<script src="@Url.Content("~/Content/vendor/datatables/datetime-moment.js")"></script>
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/AccessLogUtility.js")" type="text/javascript"></script>

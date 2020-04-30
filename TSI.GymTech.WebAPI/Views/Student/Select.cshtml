@@ -31,24 +31,6 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr id="@item.PersonId">
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.PersonId)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Name)
-                                        </td>
-                                        <td>
-                                            <a href=@Url.Action("Select", "Student", new { id = item.PersonId }) onclick="SelectPerson(@item.PersonId); return false;">
-                                                <i class="fas fa-check-circle"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -58,12 +40,13 @@
 
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
-
 <!-- Enabled filters and buttons to datatable -->
 <script>
     $(document).ready(function () {
-        LoadDataTableToPopUp(tblStudents);
+        LoadDataTableToSelectStudent(tblStudents);
     });
 </script>
 
+<!-- Utility library -->
 <script src="@Url.Content("~/Scripts/Utility/StudentUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/ModalSelectUtility.js")" type="text/javascript"></script>

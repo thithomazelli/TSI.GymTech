@@ -1,0 +1,111 @@
+﻿@model TSI.GymTech.Entity.Models.TrainingSheet
+
+@{
+    ViewBag.Title = "Print";
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm("Print", "PortalUser", FormMethod.Post, new { id = "frmPortalUser", name = "frmPortalUser" }))
+        {
+            <div class="modal-header">
+                <h5 class="modal-title">Imprimir Treino</h5>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            </div>
+
+            @Html.AntiForgeryToken()
+            <div id="modal-print-content" class="modal-body">
+                <table>
+                    <tr>
+                        <td>
+                            <span>Treino:</span>
+                        </td>
+                        <td>
+                            <span>@Model.Name</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        @if (Model.Student?.Name != null)
+                        {
+                            <td>
+                                Aluno:
+                            </td>
+                            <td>
+                                @Model.Student.Name
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        @if (Model.Student?.PersonId != null)
+                        {
+                            <td>
+                                <span>Matrícula:</span>
+                            </td>
+                            <td>
+                                <span>@Model.Student.PersonId</span>
+                            </td>
+                        }
+                    </tr>
+                </table>
+                <hr />
+                <div style="text-align: center !important;">
+                    <span class="font-weight-bold">Lista de Exercícios</span>
+                </div>
+                <hr />
+                <table id="tblTrainingSheetExercises" class="row-border" style="width:100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.LabelFor(model => model.TrainingSheetExercises.FirstOrDefault().Exercise.Name, htmlAttributes: new { @class = "control-label col-md-12" })
+                            </th>
+                            <th>
+                                @Html.LabelFor(model => model.TrainingSheetExercises.FirstOrDefault().Charge, htmlAttributes: new { @class = "control-label col-md-12" })
+                            </th>
+                            <th>
+                                @Html.LabelFor(model => model.TrainingSheetExercises.FirstOrDefault().Serie, htmlAttributes: new { @class = "control-label col-md-12" })
+                            </th>
+                            <th>
+                                @Html.Label("Repetições", htmlAttributes: new { @class = "control-label col-md-12" })
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.TrainingSheetExercises)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Exercise.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Charge)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Serie)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumberOfRepetitions)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button id="cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="print" type="button" class="btn btn-primary">Imprimir</button>
+            </div>
+        }
+
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+
+<!-- Enabled filters and buttons to datatable -->
+<script>
+    $(document).ready(function () {
+        // LoadDataTableToPrint(tblTrainingSheetExercises);
+    });
+</script>
+
+<script src="@Url.Content("~/Scripts/Utility/PrinterUtility.js")" type="text/javascript"></script>

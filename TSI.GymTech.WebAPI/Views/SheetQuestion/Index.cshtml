@@ -7,22 +7,15 @@
 
 <!-- Page Heading -->
 <head>
-    <title>GymTech - Sheet Questions</title>
+    <title>GymTech - Perguntas</title>
 </head>
 
-<!-- Enabled filters and buttons to datatable -->
-<script>
-    $(document).ready(function () {
-        LoadDataTableButtonsAndFilter(tblSheetQuestions);
-    });
-</script>
-
 <!-- Begin Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h4 mb-2 text-gray-800">Sheet Questions</h1>
+<div class="d-flex align-items-center justify-content-between mb-1">
+    <h1 class="h4 mb-2 text-gray-800">Perguntas</h1>
     <a href=@Url.Action("Create", "SheetQuestion") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-question text-white-35"></i>
-        <span class="btn-label">Create</span>
+        <span class="btn-label">Nova</span>
     </a>
 </div>
 
@@ -36,7 +29,10 @@
                         @Html.DisplayNameFor(model => model.Question)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TypeQuestion)
+                        @Html.DisplayNameFor(model => model.QuestionType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnswerType)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Order)
@@ -45,32 +41,17 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Question)
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.SheetQuestionType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.SheetQuestionType), item.TypeQuestion)).GetValue(null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Order)
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Edit", "SheetQuestion", new { id = item.SheetQuestionId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Delete", "SheetQuestion", new { id = item.SheetQuestionId })>
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
         </table>
     </div>
 </div>
+
+
+<!-- Enabled filters and buttons to datatable -->
+<script>
+    $(document).ready(function () {
+        LoadSheetQuestionDataTable();
+    });
+</script>
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/SheetQuestionUtility.js")" type="text/javascript"></script>

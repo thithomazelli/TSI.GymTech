@@ -1,10 +1,75 @@
-﻿// Showing toastr success alert
+﻿// Load Datatable to Index page with ajax and controller 
+// Create structure to DataTable show entries, search and export buttons
+function LoadUsersDataTable(orderingStatus) {
+    var formAction = $("form").attr("action");
+    var urlBase = formAction.substr(0, formAction.indexOf('User'));
+
+    var table = $(tblUsers).DataTable({
+        language: {
+            url: urlBase + 'Scripts/Utility/i18n/Portuguese-Brasil.json',
+            search: '<div class="input-group col-md-12">' +
+                ' _INPUT_ ' +
+                '<span class= "input-group-append">' +
+                '<button class="input-group-text btn btn-primary btn-dataTable-fixMargin" type="button">' +
+                '<i class="fa fa-search"></i>' +
+                '</button>' +
+                '</span>' +
+                '</div> ',
+            searchPlaceholder: 'Pesquisar por...'
+        },
+        ordering: orderingStatus == null || orderingStatus == undefined ? true : orderingStatus,
+        pagingType: 'simple_numbers',
+        lengthChange: true,
+        rowId: "Id",
+        responsive: true,
+        ajax: {
+            url: urlBase + "User/GetUsers",
+            type: "GET",
+            dataType: "json"
+        },
+        columns: [
+            {
+                data: "Name", autowidth: true, render: function (data, type, full, meta) {
+                    return '<a href=' + urlBase + 'User/Edit/' + full.Id + '>' + data + '</a>';
+                }
+            },
+            { data: "Id", autowidth: true },
+            { data: "ProfileType", autowidth: true },
+            { data: "SocialSecurityCard", autowidth: true },
+            { data: "Status", autowidth: true },
+            { data: "Email", autowidth: true },
+            {
+                data: null, render: function (data, type, full, meta) {
+                    return "<a href=" + urlBase + "User/Edit/" + full.Id + ">" +
+                        "<i class='fas fa-edit'></i>" +
+                        "</a>";
+                }
+            },
+            {
+                data: null, render: function (data, type, full, meta) {
+                    return "<a href='#' onClick='DeleteUser(&apos;" + full.Id + "&apos;, &apos;" + full.Name + "&apos;, &apos;tblUsers&apos;);'>" +
+                        "<i style='color: red;' class='fas fa-trash-alt'></i>" +
+                        "</a >";
+                }
+            }
+        ]
+    });
+
+    $.fn.DataTable.ext.pager.numbers_length = 3;
+    table.buttons().container()
+        .appendTo('#' + tblUsers.id + '_wrapper .col-md-6:eq(0)');
+}
+
+// Showing toastr success alert
 $("#btnSaveUser").click(function () {
     var formData = $("#frmUser").serialize();
 
     event.preventDefault();
     $('#btnSaveUser').attr('disabled', 'disabled');
     var url = $("#frmUser").attr("action");
+
+    var cpf = $('#SocialSecurityCard').val().replace(/[^0-9]/g, '').toString();
+    SocialSecurityCard(cpf);
 
     $.ajax({
         url: url,
@@ -45,7 +110,7 @@ function DeleteUser(personId, personName, tableName) {
     headers['__RequestVerificationToken'] = token;
     headersadr['__RequestVerificationToken'] = tokenadr;
 
-    if (confirm('Tem certeza que deseja o Usuário ' + personName + '?')) {
+    if (confirm('Tem certeza que deseja o Usuário "' + personName + '"?')) {
         $.ajax({
             type: "POST",
             dataType: "json",

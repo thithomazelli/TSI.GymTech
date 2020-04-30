@@ -7,9 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TSI.GymTech.Entity.Models;
+using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Manager.EntityManagers;
 using TSI.GymTech.Manager.Result;
 using TSI.GymTech.Manager.Utitlities;
+using System.Resources;
+using System.Globalization;
 
 namespace TSI.GymTech.WebAPI.Controllers
 {
@@ -17,6 +20,7 @@ namespace TSI.GymTech.WebAPI.Controllers
     {
         private readonly ProductManager _productManager;
         private PhotoManager _photoManager;
+        private ValidationErrorManager _validationErrorManager;
 
         public ProductController()
         {
@@ -26,29 +30,63 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View(_productManager.FindAll().Data);
-        }
-        
-        // GET: Product/Create
-        public ActionResult Create()
-        {
             return View();
         }
 
+        [HttpGet]
+        public ActionResult GetProducts()
+        {
+            var productList = _productManager.FindAll().Data
+                .Select(_ => new
+                {
+                    Id = _.ProductId,
+                    _.Name,
+                    Type = _.Type != null
+                        ? GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.ProductType)),
+                            Enum.GetName(typeof(ProductType), _.Type))
+                        : null,
+                    Status = _.Status != null
+                        ? GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.ProductStatus)),
+                            Enum.GetName(typeof(ProductStatus), _.Status))
+                        : null,
+                    SuggestedPrice = _.SuggestedPrice.ToString("C"),
+                    _.QuantityStock,
+                    _.Quota
+                });
+
+            return Json(new { data = productList }, JsonRequestBehavior.AllowGet);
+        }
+
+        // GET: Product/Create
+        public ActionResult Create()
+        {
+            var model = new Product
+            {
+                Status = ProductStatus.Active
+            };
+            return View(model);
+        }
+
         // POST: Product/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Description,Type,Status,SuggestedPrice,QuantityStock,Duplication,Photo,Comments")] Product product)
+        public ActionResult Create(Product product)
         {
+            ValidateDuplicated(product);
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                product.CreateUserId = 0;
+                product.CreateDate = DateTime.Now;
+                product.ModifyUserId = 0;
+                product.ModifyDate = DateTime.Now;
                 _productManager.Create(product);
-                return RedirectToAction("Edit/" + product.ProductId);
+
+                return Json(new { Success = true, Message = "Produto cadastrado com sucesso.", Id = product.ProductId });
             }
 
-            return View(product);
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Product/Edit/5
@@ -58,7 +96,9 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Product product = _productManager.FindById(id).Data;
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -67,18 +107,23 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: Product/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Type,Status,SuggestedPrice,QuantityStock,Duplication,Photo,Comments")] Product product)
+        public ActionResult Edit(Product product)
         {
+            ValidateDuplicated(product);
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                product.ModifyUserId = 0;
+                product.ModifyDate = DateTime.Now;
                 _productManager.Update(product);
-                //return RedirectToAction("Index");
+
+                return Json(new { Success = true, Message = "Produto atualizado com sucesso." });
             }
-            return View(product);
+
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Product/Delete/5
@@ -167,6 +212,21 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return Json(new { Type = "Error", Message = "Não foi possível remover a imagem do Produto." });
             }
+        }
+
+        private void ValidateDuplicated(Product product)
+        {
+            // Validate if Name is duplicated
+            if (_productManager.IsNameDuplicated(product))
+            {
+                ModelState.AddModelError("Name", "Já existe um Produto cadastrado com o Nome informado.");
+            }
+        }
+
+        public string GetResourceName(ResourceManager resourceManager, string enumName)
+        {
+            CultureInfo _cultureInfo = new CultureInfo("pt");
+            return resourceManager.GetString(enumName, _cultureInfo);
         }
     }
 }

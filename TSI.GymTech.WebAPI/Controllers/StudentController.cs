@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Net;
+using System.Linq;
 using System.Web.Mvc;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Manager.EntityManagers;
 using TSI.GymTech.Manager.Utitlities;
 using TSI.GymTech.Manager.Result;
+using System.Resources;
+using System.Globalization;
 
 namespace TSI.GymTech.WebAPI.Controllers
 {
@@ -14,7 +17,7 @@ namespace TSI.GymTech.WebAPI.Controllers
         private readonly PersonManager _personManager;
         private PhotoManager _photoManager;
         private ValidationErrorManager _validationErrorManager;
-
+        
         public StudentController()
         {
             _personManager = new PersonManager();
@@ -23,13 +26,104 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View(_personManager.FindByProfileType(PersonType.Student, false, true).Data);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetStudents(string filter)
+        {
+            var currentDate = DateTime.Now;
+            
+            switch(filter)
+            {
+                case "Birthday":
+                    {
+                        var studentList = _personManager.FindByProfileType(PersonType.Student, false, true).Data
+                            .Where(_ => _.Status == PersonStatus.Active && _.BirthDate != null
+                                        && DateTime.Parse(_.BirthDate?.Day + "." + _.BirthDate?.Month + "." + currentDate.Year).Date >= currentDate.Date
+                                        && DateTime.Parse(_.BirthDate?.Day + "." + _.BirthDate?.Month + "." + currentDate.Year).Date <= currentDate.Date.AddDays(4))
+                            .Select(_ => new
+                            {
+                                Id = _.PersonId,
+                                Status = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.PersonStatus)),
+                                        Enum.GetName(typeof(PersonStatus), _.Status)),
+                                _.Name,
+                                _.SocialSecurityCard,
+                                _.Email,
+                                _.BirthDate
+                            })
+                            .OrderBy(_ => DateTime.Parse(_.BirthDate?.Day + "." + _.BirthDate?.Month + "." + currentDate.Year).Date);
+
+                        return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
+                    }
+                case "Frequent":
+                    {
+                        var studentList = _personManager.FindAllByStudentFrequentView().Data
+                            .Select(_ => new
+                            {
+                                Id = _.PersonId,
+                                Status = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.PersonStatus)),
+                                        Enum.GetName(typeof(PersonStatus), _.Status)),
+                                _.Name,
+                                _.SocialSecurityCard,
+                                _.Email
+                            });
+
+                        return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
+                    }
+                case "NotFrequent":
+                    {
+                        var studentList = _personManager.FindAllByStudentNotFrequentView().Data
+                            .Select(_ => new
+                            {
+                                Id = _.PersonId,
+                                Status = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.PersonStatus)),
+                                        Enum.GetName(typeof(PersonStatus), _.Status)),
+                                _.Name,
+                                _.SocialSecurityCard,
+                                _.Email
+                            });
+
+                        return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
+                    }
+                case "Inactive":
+                    {
+                        var studentList = _personManager.FindByProfileType(PersonType.Student, false, true).Data
+                            .Where(_ => _.Status != PersonStatus.Active)
+                            .Select(_ => new
+                            {
+                                Id = _.PersonId,
+                                Status = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.PersonStatus)),
+                                        Enum.GetName(typeof(PersonStatus), _.Status)),
+                                _.Name,
+                                _.SocialSecurityCard,
+                                _.Email
+                            }); ;
+
+                        return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
+                    }
+                default:
+                    {
+                        var studentList = _personManager.FindByProfileType(PersonType.Student, false, true).Data
+                            .Select(_ => new
+                            {
+                                Id = _.PersonId,
+                                Status = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.PersonStatus)),
+                                        Enum.GetName(typeof(PersonStatus), _.Status)),
+                                _.Name,
+                                _.SocialSecurityCard,
+                                _.Email
+                            }); ;
+
+                        return Json(new { data = studentList }, JsonRequestBehavior.AllowGet);
+                    }
+            }
         }
 
         // GET: Students
         public ActionResult Select()
         {
-            return View(_personManager.FindByProfileType(PersonType.Student, false, true).Data);
+            return View();
         }
         
         // POST: TrainingSheet/Delete/5
@@ -94,6 +188,7 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Person person = _personManager.FindById(id).Data;
 
             if (person == null)
@@ -117,7 +212,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 person.ModifyDate = DateTime.Now;
                 _personManager.Update(person);
 
-                return Json(new { Success = true, Message = "Aluno foi atualizado com sucesso." });
+                return Json(new { Success = true, Message = "Aluno atualizado com sucesso." });
             }
 
             _validationErrorManager = new ValidationErrorManager();
@@ -237,6 +332,12 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 ModelState.AddModelError("NationalIDCard", "Já existe um aluno ou usuário cadastrado com o RG informado.");
             }
+        }
+        
+        public string GetResourceName(ResourceManager resourceManager, string enumName)
+        {
+            CultureInfo _cultureInfo = new CultureInfo("pt");
+            return resourceManager.GetString(enumName, _cultureInfo);
         }
     }
 }

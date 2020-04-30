@@ -440,5 +440,5 @@ div.dataTables_wrapper div.dataTables_filter label {
 div.dataTables_wrapper div.dataTables_filter input {
   margin-left: 0.5em;
   display: inline-block;
-  width: 70%;
+  width: auto;
 }

@@ -8,23 +8,12 @@
 <head>
     <title>GymTech - @Model.Name</title>
 </head>
-<script>
-
-    $(document).ready(function () {
-        //$('#BirthDate').datepicker();
-        //$('#RegistrationDate').datepicker();
-
-        // Enabled filters and buttons to datatable
-        LoadSimpleDataTable(tblAddresses);
-        LoadDataTableWithPaging(tblAccessLogs);
-    });
-</script>
 
 @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { id = "frmUser", name = "frmUser" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "validation-message text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "validation-message help-block" })
         @Html.HiddenFor(model => model.PersonId)
         @Html.HiddenFor(model => model.Photo)
 
@@ -96,63 +85,62 @@
                         </button>
                     </div>
 
-                    <nav class="navbar navbar-expand-lg navbar-light">
+                    <!-- SIDEBAR MENU -->
+                    <nav id="navSideBar" class="navbar navbar-expand-lg navbar-light">
                         <div class="profile-usermenu sidebar-sticky">
-                            <ul class="nav-menu nav flex-column">
-                                @*<ul class="nav-menu nav ">*@
-                                <li class="nav-item">
+                            <ul class="nav nav-menu flex-column">
+                                @*<li class="nav-item">
                                     <a href="#" class="nav-link ">
                                         <i class="fa fa-home"></i>
-                                        @*Overview*@
                                         Geral
                                     </a>
-                                </li>
+                                </li>*@
                                 <li class="nav-item active">
-                                    <a href="#personalData" class="nav-link">
+                                    <a href="#personalData" class="nav-link" onclick="ShowOrHideSection(personalData);">
                                         <i class="fa fa-user"></i>
                                         @*Profile Information*@
                                         Dados Pessoais
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#addressList" class="nav-link">
+                                    <a href="#addressList" class="nav-link" onclick="ShowOrHideSection(addressList);">
                                         <i class="fas fa-map-marked-alt"></i>
                                         @*Profile Information*@
                                         Endereços
                                     </a>
                                 </li>
                                 @*<li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-shopping-cart"></i>
-                                            Payments
-                                            Pagamentos
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-file-invoice"></i>
-                                            <span>Anamnesis Sheet</span>
-                                            Fichas de Anamnese
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-file-contract"></i>
-                                            <span>Evaluation Sheet</span>
-                                            Fichas de Avaliação
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-file-alt"></i>
-                                            <span>Training Sheet</span>
-                                            Fichas de Treino
-                                        </a>
-                                    </li>*@
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Payments
+                                        Pagamentos
+                                    </a>
+                                </li>
                                 <li class="nav-item">
-                                    <a href="#accessLogList" class="nav-link">
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-file-invoice"></i>
+                                        <span>Anamnesis Sheet</span>
+                                        Fichas de Anamnese
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-file-contract"></i>
+                                        <span>Evaluation Sheet</span>
+                                        Fichas de Avaliação
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="fas fa-file-alt"></i>
+                                        <span>Training Sheet</span>
+                                        Fichas de Treino
+                                    </a>
+                                </li>*@
+                                <li class="nav-item">
+                                    <a href="#accessLogList" class="nav-link" onclick="ShowOrHideSection(accessLogList);">
                                         <i class="fas fa-history"></i>
-                                        @*<span>Log Access</span>*@
+                                        @*Log Access*@
                                         Log de Acesso
                                     </a>
                                 </li>
@@ -179,7 +167,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } }) <br />
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -192,7 +180,7 @@
                                     </div>
                                     @Html.EnumDropDownListFor(model => model.ProfileType, htmlAttributes: new { @class = "form-control" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.ProfileType, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.ProfileType, "", new { @class = "validation-message help-block" })
                             </div>
 
                             <div class="form-group col-md-6 col-sm-12">
@@ -203,7 +191,7 @@
                                     </div>
                                     @Html.EnumDropDownListFor(model => model.Gender, htmlAttributes: new { @class = "form-control" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -216,7 +204,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.NationalIDCard, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.NationalIDCard, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.NationalIDCard, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.SocialSecurityCard, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -226,7 +214,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.SocialSecurityCard, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.SocialSecurityCard, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.SocialSecurityCard, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -239,7 +227,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.RegistrationDate, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -249,7 +237,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.RegistrationDate, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -262,7 +250,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -272,7 +260,7 @@
                                     </div>
                                     @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -285,7 +273,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.MobilePhone, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -295,7 +283,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.MobilePhone, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -307,7 +295,7 @@
                                 </div>
                                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-message help-block" })
                         </div>
 
                         <div class="form-group">
@@ -315,23 +303,13 @@
                             <div class="col-md-12">
                                 @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message help-block" })
                         </div>
-
-                        <div class="form-row">
-                            <div class="col-6 mt-2">
-                                @Html.ActionLink("Voltar para Lista de Usuários", "Index")
-                            </div>
-                            <div class="col-6 text-right">
-                                <input id="btnSaveUser" type="submit" value="Salvar" onclick="return false;" class="btn btn-success align-content-end" />
-                            </div>
-                        </div>
-
                     </div>
                 </section>
 
                 @*Address List*@
-                <section id="addressList">
+                <section id="addressList" style="display: none;">
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="col-12 text-right">
@@ -342,7 +320,7 @@
                                 </a>
                             </div>
                             <hr />
-                            <table class="stripe row-border" style="width:100%" id="tblAddresses" cellspacing="0">
+                            <table class="stripe row-border responsive" style="width:100%" id="tblAddresses" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>
@@ -372,12 +350,13 @@
                                     {
                                         <tr id="@item.AddressId">
                                             <td>
-                                                @Html.ActionLink(item.Street, null, null,
-                                                    new
-                                                    {
-                                                        onclick = "EditAddress(this, 'User'); return false;",
+                                                @if (item.Street != null)
+                                                {
+                                                    @Html.ActionLink(item.Street, null, null,new {
+                                                        onclick = "EditAddress(this, 'Student'); return false;",
                                                         data_id = item.AddressId
                                                     })
+                                                }
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Number)
@@ -416,7 +395,7 @@
                 </section>
 
                 @*Log Access List*@
-                <section id="accessLogList">
+                <section id="accessLogList" style="display: none;">
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="col-12 text-right">
@@ -459,10 +438,10 @@
                                                 @Html.DisplayFor(modelItem => item.CreateDate)
                                             </td>
                                             @*<td>
-                                                    <a href=@Url.Action("Edit", "AccessLog", new { id = item.AccessLogId })>
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                </td>*@
+                                        <a href=@Url.Action("Edit", "AccessLog", new { id = item.AccessLogId })>
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>*@
                                             <td>
                                                 <a href="#" onClick="DeleteAccessLog('@item.AccessLogId', 'tblAccessLogs', 'AccessLog');">
                                                     <i style="color: red;" class="fas fa-trash-alt"></i>
@@ -475,6 +454,18 @@
                         </div>
                     </div>
                 </section>
+
+                @*Buttons*@
+                <section class="profile-content">
+                    <div class="form-row">
+                        <div class="col-6 mt-2">
+                            @Html.ActionLink("Voltar para Lista de Usuários", "Index")
+                        </div>
+                        <div class="col-6 text-right">
+                            <input id="btnSaveUser" type="submit" value="Salvar" onclick="return false;" class="btn btn-success align-content-end" />
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -482,6 +473,14 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            // Enabled filters and buttons to datatable
+            LoadDataTableButtonsAndFilter(tblAddresses);
+            LoadDataTableWithPaging(tblAccessLogs);
+        });
+    </script>
 }
 
 @*Modal Address popup*@
@@ -492,9 +491,9 @@
 <!-- Utility library -->
 <script src="@Url.Content("~/Scripts/Utility/UserUtility.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Utility/AddressUtility.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/Utility/EditUtility.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Utility/AccessLogUtility.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/PersonUtility.js")" type="text/javascript"></script>
 
 <!-- WebcamJS library -->
 <script src="@Url.Content("~/Scripts/WebCam/webcam.min.js")" type="text/javascript"></script>

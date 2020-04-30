@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Resources;
 using System.Web;
 using System.Web.Mvc;
+using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.EntityManagers;
 using TSI.GymTech.Manager.Result;
@@ -17,6 +20,7 @@ namespace TSI.GymTech.WebAPI.Controllers
     {
         private readonly ExerciseManager _exerciseManager;
         private PhotoManager _photoManager;
+        private ValidationErrorManager _validationErrorManager;
 
         public ExerciseController()
         {
@@ -26,9 +30,29 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Exercise
         public ActionResult Index()
         {
-            return View(_exerciseManager.FindAll().Data);
+            return View();
         }
-        
+
+        [HttpGet]
+        public ActionResult GetExercises()
+        {
+            var exerciseList = _exerciseManager.FindAll().Data
+                .Select(_ => new
+                {
+                    Id = _.ExerciseId,
+                    _.Name,
+                    _.Description,
+                    _.Comments,
+                    _.MuscleWorked,
+                    MuscularGroup = _.MuscularGroup != null
+                        ? GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.MuscularGroup)),
+                                Enum.GetName(typeof(MuscularGroup), _.MuscularGroup))
+                        : null
+                });
+
+            return Json(new { data = exerciseList }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Exercise/Create
         public ActionResult Create()
         {
@@ -40,8 +64,9 @@ namespace TSI.GymTech.WebAPI.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExerciseId,Name,Description,Photo,Comments,MuscleWorked,MuscularGroup,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Exercise exercise)
+        public ActionResult Create(Exercise exercise)
         {
+            ValidateDuplicated(exercise);
             if (ModelState.IsValid)
             {
                 //Change to current user id later
@@ -50,10 +75,12 @@ namespace TSI.GymTech.WebAPI.Controllers
                 exercise.ModifyUserId = 0;
                 exercise.ModifyDate = DateTime.Now;
                 _exerciseManager.Create(exercise);
-                return RedirectToAction("Edit/" + exercise.ExerciseId);
+
+                return Json(new { Success = true, Message = "Exercício cadastrado com sucesso.", Id = exercise.ExerciseId });
             }
 
-            return View(exercise);
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Exercise/Edit/5
@@ -72,21 +99,23 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: Exercise/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ExerciseId,Name,Description,Photo,Comments,MuscleWorked,MuscularGroup,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] Exercise exercise)
+        public ActionResult Edit(Exercise exercise)
         {
+            ValidateDuplicated(exercise);
             if (ModelState.IsValid)
             {
                 //Change to current user id later
                 exercise.ModifyUserId = 0;
                 exercise.ModifyDate = DateTime.Now;
                 _exerciseManager.Update(exercise);
-                //return RedirectToAction("Index");
+
+                return Json(new { Success = true, Message = "Exercício atualizado com sucesso." });
             }
-            return View(exercise);
+
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Exercise/Delete/5
@@ -177,6 +206,21 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return Json(new { Type = "Error", Message = "Não foi possível remover a imagem do Exercício." });
             }
+        }
+
+        private void ValidateDuplicated(Exercise exercise)
+        {
+            // Validate if Name is duplicated
+            if (_exerciseManager.IsNameDuplicated(exercise))
+            {
+                ModelState.AddModelError("Name", "Já existe um aluno ou usuário cadastrado com Nome informado.");
+            }
+        }
+
+        public string GetResourceName(ResourceManager resourceManager, string enumName)
+        {
+            CultureInfo _cultureInfo = new CultureInfo("pt");
+            return resourceManager.GetString(enumName, _cultureInfo);
         }
     }
 }

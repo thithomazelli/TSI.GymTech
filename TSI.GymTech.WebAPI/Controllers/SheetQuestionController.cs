@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Resources;
 using System.Web.Mvc;
+using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.EntityManagers;
 
@@ -14,6 +14,7 @@ namespace TSI.GymTech.WebAPI.Controllers
     public class SheetQuestionController : Controller
     {
         private readonly SheetQuestionManager _sheetQuestionManager;
+        private ValidationErrorManager _validationErrorManager;
 
         public SheetQuestionController()
         {
@@ -23,9 +24,27 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: SheetQuestion
         public ActionResult Index()
         {
-            return View(_sheetQuestionManager.FindAll().Data);
+            return View();
         }
-        
+
+        [HttpGet]
+        public ActionResult GetSheetQuestions()
+        {
+            var sheetQuestionList = _sheetQuestionManager.FindAll().Data
+                .Select(_ => new
+                {
+                    Id = _.SheetQuestionId,
+                    _.Question,
+                    QuestionType = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.SheetQuestionType)),
+                            Enum.GetName(typeof(SheetQuestionType), _.QuestionType)),
+                    AnswerType = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.SheetAnswerType)),
+                            Enum.GetName(typeof(SheetAnswerType), _.AnswerType)),
+                    _.Order
+                });
+
+            return Json(new { data = sheetQuestionList }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: SheetQuestion/Create
         public ActionResult Create()
         {
@@ -33,19 +52,25 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: SheetQuestion/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SheetQuestionId,TypeQuestion,Order,Question,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] SheetQuestion sheetQuestion)
+        public ActionResult Create(SheetQuestion sheetQuestion)
         {
+            ValidateDuplicated(sheetQuestion);
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                sheetQuestion.CreateUserId = 0;
+                sheetQuestion.CreateDate = DateTime.Now;
+                sheetQuestion.ModifyUserId = 0;
+                sheetQuestion.ModifyDate = DateTime.Now;
                 _sheetQuestionManager.Create(sheetQuestion);
-                return RedirectToAction("Index");
+
+                return Json(new { Success = true, Message = "Pergunta cadastrada com sucesso.", Id = sheetQuestion.SheetQuestionId });
             }
 
-            return View(sheetQuestion);
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: SheetQuestion/Edit/5
@@ -55,27 +80,35 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             SheetQuestion sheetQuestion = _sheetQuestionManager.FindById(id).Data;
+
             if (sheetQuestion == null)
             {
                 return HttpNotFound();
             }
+
             return View(sheetQuestion);
         }
 
         // POST: SheetQuestion/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SheetQuestionId,TypeQuestion,Order,Question,CreateDate,CreateUserId,ModifyDate,ModifyUserId")] SheetQuestion sheetQuestion)
+        public ActionResult Edit(SheetQuestion sheetQuestion)
         {
+            ValidateDuplicated(sheetQuestion);
             if (ModelState.IsValid)
             {
+                //Change to current user id later
+                sheetQuestion.ModifyUserId = 0;
+                sheetQuestion.ModifyDate = DateTime.Now;
                 _sheetQuestionManager.Update(sheetQuestion);
-                return RedirectToAction("Index");
+
+                return Json(new { Success = true, Message = "Pergunta atualizada com sucesso." });
             }
-            return View(sheetQuestion);
+
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: SheetQuestion/Delete/5
@@ -99,17 +132,31 @@ namespace TSI.GymTech.WebAPI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             SheetQuestion sheetQuestion = _sheetQuestionManager.FindById(id).Data;
-            _sheetQuestionManager.Remove(sheetQuestion);
-            return RedirectToAction("Index");
+
+            try
+            {
+                _sheetQuestionManager.Remove(sheetQuestion);
+                return Json(new { Type = "Success", Message = "A Questão " + sheetQuestion.Question + " foi removida com sucesso." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Type = "Error", Message = "Não foi possível remover a Questão " + sheetQuestion.Question + "." });
+            }
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        private void ValidateDuplicated(SheetQuestion sheetQuestion)
+        {
+            // Validate if the question is duplicated
+            if (_sheetQuestionManager.IsDuplicated(sheetQuestion))
+            {
+                ModelState.AddModelError("Question", "Já existe uma pergunta cadastrada com o mesmo título e tipo.");
+            }
+        }
+        
+        public string GetResourceName(ResourceManager resourceManager, string enumName)
+        {
+            CultureInfo _cultureInfo = new CultureInfo("pt");
+            return resourceManager.GetString(enumName, _cultureInfo);
+        }
     }
 }

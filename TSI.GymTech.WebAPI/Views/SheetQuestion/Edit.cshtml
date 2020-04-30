@@ -5,86 +5,97 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!-- Page Heading -->
 <head>
-    <title>GymTech - Questões da Ficha</title>
+    <title>GymTech - @Model.Question</title>
 </head>
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "SheetQuestion", FormMethod.Post, new { id = "frmSheetQuestion", name = "frmSheetQuestion" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>SheetQuestion</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.SheetQuestionId)
+<div id="page-content" class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "validation-message help-block" })
+    @Html.HiddenFor(model => model.SheetQuestionId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TypeQuestion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.TypeQuestion, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TypeQuestion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="edit-container">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-md-8">
+            @*Model Properties*@
+            <section id="sheetQuestion">
+                <div class="profile-content">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Order, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Order, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <h5>Pergunta - "@Model.Question"</h5>
+                    </div>
+                    <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12 col-sm-12">
+                            @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="input-group col-md-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-file-alt"></i></span>
+                                </div>
+                                @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Question, "", new { @class = "validation-message help-block" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6 col-sm-12">
+                            @Html.LabelFor(model => model.QuestionType, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="input-group col-md-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                </div>
+                                @Html.EnumDropDownListFor(model => model.QuestionType, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.QuestionType, "", new { @class = "validation-message help-block" })
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateUserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateUserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateUserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group col-md-6 col-sm-12">
+                            @Html.LabelFor(model => model.AnswerType, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="input-group col-md-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                </div>
+                                @Html.EnumDropDownListFor(model => model.AnswerType, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.AnswerType, "", new { @class = "validation-message help-block" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifyDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifyDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifyDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6 col-sm-12">
+                            @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="input-group col-md-12">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                </div>
+                                @Html.EditorFor(model => model.Order, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Order, "", new { @class = "validation-message help-block" })
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifyUserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifyUserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifyUserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            @*Buttons*@
+            <section class="profile-content">
+                <div class="form-row">
+                    <div class="col-6 mt-2">
+                        @Html.ActionLink("Voltar para Lista de Perguntas", "Index")
+                    </div>
+                    <div class="col-6 text-right">
+                        <button id="btnSaveSheetQuestion" onclick="return false;" class="btn btn-success align-content-end" type="submit">Salvar</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/SheetQuestionUtility.js")" type="text/javascript"></script>

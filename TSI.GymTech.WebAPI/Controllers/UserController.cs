@@ -6,6 +6,9 @@ using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.Result;
 using TSI.GymTech.Manager.EntityManagers;
 using TSI.GymTech.Manager.Utitlities;
+using System.Linq;
+using System.Globalization;
+using System.Resources;
 
 namespace TSI.GymTech.WebAPI.Controllers
 {
@@ -23,8 +26,26 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: Student
         public ActionResult Index()
         {
+            return View();
+        }
 
-            return View(_personManager.FindByProfileType(PersonType.Student, false, false).Data);
+        [HttpGet]
+        public ActionResult GetUsers()
+        {
+            var userList = _personManager.FindByProfileType(PersonType.Student, false, false).Data
+                .Select(_ => new
+                {
+                    Id = _.PersonId,
+                    Status = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.PersonStatus)),
+                                Enum.GetName(typeof(PersonStatus), _.Status)),
+                    ProfileType = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.PersonType)),
+                                Enum.GetName(typeof(PersonType), _.ProfileType)),
+                    _.Name,
+                    _.SocialSecurityCard,
+                    _.Email
+                });
+
+            return Json(new { data = userList }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Student/Create
@@ -52,7 +73,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 person.ModifyDate = DateTime.Now;
                 _personManager.Create(person);
 
-                return Json(new { Success = true, Message = "Aluno foi atualizado com sucesso.", Id = person.PersonId });
+                return Json(new { Success = true, Message = "Usuário cadastrado com sucesso.", Id = person.PersonId });
             }
 
             _validationErrorManager = new ValidationErrorManager();
@@ -88,7 +109,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                 person.ModifyDate = DateTime.Now;
                 _personManager.Update(person);
 
-                return Json(new { Success = true, Message = "Aluno foi atualizado com sucesso." });
+                return Json(new { Success = true, Message = "Usuário atualizado com sucesso." });
             }
 
             _validationErrorManager = new ValidationErrorManager();
@@ -208,6 +229,12 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 ModelState.AddModelError("NationalIDCard", "Já existe um aluno ou usuário cadastrado com o RG informado.");
             }
+        }
+
+        public string GetResourceName(ResourceManager resourceManager, string enumName)
+        {
+            CultureInfo _cultureInfo = new CultureInfo("pt");
+            return resourceManager.GetString(enumName, _cultureInfo);
         }
     }
 }

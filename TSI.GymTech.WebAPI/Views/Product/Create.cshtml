@@ -10,7 +10,7 @@
     <title>GymTech - Novo Produto</title>
 </head>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { id = "frmProduct", name = "frmProduct" }))
 {
     @Html.AntiForgeryToken()
 
@@ -32,7 +32,7 @@
                                 </div>
                                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                                 </div>
                                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                                 </div>
                                 @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "validation-message help-block" })
                         </div>
 
                         <div class="form-group col-md-6 col-sm-12">
@@ -69,7 +69,7 @@
                                 </div>
                                 @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@
                                 </div>
                                 @Html.EditorFor(model => model.SuggestedPrice, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.SuggestedPrice, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.SuggestedPrice, "", new { @class = "validation-message help-block" })
                         </div>
 
                         <div class="form-group col-md-6 col-sm-12">
@@ -93,20 +93,20 @@
                                 </div>
                                 @Html.EditorFor(model => model.QuantityStock, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.QuantityStock, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.QuantityStock, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6 col-sm-12">
-                            @Html.LabelFor(model => model.Duplication, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.Quota, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="input-group col-md-12">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
                                 </div>
-                                @Html.EditorFor(model => model.Duplication, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Quota, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Duplication, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Quota, "", new { @class = "validation-message help-block" })
                         </div>
 
                     </div>
@@ -117,10 +117,13 @@
                             <div class="input-group col-md-12">
                                 @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
+                </div>
 
+                @*Buttons*@
+                <section class="profile-content">
                     <div class="form-row">
                         <div class="col-6 mt-2">
                             @Html.ActionLink("Voltar para Lista de Produtos", "Index")
@@ -129,8 +132,16 @@
                             <input id="btnSaveProduct" type="submit" value="Salvar" class="btn btn-success align-content-end" />
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
     </div>
 }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/ProductUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>

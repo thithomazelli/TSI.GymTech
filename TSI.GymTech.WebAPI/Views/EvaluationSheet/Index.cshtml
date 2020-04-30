@@ -7,22 +7,15 @@
 
 <!-- Page Heading -->
 <head>
-    <title>GymTech - Evaluation Sheets</title>
+    <title>GymTech - Avaliações</title>
 </head>
 
-<!-- Enabled filters and buttons to datatable -->
-<script>
-    $(document).ready(function () {
-        LoadDataTableButtonsAndFilter(tblEvaluationSheets);
-    });
-</script>
-
 <!-- Begin Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h4 mb-2 text-gray-800">Evaluation Sheets</h1>
+<div class="d-flex align-items-center justify-content-between mb-1">
+    <h1 class="h4 mb-2 text-gray-800">Avaliações Físicas</h1>
     <a href=@Url.Action("Create", "EvaluationSheet") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-file-contract text-white-35"></i>
-        <span class="btn-label">Create</span>
+        <span class="btn-label">Novo</span>
     </a>
 </div>
 
@@ -33,10 +26,10 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Student.Name)
+                        @Html.DisplayNameFor(model => model.Description)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Trainer.Name)
+                        @Html.DisplayNameFor(model => model.Student.Name)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Revaluation)
@@ -48,34 +41,16 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Student.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Trainer.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Revaluation)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Comments)
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Edit", "EvaluationSheet", new { id = item.EvaluationSheetId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Delete", "EvaluationSheet", new { id = item.EvaluationSheetId })>
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
         </table>
     </div>
 </div>
+
+<!-- Enabled filters and buttons to datatable -->
+<script>
+    $(document).ready(function () {
+        LoadEvaluationSheetsDataTable();
+    });
+</script>
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/EvaluationSheetUtility.js")" type="text/javascript"></script>

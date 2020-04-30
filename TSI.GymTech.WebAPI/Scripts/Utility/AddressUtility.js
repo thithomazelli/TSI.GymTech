@@ -1,39 +1,7 @@
-﻿// Delete Address and showing toastr remove alert
-function DeleteAddress(addressId, tableName, formName) {
-    var formAction = $("form").attr("action");
-    var url = formAction.substr(0, formAction.indexOf(formName)) + 'Address/Delete';
-    var token = $('input[name=__RequestVerificationToken]').val();
-    var tokenadr = $('form[action="/' + formAction + '"] input[name=__RequestVerificationToken]').val();
-    var headers = {};
-    var headersadr = {};
-    headers['__RequestVerificationToken'] = token;
-    headersadr['__RequestVerificationToken'] = tokenadr;
-
-    if (confirm('Tem certeza que deseja remover o endereço selecionado?')) {
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            headers: headersadr,
-            url: url,
-            data: {
-                __RequestVerificationToken: token,
-                id: addressId
-            },
-            success: function (data) {
-                if (data.Type == 'Success') {
-                    toastr.success(data.Message);
-                    RemoveDataTableRow(tableName, addressId);
-                }
-                else {
-                    toastr.error(data.Message);
-                }
-            },
-            error: function (data) {
-                toastr.error(data.Message);
-            }
-        });
-    }
-}
+﻿$(document).ready(function ($) {
+    $("#PostalCode").keypress(OnlyNumber);
+    $('#PostalCode').mask("#####-##9");
+});
 
 // Search PostalCode
 $("#searchPostalCode").click(function() {
@@ -108,4 +76,41 @@ function EditAddress(element, formName) {
         keyboard: false
     }, "show");
     return false;
+}
+
+// Delete Address and showing toastr remove alert
+function DeleteAddress(addressId, tableName, formName) {
+    var formAction = $("form").attr("action");
+    var url = formAction.substr(0, formAction.indexOf(formName)) + 'Address/Delete';
+    var token = $('input[name=__RequestVerificationToken]').val();
+    var tokenadr = $('form[action="/' + formAction + '"] input[name=__RequestVerificationToken]').val();
+    var headers = {};
+    var headersadr = {};
+    headers['__RequestVerificationToken'] = token;
+    headersadr['__RequestVerificationToken'] = tokenadr;
+
+    if (confirm('Tem certeza que deseja remover o endereço selecionado?')) {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            headers: headersadr,
+            url: url,
+            data: {
+                __RequestVerificationToken: token,
+                id: addressId
+            },
+            success: function (data) {
+                if (data.Type == 'Success') {
+                    toastr.success(data.Message);
+                    RemoveDataTableRow(tableName, addressId);
+                }
+                else {
+                    toastr.error(data.Message);
+                }
+            },
+            error: function (data) {
+                toastr.error(data.Message);
+            }
+        });
+    }
 }

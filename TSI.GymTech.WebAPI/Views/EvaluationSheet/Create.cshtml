@@ -5,88 +5,257 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<!-- Page Heading -->
+<head>
+    <title>GymTech - Nova Avaliação Física</title>
+</head>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "EvaluationSheet", FormMethod.Post, new { id = "frmEvaluationSheet", name = "frmEvaluationSheet" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>EvaluationSheet</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Revaluation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Revaluation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Revaluation, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.ValidationSummary(false, "", new { @class = "validation-message help-block" })
+        @Html.HiddenFor(model => model.StudentId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="edit-container">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.StudentId, "StudentId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("StudentId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @*Photo and Nav buttons*@
+            <div class="col-lg-3 col-md-3 col-sm-12 float-md-right float-lg-right" style="position: relative;">
+                <div class="profile-sidebar">
+                    <div id="myCam" class="profile-userpic-webcam" style="display: none;">
+                    </div>
+                    <!-- SIDEBAR USERPIC -->
+                    <div id="results" class="d-none"></div>
+                    <div id="myPhoto" class="profile-userpic">
+                        <img id="personPhoto" src="~/Images/Sheets/bg-evaluation.jpg" class="img-responsive">
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            @Model.Description
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TrainerId, "TrainerId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("TrainerId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TrainerId, "", new { @class = "text-danger" })
+                    <!-- SIDEBAR MENU -->
+                    <nav id="navSideBar" class="navbar navbar-expand-lg navbar-light">
+                        <div class="profile-usermenu sidebar-sticky">
+                            <ul class="nav nav-menu flex-column">
+                                @*<li class="nav-item">
+                               <a href="#" class="nav-link ">
+                                   <i class="fa fa-home"></i>
+                                   Geral
+                               </a>
+                            </li>*@
+                                <li class="nav-item active">
+                                    <a href="#evaluationSheet" class="nav-link" onclick="ShowOrHideSection(evaluationSheet);">
+                                        <i class="fa fa-home"></i>
+                                        Dados Gerais
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#evaluationQuestions" class="nav-link" onclick="ShowOrHideSection(evaluationQuestions);">
+                                        <i class="fas fa-file-invoice"></i>
+                                        @*Evaluation Information*@
+                                        Ficha de Avaliação
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#anamneseQuestions" class="nav-link" onclick="ShowOrHideSection(anamneseQuestions);">
+                                        <i class="fas fa-file-invoice"></i>
+                                        @*Anamnesis Information*@
+                                        Ficha de Anamnese
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END MENU -->
+                    </nav>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @*Model Properties*@
+            <div class="col-lg-9 col-md-9 col-sm-12 col-md-8">
+                <section id="evaluationSheet">
+                    <div class="profile-content">
+                        <h5>Nova Avaliação Física</h5>
+                        <hr />
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Student, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Student.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    <span class="input-group-append">
+                                        <button class="input-group-text btn btn-primary btn-dataTable-fixMargin select-student-evaluationsheet" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Student, "", new { @class = "validation-message help-block" })
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreateUserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateUserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreateUserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Revaluation, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Revaluation, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Revaluation, "", new { @class = "validation-message help-block" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifyDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifyDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifyDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validation-message help-block" })
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ModifyUserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ModifyUserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ModifyUserId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group col-md-6 col-sm-12">
+                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="input-group col-md-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-list"></i></span>
+                                    </div>
+                                    @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message help-block" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message help-block" })
+                        </div>
+                    </div>
+                </section>
+
+                @*Evaluation Questions*@
+                <section id="evaluationQuestions" style="display: none;">
+                    <div class="profile-content">
+                        <h4>Perguntas Avalição</h4>
+                        <hr />
+
+                        <div class="sheet-question-container col-md-12">
+                            @foreach (var item in Model.EvaluationSheetAnswers)
+                            {
+                                <div class="form-group col-lg-4 mb-3">
+                                    @Html.Label(item.SheetQuestion.Question, htmlAttributes: new { @class = "sheet-question-label control-label col-md-12", Title = item.SheetQuestion.Question })
+                                    <div class="col-md-12">
+                                        @if (item.SheetQuestion.AnswerType == TSI.GymTech.Entity.Enumerates.SheetAnswerType.String)
+                                        {
+                                            <input class="form-control form-questions text-box single-line"
+                                                   data-val="SheetEvaluationAnswer"
+                                                   id="@item.SheetQuestion.SheetQuestionId"
+                                                   name="@item.SheetQuestion.Question"
+                                                   type="text"
+                                                   value="">
+                                        }
+                                        else if (item.SheetQuestion.AnswerType == TSI.GymTech.Entity.Enumerates.SheetAnswerType.Boolean)
+                                        {
+                                            <input type="radio" name="@item.SheetQuestion.SheetQuestionId" value="True"> <span>Sim</span>
+
+                                            <input type="radio" name="@item.SheetQuestion.SheetQuestionId" value="False"> <span>Não</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+                @*Anamnese Questions*@
+                <section id="anamneseQuestions" style="display: none;">
+                    <div class="profile-content">
+                        <h4>Perguntas Anamnese</h4>
+                        <hr />
+
+                        <div class="sheet-question-container col-md-12">
+                            @foreach (var item in Model.AnamnesisSheetAnswers)
+                            {
+                                <div class="form-group col-lg-4 mb-3">
+                                    @Html.Label(item.SheetQuestion.Question, htmlAttributes: new { @class = "sheet-question-label control-label col-md-12", Title = item.SheetQuestion.Question })
+                                    <div class="col-md-12">
+                                        @if (item.SheetQuestion.AnswerType == TSI.GymTech.Entity.Enumerates.SheetAnswerType.String)
+                                        {
+                                            <input class="form-control form-questions text-box single-line"
+                                                   data-val="SheetAnamnesisAnswer"
+                                                   id="@item.SheetQuestion.SheetQuestionId"
+                                                   name="@item.SheetQuestion.Question"
+                                                   type="text"
+                                                   value="">
+                                        }
+                                        else
+                                        {
+                                            var radioButtonYesOrNo = item.SheetQuestion.AnswerType == TSI.GymTech.Entity.Enumerates.SheetAnswerType.YesOrNo; 
+
+                                            <input class="form-questions custom-radio single-line"
+                                                   data-val="SheetAnamnesisAnswer"
+                                                   id="@item.SheetQuestion.SheetQuestionId"
+                                                   name="@item.SheetQuestion.SheetQuestionId"
+                                                   type="radio"
+                                                   value=@(radioButtonYesOrNo ? "Yes" : "True")>
+                                            <span class="sheet-anwser-label control-label col-md-12">
+                                                @(radioButtonYesOrNo ? "Sim" : "Verdadeiro")
+                                            </span>
+
+                                            <input class="form-questions custom-radio single-line"
+                                                   data-val="SheetAnamnesisAnswer"
+                                                   id="@item.SheetQuestion.SheetQuestionId"
+                                                   name="@item.SheetQuestion.SheetQuestionId"
+                                                   type="radio"
+                                                   value=@(radioButtonYesOrNo ? "No" : "False")
+                                                   checked="checked">
+                                            <span class="sheet-anwser-label control-label col-md-12">
+                                                @(radioButtonYesOrNo ? "Não" : "Falso")
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </section>
+
+                @*Buttons*@
+                <section id="buttons" class="profile-content">
+                    <div class="form-row">
+                        <div class="col-6 mt-2">
+                            @Html.ActionLink("Voltar para Lista de Avaliações", "Index")
+                        </div>
+                        <div class="col-6 text-right">
+                            <button id="btnSaveEvaluationSheet" onclick="return false;" class="btn btn-success align-content-end" type="submit">Salvar</button>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+@*Modal popup*@
+<div class="modal" id="modal">
+    @Html.Hidden("modalIsLoad", false)
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/EvaluationSheetUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>

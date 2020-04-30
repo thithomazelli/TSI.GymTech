@@ -9,109 +9,109 @@
     <title>GymTech - @Model.Name</title>
 </head>
 
-<!-- WebcamJS library -->
-<script src="@Url.Content("~/Scripts/Utility/ExerciseUtility.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/WebCam/webcam.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/Utility/WebCamUtility.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Exercise", FormMethod.Post, new { id = "frmExercise", name = "frmExercise", @class = "needs-validation" }))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "validation-message text-danger" })
-        @Html.HiddenFor(model => model.ExerciseId)
-        @Html.HiddenFor(model => model.Photo)
 
-        <div class="edit-container">
-            @*Photo and Nav buttons*@
-            <div class="col-lg-3 col-md-3 col-sm-12 float-md-right float-lg-right" style="position: relative;">
-                <div class="profile-sidebar">
-                    <div id="myCam" class="profile-userpic-webcam" style="display: none;">
-                    </div>
-                    <!-- SIDEBAR USERPIC -->
-                    <div id="results" class="d-none"></div>
-                    <div id="myPhoto" class="profile-pic">
-                        @{
-                            var fileName = Model.Photo;
-                            var sourceImage = "~/Images/Exercises/";
-                            var absolutePath = System.Web.HttpContext.Current.Server.MapPath("~/Images/Exercises/" + fileName);
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "help-block" })
+    @Html.HiddenFor(model => model.ExerciseId)
+    @Html.HiddenFor(model => model.Photo)
 
-                            if (!System.IO.File.Exists(absolutePath) || string.IsNullOrEmpty(fileName))
-                            {
-                                fileName = "default-profile.png";
-                            }
+    <div class="edit-container">
+        @*Photo and Nav buttons*@
+        <div class="col-lg-3 col-md-3 col-sm-12 float-md-right float-lg-right" style="position: relative;">
+            <div class="profile-sidebar">
+                <div id="myCam" class="profile-userpic-webcam" style="display: none;">
+                </div>
+                <!-- SIDEBAR USERPIC -->
+                <div id="results" class="d-none"></div>
+                <div id="myPhoto" class="profile-pic">
+                    @{
+                        var fileName = Model.Photo;
+                        var sourceImage = "~/Images/Exercises/";
+                        var absolutePath = System.Web.HttpContext.Current.Server.MapPath("~/Images/Exercises/" + fileName);
 
-                            sourceImage += fileName;
-
-                            var resetWebcamFunc = "reset_webcam('" + fileName + "')";
+                        if (!System.IO.File.Exists(absolutePath) || string.IsNullOrEmpty(fileName))
+                        {
+                            fileName = "default-profile.png";
                         }
-                        <img id="exercisePhoto" src="@Href(sourceImage)" class="img-responsive">
+
+                        sourceImage += fileName;
+
+                        var resetWebcamFunc = "reset_webcam('" + fileName + "')";
+                    }
+                    <img id="exercisePhoto" src="@Href(sourceImage)" class="img-responsive">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        @Model.Name
                     </div>
-                    <!-- END SIDEBAR USERPIC -->
-                    <!-- SIDEBAR USER TITLE -->
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
-                            @Model.Name
-                        </div>
-                        <div class="profile-usertitle-job">
-                            @{
-                                if (Model.MuscularGroup != null)
-                                {
-                                    typeof(TSI.GymTech.Entity.App_LocalResources.MuscularGroup).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.MuscularGroup), Model.MuscularGroup)).GetValue(null);
-                                }
+                    <div class="profile-usertitle-job">
+                        @{
+                            if (Model.MuscularGroup != null)
+                            {
+                                typeof(TSI.GymTech.Entity.App_LocalResources.MuscularGroup).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.MuscularGroup), Model.MuscularGroup)).GetValue(null);
                             }
-                        </div>
+                        }
                     </div>
+                </div>
 
-                    <div id="pre_take_buttons" class="profile-userbuttons">
-                        <button id="btnAdd" type="button" class="btn btn-dark btn-md" onClick="setup(); $(this).hide();">
-                            <i class="fas fa-video fa-2x"></i>
-                        </button>
-                        <div id="btnUploadPicture" class="btn btn-success btn-file">
-                            <i class="fas fa-images  fa-2x"></i>
-                            <input id="btnUpload" type="file">
-                        </div>
-                        <button id="btnRemovePhoto" type="button" class="btn btn-danger btn-sm" style="display:@(sourceImage.IndexOf("default-profile.png") <= 0 ? "":"none")">
-                            <i class="fas fa-trash-alt fa-2x"></i>
-                        </button>
-
-                        <button id="btnTakePicture" type="button" class="btn btn-dark btn-lg" style="display:none" onClick="preview_snapshot()">
-                            <i class="fas fa-camera-retro fa-2x"></i>
-                        </button>
-                        <button id="btnResetWebcam" type="button" class="btn btn-danger btn-lg" style="display:none" onClick="@resetWebcamFunc">
-                            <i class="fas fa-video-slash fa-2x"></i>
-                        </button>
+                <div id="pre_take_buttons" class="profile-userbuttons">
+                    <button id="btnAdd" type="button" class="btn btn-dark btn-md" onClick="setup(); $(this).hide();">
+                        <i class="fas fa-video fa-2x"></i>
+                    </button>
+                    <div id="btnUploadPicture" class="btn btn-success btn-file">
+                        <i class="fas fa-images  fa-2x"></i>
+                        <input id="btnUpload" type="file">
                     </div>
-                    <div id="post_take_buttons" class="profile-userbuttons" style="display:none">
-                        <button id="btnTakeAnother" type="button" class="btn btn-dark btn-lg" onClick="cancel_preview()">
-                            <i class="fas fa-undo-alt fa-2x"></i>
-                        </button>
-                        <button id="btnSavePhoto" type="button" class="btn btn-success btn-lg" onClick="save_photo()">
-                            <i class="far fa-save fa-2x"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-lg" onClick="@resetWebcamFunc">
-                            <i class="fas fa-video-slash fa-2x"></i>
-                        </button>
-                    </div>
+                    <button id="btnRemovePhoto" type="button" class="btn btn-danger btn-sm" style="display:@(sourceImage.IndexOf("default-profile.png") <= 0 ? "":"none")">
+                        <i class="fas fa-trash-alt fa-2x"></i>
+                    </button>
 
-                    <!-- SIDEBAR MENU -->
+                    <button id="btnTakePicture" type="button" class="btn btn-dark btn-lg" style="display:none" onClick="preview_snapshot()">
+                        <i class="fas fa-camera-retro fa-2x"></i>
+                    </button>
+                    <button id="btnResetWebcam" type="button" class="btn btn-danger btn-lg" style="display:none" onClick="@resetWebcamFunc">
+                        <i class="fas fa-video-slash fa-2x"></i>
+                    </button>
+                </div>
+                <div id="post_take_buttons" class="profile-userbuttons" style="display:none">
+                    <button id="btnTakeAnother" type="button" class="btn btn-dark btn-lg" onClick="cancel_preview()">
+                        <i class="fas fa-undo-alt fa-2x"></i>
+                    </button>
+                    <button id="btnSavePhoto" type="button" class="btn btn-success btn-lg" onClick="save_photo()">
+                        <i class="far fa-save fa-2x"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-lg" onClick="@resetWebcamFunc">
+                        <i class="fas fa-video-slash fa-2x"></i>
+                    </button>
+                </div>
+
+                <!-- SIDEBAR MENU -->
+                <nav id="navSideBar" class="navbar navbar-expand-lg navbar-light">
                     <div class="profile-usermenu sidebar-sticky">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
+                        <ul class="nav nav-menu flex-column">
+                            <li class="nav-item active">
+                                <a href="#exerciseData" class="nav-link">
                                     <i class="fa fa-home"></i>
                                     @*Overview*@
-                                    Geral
+                                    Dados Gerais
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <!-- END MENU -->
-                </div>
+                </nav>
+                <!-- END MENU -->
             </div>
+        </div>
 
-            @*Fields and Grid views*@
-            <div class="col-lg-9 col-md-9 col-sm-12 col-md-8">
+        @*Fields and Grid views*@
+        <div class="col-lg-9 col-md-9 col-sm-12 col-md-8">
+            @*Exercise Data*@
+            <section id="exerciseData">
                 <div class="profile-content">
                     <h5>Detalhes do Exercício</h5>
                     <hr />
@@ -122,9 +122,9 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-dumbbell"></i></span>
                                 </div>
-                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
 
@@ -137,7 +137,7 @@
                                 </div>
                                 @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
 
@@ -150,7 +150,7 @@
                                 </div>
                                 @Html.EditorFor(model => model.MuscleWorked, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.MuscleWorked, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.MuscleWorked, "", new { @class = "validation-message help-block" })
                         </div>
 
                         <div class="form-group col-md-6 col-sm-12">
@@ -161,7 +161,7 @@
                                 </div>
                                 @Html.EnumDropDownListFor(model => model.MuscularGroup, htmlAttributes: new { @class = "form-control" })
                             </div>
-                            @Html.ValidationMessageFor(model => model.MuscularGroup, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.MuscularGroup, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
 
@@ -171,20 +171,36 @@
                             <div class="input-group col-md-12">
                                 @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="col-6 mt-2">
-                            @Html.ActionLink("Voltar para Lista de Exercícios", "Index")
-                        </div>
-                        <div class="col-6 text-right">
-                            <input id="btnSaveExercise" type="submit" value="Salvar" class="btn btn-success align-content-end" />
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            @*Buttons*@
+            <section class="profile-content">
+                <div class="form-row">
+                    <div class="col-6 mt-2">
+                        @Html.ActionLink("Voltar para Lista de Exercícios", "Index")
+                    </div>
+                    <div class="col-6 text-right">
+                        <input id="btnSaveExercise" type="submit" value="Salvar" class="btn btn-success align-content-end" />
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/ExerciseUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>
+
+<!-- WebcamJS library -->
+<script src="@Url.Content("~/Scripts/WebCam/webcam.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/WebCamUtility.js")" type="text/javascript"></script>

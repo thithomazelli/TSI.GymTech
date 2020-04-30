@@ -11,18 +11,18 @@
 </head>
 
 <!-- Begin Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-1">
+<div class="d-flex align-items-center justify-content-between mb-1">
     <h1 class="h4 mb-2 text-gray-800">Treinos</h1>
     <a href=@Url.Action("Create", "TrainingSheet") class="d-none d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-file-alt text-white-35"></i>
-        <span class="btn-label">Novo Treino</span>
+        <span class="btn-label">Novo</span>
     </a>
 </div>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        <table class="stripe row-border" id="tblTrainingSheet" width="100%" cellspacing="0">
+        <table class="stripe row-border" id="tblTrainingSheet" style="width:100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>
@@ -45,59 +45,25 @@
                     </th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr id="@item.TrainingSheetId">
-                        <td>
-                            @Html.ActionLink(item.Name, "Edit", "TrainingSheet", new { id = item.TrainingSheetId }, null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cycle)
-                        </td>
-                        <td>
-                            @if (item.StudentId != null)
-                            { 
-                                @Html.ActionLink(item.Student.Name, "Edit", "Student", new { id = item.StudentId }, null)
-                            }
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetModel).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetModel), item.Model)).GetValue(null)
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetStatus), item.Status)).GetValue(null)
-                        </td>
-                        <td>
-                            @if (item.Status != null)
-                            {
-                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetType), item.Type)).GetValue(null)</span>
-                            }
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Edit", "TrainingSheet", new { id = item.TrainingSheetId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" onClick="DeleteTrainingSheet('@item.TrainingSheetId', '@item.Name', 'tblTrainingSheet');">
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
         </table>
     </div>
+</div>
+
+@*Modal popup*@
+<div class="modal" id="modal-print">
+
 </div>
 
 <!-- Enabled filters and buttons to datatable -->
 <script>
     $(document).ready(function () {
-        LoadDataTableButtonsAndFilter(tblTrainingSheet);
+        LoadTrainingSheetsDataTable();
     });
 </script>
 
 <!-- Utility library -->
 <script src="@Url.Content("~/Scripts/Utility/TrainingSheetUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/PrinterUtility.js")" type="text/javascript"></script>

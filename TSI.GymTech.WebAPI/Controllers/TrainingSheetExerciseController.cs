@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.EntityManagers;
@@ -32,16 +29,12 @@ namespace TSI.GymTech.WebAPI.Controllers
                 var model = new TrainingSheetExercise();
                 var exerciseManager = new ExerciseManager();
 
-                //Gets all active students
                 List<Exercise> exercises = new List<Exercise>();
                 exercises = exerciseManager.FindAll().Data.ToList();
                 ViewBag.ExerciseId = new SelectList(exercises, "ExerciseId", "Name", model.ExerciseId);
                 
                 return View(model);
             }
-
-            //ViewBag.ExerciseId = new SelectList(db.Exercises, "ExerciseId", "Name");
-            //return View();
         }
 
         // POST: TrainingSheetExercises/Create
@@ -49,54 +42,44 @@ namespace TSI.GymTech.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TrainingSheetExercise trainingSheetExercise)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (trainingSheetExercise != null)
-                {
-                    //Change to current user id later
-                    trainingSheetExercise.CreateUserId = 0;
-                    trainingSheetExercise.CreateDate = DateTime.Now;
-                    trainingSheetExercise.ModifyUserId = 0;
-                    trainingSheetExercise.ModifyDate = DateTime.Now;
-                    _trainingSheetExerciseManager.Create(trainingSheetExercise);
-                }
-
-                return RedirectToAction("Edit/" + trainingSheetExercise.TrainingSheetId, "TrainingSheet");
+                return View(trainingSheetExercise);
             }
 
-            return View(trainingSheetExercise);
+            if (trainingSheetExercise != null)
+            {
+                //Change to current user id later
+                trainingSheetExercise.CreateUserId = 0;
+                trainingSheetExercise.CreateDate = DateTime.Now;
+                trainingSheetExercise.ModifyUserId = 0;
+                trainingSheetExercise.ModifyDate = DateTime.Now;
+                _trainingSheetExerciseManager.Create(trainingSheetExercise);
+            }
 
-            //if (ModelState.IsValid)
-            //{
-            //    db.TrainingSheetExercises.Add(trainingSheetExercise);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //ViewBag.ExerciseId = new SelectList(db.Exercises, "ExerciseId", "Name", trainingSheetExercise.ExerciseId);
-            //return View(trainingSheetExercise);
+            return RedirectToAction("Edit/" + trainingSheetExercise.TrainingSheetId, "TrainingSheet");
         }
 
         // GET: TrainingSheetExercises/Edit/5
         public ActionResult Edit(int? id)
         {
-
             if (id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             TrainingSheetExercise trainingSheetExercise = _trainingSheetExerciseManager.FindById(id).Data;
 
-            //Gets all active students
-            var exerciseManager = new ExerciseManager();
-            List<Exercise> exercises = new List<Exercise>();
-            exercises = exerciseManager.FindAll().Data.ToList();
-            ViewBag.ExerciseId = new SelectList(exercises, "ExerciseId", "Name", trainingSheetExercise.ExerciseId);
-            
             if (trainingSheetExercise == null)
             {
                 return HttpNotFound();
             }
-            
+
+            var exerciseManager = new ExerciseManager();
+            List<Exercise> exercises = new List<Exercise>();
+            exercises = exerciseManager.FindAll().Data.ToList();
+            ViewBag.ExerciseId = new SelectList(exercises, "ExerciseId", "Name", trainingSheetExercise.ExerciseId);
+
             return View(trainingSheetExercise);
         }
 
@@ -105,27 +88,20 @@ namespace TSI.GymTech.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(TrainingSheetExercise trainingSheetExercise)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (trainingSheetExercise != null)
-                {
-                    //Change to current user id later
-                    trainingSheetExercise.ModifyUserId = 0;
-                    trainingSheetExercise.ModifyDate = DateTime.Now;
-                    _trainingSheetExerciseManager.Update(trainingSheetExercise);
-                }
-                return RedirectToAction("Edit", "TrainingSheet", new { id = trainingSheetExercise.TrainingSheetId});
+                return View(trainingSheetExercise);
             }
-            return View(trainingSheetExercise);
 
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(trainingSheetExercise).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            //ViewBag.ExerciseId = new SelectList(db.Exercises, "ExerciseId", "Name", trainingSheetExercise.ExerciseId);
-            //return View(trainingSheetExercise);
+            if (trainingSheetExercise != null)
+            {
+                //Change to current user id later
+                trainingSheetExercise.ModifyUserId = 0;
+                trainingSheetExercise.ModifyDate = DateTime.Now;
+                _trainingSheetExerciseManager.Update(trainingSheetExercise);
+            }
+
+            return RedirectToAction("Edit", "TrainingSheet", new { id = trainingSheetExercise.TrainingSheetId });
         }
 
         // GET: TrainingSheetExercises/Delete/5
@@ -135,11 +111,14 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             TrainingSheetExercise trainingSheetExercise = _trainingSheetExerciseManager.FindById(id).Data;
+
             if (trainingSheetExercise == null)
             {
                 return HttpNotFound();
             }
+
             return View(trainingSheetExercise);
         }
 
@@ -159,11 +138,6 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return Json(new { Type = "Error", Message = "Não foi possível remover o exercício." });
             }
-
-            //TrainingSheetExercise trainingSheetExercise = db.TrainingSheetExercises.Find(id);
-            //db.TrainingSheetExercises.Remove(trainingSheetExercise);
-            //db.SaveChanges();
-            //return RedirectToAction("Index");
         }
     }
 }

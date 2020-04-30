@@ -1,9 +1,12 @@
 ﻿// Create structure to simple DataTable
-function LoadSimpleDataTable(element) {
+function LoadSimpleDataTable(element, formName) {
+    var formAction = $("form").attr("action");
+    var urlBase = formAction.substr(0, formAction.indexOf(formName));
+
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json'
+            url: urlBase + 'Scripts/Utility/i18n/Portuguese-Brasil.json'
         },
         searching: false,   // Search Box will Be Disabled
         lengthChange: false, // Will Disabled Record number per page
@@ -18,11 +21,14 @@ function LoadSimpleDataTable(element) {
 }
 
 // Create structure to simple DataTable 
-function LoadDataTableWithPaging(element) {
+function LoadDataTableWithPaging(element, formName) {
+    var formAction = $("form").attr("action");
+    var urlBase = formAction.substr(0, formAction.indexOf(formName));
+
     $.fn.DataTable.ext.pager.numbers_length = 3;
     var table = $(element).DataTable({
         language: {
-            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json'
+            url: urlBase + 'Scripts/Utility/i18n/Portuguese-Brasil.json'
         },
         searching: false,   // Search Box will Be Disabled
         lengthChange: true, // Will Disabled Record number per page
@@ -37,11 +43,13 @@ function LoadDataTableWithPaging(element) {
 }
 
 // Create structure to DataTable show entries, search and export buttons
-function LoadDataTableButtonsAndFilter(element) {
-    $.fn.DataTable.ext.pager.numbers_length = 3;
+function LoadDataTableButtonsAndFilter(element, orderingStatus, formName) {
+    var formAction = $("form").attr("action");
+    var urlBase = formAction.substr(0, formAction.indexOf(formName));
+
     var table = $(element).DataTable({
         language: {
-            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json',
+            url: urlBase + 'Scripts/Utility/i18n/Portuguese-Brasil.json',
             search: '<div class="input-group col-md-12">' +
                         ' _INPUT_ ' +
                         '<span class= "input-group-append">' +
@@ -52,10 +60,12 @@ function LoadDataTableButtonsAndFilter(element) {
                     '</div> ',
             searchPlaceholder: 'Pesquisar por...'
         },
+        ordering: orderingStatus == null || orderingStatus == undefined ? true : orderingStatus,
         pagingType: 'simple_numbers',
         lengthChange: true,
         rowId: "id",
-        responsive: true //,
+        responsive: true,
+        //processing: true,
         //buttons: [
         //    {
         //        extend: 'copyHtml5',
@@ -89,6 +99,8 @@ function LoadDataTableButtonsAndFilter(element) {
         //    }
         //]
     });
+
+    $.fn.DataTable.ext.pager.numbers_length = 3;
     table.buttons().container()
         .appendTo('#' + element.id + '_wrapper .col-md-6:eq(0)');
 }
@@ -119,6 +131,26 @@ function LoadDataTableToPopUp(element) {
         .appendTo('#' + element.id + '_wrapper .col-md-6:eq(0)');
 }
 
+// 
+function LoadDataTableToPrint(element) {
+    $.fn.DataTable.ext.pager.numbers_length = 3;
+    var table = $(element).DataTable({
+        language: {
+            url: '/gymtech/Scripts/Utility/i18n/Portuguese-Brasil.json'
+        },
+        searching: false,
+        //pagingType: 'simple_numbers',
+        //lengthMenu: [5, 10, 15, "Todos"],
+        lengthChange: false,
+        paging: false,        
+        info: false,
+        responsive: false,
+        ordering: false
+    });
+    table.buttons().container()
+        .appendTo('#' + element.id + '_wrapper .col-md-6:eq(0)');
+}
+
 // Create structure to DataTable show entries, search and export buttons
 function LoadDataTableButtonsAndFilterAndOrdering(element, columnToOrder) {
     $.fn.DataTable.ext.pager.numbers_length = 3;
@@ -138,39 +170,7 @@ function LoadDataTableButtonsAndFilterAndOrdering(element, columnToOrder) {
         order: [[columnToOrder, "desc"]],
         pagingType: 'simple_numbers',
         lengthChange: true,
-        responsive: true //,
-        //buttons: [
-        //    {
-        //        extend: 'copyHtml5',
-        //        text: '<i class="fas fa-copy fa-sm text-white-35"></i>' +
-        //              '<span> Copy</span>',
-        //        titleAttr: 'Copy'
-        //    },
-        //    {
-        //        extend: 'print',
-        //        text: '<i class="fas fa-print fa-sm text-white-35"></i>' +
-        //              '<span> Print</span>',
-        //        titleAttr: 'Print'
-        //    },
-        //    {
-        //        extend: 'excelHtml5',
-        //        text: '<i class="fas fa-file-excel fa-sm text-white-35"></i>' +
-        //              '<span> Excel</span>',
-        //        titleAttr: 'Excel'
-        //    },
-        //    {
-        //        extend: 'pdfHtml5',
-        //        text: '<i class="fas fa-file-pdf fa-sm text-white-35"></i>' +
-        //              '<span> PDF</span>',
-        //        titleAttr: 'PDF'
-        //    },
-        //    {
-        //        extend: 'colvis',
-        //        text: '<i class="fas fa-columns fa-sm text-white-35"></i>' +
-        //              '<span> Column visibility</span>',
-        //        titleAttr: 'PDF'
-        //    }
-        //]
+        responsive: true
     });
     table.buttons().container()
         .appendTo('#' + element.id + '_wrapper .col-md-6:eq(0)');
@@ -180,19 +180,12 @@ function LoadDataTableButtonsAndFilterAndOrdering(element, columnToOrder) {
 function AddDataTableRow(tableName, model) {
     var dataTable = $('#' + tableName).DataTable();
     dataTable.row.add([
-        '<a href="/gymtech/TrainingSheet/Edit/' + parseInt(model.TrainingSheetId) + '">' +
-            model.Name +
-        '</a>',
+        model.Name +
         model.Cycle,
-        model.Model,
-        model.Status,
-        model.Type,
-        '<a href="/TrainingSheet/Edit/' + parseInt(model.TrainingSheetId) + '">' +
-            '<i class= "fas fa-edit" ></i >' +
-        '</a>',
-        '<a href="#" onclick="DeleteTrainingSheet(' + model.TrainingSheetId + ', &apos;' + model.Name + '&apos;, &apos;tblTrainingSheet&apos;);">' +
-            '<i style = "color: red;" class="fas fa-trash-alt" ></i>' +
-        '</a>'
+        model.StudentName,
+        "<a href='#' onClick='SelectTrainingSheetToCopy(&apos;" + full.Id + "&apos;); return false;'>" +
+            "<i class='fas fa-check-circle'></i>" +
+        "</a >"
     ])
         .draw(false)
         .node().id = parseInt(model.TrainingSheetId);
