@@ -107,7 +107,7 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.query(sheetQuestion => sheetQuestion.TypeQuestion == sheetTypeQuestion).AsEnumerable<SheetQuestion>();
+                result.Data = repository.query(sheetQuestion => sheetQuestion.QuestionType == sheetTypeQuestion).AsEnumerable<SheetQuestion>().ToList();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -154,6 +154,13 @@ namespace TSI.GymTech.Manager.EntityManagers
                 //Pending: error to the log file
             }
             return result;
+        }
+        
+        public bool IsDuplicated(SheetQuestion sheetQuestion)
+        {
+            return repository.query(_ => _.SheetQuestionId != sheetQuestion.SheetQuestionId
+                && _.Question == sheetQuestion.Question
+                && _.QuestionType == sheetQuestion.QuestionType).Any();
         }
     }
 }

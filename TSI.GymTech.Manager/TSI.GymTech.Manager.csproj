@@ -70,12 +70,14 @@
     <Compile Include="EntityManagers\AccessControlManager.cs" />
     <Compile Include="EntityManagers\AccessLogManager.cs" />
     <Compile Include="EntityManagers\AddressManager.cs" />
-    <Compile Include="EntityManagers\AnamnesisSheetManager.cs" />
+    <Compile Include="EntityManagers\AnamnesisSheetAnswerManager.cs" />
     <Compile Include="EntityManagers\EvaluationSheetManager.cs" />
     <Compile Include="EntityManagers\ExerciseManager.cs" />
     <Compile Include="EntityManagers\PaymentManager.cs" />
+    <Compile Include="EntityManagers\PaymentProductManager.cs" />
     <Compile Include="EntityManagers\PersonManager.cs" />
     <Compile Include="EntityManagers\ProductManager.cs" />
+    <Compile Include="EntityManagers\EvaluationSheetAnswerManager.cs" />
     <Compile Include="EntityManagers\SheetQuestionManager.cs" />
     <Compile Include="EntityManagers\TrainingSheetExerciseManager.cs" />
     <Compile Include="EntityManagers\TrainingSheetManager.cs" />

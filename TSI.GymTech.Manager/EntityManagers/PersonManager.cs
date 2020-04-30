@@ -13,10 +13,14 @@ namespace TSI.GymTech.Manager.EntityManagers
     public sealed class PersonManager
     {
         private readonly Repository<Person> repository;
+        private readonly Repository<StudentFrequentView> repositoryStudentFrequent;
+        private readonly Repository<StudentNotFrequentView> repositoryStudentNotFrequent;
 
         public PersonManager()
         {
             repository = new Repository<Person>();
+            repositoryStudentFrequent = new Repository<StudentFrequentView>();
+            repositoryStudentNotFrequent = new Repository<StudentNotFrequentView>();
         }
 
         /// <summary>
@@ -47,7 +51,47 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<Person>();
+                result.Data = repository.GetAll().AsEnumerable();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception ex)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+            return result;
+        }
+        
+        /// <summary>
+        /// Get a StudentFrequentView list 
+        /// </summary>
+        public Result<IEnumerable<StudentFrequentView>> FindAllByStudentFrequentView()
+        {
+            Result<IEnumerable<StudentFrequentView>> result = new Result<IEnumerable<StudentFrequentView>>();
+
+            try
+            {
+                result.Data = repositoryStudentFrequent.GetAll().AsEnumerable().ToList();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception ex)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get a StudentFrequentView list 
+        /// </summary>
+        public Result<IEnumerable<StudentNotFrequentView>> FindAllByStudentNotFrequentView()
+        {
+            Result<IEnumerable<StudentNotFrequentView>> result = new Result<IEnumerable<StudentNotFrequentView>>();
+
+            try
+            {
+                result.Data = repositoryStudentNotFrequent.GetAll().AsEnumerable().ToList();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
@@ -165,35 +209,33 @@ namespace TSI.GymTech.Manager.EntityManagers
         {
             Result<IEnumerable<Person>> result = new Result<IEnumerable<Person>>();
 
-            result.Data = repository.GetAll().AsEnumerable();
-
             try
             {
                 if (onlyActive && searchingEqual)
                 {
                     result.Data = repository.query(person => person.ProfileType == profileType && person.Status == PersonStatus.Active)
                                             .OrderBy(person => person.Name)
-                                            .AsEnumerable<Person>();
+                                            .AsEnumerable().ToList();
                 }
                 else if (onlyActive && !searchingEqual)
                 {
                     result.Data = repository.query(person => person.ProfileType != profileType && person.Status == PersonStatus.Active)
                                             .OrderBy(person => person.Name)
-                                            .AsEnumerable<Person>();
+                                            .AsEnumerable().ToList();
                 }
                 else if (!onlyActive && searchingEqual)
                 {
                     result.Data = repository.query(person => person.ProfileType == profileType)
                                             .OrderBy(person => person.Name)
-                                            .AsEnumerable<Person>();
+                                            .AsEnumerable().ToList();
                 }
                 else if (!onlyActive && !searchingEqual)
                 {
                     result.Data = repository.query(person => person.ProfileType != profileType)
                                             .OrderBy(person => person.Name)
-                                            .AsEnumerable<Person>();
+                                            .AsEnumerable().ToList();
                 }
-                                                       
+
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -241,7 +283,7 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
-        
+
         public bool IsNameDuplicated(Person person)
         {
             return repository.query(_ => _.PersonId != person.PersonId && _.Name == person.Name).Any();

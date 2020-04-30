@@ -13,10 +13,12 @@ namespace TSI.GymTech.Manager.EntityManagers
     public sealed class PaymentManager
     {
         private readonly Repository<Payment> repository;
+        private readonly Repository<PaymentView> repositoryView;
 
         public PaymentManager()
         {
             repository = new Repository<Payment>();
+            repositoryView = new Repository<PaymentView>();
         }
 
         /// <summary>
@@ -59,6 +61,27 @@ namespace TSI.GymTech.Manager.EntityManagers
         }
 
         /// <summary>
+        /// Get a TrainingSheetView list 
+        /// </summary>
+        public Result<IEnumerable<PaymentView>> FindAllByView()
+        {
+            Result<IEnumerable<PaymentView>> result = new Result<IEnumerable<PaymentView>>();
+
+            try
+            {
+                result.Data = repositoryView.GetAll().AsEnumerable().ToList();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception ex)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Gets an Payment object by ID
         /// </summary>
         public Result<Payment> FindById(int? id)
@@ -87,7 +110,7 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.query(payment => payment.PersonId.Equals(personId)).AsEnumerable<Payment>();
+                result.Data = repository.query(payment => payment.StudentId.Equals(personId)).AsEnumerable<Payment>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception)
@@ -174,6 +197,51 @@ namespace TSI.GymTech.Manager.EntityManagers
                 //Pending: error to the log file
             }
             return result;
+        }
+
+        /// <summary>
+        /// Calculate total price from payment 
+        /// </summary>
+        public void UpdatePaymentTotalPrice(int paymentId)
+        {
+            var payment = FindById(paymentId).Data;
+            decimal totalPrice = 0m;
+
+            if (payment.PaymentProducts.Any())
+            {
+                foreach (var product in payment.PaymentProducts)
+                {
+                    totalPrice += product.TotalPrice;
+                }
+
+                payment.TotalPrice = payment.Discount > 0
+                    ? totalPrice - totalPrice * (payment.Discount / 100)
+                    : totalPrice;
+            }
+
+            repository.Update(payment);
+            repository.Save();
+        }
+
+        /// <summary>
+        /// Calculate Payment price 
+        /// </summary>
+        public decimal CalcuatePaymentPrice(Payment payment)
+        {
+            if (payment.PaymentId == 0)
+            {
+                return payment.TotalPrice - payment.TotalPrice * (payment.Discount / 100);
+            }
+
+            payment = payment.PaymentId > 0 && payment.PaymentProducts == null
+                ? FindById(payment.PaymentId).Data
+                : payment;
+            
+            var totalPrice = payment.PaymentProducts.Sum(_ => _.TotalPrice);
+
+            return payment.Discount > 0
+                ? totalPrice - totalPrice * (payment.Discount / 100)
+                : totalPrice;
         }
     }
 }

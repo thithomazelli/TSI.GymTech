@@ -13,10 +13,12 @@ namespace TSI.GymTech.Manager.EntityManagers
     public sealed class TrainingSheetManager
     {
         private readonly Repository<TrainingSheet> repository;
+        private readonly Repository<TrainingSheetView> repositoryView;
 
         public TrainingSheetManager()
         {
             repository = new Repository<TrainingSheet>();
+            repositoryView = new Repository<TrainingSheetView>();
         }
 
         /// <summary>
@@ -47,7 +49,27 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable();
+                result.Data = repository.GetAll().AsEnumerable().ToList();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception ex)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get a TrainingSheetView list 
+        /// </summary>
+        public Result<IEnumerable<TrainingSheetView>> FindAllByView()
+        {
+            Result<IEnumerable<TrainingSheetView>> result = new Result<IEnumerable<TrainingSheetView>>();
+
+            try
+            {
+                result.Data = repositoryView.GetAll().AsEnumerable().ToList();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)

@@ -12,10 +12,12 @@ namespace TSI.GymTech.Manager.EntityManagers
     public sealed class EvaluationSheetManager
     {
         private readonly Repository<EvaluationSheet> repository;
+        private readonly Repository<EvaluationSheetView> repositoryView;
 
         public EvaluationSheetManager()
         {
             repository = new Repository<EvaluationSheet>();
+            repositoryView = new Repository<EvaluationSheetView>();
         }
 
         /// <summary>
@@ -46,7 +48,27 @@ namespace TSI.GymTech.Manager.EntityManagers
 
             try
             {
-                result.Data = repository.GetAll().AsEnumerable<EvaluationSheet>();
+                result.Data = repository.GetAll().AsEnumerable().ToList();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception ex)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get a EvaluationSheet list 
+        /// </summary>
+        public Result<IEnumerable<EvaluationSheetView>> FindAllByView()
+        {
+            Result<IEnumerable<EvaluationSheetView>> result = new Result<IEnumerable<EvaluationSheetView>>();
+
+            try
+            {
+                result.Data = repositoryView.GetAll().AsEnumerable().ToList();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)

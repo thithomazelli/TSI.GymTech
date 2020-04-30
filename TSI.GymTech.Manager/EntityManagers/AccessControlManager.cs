@@ -154,5 +154,10 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
+
+        public bool IsIpAddressDuplicated(AccessControl accessControl)
+        {
+            return repository.query(_ => _.AccessControlId != accessControl.AccessControlId && _.IpAddress == accessControl.IpAddress).Any();
+        }
     }
 }
