@@ -19,17 +19,23 @@ namespace TSI.GymTech.Data
         
         public DbSet<AccessControl> AccessControl { get; set; }
         public DbSet<AccessLog> AccessLog { get; set; }
+        public DbSet<AccessLogView> AccessLogView { get; set; }
         public DbSet<Address> Address { get; set; }
-        public DbSet<AnamnesisSheet> AnamnesisSheet { get; set; }
         public DbSet<EvaluationSheet> EvaluationSheet { get; set; }
+        public DbSet<EvaluationSheetView> EvaluationSheetView { get; set; }
         public DbSet<Exercise> Exercise { get; set; }
         public DbSet<Payment> Payment { get; set; }
+        public DbSet<PaymentView> PaymentView { get; set; }
         public DbSet<PaymentProduct> PaymentProduct { get; set; }
         public DbSet<Person> Person { get; set; }
+        public DbSet<StudentFrequentView> StudentFrequentView { get; set; }
+        public DbSet<StudentNotFrequentView> StudentNotFrequentView { get; set; }
         public DbSet<Product> Product { get; set; }
-        public DbSet<SheetAnswer> SheetAnswer { get; set; }
+        public DbSet<AnamnesisSheetAnswer> AnamnesisSheetAnswer { get; set; }
+        public DbSet<EvaluationSheetAnswer> EvaluationSheetAnswer { get; set; }
         public DbSet<SheetQuestion> SheetQuestion { get; set; }
         public DbSet<TrainingSheet> TrainingSheet { get; set; }
+        public DbSet<TrainingSheetView> TrainingSheetView { get; set; }
         public DbSet<TrainingSheetExercise> TrainingSheetExercise { get; set; }
 
         public static Context Create()
