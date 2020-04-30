@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using TSI.GymTech.Entity.Enumerates;
 using System.ComponentModel.DataAnnotations.Schema;
 using TSI.GymTech.Entity.Configurations;
+using Newtonsoft.Json;
 
 namespace TSI.GymTech.Entity.Models
 {
@@ -89,15 +90,13 @@ namespace TSI.GymTech.Entity.Models
         [DataType(DataType.EmailAddress)]
         [StringLength(64)]
         public string Email { get; set; }
-
+        
         public virtual ICollection<AccessLog> AccessLogs { get; set; }
         
         public virtual ICollection<Address> Addresses { get; set; }
-
-        public virtual ICollection<AnamnesisSheet> AnamnesisSheets { get; set; }
-
+        
         public virtual ICollection<EvaluationSheet> EvaluationSheets { get; set; }
-
+        
         public virtual ICollection<TrainingSheet> TrainingSheets { get; set; }
 
         public virtual ICollection<Payment> Payments { get; set; }

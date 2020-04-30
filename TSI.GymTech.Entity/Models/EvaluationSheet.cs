@@ -16,8 +16,12 @@ namespace TSI.GymTech.Entity.Models
         [Required(ErrorMessageResourceName = "StudentRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheet), AllowEmptyStrings = false)]
         [Display(Name = "StudentId", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         public int? StudentId { get; set; }
+
+        [Display(Name = "Student", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         public virtual Person Student { get; set; }
 
-        public virtual IEnumerable<SheetAnswer> EvaluationSheetAnswers { get; set; }
+        public virtual ICollection<EvaluationSheetAnswer> EvaluationSheetAnswers { get; set; }
+        
+        public virtual ICollection<AnamnesisSheetAnswer> AnamnesisSheetAnswers { get; set; }
     }
 }

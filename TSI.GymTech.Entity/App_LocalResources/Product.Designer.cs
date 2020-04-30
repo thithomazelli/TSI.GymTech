@@ -79,15 +79,6 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Duplication.
-        /// </summary>
-        public static string Duplication {
-            get {
-                return ResourceManager.GetString("Duplication", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -138,6 +129,15 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         public static string QuantityStock {
             get {
                 return ResourceManager.GetString("QuantityStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quota.
+        /// </summary>
+        public static string Quota {
+            get {
+                return ResourceManager.GetString("Quota", resourceCulture);
             }
         }
         

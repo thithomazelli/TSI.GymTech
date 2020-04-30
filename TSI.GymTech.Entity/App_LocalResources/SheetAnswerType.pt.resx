@@ -117,43 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Model" xml:space="preserve">
-    <value>Model</value>
+  <data name="Boolean" xml:space="preserve">
+    <value>Verdadeiro ou Falso</value>
   </data>
-  <data name="ModelRequired" xml:space="preserve">
-    <value>Model is required.</value>
+  <data name="String" xml:space="preserve">
+    <value>Texto</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Training Name </value>
-  </data>
-  <data name="NameRequired" xml:space="preserve">
-    <value>Training Name is required.</value>
-  </data>
-  <data name="Student" xml:space="preserve">
-    <value>Student</value>
-  </data>
-  <data name="StudentId" xml:space="preserve">
-    <value>Student ID</value>
-  </data>
-  <data name="StudentRequired" xml:space="preserve">
-    <value>Student is required.</value>
-  </data>
-  <data name="TrainerId" xml:space="preserve">
-    <value>Trainer ID</value>
-  </data>
-  <data name="TrainerRequired" xml:space="preserve">
-    <value>Trainer is required.</value>
-  </data>
-  <data name="TrainingSheetId" xml:space="preserve">
-    <value>Training Sheet ID</value>
-  </data>
-  <data name="TrainingSheetIdRequired" xml:space="preserve">
-    <value>Training Sheet ID is required.</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="TypeRequired" xml:space="preserve">
-    <value>Type is required.</value>
+  <data name="YesOrNo" xml:space="preserve">
+    <value>Sim ou Não</value>
   </data>
 </root>

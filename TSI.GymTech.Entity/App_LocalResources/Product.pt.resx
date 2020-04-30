@@ -123,9 +123,6 @@
   <data name="Description" xml:space="preserve">
     <value>Descrição</value>
   </data>
-  <data name="Duplication" xml:space="preserve">
-    <value>Repetições</value>
-  </data>
   <data name="Name" xml:space="preserve">
     <value>Nome</value>
   </data>
@@ -143,6 +140,9 @@
   </data>
   <data name="QuantityStock" xml:space="preserve">
     <value>Quantidade em Estoque</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Parcelas</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

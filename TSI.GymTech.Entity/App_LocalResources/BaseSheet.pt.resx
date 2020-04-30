@@ -129,12 +129,6 @@
   <data name="DescriptionRequired" xml:space="preserve">
     <value>Descrição é obrigatório.</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="NameRequired" xml:space="preserve">
-    <value>Nome é obrigatório.</value>
-  </data>
   <data name="Revaluation" xml:space="preserve">
     <value>Reavaliação</value>
   </data>

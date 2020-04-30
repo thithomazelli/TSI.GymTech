@@ -28,6 +28,7 @@ namespace TSI.GymTech.Entity.Models
         [Display(Name = "Status", ResourceType = typeof(App_LocalResources.Product))]
         public ProductStatus? Status { get; set; }
 
+        [DataType(DataType.Currency)]
         [Required(ErrorMessageResourceName = "SuggestedPriceRequired", ErrorMessageResourceType = typeof(App_LocalResources.Product), AllowEmptyStrings = false)]
         [Display(Name = "SuggestedPrice", ResourceType = typeof(App_LocalResources.Product))]
         public decimal SuggestedPrice { get; set; }
@@ -35,8 +36,8 @@ namespace TSI.GymTech.Entity.Models
         [Display(Name = "QuantityStock", ResourceType = typeof(App_LocalResources.Product))]
         public int? QuantityStock { get; set; }
 
-        [Display(Name = "Duplication", ResourceType = typeof(App_LocalResources.Product))]
-        public int? Duplication { get; set; }
+        [Display(Name = "Quota", ResourceType = typeof(App_LocalResources.Product))]
+        public int? Quota { get; set; }
 
         [Display(Name = "Photo", ResourceType = typeof(App_LocalResources.Product))]
         [StringLength(64)]

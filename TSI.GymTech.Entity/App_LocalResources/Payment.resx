@@ -126,6 +126,12 @@
   <data name="DatePaymentEstimated" xml:space="preserve">
     <value>Estimated Payment Date</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>Description is required.</value>
+  </data>
   <data name="Discount" xml:space="preserve">
     <value>Discount</value>
   </data>
@@ -146,6 +152,15 @@
   </data>
   <data name="StatusRequired" xml:space="preserve">
     <value>Status is required.</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="StudentId" xml:space="preserve">
+    <value>Student ID</value>
+  </data>
+  <data name="StudentRequired" xml:space="preserve">
+    <value>Student is required.</value>
   </data>
   <data name="TotalPrice" xml:space="preserve">
     <value>Total Price</value>

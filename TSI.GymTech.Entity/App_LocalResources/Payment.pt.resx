@@ -121,10 +121,16 @@
     <value>Observação</value>
   </data>
   <data name="DatePaymentCompleted" xml:space="preserve">
-    <value>Data Pagamento Efetuado</value>
+    <value>Pagamento Efetuado</value>
   </data>
   <data name="DatePaymentEstimated" xml:space="preserve">
-    <value>Data Prevista para Pagamento</value>
+    <value>Previsão p/ Pagamento</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>Descrição é obrigatório.</value>
   </data>
   <data name="Discount" xml:space="preserve">
     <value>Desconto</value>
@@ -146,6 +152,15 @@
   </data>
   <data name="StatusRequired" xml:space="preserve">
     <value>Status é obrigatório.</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Aluno</value>
+  </data>
+  <data name="StudentId" xml:space="preserve">
+    <value>ID do Aluno</value>
+  </data>
+  <data name="StudentRequired" xml:space="preserve">
+    <value>ID do Aluno é obrigatório.</value>
   </data>
   <data name="TotalPrice" xml:space="preserve">
     <value>Preço Total</value>

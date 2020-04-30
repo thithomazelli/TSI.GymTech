@@ -13,6 +13,10 @@ namespace TSI.GymTech.Entity.Models
         [Display(Name = "TrainingSheetId", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         public int TrainingSheetId { get; set; }
 
+        [Display(Name = "Name", ResourceType = typeof(App_LocalResources.TrainingSheet))]
+        [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheet), AllowEmptyStrings = false)]
+        public string Name { get; set; }
+
         [Required(ErrorMessageResourceName = "TypeRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheet), AllowEmptyStrings = false)]
         [Display(Name = "Type", ResourceType = typeof(App_LocalResources.TrainingSheet))]
         public TrainingSheetType Type { get; set; }
