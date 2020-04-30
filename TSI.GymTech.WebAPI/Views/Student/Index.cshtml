@@ -11,17 +11,38 @@
 </head>
 
 <!-- Begin Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-1">
-    <h1 class="h4 mb-2 text-gray-800">Alunos</h1>
-    <a href=@Url.Action("Create", "Student") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
-        <i class="fas fa-user-plus text-white-30"></i>
-        <span class="btn-label">Novo Aluno</span>
-    </a>
+<div class="d-flex align-items-center justify-content-between mb-1">
+    <h1 class="h4 mr-4 mb-2 text-gray-800">Alunos</h1>
+    <div class="d-grid float-right">
+        <a id="all" href="" onclick="LoadStudentTableFilters('all', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Todos
+        </a>
+        <a id="frequent" href="" onclick="LoadStudentTableFilters('Frequent', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Ativos / Frequentes
+        </a>
+        <a id="notFrequent" href="" onclick="LoadStudentTableFilters('NotFrequent', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Ativos / Não Frequentes
+        </a>
+        <a id="inactive" href="" onclick="LoadStudentTableFilters('Inactive', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Inativos
+        </a>
+        <a id="birthday" href="" onclick="LoadStudentTableFilters('Birthday', true); return false;" class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm mb-2">
+            <i class="fas fa-filter text-white-50"></i>
+            Aniversariantes
+        </a>
+        <a href=@Url.Action("Create", "Student") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm mb-2">
+            <i class="fas fa-user-plus text-white-30"></i>
+            <span class="btn-label">Novo</span>
+        </a>
+    </div>
 </div>
 
 @Html.AntiForgeryToken()
 
-<!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
         <table class="stripe row-border" style="width:100%" id="tblStudents" cellspacing="0">
@@ -46,38 +67,6 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr id="@item.PersonId">
-                        <td>
-                            @Html.ActionLink(item.Name, "Edit", "Student", new { id = item.PersonId }, null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PersonId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SocialSecurityCard)
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.PersonStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PersonStatus), item.Status)).GetValue(null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Edit", "Student", new { id = item.PersonId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" onClick="DeleteStudent('@item.PersonId', '@item.Name', 'tblStudents');">
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
         </table>
     </div>
 </div>
@@ -85,8 +74,10 @@
 <!-- Enabled filters and buttons to datatable -->
 <script>
     $(document).ready(function () {
-        LoadDataTableButtonsAndFilter(tblStudents);
+        LoadStudentTableFilters();
+        LoadStudentsDataTable();
     });
 </script>
 
+<!-- Utility library -->
 <script src="@Url.Content("~/Scripts/Utility/StudentUtility.js")" type="text/javascript"></script>

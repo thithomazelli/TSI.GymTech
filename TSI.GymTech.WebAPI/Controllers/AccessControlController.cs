@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.EntityManagers;
@@ -14,7 +11,8 @@ namespace TSI.GymTech.WebAPI.Controllers
     public class AccessControlController : Controller
     {
         private readonly AccessControlManager _accessControlManager;
-        
+        private ValidationErrorManager _validationErrorManager;
+
         public AccessControlController()
         {
             _accessControlManager = new AccessControlManager();
@@ -23,9 +21,24 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: AccessControl
         public ActionResult Index()
         {
-            return View(_accessControlManager.FindAll().Data);
+            return View();
         }
-        
+
+        [HttpGet]
+        public ActionResult GetAccessControls()
+        {
+            var accessControlList = _accessControlManager.FindAll().Data
+                .Select(_ => new
+                {
+                    Id = _.AccessControlId,
+                    _.Name,
+                    _.IpAddress,
+                    _.IsStandard
+                });
+
+            return Json(new { data = accessControlList }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: AccessControl/Create
         public ActionResult Create()
         {
@@ -33,12 +46,11 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: AccessControl/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccessControlId,IpAddress,Name,IsStandard")] AccessControl accessControl)
+        public ActionResult Create(AccessControl accessControl)
         {
+            ValidateDuplicated(accessControl);
             if (ModelState.IsValid)
             {
                 //Change to current user id later
@@ -47,10 +59,12 @@ namespace TSI.GymTech.WebAPI.Controllers
                 accessControl.ModifyUserId = 0;
                 accessControl.ModifyDate = DateTime.Now;
                 _accessControlManager.Create(accessControl);
-                return RedirectToAction("Edit/" + accessControl.AccessControlId);
+
+                return Json(new { Success = true, Message = "Controle de Acesso cadastrado com sucesso.", Id = accessControl.AccessControlId });
             }
 
-            return View(accessControl);
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: AccessControl/Edit/5
@@ -69,21 +83,23 @@ namespace TSI.GymTech.WebAPI.Controllers
         }
 
         // POST: AccessControl/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccessControlId,IpAddress,Name,IsStandard")] AccessControl accessControl)
+        public ActionResult Edit(AccessControl accessControl)
         {
+            ValidateDuplicated(accessControl);
             if (ModelState.IsValid)
             {
                 //Change to current user id later
                 accessControl.ModifyUserId = 0;
                 accessControl.ModifyDate = DateTime.Now;
                 _accessControlManager.Update(accessControl);
-                //return RedirectToAction("Index");
+
+                return Json(new { Success = true, Message = "Controle de Acesso atualizado com sucesso." });
             }
-            return View(accessControl);
+
+            _validationErrorManager = new ValidationErrorManager();
+            return Json(new { success = false, Errors = _validationErrorManager.GetModelStateErrors(ModelState) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: AccessControl/Delete/5
@@ -119,13 +135,13 @@ namespace TSI.GymTech.WebAPI.Controllers
             }
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        private void ValidateDuplicated(AccessControl accessControl)
+        {
+            // Validate if IpAddress is duplicated
+            if (_accessControlManager.IsIpAddressDuplicated(accessControl))
+            {
+                ModelState.AddModelError("IpAddress", "Já existe um Equipamento cadastrado com IP informado.");
+            }
+        }
     }
 }

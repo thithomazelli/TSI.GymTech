@@ -25,19 +25,7 @@ function EditTrainingsheetExercise(element) {
     return false;
 }
 
-//$(function () {
-//    $(".edit-trainingsheet-exercise").click(function () {
-//        var id = $(this).attr("data-id");
-//        $("#modal").load("/TrainingSheetExercise/Edit/" + id, function () {
-//            $("#modal").modal();
-//        });
-
-//        return false;
-//    });
-//})
-
 // Delete TrainingSheetExercise and showing toastr remove alert
-
 function DeleteTrainingSheetExercise(id, tableName, formName) {
     var formAction = $("form").attr("action");
     var url = formAction.substr(0, formAction.indexOf(formName)) + 'TrainingSheetExercise/Delete';

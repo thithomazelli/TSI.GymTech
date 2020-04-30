@@ -9,12 +9,12 @@
     <title>GymTech - @Model.Name</title>
 </head>
 
-@using (Html.BeginForm("Edit", "Student", FormMethod.Post, new { id = "frmStudent", name = "frmStudent" }))
+@using (Html.BeginForm("Edit", "Student", FormMethod.Post, new { id = "frmStudent", name = "frmStudent", @class = "needs-validation" }))
 {
     @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "help-block" })
         @Html.HiddenFor(model => model.PersonId)
         @Html.HiddenFor(model => model.Photo)
 
@@ -116,26 +116,19 @@
                                             Payments
                                             Pagamentos
                                         </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-file-invoice"></i>
-                                            <span>Anamnesis Sheet</span>
-                                            Fichas de Anamnese
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-file-contract"></i>
-                                            <span>Evaluation Sheet</span>
-                                            Fichas de Avaliação
-                                        </a>
                                     </li>*@
                                 <li class="nav-item">
                                     <a href="#trainingSheetList" class="nav-link" onclick="ShowOrHideSection(trainingSheetList);">
                                         <i class="fas fa-file-alt"></i>
                                         @*Training Sheet*@
                                         Fichas de Treino
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#evaluationSheetList" onclick="ShowOrHideSection(evaluationSheetList);">
+                                        <i class="fas fa-file-contract"></i>
+                                        @*Evaluation Sheet*@
+                                        Avaliações Físicas
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -166,9 +159,9 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } }) <br />
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", required = "required" } }) <br />
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -179,9 +172,9 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-list"></i></span>
                                     </div>
-                                    @Html.EnumDropDownListFor(model => model.ProfileType, htmlAttributes: new { @class = "form-control" })
+                                    @Html.EnumDropDownListFor(model => model.ProfileType, htmlAttributes: new { @class = "form-control", required = "required" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.ProfileType, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.ProfileType, "", new { @class = "validation-message help-block" })
                             </div>
 
                             <div class="form-group col-md-6 col-sm-12">
@@ -192,7 +185,7 @@
                                     </div>
                                     @Html.EnumDropDownListFor(model => model.Gender, htmlAttributes: new { @class = "form-control" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -204,8 +197,11 @@
                                         <span class="input-group-text"><i class="fas fa-address-card"></i></span>
                                     </div>
                                     @Html.EditorFor(model => model.NationalIDCard, new { htmlAttributes = new { @class = "form-control" } })
+                                    <div class="invalid-feedback ">
+
+                                    </div>
                                 </div>
-                                @Html.ValidationMessageFor(model => model.NationalIDCard, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.NationalIDCard, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.SocialSecurityCard, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -213,9 +209,9 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
                                     </div>
-                                    @Html.EditorFor(model => model.SocialSecurityCard, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.SocialSecurityCard, new { htmlAttributes = new { @class = "input-validation-error form-control", required = "required" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.SocialSecurityCard, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.SocialSecurityCard, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -228,7 +224,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.RegistrationDate, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -238,7 +234,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.RegistrationDate, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.RegistrationDate, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -251,7 +247,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -261,7 +257,7 @@
                                     </div>
                                     @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -274,7 +270,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "validation-message help-block" })
                             </div>
                             <div class="form-group col-md-6 col-sm-12">
                                 @Html.LabelFor(model => model.MobilePhone, htmlAttributes: new { @class = "control-label col-md-12" })
@@ -284,7 +280,7 @@
                                     </div>
                                     @Html.EditorFor(model => model.MobilePhone, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "validation-message text-danger" })
+                                @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "validation-message help-block" })
                             </div>
                         </div>
 
@@ -296,7 +292,7 @@
                                 </div>
                                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "validation-message help-block" })
                         </div>
 
                         <div class="form-group">
@@ -304,7 +300,7 @@
                             <div class="col-md-12">
                                 @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
-                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message text-danger" })
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message help-block" })
                         </div>
                     </div>
                 </section>
@@ -321,7 +317,7 @@
                                 </a>
                             </div>
                             <hr />
-                            <table class="stripe row-border" style="width:100%" id="tblAddresses" cellspacing="0">
+                            <table class="stripe row-border" width="100%" id="tblAddresses" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>
@@ -351,12 +347,14 @@
                                     {
                                         <tr id="@item.AddressId">
                                             <td>
-                                                @Html.ActionLink(item.Street, null, null,
-                                                    new
-                                                    {
-                                                        onclick = "EditAddress(this, 'Student'); return false;",
-                                                        data_id = item.AddressId
-                                                    })
+                                                @if (item.Street != null)
+                                                {
+                                                    @Html.ActionLink(item.Street, null, null, new
+                                               {
+                                                   onclick = "EditAddress(this, 'Student'); return false;",
+                                                   data_id = item.AddressId
+                                               })
+                                                }
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Number)
@@ -395,7 +393,7 @@
                 </section>
 
                 @*Training Sheet List*@
-                <section id="trainingSheetList" class="profile-content" style="display: none;">
+                <section id="trainingSheetList" style="display: none;">
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="col-12 text-right">
@@ -434,6 +432,7 @@
                                         </th>
                                         <th></th>
                                         <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -450,13 +449,18 @@
                                                 @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetModel).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetModel), item.Model)).GetValue(null)
                                             </td>
                                             <td>
-                                                @typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetStatus), item.Status)).GetValue(null)
-                                            </td>
-                                            <td>
                                                 @if (item.Status != null)
                                                 {
-                                                    <span>@typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetType), item.Type)).GetValue(null)</span>
+                                                    <span>@typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetStatus), item.Status)).GetValue(null)</span>
                                                 }
+                                            </td>
+                                            <td>
+                                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.TrainingSheetType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.TrainingSheetType), item.Type)).GetValue(null)</span>
+                                            </td>
+                                            <td>
+                                                <a href="" onclick="PrintTrainingSheet(this, 'TrainingSheet', 'Student'); return false;" data-id="@item.TrainingSheetId">
+                                                    <i class="fas fa-print"></i>
+                                                </a>
                                             </td>
                                             <td>
                                                 <a href=@Url.Action("Edit", "TrainingSheet", new { id = item.TrainingSheetId })>
@@ -474,11 +478,70 @@
                             </table>
                         </div>
                     </div>
+                </section>
 
+                @*Evaluation Sheet*@
+                <section id="evaluationSheetList" style="display: none;">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="col-12 text-right">
+                                <h5 style="float:left">Avaliações  Físicas</h5>
+                                <a href=@Url.Action("Create", "EvaluationSheet", new { personId = Model.PersonId })
+                                   class="d-sm-inline-block btn btn-success align-content-end btn-sm btn-labeled shadow-sm mb-1">
+                                    <i class="fas fa-file-contract text-white-35"></i>
+                                    <span class="btn-label">Novo</span>
+                                </a>
+                            </div>
+                            <hr />
+                            <table class="stripe row-border" id="tblEvaluationSheets" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EvaluationSheets.FirstOrDefault().Description)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EvaluationSheets.FirstOrDefault().Revaluation)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EvaluationSheets.FirstOrDefault().Comments)
+                                        </th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.EvaluationSheets)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.ActionLink(item.Description, "Edit", "EvaluationSheet", new { id = item.EvaluationSheetId }, null)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Revaluation)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Comments)
+                                            </td>
+                                            <td>
+                                                <a href=@Url.Action("Edit", "EvaluationSheet", new { id = item.EvaluationSheetId })>
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href=@Url.Action("Delete", "EvaluationSheet", new { id = item.EvaluationSheetId })>
+                                                    <i style="color: red;" class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </section>
 
                 @*Log Access List*@
-                <section id="accessLogList" class="profile-content" style="display: none;">
+                <section id="accessLogList" style="display: none;">
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="col-12 text-right">
@@ -521,10 +584,10 @@
                                                 @Html.DisplayFor(modelItem => item.CreateDate)
                                             </td>
                                             @*<td>
-                                                    <a href=@Url.Action("Edit", "AccessLog", new { id = item.AccessLogId })>
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                </td>*@
+                                                <a href=@Url.Action("Edit", "AccessLog", new { id = item.AccessLogId })>
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>*@
                                             <td>
                                                 <a href="#" onClick="DeleteAccessLog('@item.AccessLogId', 'tblAccessLogs', 'Student');">
                                                     <i style="color: red;" class="fas fa-trash-alt"></i>
@@ -539,16 +602,16 @@
                 </section>
 
                 @*Buttons*@
-                <div class="profile-content">
+                <section id="buttons" class="profile-content">
                     <div class="form-row">
                         <div class="col-6 mt-2">
-                            @Html.ActionLink("Voltar para Lista de Usuários", "Index")
+                            @Html.ActionLink("Voltar para Lista de Alunos", "Index")
                         </div>
                         <div class="col-6 text-right">
-                            <input id="btnSaveStudent" type="submit" value="Salvar" onclick="return false;" class="btn btn-success align-content-end" />
+                            <button id="btnSaveStudent" onclick="return false;" class="btn btn-success align-content-end" type="submit">Salvar</button>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
     </div>
@@ -561,7 +624,12 @@
 
 @*Modal Address popup*@
 <div class="modal" id="modalAddress">
-    
+
+</div>
+
+@*Modal TrainingSheetPrint popup*@
+<div class="modal" id="modal-print">
+
 </div>
 
 @section Scripts {
@@ -569,10 +637,11 @@
 
     <script>
         // Enabled filters and buttons to datatable
-        $(document).ready(function () {            
-            LoadSimpleDataTable(tblAddresses);
-            LoadDataTableButtonsAndFilter(tblTrainingSheet);
-            LoadDataTableWithPaging(tblAccessLogs);
+        $(document).ready(function () {
+            LoadSimpleDataTable(tblAddresses, 'Student');
+            LoadDataTableButtonsAndFilter(tblTrainingSheet, null, 'Student');
+            LoadDataTableButtonsAndFilter(tblEvaluationSheets, null, 'Student');
+            LoadAccessLogListWithPaging(null, 3, tblAccessLogs, 'Student');
         });
     </script>
 }
@@ -581,9 +650,15 @@
 <script src="@Url.Content("~/Scripts/Utility/StudentUtility.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Utility/AddressUtility.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Utility/TrainingSheetUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/EvaluationSheetUtility.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Utility/AccessLogUtility.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/Utility/EditUtility.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/PersonUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/PrinterUtility.js")" type="text/javascript"></script>
+
+@*DataTable DateTime library*@
+<script src="@Url.Content("~/Content/vendor/datatables/moment.min.js")"></script>
+<script src="@Url.Content("~/Content/vendor/datatables/datetime-moment.js")"></script>
 
 <!-- WebcamJS library -->
 <script src="@Url.Content("~/Scripts/WebCam/webcam.min.js")" type="text/javascript"></script>

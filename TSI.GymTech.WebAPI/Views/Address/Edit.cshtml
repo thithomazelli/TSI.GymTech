@@ -15,7 +15,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
             </div>
 
-            @Html.ValidationSummary(true, "", new { @class = "validation-message text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "validation-message help-block" })
             @Html.HiddenFor(model => model.AddressId)
             @Html.HiddenFor(model => model.PersonId)
             
@@ -34,7 +34,7 @@
                                 </button>
                             </span>
                         </div>
-                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "validation-message help-block" })
                     </div>
 
                     <div class="form-group col-md-6 col-sm-12">
@@ -45,7 +45,7 @@
                             </div>
                             @Html.EnumDropDownListFor(model => model.AddressType, htmlAttributes: new { @class = "form-control" })
                         </div>
-                        @Html.ValidationMessageFor(model => model.AddressType, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.AddressType, "", new { @class = "validation-message help-block" })
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
                             </div>
                             @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
-                        @Html.ValidationMessageFor(model => model.Street, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.Street, "", new { @class = "validation-message help-block" })
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                             </div>
                             @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
-                        @Html.ValidationMessageFor(model => model.Number, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.Number, "", new { @class = "validation-message help-block" })
                     </div>
 
                     <div class="form-group col-md-6 col-sm-12">
@@ -82,7 +82,7 @@
                             </div>
                             @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
-                        @Html.ValidationMessageFor(model => model.District, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.District, "", new { @class = "validation-message help-block" })
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                             </div>
                             @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
-                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "validation-message help-block" })
                     </div>
 
                     <div class="form-group col-md-6 col-sm-12">
@@ -106,7 +106,7 @@
                             </div>
                             @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
-                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "validation-message help-block" })
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                             </div>
                             @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
-                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "validation-message help-block" })
                     </div>
 
                     <div class="form-group col-md-6 col-sm-12">
@@ -130,7 +130,7 @@
                             </div>
                             @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
-                        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message text-danger" })
+                        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "validation-message help-block" })
                     </div>
                 </div>
             </div>

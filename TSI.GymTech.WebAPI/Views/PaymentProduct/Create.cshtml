@@ -1,0 +1,127 @@
+﻿@model TSI.GymTech.Entity.Models.PaymentProduct
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm("Create", "PaymentProduct", FormMethod.Post, new { id = "frmPaymentProduct", name = "frmPaymentProduct" }))
+        {
+            <div class="modal-header">
+                <h4 class="modal-title">Novo Produto</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            </div>
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.PaymentId)
+            @Html.HiddenFor(model => model.UnitPrice, new { id = "HiddenUnitPrice" })
+            @Html.HiddenFor(model => model.Quota, new { id = "HiddenQuota" })
+
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProductId, "Produto", htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.DropDownList("ProductId", null, htmlAttributes: new { @class = "form-control update-payment-product-prices" })
+                        @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "validation-message help-block" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6 col-sm-12">
+                        @Html.LabelFor(model => model.PaymentType, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-list"></i></span>
+                            </div>
+                            @Html.EnumDropDownListFor(model => model.PaymentType, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.PaymentType, "", new { @class = "validation-message help-block" })
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-list"></i></span>
+                            </div>
+                            @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "validation-message help-block" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control update-payment-product-prices" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "validation-message help-block" })
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control update-payment-product-prices" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "validation-message help-block" })
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        @Html.LabelFor(model => model.Quota, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.Quota, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Quota, "", new { @class = "validation-message help-block" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "validation-message help-block" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.TotalPrice, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="input-group col-md-12">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-align-justify"></i></span>
+                            </div>
+                            @Html.EditorFor(model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "validation-message help-block" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+                <input type="submit" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
+            </div>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/PaymentProductUtility.js")" type="text/javascript"></script>

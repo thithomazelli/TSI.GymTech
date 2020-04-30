@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<TSI.GymTech.Entity.Models.Product>
 
 @{
+    /**/
+
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,21 +12,12 @@
     <title>GymTech - Produtos</title>
 </head>
 
-<!-- Enabled filters and buttons to datatable -->
-<script>
-    $(document).ready(function () {
-        LoadDataTableButtonsAndFilter(tblProducts);
-    });
-</script>
-
-<script src="@Url.Content("~/Scripts/Utility/ProductUtility.js")" type="text/javascript"></script>
-
 <!-- Begin Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-1">
+<div class="d-flex align-items-center justify-content-between mb-1">
     <h1 class="h4 mb-2 text-gray-800">Produtos</h1>
     <a href=@Url.Action("Create", "Product") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fab fa-product-hunt text-white-35"></i>
-        <span class="btn-label">Novo Produto</span>
+        <span class="btn-label">Novo</span>
     </a>
 </div>
 
@@ -50,53 +43,23 @@
                         @Html.DisplayNameFor(model => model.QuantityStock)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Duplication)
+                        @Html.DisplayNameFor(model => model.Quota)
                     </th>
                     <th></th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr id="@item.ProductId">
-                        <td>
-                            @Html.ActionLink(item.Name, "Edit", "Product", new { id = item.ProductId }, null)
-                        </td>
-                        <td>
-                            @if (item.Type != null)
-                            {
-                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.ProductType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.ProductType), item.Type)).GetValue(null)</span>
-                            }
-                        </td>
-                        <td>
-                            @if (item.Status != null)
-                            {
-                                <span>@typeof(TSI.GymTech.Entity.App_LocalResources.ProductStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.ProductStatus), item.Status)).GetValue(null)</span>
-                            }
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SuggestedPrice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.QuantityStock)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Duplication)
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Edit", "Product", new { id = item.ProductId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="#" onClick="DeleteProduct('@item.ProductId', '@item.Name', 'tblProducts');">
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
         </table>
     </div>
 </div>
+
+<!-- Enabled filters and buttons to datatable -->
+<script>
+    $(document).ready(function () {
+        LoadProductDataTable();
+    });
+</script>
+
+<!-- Utility library -->
+<script src="@Url.Content("~/Scripts/Utility/ProductUtility.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Utility/UtilityHelper.js")" type="text/javascript"></script>

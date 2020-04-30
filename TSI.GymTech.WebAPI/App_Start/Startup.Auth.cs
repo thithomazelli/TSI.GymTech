@@ -6,7 +6,6 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using TSI.GymTech.Data;
 using TSI.GymTech.Entity.Models;
-using TSI.GymTech.WebAPI.Models;
 
 namespace TSI.GymTech.WebAPI
 {

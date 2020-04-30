@@ -27,8 +27,34 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: TrainingSheet
         public ActionResult Index()
         {
-            return View(_trainingSheetManager.FindAll().Data.ToList());
+            return View();
         }
+
+        [HttpGet]
+        public JsonResult GetTrainingSheets()
+        {
+            var trainingSheetList = _trainingSheetManager.FindAllByView()
+                .Data
+                .Select(_ => new
+                {
+                    Id = _.TrainingSheetId,
+                    _.Name,
+                    _.Cycle,
+                    _.StudentId,
+                    _.StudentName,
+                    Model = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetModel)),
+                                Enum.GetName(typeof(TrainingSheetModel), _.Model)),
+                    Status = _.Status != null
+                            ? GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetStatus)),
+                                Enum.GetName(typeof(TrainingSheetStatus), _.Status))
+                            : null,
+                    Type = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetType)),
+                                Enum.GetName(typeof(TrainingSheetType), _.Type))
+                });
+            
+            return Json(new { data = trainingSheetList }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Students
         public ActionResult Select(int? personId)
         {
@@ -61,6 +87,7 @@ namespace TSI.GymTech.WebAPI.Controllers
                         Comments = baseTrainingSheet.Comments,
                         Revaluation = baseTrainingSheet.Revaluation,
                         StudentId = personId,
+                        Student = baseTrainingSheet.Student,
                         CreateDate = DateTime.Now,
                         CreateUserId = 0,
                         ModifyDate = DateTime.Now,
@@ -104,12 +131,13 @@ namespace TSI.GymTech.WebAPI.Controllers
                             { "TrainingSheetId", newTrainingSheet.TrainingSheetId },
                             { "Name", newTrainingSheet.Name },
                             { "Cycle", newTrainingSheet.Cycle },
-                            { "Model", GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetModel)),
-                                                        Enum.GetName(typeof(TrainingSheetModel), newTrainingSheet.Model)) },
-                            { "Status", GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetStatus)),
-                                                        Enum.GetName(typeof(TrainingSheetStatus), newTrainingSheet.Status)) },
-                            { "Type", GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetType)),
-                                                        Enum.GetName(typeof(TrainingSheetType), newTrainingSheet.Type)) }
+                            { "StudentName",  newTrainingSheet?.Student?.Name }
+                            //{ "Model", GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetModel))
+                            //                            Enum.GetName(typeof(TrainingSheetModel), newTrainingSheet.Model)) },
+                            //{ "Status", GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetStatus)),
+                            //                            Enum.GetName(typeof(TrainingSheetStatus), newTrainingSheet.Status)) },
+                            //{ "Type", GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.TrainingSheetType)),
+                            //                            Enum.GetName(typeof(TrainingSheetType), newTrainingSheet.Type)) }
                         },
                         Message = "O Treino " + newTrainingSheet?.Name + " foi criado."
                     }, JsonRequestBehavior.AllowGet);
@@ -192,18 +220,6 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: TrainingSheet/Edit/5
         public ActionResult Edit(int? id)
         {
-            //PersonManager personManager = new PersonManager();
-
-            ////Gets all active students
-            //List<Person> students = new List<Person>();
-            //students = personManager.FindByProfileType(Entity.Enumerates.PersonType.Student).Data.ToList();
-            //ViewBag.Students = new SelectList(students, "PersonId", "Name", trainingSheet.StudentId);
-
-            ////Gets all active trainers
-            //List<Person> trainers = new List<Person>();
-            //trainers = personManager.FindByProfileType(Entity.Enumerates.PersonType.Teacher).Data.ToList();
-            //ViewBag.Trainers = new SelectList(trainers, "PersonId", "Name", trainingSheet.TrainerId);
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -215,6 +231,7 @@ namespace TSI.GymTech.WebAPI.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(trainingSheet);
         }
 
@@ -223,31 +240,6 @@ namespace TSI.GymTech.WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(TrainingSheet trainingSheet)
         {
-            //PersonManager personManager = new PersonManager();
-
-            ////Gets all active students
-            //List<Person> students = new List<Person>();
-            //students = personManager.FindByProfileType(Entity.Enumerates.PersonType.Student).Data.ToList();
-            //ViewBag.Students = new SelectList(students, "PersonId", "Name", trainingSheet.StudentId);
-
-            ////Gets all active trainers
-            //List<Person> trainers = new List<Person>();
-            //trainers = personManager.FindByProfileType(Entity.Enumerates.PersonType.Teacher).Data.ToList();
-            //ViewBag.Trainers = new SelectList(trainers, "PersonId", "Name", trainingSheet.TrainerId);
-
-            //if (ModelState.IsValid)
-            //{
-            //    if (trainingSheet != null)
-            //    {
-            //        //Change to current user id later
-            //        trainingSheet.ModifyUserId = 0;
-            //        trainingSheet.ModifyDate = DateTime.Now;
-            //        _trainingSheetManager.Update(trainingSheet);
-            //    }
-            //    return RedirectToAction("Index");
-            //}
-            //return View(trainingSheet);
-
             ModelState.Remove("Student.Name");
             ModelState.Remove("Student.SocialSecurityCard");
 
@@ -301,14 +293,20 @@ namespace TSI.GymTech.WebAPI.Controllers
             try
             {
                 _trainingSheetManager.Remove(trainingSheet);
-                return Json(new { Type = "Success", Message = "O Treino " + trainingSheet.Name + " foi removido com sucesso." });
+                return Json(new
+                {
+                    Type = "Success",
+                    Message = "O Treino " + trainingSheet.Name + " foi removido com sucesso."
+                });
             }
             catch (Exception ex)
             {
-                return Json(new { Type = "Error", Message = "Não foi possível remover o Treino " + trainingSheet.Name + "." });
+                return Json(new
+                {
+                    Type = "Error",
+                    Message = "Não foi possível remover o Treino " + trainingSheet.Name + "."
+                });
             }
-
-            //return RedirectToAction("Index");
         }
 
         //protected override void Dispose(bool disposing)
@@ -319,6 +317,23 @@ namespace TSI.GymTech.WebAPI.Controllers
         //    }
         //    base.Dispose(disposing);
         //}
+
+        // GET: TrainingSheet/Edit/5
+        public ActionResult Print(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            TrainingSheet trainingSheet = _trainingSheetManager.FindById(id).Data;
+
+            if (trainingSheet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trainingSheet);
+        }
 
         public string GetResourceName(ResourceManager resourceManager, string enumName)
         {

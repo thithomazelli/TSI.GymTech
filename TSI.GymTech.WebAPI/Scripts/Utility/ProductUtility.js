@@ -1,6 +1,97 @@
-﻿// Showing toastr success alert
+﻿// Load Datatable to Index page with ajax and controller 
+// Create structure to DataTable show entries, search and export buttons
+function LoadProductDataTable(orderingStatus) {
+    var formAction = $("form").attr("action");
+    var urlBase = formAction.substr(0, formAction.indexOf('Product'));
+
+    var table = $(tblProducts).DataTable({
+        language: {
+            url: urlBase + 'Scripts/Utility/i18n/Portuguese-Brasil.json',
+            search: '<div class="input-group col-md-12">' +
+                ' _INPUT_ ' +
+                '<span class= "input-group-append">' +
+                '<button class="input-group-text btn btn-primary btn-dataTable-fixMargin" type="button">' +
+                '<i class="fa fa-search"></i>' +
+                '</button>' +
+                '</span>' +
+                '</div> ',
+            searchPlaceholder: 'Pesquisar por...'
+        },
+        ordering: orderingStatus == null || orderingStatus == undefined ? true : orderingStatus,
+        pagingType: 'simple_numbers',
+        lengthChange: true,
+        rowId: "Id",
+        responsive: true,
+        ajax: {
+            url: urlBase + "Product/GetProducts",
+            type: "GET",
+            dataType: "json"
+        },
+        columns: [
+            {
+                data: "Name", autowidth: true, render: function (data, type, full, meta) {
+                    return '<a href=' + urlBase + 'Product/Edit/' + full.Id + '>' + data + '</a>';
+                }
+            },
+            { data: "Type", autowidth: true },
+            { data: "Status", autowidth: true },
+            { data: "SuggestedPrice", autowidth: true },
+            { data: "QuantityStock", autowidth: true },
+            { data: "Quota", autowidth: true },
+            {
+                data: null, render: function (data, type, full, meta) {
+                    return "<a href=" + urlBase + "Product/Edit/" + full.Id + ">" +
+                        "<i class='fas fa-edit'></i>" +
+                        "</a>";
+                }
+            },
+            {
+                data: null, render: function (data, type, full, meta) {
+                    return "<a href='#' onClick='DeleteProduct(&apos;" + full.Id + "&apos;, &apos;" + full.Name + "&apos;, &apos;tblProducts&apos;);'>" +
+                        "<i style='color: red;' class='fas fa-trash-alt'></i>" +
+                        "</a >";
+                }
+            }
+        ]
+    });
+
+    $.fn.DataTable.ext.pager.numbers_length = 3;
+    table.buttons().container()
+        .appendTo('#' + tblProducts.id + '_wrapper .col-md-6:eq(0)');
+}
+
+// Showing toastr success alert
 $("#btnSaveProduct").click(function () {
-    toastr.success("Produto salvo com sucesso.");
+    var formData = $("#frmProduct").serialize();
+    event.preventDefault();
+    $('#btnSaveProduct').attr('disabled', 'disabled');
+    var url = $("#frmProduct").attr("action");
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        dataType: "json",
+        success: function (data) {
+            if (data.Success) {
+                if (data.Id) {
+                    window.location.href = url.replace('/Create', '') + '/Edit/' + data.Id;
+                }
+                toastr.success(data.Message);
+            }
+            else {
+                DisplayValidationErrors(data.Errors)
+            }
+        },
+        error: function () {
+            toastr.error('Não foi possível atualizar o cadastro.');
+        },
+        complete: function () {
+            $('#btnSaveProduct').removeAttr('disabled');
+        }
+    })
+
+    return false;
 });
 
 // Delete Product and showing toastr remove alert
@@ -15,7 +106,7 @@ function DeleteProduct(productId, productName, tableName) {
     headers['__RequestVerificationToken'] = token;
     headersadr['__RequestVerificationToken'] = tokenadr;
 
-    if (confirm('Tem certeza que deseja o Produto ' + productName + '?')) {
+    if (confirm('Tem certeza que deseja o Produto "' + productName + '"?')) {
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -184,4 +275,8 @@ $(function () {
         }
 
     });
+});
+              
+$(document).ready(function ($) {
+    $("#frmProduct").bootstrapValidator({ });
 });

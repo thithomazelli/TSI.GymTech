@@ -10,31 +10,20 @@
     <title>GymTech - Usuários</title>
 </head>
 
-<!-- Enabled filters and buttons to datatable -->
-<script>
-    $(document).ready(function () {
-        LoadDataTableButtonsAndFilter(tblUsers);
-    });
-</script>
-
-<script src="@Url.Content("~/Scripts/Utility/UserUtility.js")" type="text/javascript"></script>
-
 <!-- Begin Page Content -->
-<div class="d-sm-flex align-items-center justify-content-between mb-1">
+<div class="d-flex align-items-center justify-content-between mb-1">
     <h1 class="h4 mb-2 text-gray-800">Usuários</h1>
     <a href=@Url.Action("Create", "User") class="d-sm-inline-block btn btn-sm btn-labeled btn-success shadow-sm">
         <i class="fas fa-user-plus text-white-30"></i>
-        <span class="btn-label">Novo Usuário</span>
+        <span class="btn-label">Novo</span>
     </a>
 </div>
 
 @Html.AntiForgeryToken()
 
-<!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        @*<div class="table-responsive">*@
-        <table class="stripe row-border" id="tblUsers" width="100%" cellspacing="0">
+        <table class="stripe row-border" id="tblUsers" style="width:100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>
@@ -52,9 +41,6 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Status)
                     </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.MobilePhone)
-                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.Email)
                     </th>
@@ -62,49 +48,15 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr id="@item.PersonId">
-                        <td>
-                            @Html.ActionLink(item.Name, "Edit", "User", new { id = item.PersonId }, null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PersonId)
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.PersonType).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PersonType), item.ProfileType)).GetValue(null)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SocialSecurityCard)
-                        </td>
-                        <td>
-                            @typeof(TSI.GymTech.Entity.App_LocalResources.PersonStatus).GetProperty(Enum.GetName(typeof(TSI.GymTech.Entity.Enumerates.PersonStatus), item.Status)).GetValue(null)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.MobilePhone)
-                        </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            <a href=@Url.Action("Edit", "User", new { id = item.PersonId })>
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            @*<button type="button" onClick="DeleteUser(item.PersonId, item.Name);">
-                                    <i style="color: red;" class="fas fa-trash-alt"></i>
-                                </button>*@
-
-                            <a href="#" onClick="DeleteUser('@item.PersonId', '@item.Name', 'tblUsers');">
-                                <i style="color: red;" class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
         </table>
-        @*</div>*@
     </div>
 </div>
+
+<!-- Enabled filters and buttons to datatable -->
+<script>
+    $(document).ready(function () {
+        LoadUsersDataTable();
+    });
+</script>
+
+<script src="@Url.Content("~/Scripts/Utility/UserUtility.js")" type="text/javascript"></script>

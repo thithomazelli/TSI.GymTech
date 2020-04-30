@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Resources;
 using System.Web;
 using System.Web.Mvc;
+using TSI.GymTech.Entity.Enumerates;
 using TSI.GymTech.Entity.Models;
 using TSI.GymTech.Manager.EntityManagers;
 
@@ -23,9 +26,28 @@ namespace TSI.GymTech.WebAPI.Controllers
         // GET: AccessLog
         public ActionResult Index()
         {
-            return View(_accessLogManager.FindAll().Data);
+            return View();
         }
-        
+
+        [HttpGet]
+        public ActionResult GetAccessLogs(int filter)
+        {
+            var _accessLogList = _accessLogManager.FindByDateView(filter).Data
+                .Select(_ => new
+                {
+                    Id = _.AccessLogId,
+                    _.PersonId,
+                    _.PersonName,
+                    PersonType = _.PersonProfileType == PersonType.Student ? "Student" : "User",
+                    AccessType = GetResourceName(new ResourceManager(typeof(Entity.App_LocalResources.GateStatusType)),
+                                Enum.GetName(typeof(GateStatusType), _.AccessType)),
+                    _.MessageDisplayed,
+                    CreateDate = _.CreateDate.ToString("dd/MM/yyyy hh:mm:ss")
+                });
+
+            return Json(new { data = _accessLogList }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: AccessLog/Create
         public ActionResult Create()
         {
@@ -111,13 +133,10 @@ namespace TSI.GymTech.WebAPI.Controllers
             }
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        public string GetResourceName(ResourceManager resourceManager, string enumName)
+        {
+            CultureInfo _cultureInfo = new CultureInfo("pt");
+            return resourceManager.GetString(enumName, _cultureInfo);
+        }
     }
 }
