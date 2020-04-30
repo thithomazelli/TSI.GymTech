@@ -113,6 +113,74 @@
     <Compile Include="Migrations\201905192128557_Update_Database_Training_Structure.Designer.cs">
       <DependentUpon>201905192128557_Update_Database_Training_Structure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906011048052_Update_TrainingSheetExercise.cs" />
+    <Compile Include="Migrations\201906011048052_Update_TrainingSheetExercise.Designer.cs">
+      <DependentUpon>201906011048052_Update_TrainingSheetExercise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909120351512_Update_Database_Sheets_Structure.cs" />
+    <Compile Include="Migrations\201909120351512_Update_Database_Sheets_Structure.Designer.cs">
+      <DependentUpon>201909120351512_Update_Database_Sheets_Structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909200033548_Add_TrainingSheetView.cs" />
+    <Compile Include="Migrations\201909200033548_Add_TrainingSheetView.Designer.cs">
+      <DependentUpon>201909200033548_Add_TrainingSheetView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909200044586_Add_TrainingSheetView_String.cs" />
+    <Compile Include="Migrations\201909200044586_Add_TrainingSheetView_String.Designer.cs">
+      <DependentUpon>201909200044586_Add_TrainingSheetView_String.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909210148427_Add_New_ViewTables.cs" />
+    <Compile Include="Migrations\201909210148427_Add_New_ViewTables.Designer.cs">
+      <DependentUpon>201909210148427_Add_New_ViewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909211024349_Update_New_ViewTables.cs" />
+    <Compile Include="Migrations\201909211024349_Update_New_ViewTables.Designer.cs">
+      <DependentUpon>201909211024349_Update_New_ViewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910061428273_Update_Views_And_Tables_With_New_Structure.cs" />
+    <Compile Include="Migrations\201910061428273_Update_Views_And_Tables_With_New_Structure.Designer.cs">
+      <DependentUpon>201910061428273_Update_Views_And_Tables_With_New_Structure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910061516514_Create_New_Student_Views.cs" />
+    <Compile Include="Migrations\201910061516514_Create_New_Student_Views.Designer.cs">
+      <DependentUpon>201910061516514_Create_New_Student_Views.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911160016367_Update_Payment_Table.cs" />
+    <Compile Include="Migrations\201911160016367_Update_Payment_Table.Designer.cs">
+      <DependentUpon>201911160016367_Update_Payment_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911160111429_Update_Payment_Relationship_Table.cs" />
+    <Compile Include="Migrations\201911160111429_Update_Payment_Relationship_Table.Designer.cs">
+      <DependentUpon>201911160111429_Update_Payment_Relationship_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911162222429_Add_PaymentView.cs" />
+    <Compile Include="Migrations\201911162222429_Add_PaymentView.Designer.cs">
+      <DependentUpon>201911162222429_Add_PaymentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911162230246_Update_PaymentView.cs" />
+    <Compile Include="Migrations\201911162230246_Update_PaymentView.Designer.cs">
+      <DependentUpon>201911162230246_Update_PaymentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911162239315_Update_Payment_Table1.cs" />
+    <Compile Include="Migrations\201911162239315_Update_Payment_Table1.Designer.cs">
+      <DependentUpon>201911162239315_Update_Payment_Table1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911252204408_Update_Database_PaymentProduct.cs" />
+    <Compile Include="Migrations\201911252204408_Update_Database_PaymentProduct.Designer.cs">
+      <DependentUpon>201911252204408_Update_Database_PaymentProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911252346296_Update_Database_Payment.cs" />
+    <Compile Include="Migrations\201911252346296_Update_Database_Payment.Designer.cs">
+      <DependentUpon>201911252346296_Update_Database_Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911262321203_Update_Database_Product_Fields.cs" />
+    <Compile Include="Migrations\201911262321203_Update_Database_Product_Fields.Designer.cs">
+      <DependentUpon>201911262321203_Update_Database_Product_Fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911262333370_Update_Database_PaymentProduct_NewFields.cs" />
+    <Compile Include="Migrations\201911262333370_Update_Database_PaymentProduct_NewFields.Designer.cs">
+      <DependentUpon>201911262333370_Update_Database_PaymentProduct_NewFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -159,6 +227,60 @@
     <EmbeddedResource Include="Migrations\201905192128557_Update_Database_Training_Structure.resx">
       <DependentUpon>201905192128557_Update_Database_Training_Structure.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906011048052_Update_TrainingSheetExercise.resx">
+      <DependentUpon>201906011048052_Update_TrainingSheetExercise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909120351512_Update_Database_Sheets_Structure.resx">
+      <DependentUpon>201909120351512_Update_Database_Sheets_Structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200033548_Add_TrainingSheetView.resx">
+      <DependentUpon>201909200033548_Add_TrainingSheetView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909200044586_Add_TrainingSheetView_String.resx">
+      <DependentUpon>201909200044586_Add_TrainingSheetView_String.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909210148427_Add_New_ViewTables.resx">
+      <DependentUpon>201909210148427_Add_New_ViewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909211024349_Update_New_ViewTables.resx">
+      <DependentUpon>201909211024349_Update_New_ViewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910061428273_Update_Views_And_Tables_With_New_Structure.resx">
+      <DependentUpon>201910061428273_Update_Views_And_Tables_With_New_Structure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910061516514_Create_New_Student_Views.resx">
+      <DependentUpon>201910061516514_Create_New_Student_Views.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911160016367_Update_Payment_Table.resx">
+      <DependentUpon>201911160016367_Update_Payment_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911160111429_Update_Payment_Relationship_Table.resx">
+      <DependentUpon>201911160111429_Update_Payment_Relationship_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911162222429_Add_PaymentView.resx">
+      <DependentUpon>201911162222429_Add_PaymentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911162230246_Update_PaymentView.resx">
+      <DependentUpon>201911162230246_Update_PaymentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911162239315_Update_Payment_Table1.resx">
+      <DependentUpon>201911162239315_Update_Payment_Table1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911252204408_Update_Database_PaymentProduct.resx">
+      <DependentUpon>201911252204408_Update_Database_PaymentProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911252346296_Update_Database_Payment.resx">
+      <DependentUpon>201911252346296_Update_Database_Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911262321203_Update_Database_Product_Fields.resx">
+      <DependentUpon>201911262321203_Update_Database_Product_Fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911262333370_Update_Database_PaymentProduct_NewFields.resx">
+      <DependentUpon>201911262333370_Update_Database_PaymentProduct_NewFields.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations\CreateNewTableViews.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
