@@ -120,17 +120,11 @@
   <data name="Answer" xml:space="preserve">
     <value>Resposta</value>
   </data>
-  <data name="SheetAnswerId" xml:space="preserve">
-    <value>ID da Resposta da Ficha</value>
+  <data name="SheetQuestion" xml:space="preserve">
+    <value>Pergunta da Ficha</value>
   </data>
-  <data name="SheetAnswerIdRequired" xml:space="preserve">
-    <value>ID da Resposta da Ficha é obrigatório.</value>
-  </data>
-  <data name="SheetId" xml:space="preserve">
-    <value>ID da Ficha</value>
-  </data>
-  <data name="SheetIdRequired" xml:space="preserve">
-    <value>ID da Ficha é obrigatório.</value>
+  <data name="SheetQuestionId" xml:space="preserve">
+    <value>ID da Pergunta da Ficha</value>
   </data>
   <data name="SheetQuestionRequired" xml:space="preserve">
     <value>Pergunta da Ficha é obrigatório.</value>

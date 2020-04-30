@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnswerType" xml:space="preserve">
+    <value>Tipo de Resposta</value>
+  </data>
+  <data name="AnswerTypeRequired" xml:space="preserve">
+    <value>Tipo de Resposta é obrigatório.</value>
+  </data>
   <data name="Order" xml:space="preserve">
     <value>Ordem</value>
   </data>
@@ -126,16 +132,16 @@
   <data name="QuestionRequired" xml:space="preserve">
     <value>Pergunta é obrigatório.</value>
   </data>
+  <data name="QuestionType" xml:space="preserve">
+    <value>Tipo de Pergunta</value>
+  </data>
+  <data name="QuestionTypeRequired" xml:space="preserve">
+    <value>Tipo de Pergunta é obrigatório.</value>
+  </data>
   <data name="SheetQuestionId" xml:space="preserve">
     <value>ID da Pergunta da Ficha</value>
   </data>
   <data name="SheetQuestionIdRequired" xml:space="preserve">
     <value>ID da Pergunta da Ficha é obrigatório.</value>
-  </data>
-  <data name="TypeQuestion" xml:space="preserve">
-    <value>Tipo de Pergunta</value>
-  </data>
-  <data name="TypeQuestionRequired" xml:space="preserve">
-    <value>Tipo de Pergunta é obrigatório.</value>
   </data>
 </root>

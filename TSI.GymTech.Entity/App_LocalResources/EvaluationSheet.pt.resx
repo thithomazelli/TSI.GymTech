@@ -123,4 +123,10 @@
   <data name="EvaluationSheetIdRequired" xml:space="preserve">
     <value>ID da Ficha de Avaliação é obrigatório.</value>
   </data>
+  <data name="Student" xml:space="preserve">
+    <value>Aluno</value>
+  </data>
+  <data name="StudentId" xml:space="preserve">
+    <value>ID do Aluno</value>
+  </data>
 </root>

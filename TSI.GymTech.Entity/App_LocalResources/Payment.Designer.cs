@@ -88,6 +88,24 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description is required..
+        /// </summary>
+        public static string DescriptionRequired {
+            get {
+                return ResourceManager.GetString("DescriptionRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discount.
         /// </summary>
         public static string Discount {
@@ -147,6 +165,33 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         public static string StatusRequired {
             get {
                 return ResourceManager.GetString("StatusRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        public static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student ID.
+        /// </summary>
+        public static string StudentId {
+            get {
+                return ResourceManager.GetString("StudentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student is required..
+        /// </summary>
+        public static string StudentRequired {
+            get {
+                return ResourceManager.GetString("StudentRequired", resourceCulture);
             }
         }
         

@@ -77,5 +77,23 @@ namespace TSI.GymTech.Entity.App_LocalResources {
                 return ResourceManager.GetString("EvaluationSheetIdRequired", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student.
+        /// </summary>
+        public static string Student {
+            get {
+                return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Student ID.
+        /// </summary>
+        public static string StudentId {
+            get {
+                return ResourceManager.GetString("StudentId", resourceCulture);
+            }
+        }
     }
 }

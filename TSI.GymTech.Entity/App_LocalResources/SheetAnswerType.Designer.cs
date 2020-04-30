@@ -22,14 +22,14 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SheetQuestion {
+    public class SheetAnswerType {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SheetQuestion() {
+        internal SheetAnswerType() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.SheetQuestion", typeof(SheetQuestion).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.SheetAnswerType", typeof(SheetAnswerType).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,29 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Answer Type.
+        ///   Looks up a localized string similar to Boolean.
         /// </summary>
-        public static string AnswerType {
+        public static string Boolean {
             get {
-                return ResourceManager.GetString("AnswerType", resourceCulture);
+                return ResourceManager.GetString("Boolean", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Answer Type is required..
+        ///   Looks up a localized string similar to String.
         /// </summary>
-        public static string AnswerTypeRequired {
+        public static string String {
             get {
-                return ResourceManager.GetString("AnswerTypeRequired", resourceCulture);
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order.
+        ///   Looks up a localized string similar to Yes or No.
         /// </summary>
-        public static string Order {
+        public static string YesOrNo {
             get {
-                return ResourceManager.GetString("Order", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Question.
-        /// </summary>
-        public static string Question {
-            get {
-                return ResourceManager.GetString("Question", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Question is required..
-        /// </summary>
-        public static string QuestionRequired {
-            get {
-                return ResourceManager.GetString("QuestionRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Question Type.
-        /// </summary>
-        public static string QuestionType {
-            get {
-                return ResourceManager.GetString("QuestionType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Question Type is required..
-        /// </summary>
-        public static string QuestionTypeRequired {
-            get {
-                return ResourceManager.GetString("QuestionTypeRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sheet Question ID.
-        /// </summary>
-        public static string SheetQuestionId {
-            get {
-                return ResourceManager.GetString("SheetQuestionId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sheet Question ID is required..
-        /// </summary>
-        public static string SheetQuestionIdRequired {
-            get {
-                return ResourceManager.GetString("SheetQuestionIdRequired", resourceCulture);
+                return ResourceManager.GetString("YesOrNo", resourceCulture);
             }
         }
     }

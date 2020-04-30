@@ -127,6 +127,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AnamnesisSheet.pt.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\AnamnesisSheetAnswer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnamnesisSheetAnswer.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\AnamnesisSheetAnswer.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnamnesisSheetAnswer.pt.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\EvaluationSheetAnswer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluationSheetAnswer.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\EvaluationSheetAnswer.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvaluationSheetAnswer.pt.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\SheetAnswerType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SheetAnswerType.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\BaseModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -317,6 +342,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SheetAnswer.pt.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\SheetAnswerType.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SheetAnswerType.pt.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\SheetQuestion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -389,6 +419,7 @@
     </Compile>
     <Compile Include="Configurations\GateConfiguration.cs" />
     <Compile Include="Enumerates\AddressType.cs" />
+    <Compile Include="Enumerates\SheetAnswerType.cs" />
     <Compile Include="Enumerates\GateStatusMessage.cs" />
     <Compile Include="Enumerates\GateStatusType.cs" />
     <Compile Include="Enumerates\GenderType.cs" />
@@ -405,18 +436,26 @@
     <Compile Include="Enumerates\TrainingSheetType.cs" />
     <Compile Include="Models\AccessControl.cs" />
     <Compile Include="Models\AccessLog.cs" />
+    <Compile Include="Models\AccessLogView.cs" />
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\AnamnesisSheet.cs" />
+    <Compile Include="Models\AnamnesisSheetAnswer.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BaseSheet.cs" />
+    <Compile Include="Models\boolean.cs" />
+    <Compile Include="Models\EvaluationSheetView.cs" />
+    <Compile Include="Models\PaymentView.cs" />
+    <Compile Include="Models\StudentFrequentView.cs" />
+    <Compile Include="Models\StudentNotFrequentView.cs" />
+    <Compile Include="Models\TrainingSheetView.cs" />
     <Compile Include="Models\EvaluationSheet.cs" />
+    <Compile Include="Models\EvaluationSheetAnswer.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PaymentProduct.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\SheetAnswer.cs" />
+    <Compile Include="Models\SheetAnswerModel.cs" />
     <Compile Include="Models\SheetQuestion.cs" />
     <Compile Include="Models\TrainingSheet.cs" />
     <Compile Include="Models\TrainingSheetExercise.cs" />
@@ -467,6 +506,30 @@
     <EmbeddedResource Include="App_LocalResources\AnamnesisSheet.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AnamnesisSheet.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\AnamnesisSheetAnswer.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnamnesisSheetAnswer.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\AnamnesisSheetAnswer.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnamnesisSheetAnswer.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\EvaluationSheetAnswer.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EvaluationSheetAnswer.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\EvaluationSheetAnswer.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EvaluationSheetAnswer.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\SheetAnswerType.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SheetAnswerType.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\SheetAnswerType.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SheetAnswerType.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\BaseModel.pt.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -594,7 +657,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Product.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Product.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ProductStatus.pt.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

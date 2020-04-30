@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TSI.GymTech.Entity.Models
 {
-    public class BaseModel
+    public abstract class BaseModel
     {
         [Display(Name = "CreateDate", ResourceType = typeof(App_LocalResources.BaseModel))]
         [DataType(DataType.DateTime)]

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace TSI.GymTech.Entity.Models
 {
@@ -26,11 +23,11 @@ namespace TSI.GymTech.Entity.Models
 
         [Required(ErrorMessageResourceName = "SerieRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
         [Display(Name = "Serie", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
-        public int Serie { get; set; }
+        public string Serie { get; set; }
 
         [Required(ErrorMessageResourceName = "NumberOfRepetitionsRequired", ErrorMessageResourceType = typeof(App_LocalResources.TrainingSheetExercise), AllowEmptyStrings = false)]
         [Display(Name = "NumberOfRepetitions", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
-        public int NumberOfRepetitions { get; set; }
+        public string NumberOfRepetitions { get; set; }
 
         [Display(Name = "Charge", ResourceType = typeof(App_LocalResources.TrainingSheetExercise))]
         public string Charge { get; set; }

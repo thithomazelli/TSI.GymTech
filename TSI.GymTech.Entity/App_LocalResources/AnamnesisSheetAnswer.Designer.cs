@@ -22,14 +22,14 @@ namespace TSI.GymTech.Entity.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class SheetQuestion {
+    public class AnamnesisSheetAnswer {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal SheetQuestion() {
+        internal AnamnesisSheetAnswer() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.SheetQuestion", typeof(SheetQuestion).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TSI.GymTech.Entity.App_LocalResources.AnamnesisSheetAnswer", typeof(AnamnesisSheetAnswer).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,47 @@ namespace TSI.GymTech.Entity.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Answer Type.
+        ///   Looks up a localized string similar to Anamnesis Sheet.
         /// </summary>
-        public static string AnswerType {
+        public static string AnamnesisSheet {
             get {
-                return ResourceManager.GetString("AnswerType", resourceCulture);
+                return ResourceManager.GetString("AnamnesisSheet", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Answer Type is required..
+        ///   Looks up a localized string similar to Anamnesis Sheet Answer Id.
         /// </summary>
-        public static string AnswerTypeRequired {
+        public static string AnamnesisSheetAnswerId {
             get {
-                return ResourceManager.GetString("AnswerTypeRequired", resourceCulture);
+                return ResourceManager.GetString("AnamnesisSheetAnswerId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order.
+        ///   Looks up a localized string similar to Anamnesis Sheet Answer Id is required..
         /// </summary>
-        public static string Order {
+        public static string AnamnesisSheetAnswerIdRequired {
             get {
-                return ResourceManager.GetString("Order", resourceCulture);
+                return ResourceManager.GetString("AnamnesisSheetAnswerIdRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Question.
+        ///   Looks up a localized string similar to Anamnesis Sheet Id.
         /// </summary>
-        public static string Question {
+        public static string AnamnesisSheetId {
             get {
-                return ResourceManager.GetString("Question", resourceCulture);
+                return ResourceManager.GetString("AnamnesisSheetId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Question is required..
+        ///   Looks up a localized string similar to Anamnesis Sheet Id is required..
         /// </summary>
-        public static string QuestionRequired {
+        public static string AnamnesisSheetIdRequired {
             get {
-                return ResourceManager.GetString("QuestionRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Question Type.
-        /// </summary>
-        public static string QuestionType {
-            get {
-                return ResourceManager.GetString("QuestionType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Question Type is required..
-        /// </summary>
-        public static string QuestionTypeRequired {
-            get {
-                return ResourceManager.GetString("QuestionTypeRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sheet Question ID.
-        /// </summary>
-        public static string SheetQuestionId {
-            get {
-                return ResourceManager.GetString("SheetQuestionId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sheet Question ID is required..
-        /// </summary>
-        public static string SheetQuestionIdRequired {
-            get {
-                return ResourceManager.GetString("SheetQuestionIdRequired", resourceCulture);
+                return ResourceManager.GetString("AnamnesisSheetIdRequired", resourceCulture);
             }
         }
     }

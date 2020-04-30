@@ -129,12 +129,6 @@
   <data name="DescriptionRequired" xml:space="preserve">
     <value>Description is required.</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="NameRequired" xml:space="preserve">
-    <value>Name is required.</value>
-  </data>
   <data name="Revaluation" xml:space="preserve">
     <value>Revaluation</value>
   </data>

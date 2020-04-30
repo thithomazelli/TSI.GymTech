@@ -123,6 +123,12 @@
   <data name="ModelRequired" xml:space="preserve">
     <value>Modelo é obrigatório.</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome do Treino</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>Nome do Treino é obrigatório.</value>
+  </data>
   <data name="Student" xml:space="preserve">
     <value>Aluno</value>
   </data>

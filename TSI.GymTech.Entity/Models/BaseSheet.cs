@@ -4,12 +4,8 @@ using TSI.GymTech.Entity.Enumerates;
 
 namespace TSI.GymTech.Entity.Models
 {
-    public class BaseSheet : BaseModel
+    public abstract class BaseSheet : BaseModel
     {
-        [Display(Name = "Name", ResourceType = typeof(App_LocalResources.BaseSheet))]
-        [Required(ErrorMessageResourceName = "NameRequired", ErrorMessageResourceType = typeof(App_LocalResources.BaseSheet), AllowEmptyStrings = false)]
-        public string Name { get; set; }
-
         [Display(Name = "Description", ResourceType = typeof(App_LocalResources.BaseSheet))]
         [Required(ErrorMessageResourceName = "DescriptionRequired", ErrorMessageResourceType = typeof(App_LocalResources.BaseSheet), AllowEmptyStrings = false)]
         public string Description { get; set; }
@@ -23,7 +19,7 @@ namespace TSI.GymTech.Entity.Models
 
         [Display(Name = "Revaluation", ResourceType = typeof(App_LocalResources.BaseSheet))]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Revaluation { get; set; }
 
         [Display(Name = "Comments", ResourceType = typeof(App_LocalResources.BaseSheet))]

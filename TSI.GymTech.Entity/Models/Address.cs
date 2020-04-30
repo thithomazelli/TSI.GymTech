@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TSI.GymTech.Entity.Enumerates;
 
@@ -48,6 +49,7 @@ namespace TSI.GymTech.Entity.Models
 
         [ForeignKey("Person")]
         public int PersonId { get; set; }
+
         public virtual Person Person { get; set; }
     }
 }
