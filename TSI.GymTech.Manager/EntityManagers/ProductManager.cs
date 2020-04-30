@@ -175,5 +175,10 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
+
+        public bool IsNameDuplicated(Product product)
+        {
+            return repository.query(_ => _.ProductId != product.ProductId && _.Name == product.Name).Any();
+        }
     }
 }

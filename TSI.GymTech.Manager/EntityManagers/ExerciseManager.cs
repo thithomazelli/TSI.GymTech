@@ -154,5 +154,11 @@ namespace TSI.GymTech.Manager.EntityManagers
             }
             return result;
         }
+
+        public bool IsNameDuplicated(Exercise exercise)
+        {
+            return repository.query(_ => _.ExerciseId != exercise.ExerciseId && _.Name == exercise.Name).Any();
+        }
+
     }
 }

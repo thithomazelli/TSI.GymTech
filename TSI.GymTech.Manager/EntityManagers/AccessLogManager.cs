@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,12 @@ namespace TSI.GymTech.Manager.EntityManagers
     public sealed class AccessLogManager
     {
         private readonly Repository<AccessLog> repository;
+        private readonly Repository<AccessLogView> repositoryView;
 
         public AccessLogManager()
         {
             repository = new Repository<AccessLog>();
+            repositoryView = new Repository<AccessLogView>();
         }
 
         /// <summary>
@@ -47,6 +50,51 @@ namespace TSI.GymTech.Manager.EntityManagers
             try
             {
                 result.Data = repository.GetAll().AsEnumerable<AccessLog>().OrderBy(_ => _.CreateDate).ToList();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception ex)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get a AccessLogView list 
+        /// </summary>
+        public Result<IEnumerable<AccessLogView>> FindAllByView()
+        {
+            Result<IEnumerable<AccessLogView>> result = new Result<IEnumerable<AccessLogView>>();
+
+            try
+            {
+                result.Data = repositoryView.GetAll().AsEnumerable().ToList();
+                result.Status = ResultEnum.Success;
+            }
+            catch (Exception ex)
+            {
+                result.Status = ResultEnum.Error;
+                //Pending: error to the log file
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get a AnamnesisSheetView list 
+        /// </summary>
+        public Result<IEnumerable<AccessLogView>> FindByDateView(int lastDays)
+        {
+            DateTime currentDate = DateTime.Now.Date.AddDays(-lastDays);
+            Result<IEnumerable<AccessLogView>> result = new Result<IEnumerable<AccessLogView>>();
+
+            try
+            {
+                result.Data = repositoryView.GetAll().AsEnumerable().ToList();
+                result.Data = repositoryView
+                    .query(_ => _.CreateDate >= currentDate)
+                    .OrderByDescending(_ => _.CreateDate)
+                    .AsEnumerable<AccessLogView>();
                 result.Status = ResultEnum.Success;
             }
             catch (Exception ex)
